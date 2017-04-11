@@ -43,6 +43,7 @@
 
             .content {
                 text-align: center;
+
             }
 
             .title {
@@ -62,23 +63,73 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+            body {
+                font-family: sans-serif;
+                color: #333333;
+                padding: 8em 0 3em;
+            }
+
+            body,
+            .wrapper {
+                margin: 10px auto;
+                max-width: 60em;
+            }
+            footer {
+                position: fixed;
+                padding: 10px;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: #c32e04;
+                border-color: #8a9da8;
+            }
+            footer p {
+                float: right;
+                margin: 0;
+            }
+
+            #navlist li {
+                display: inline;
+                list-style-type: none;
+                padding-right: 20px;
+            }
+            header {
+                position: fixed;
+                top: 0px;
+                left: 0px;
+                right: 0px;
+                text-align: center;
+                padding: 10px;
+                background: #F1F3F4;
+                border-bottom: 1px solid #d5d5d5;
+            }
+            header img {
+                width: 13em;
+                margin-right: 50px;
+                float: left;
+            }
+
+
         </style>
     </head>
     <body>
+    <header>
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @if (Auth::check())
                         <a href="{{ url('/home') }}">Home</a>
                     @else
-                        
+
                         <a href="{{ url('/login') }}">Login</a>
                         <a href="{{ url('/register') }}">Register</a>
                     @endif
                 </div>
-            @endif
-
-            <div class="content">
+        @endif
+        </div>
+    </header>
+    <div class="flex-center position-ref full-height">
+        <div class="content">
                 <div class="title m-b-md">
                     Tutorpia
                 </div>
@@ -90,10 +141,18 @@
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
-            </div>
         </div>
+    </div>
         <footer>
-            Datenschutz Impressum Kontakt Hilfe
+            <div class="r4">
+                <ul id="navlist">
+                    <li class="first">Datenschutz</li>
+                    <li>Impressum</li>
+                    <li>Kontakt</li>
+                    <li>Hilfe</li>
+
+                </ul>
+            </div>
         </footer>
     </body>
 </html>
