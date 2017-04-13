@@ -8,7 +8,12 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+
+    <title>{{ config('app.name', 'Tutorpia') }}</title>
+
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
@@ -21,6 +26,8 @@
     </script>
 </head>
 <body>
+<header>
+
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
@@ -36,13 +43,14 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        {{ config('app.name', 'Tutorpia') }}
                     </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
+
                         &nbsp;
                     </ul>
 
@@ -51,7 +59,7 @@
                         <!-- Authentication Links -->
                         @if (Auth::guest())
                             <li><a href="{{ url('/login') }}">Login</a></li>
-                            <li><a href="{{ url('/register') }}">Register</a></li>
+                            <li><a href="{{ url('/register') }}">Registrierung</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -80,8 +88,19 @@
 
         @yield('content')
     </div>
-
+</header>
     <!-- Scripts -->
     <script src="/js/app.js"></script>
+    <footer>
+        <div>
+            <ul id="navlist">
+                <li class="first">Datenschutz</li>
+                <li>Impressum</li>
+                <li>Kontakt</li>
+                <li>Hilfe</li>
+
+            </ul>
+        </div>
+    </footer>
 </body>
 </html>

@@ -1,6 +1,9 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
+@extends('layouts.app')
+
 
     <head>
         <meta charset="utf-8">
@@ -20,7 +23,7 @@
     <body>
     <header>
 
-        <nav>
+            <nav>
             <ul class="nav nav-tabs">
                 @if (Auth::check())
                     <li role="presentation" class="active"><a href="#">Übersicht</a></li>
@@ -35,8 +38,8 @@
             </ul>
             @endif
         </nav>
-
     </header>
+
 
     <div class="row">
         <div class="col-xs-6 col-md-6 bild">
