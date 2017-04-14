@@ -8,9 +8,10 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <link href="{{ asset('css/main.css') }}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet" type="text/css">
 
     <title>{{ config('app.name', 'Tutorpia') }}</title>
 
@@ -27,7 +28,6 @@
 </head>
 <body>
 <header>
-
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
@@ -69,7 +69,7 @@
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
                                         <a href="{{ url('/logout') }}"
-                                            onclick="event.preventDefault();
+                                           onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Logout
                                         </a>
@@ -85,10 +85,14 @@
                 </div>
             </div>
         </nav>
-
-        @yield('content')
     </div>
+
+
+
 </header>
+<main>
+@yield('content')
+</main>
     <!-- Scripts -->
     <script src="/js/app.js"></script>
     <footer>
@@ -96,8 +100,8 @@
             <ul id="navlist">
                 <li class="first">Datenschutz</li>
                 <li>Impressum</li>
-                <li>Kontakt</li>
-                <li>Hilfe</li>
+                <li><a href="{{ url('/contact') }}">Kontakt</a></li>
+                <li><a href="{{ url('/hilfe') }}">Hilfe</a></li>
 
             </ul>
         </div>
