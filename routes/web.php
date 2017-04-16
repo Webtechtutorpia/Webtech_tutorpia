@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
@@ -25,4 +27,8 @@ Route::get('hilfe', function () {
 Route::get('contact', function () {
     return view('contact');
 });
+Route::get('overview', function () {
+    return view('Tutor.overview');
+});
+
 

@@ -7,7 +7,8 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Registrierung</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
+                    <form action="/overview">
+                    {{--<form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">--}}
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -68,6 +69,7 @@
                             </div>
                         </div>
                     </form>
+
                 </div>
             </div>
         </div>

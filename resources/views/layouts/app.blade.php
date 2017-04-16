@@ -7,6 +7,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -49,14 +50,19 @@
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
+                    {{--@if (Auth::check())--}}
 
-                        &nbsp;
+                    <ul class="nav navbar-nav">
+                            <li role="presentation" class="active"><a href="#">Übersicht</a></li>
+                            <li role="presentation"><a href="#">Kurse</a></li>
+                            <li role="presentation"><a href="#">Abgaben</a></li>
                     </ul>
 
+                    {{--@endif--}}
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
+
                         @if (Auth::guest())
                             <li><a href="{{ url('/login') }}">Login</a></li>
                             <li><a href="{{ url('/register') }}">Registrierung</a></li>
