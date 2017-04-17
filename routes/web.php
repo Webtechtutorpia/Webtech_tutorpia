@@ -30,5 +30,26 @@ Route::get('contact', function () {
 Route::get('overview', function () {
     return view('Tutor.overview');
 });
+Route::get('abgabe', function () {
+    return view('Tutor.abgabe');
+});
+Route::get('kurse', function () {
+    return view('Tutor.kurse');
+});
 
+
+Route::get('images/{filename}', function ($filename)
+{
+    $path = storage_path() . '/Images/' . $filename;
+
+    if(!File::exists($path)) abort(404);
+
+    $file = File::get($path);
+    $type = File::mimeType($path);
+
+    $response = Response::make($file, 200);
+    $response->header("Content-Type", $type);
+
+    return $response;
+});
 

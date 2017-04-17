@@ -3,9 +3,9 @@
 @section('content')
 
     <div class="row">
-        <div class="col-xs-6 col-md-6 bild">
+        <div class="col-xs-4 col-md-4 bild">
             <a href="#" class="thumbnail">
-                <img src="http://placehold.it/500x300">
+                <img class="eule" src="/images/eule.jpg">
             </a>
         </div>
     </div>

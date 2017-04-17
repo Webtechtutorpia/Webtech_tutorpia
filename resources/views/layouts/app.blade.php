@@ -29,9 +29,11 @@
 </head>
 <body>
 <header>
+
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
+
                 <div class="navbar-header">
 
                     <!-- Collapsed Hamburger -->
@@ -43,6 +45,7 @@
                     </button>
 
                     <!-- Branding Image -->
+
                     <a class="navbar-brand" href="{{ url('/') }}">
                         {{ config('app.name', 'Tutorpia') }}
                     </a>
@@ -53,9 +56,9 @@
                     {{--@if (Auth::check())--}}
 
                     <ul class="nav navbar-nav">
-                            <li role="presentation" class="active"><a href="#">Übersicht</a></li>
-                            <li role="presentation"><a href="#">Kurse</a></li>
-                            <li role="presentation"><a href="#">Abgaben</a></li>
+                            <li role="presentation" class="active"><a href="/overview">Übersicht</a></li>
+                            <li role="presentation"><a href="/kurse">Kurse</a></li>
+                            <li role="presentation"><a href="/abgabe">Abgaben</a></li>
                     </ul>
 
                     {{--@endif--}}
@@ -97,7 +100,9 @@
 
 </header>
 <main>
+
 @yield('content')
+
 </main>
     <!-- Scripts -->
     <script src="/js/app.js"></script>

@@ -86,10 +86,12 @@
      padding: 10px;
  }
  main {
-     padding-top: 65px;
+     padding-top: 85px;
      padding-bottom: 65px;
  }
-
+header {
+    z-index:1000000
+}
  .bild{
      left: 10%;
      top: 90px;
@@ -122,15 +124,13 @@
      background-color: #45a049;
  }
 
- /* Add a background color and some padding around the form */
- .containercontact {
-     border-radius: 5px;
-     background-color: #f2f2f2;
+ .eule{
 
-     padding-right: 130px;
-     padding-left: 100px;
-
+     width: 462px;
+     height: 654px;
  }
+
+
 
 
 
