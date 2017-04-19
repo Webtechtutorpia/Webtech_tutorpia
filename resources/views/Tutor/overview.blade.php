@@ -6,10 +6,12 @@
     <div class="row">
         <div class="col-md-6">
         <h3> Herzlich Willkommen zurück Max Mustermann!</h3>
+
+            <button type="button" class="btn btn-fb"><i class="fa fa-facebook left"></i> Facebook</button>
         </div>
     <div class="col-md-6">
         <div class="panel panel-success">
-            <div class="panel-heading"> <span class="glyphicon glyphicon-list-alt"::before></span><b>Neueste Aktivitäten</b></div>
+            <div class="panel-heading"><b>Neueste Aktivitäten</b></div>
             <div class="panel-body">
                 <div class="row">
                     <div class="col-xs-12">
