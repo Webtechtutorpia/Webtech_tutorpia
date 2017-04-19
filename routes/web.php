@@ -36,6 +36,13 @@ Route::get('abgabe', function () {
 Route::get('kurse', function () {
     return view('Tutor.kurse');
 });
+Route::get('datenschutz', function () {
+    return view('datenschutz');
+});
+Route::get('impressum', function () {
+    return view('impressum');
+});
+
 
 
 Route::get('images/{filename}', function ($filename)

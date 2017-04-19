@@ -29,11 +29,9 @@
 </head>
 <body>
 <header>
-
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-
+            <div class="container-fluid bg-success">
                 <div class="navbar-header">
 
                     <!-- Collapsed Hamburger -->
@@ -106,13 +104,12 @@
 </main>
     <!-- Scripts -->
     <script src="/js/app.js"></script>
-    <footer>
+    <footer class="bg-success">
         <div>
             <ul id="navlist">
-                <li class="first">Datenschutz</li>
-                <li>Impressum</li>
+                <li class="first foot"><a href="{{ url('/datenschutz') }}">Datenschutz</a></li>
+                <li><a href="{{ url('/impressum') }}">Impressum</a></li>
                 <li><a href="{{ url('/contact') }}">Kontakt</a></li>
-                <li><a href="{{ url('/hilfe') }}">Hilfe</a></li>
 
             </ul>
         </div>

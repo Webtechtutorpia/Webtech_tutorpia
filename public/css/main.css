@@ -1,13 +1,12 @@
 
- html, body {
-     background-color: #fff;
-     color: #636b6f;
-     font-family: 'Raleway', sans-serif;
-     font-weight: 100;
-     height: 100vh;
-     margin: 0;
- }
-
+/*html, body {*/
+    /*background-color: #fff;*/
+    /*color: #636b6f;*/
+    /*font-family: 'Raleway', sans-serif;*/
+    /*font-weight: 100;*/
+    /*height: 100vh;*/
+    /*margin: 0;*/
+/*}*/
 .full-height {
     height: 100vh;
 }
@@ -56,7 +55,6 @@
      bottom: 0;
      left: 0;
      right: 0;
-     background: #56c3b0;
      border-color: #8a9da8;
      padding: 15px 0 0 0;
      width: 100%;
@@ -83,19 +81,15 @@
      left: 0px;
      right: 0px;
      text-align: center;
-     padding: 10px;
+     /*padding: 5px;*/
+     z-index:1000000;
  }
  main {
      padding-top: 85px;
-     padding-bottom: 65px;
+     padding-bottom: 85px;
  }
-header {
-    z-index:1000000
-}
- .bild{
-     left: 10%;
-     top: 90px;
- }
+
+
 
  /* Style inputs with type="text", select elements and textareas */
  input[type=text], select, textarea {
@@ -124,11 +118,15 @@ header {
      background-color: #45a049;
  }
 
- .eule{
-
-     width: 462px;
-     height: 654px;
+ .willkommen{
+     font-size: 12pt;
  }
+a{
+    text-decoration: none;
+}
+
+
+
 
 
 
