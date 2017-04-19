@@ -7,7 +7,7 @@
         <div class="col-md-6">
         <h3> Herzlich Willkommen zurück Max Mustermann!</h3>
 
-            <button type="button" class="btn btn-fb"><i class="fa fa-facebook left"></i> Facebook</button>
+
         </div>
     <div class="col-md-6">
         <div class="panel panel-success">
@@ -24,6 +24,11 @@
             </div>
         </div>
     </div>
-</div>
-    </div>
+        <button type="button" class="btn btn-default btn-lg" aria-label="Links ausrichten">
+            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+        </button>
+        <h5>like uns auf Facebook</h5>
+
+        </div>
+
 @endsection

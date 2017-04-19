@@ -5,6 +5,16 @@
         <div class="row">
         <h2>Tutorenmodus: ALDA</h2>
 
+            <div class="col-lg-4 col-md-offset-8">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Suche nach...">
+                <span class="input-group-btn">
+        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+      </span>
+
+            </div>
+            </div>
+
         <table class="table table-hover" >
             <thead>
             <tr>
@@ -64,5 +74,6 @@
         </table>
     </div>
     </div>
+
 
     @endsection
