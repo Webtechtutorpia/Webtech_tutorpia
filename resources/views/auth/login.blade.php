@@ -7,8 +7,8 @@
             <div class="panel panel-success">
                 <div class="panel-heading">Login</div>
                 <div class="panel-body">
-                    {{--<form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">--}}
-                    <form action="/overview">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
+                    {{--<form action="/overview">--}}
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
