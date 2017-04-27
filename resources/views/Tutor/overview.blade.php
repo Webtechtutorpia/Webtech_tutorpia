@@ -1,34 +1,46 @@
 @extends('layouts.app')
 
 @section('content')
-
     <div class="container">
-    <div class="row">
-        <div class="col-md-6">
-        <h3> Herzlich Willkommen zurück Max Mustermann!</h3>
+        <div class="row">
+
+    <div class="col-md-12 text-center">
+        <h3>Wilkommen zurück Max Mustermann!</h3>
+    </div>
 
 
-        </div>
-    <div class="col-md-6">
-        <div class="panel panel-success">
-            <div class="panel-heading"><b>Neueste Aktivitäten</b></div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <ul class="demo2" style="overflow-y: hidden; height: 280px;"><li style="" class="news-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in venenatis enim... <a href="#">Read more...</a></li><li style="" class="news-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in venenatis enim... <a href="#">Read more...</a></li><li style="" class="news-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in venenatis enim... <a href="#">Read more...</a></li><li style="" class="news-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in venenatis enim... <a href="#">Read more...</a></li><li style="overflow: hidden; height: 59.2754px; padding-top: 3.43625px; margin-top: 0px; padding-bottom: 3.43625px; margin-bottom: 0px;" class="news-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in venenatis enim... <a href="#">Read more...</a></li><li style="display: none;" class="news-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in venenatis enim... <a href="#">Read more...</a></li><li style="display: none;" class="news-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in venenatis enim... <a href="#">Read more...</a></li>
+
+            <div class="col-md-12">
+                <div class="panel panel-success">
+                    <div class="panel-heading"><b>Neueste Aktivitäten</b></div>
+                    <div class="panel-body">
+
+                            <div class="col-xs-12 col-md-12">
+                                <table class="table-responsive">
+                                    <tr>
+                                        <th class="col-md-3 col-xs-3"><p>Zeit</p></th>
+                                        <th class="col-md-9 col-xs-9"><p>Ereignis</p></th>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-md-3 col-xs-3"> <p>20.04.17 23:59</p></td>
+                                        <td class="col-md-9 col-xs-9"><p>Tutor hat deine Übungsaufgabe Nr 3 im Kurs ALDA
+                                                abgenommen.</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-md-3 col-xs-3"> <p>28.04.17 15:21</p></td>
+                                        <td class="col-md-9 col-xs-9"><p>Dozent hat eine neue Übungsaufgabe erstellt.</p>
+                                        </td>
+                                    </tr>
 
 
-                        </ul>
+
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
-        <button type="button" class="btn btn-default btn-lg" aria-label="Links ausrichten">
-            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-        </button>
-        <h5>like uns auf Facebook</h5>
-
-        </div>
 
 @endsection

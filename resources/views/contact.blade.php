@@ -38,7 +38,8 @@
         <label for="subject">Nachricht</label>
         <textarea id="subject" name="subject" placeholder="Bitte Nachricht eintragen" style="height:200px"></textarea>
 
-        <input class="btn-primary" type="submit" value="Bestätigen">
+        <input type=button"
+               class=" btn-primary btn" type="submit" value="Bestätigen">
 
             </form>
 </div>
