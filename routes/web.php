@@ -43,9 +43,7 @@ Route::get('impressum', function () {
     return view('impressum');
 });
 
-Route::get('status', function () {
-    return view('Status');
-});
+
 
 Route::get('aufgabe_example', function () {
     return view('Tutor.Aufgabenansicht_example');

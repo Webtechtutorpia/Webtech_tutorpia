@@ -51,7 +51,7 @@
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
-                    {{--@if (Auth::check())--}}
+                    @if (Auth::check())
 
                     <ul class="nav navbar-nav">
                         <li role="presentation" class="active"><a href="/overview">Übersicht</a></li>
@@ -60,7 +60,7 @@
                         <li role="presentation"><a href="/aufgabe_example">Aufgaben</a></li>
                     </ul>
 
-                {{--@endif--}}
+                @endif
                 <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->

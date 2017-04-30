@@ -52,7 +52,7 @@
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
-                    
+                    <?php if(Auth::check()): ?>
 
                     <ul class="nav navbar-nav">
                         <li role="presentation" class="active"><a href="/overview">Übersicht</a></li>
@@ -61,7 +61,7 @@
                         <li role="presentation"><a href="/aufgabe_example">Aufgaben</a></li>
                     </ul>
 
-                
+                <?php endif; ?>
                 <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->

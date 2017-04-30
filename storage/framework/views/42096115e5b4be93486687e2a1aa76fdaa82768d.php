@@ -1,10 +1,8 @@
 <?php $__env->startSection('content'); ?>
 
 
-
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
-            <div class="col-md-offset-1 col-xs-offset-1 ">
 
                 <h2>Studentenmodus: DBIS</h2>
             </div>
