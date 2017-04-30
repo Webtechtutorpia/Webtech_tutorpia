@@ -23,6 +23,30 @@
                                 <?php endif; ?>
                             </div>
                         </div>
+                        <form class="form-horizontal" role="form" method="POST" action="<?php echo e(url('/register')); ?>">
+                            <?php echo e(csrf_field()); ?>
+
+
+                            <div class="form-group<?php echo e($errors->has('rolle') ? ' has-error' : ''); ?>">
+                                <label for="rolle" class="col-md-4 control-label">Rolle</label>
+
+                                <div class="col-md-6">
+
+                                    <input type="radio" id="tu" name="rolle" value="Tutor">
+                                    <label for="rolle">Tutor&nbsp</label>
+
+                                    <input type="radio" id="st" name="rolle" value="Student">
+                                    <label for="rolle">Student&nbsp</label>
+                                    <input type="radio" id="prof" name="rolle" value="Professor">
+                                    <label for="rolle">Professor</label>
+
+                                    <?php if($errors->has('rolle')): ?>
+                                        <span class="help-block">
+                                        <strong><?php echo e($errors->first('rolle')); ?></strong>
+                                    </span>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
 
                         <div class="form-group<?php echo e($errors->has('email') ? ' has-error' : ''); ?>">
                             <label for="email" class="col-md-4 control-label">E-Mail-Adresse</label>
