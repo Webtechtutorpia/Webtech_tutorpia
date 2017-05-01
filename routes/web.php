@@ -71,3 +71,18 @@ Route::get('images/{filename}', function ($filename)
     return $response;
 });
 
+Route::get('teste', function(){
+
+    return view('testseite');
+
+});
+Route::get('test', function(Request $request){
+    $parameters = [
+        'Aufgabenname' => $request->input('Aufgabenname'),
+        'Abgabedatum'=> "Du",
+        'Aufgabenstellung' => "Baum"
+    ];
+
+    return view('testseite', $parameters);
+
+});

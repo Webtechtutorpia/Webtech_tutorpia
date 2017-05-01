@@ -3,7 +3,7 @@
         <div class="row">
         <h2>Tutorenmodus: ALDA</h2>
 
-            <div class="col-md-4 col-md-offset-8 col-xs-4 col-xs-offset-8">
+            <div class="col-md-4 col-md-offset-8">
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="Suche nach...">
                 <span class="input-group-btn">
@@ -12,8 +12,8 @@
 
             </div>
             </div>
-
-        <table class="table table-hover" >
+        
+         <table class="table">
             <thead>
             <tr>
                 <th class="col-md-3 col-xs-3">Vorname</th>
@@ -41,35 +41,37 @@
             <tr>
                 <td>Mary</td>
                 <td>Moe</td>
-                <td class="text-center"><a href="<?php echo e(url('/aufgabe_example')); ?>" class="glyphicon glyphicon-minus-sign btn-warning"></a></td>
-                <td class="text-center"><a href="<?php echo e(url('/aufgabe_example')); ?>" class="glyphicon glyphicon-remove-sign btn-danger"></a></td>
-                <td class="text-center"><a href="<?php echo e(url('/aufgabe_example')); ?>" class="glyphicon glyphicon-ok-sign btn-success"></a></td>
-                <td class="text-center"><a href="<?php echo e(url('/aufgabe_example')); ?>" class="glyphicon glyphicon-minus-sign btn-warning"></a></td>
-                <td class="text-center"><a href="<?php echo e(url('/aufgabe_example')); ?>" class="glyphicon glyphicon-remove-sign btn-danger"></a></td>
-                <td class="text-center"><a href="<?php echo e(url('/aufgabe_example')); ?>" class="glyphicon glyphicon-ok-sign btn-success"></a></td>
+                <td class="text-center"><a href="<?php echo e(url('/aufgabe_example')); ?>" class="glyphicon glyphicon-ok btn-success"></a></td>
+                <td class="text-center"><a href="<?php echo e(url('/aufgabe_example')); ?>" class="glyphicon glyphicon-minus btn-warning"></a></td>
+                <td class="text-center"><a href="<?php echo e(url('/aufgabe_example')); ?>" class="glyphicon glyphicon-remove btn-danger"></a></td>
+                <td class="text-center"><a href="<?php echo e(url('/aufgabe_example')); ?>" class="glyphicon glyphicon-ok btn-success"></a></td>
+                <td class="text-center"><a href="<?php echo e(url('/aufgabe_example')); ?>" class="glyphicon glyphicon-minus btn-warning"></a></td>
+                <td class="text-center"><a href="<?php echo e(url('/aufgabe_example')); ?>" class="glyphicon glyphicon-remove btn-danger"></a></td>
             </tr>
             <tr>
                 <td>July</td>
                 <td>Dooley</td>
-                <td class="text-center"><a href="<?php echo e(url('/aufgabe_example')); ?>" class="glyphicon glyphicon-minus-sign btn-warning"></a></td>
-                <td class="text-center"><a href="<?php echo e(url('/aufgabe_example')); ?>" class="glyphicon glyphicon-remove-sign btn-danger"></a></td>
-                <td class="text-center"><a href="<?php echo e(url('/aufgabe_example')); ?>" class="glyphicon glyphicon-ok-sign btn-success"></a></td>
-                <td class="text-center"><a href="<?php echo e(url('/aufgabe_example')); ?>" class="glyphicon glyphicon-minus-sign btn-warning"></a></td>
-                <td class="text-center"><a href="<?php echo e(url('/aufgabe_example')); ?>" class="glyphicon glyphicon-remove-sign btn-danger"></a></td>
-                <td class="text-center"><a href="<?php echo e(url('/aufgabe_example')); ?>" class="glyphicon glyphicon-ok-sign btn-success"></a></td>
+                <td class="text-center"><a href="<?php echo e(url('/aufgabe_example')); ?>" class="glyphicon glyphicon-remove btn-danger"></a></td>
+                <td class="text-center"><a href="<?php echo e(url('/aufgabe_example')); ?>" class="glyphicon glyphicon-ok btn-success"></a></td>
+                <td class="text-center"><a href="<?php echo e(url('/aufgabe_example')); ?>" class="glyphicon glyphicon-minus btn-warning"></a></td>
+                <td class="text-center"><a href="<?php echo e(url('/aufgabe_example')); ?>" class="glyphicon glyphicon-remove btn-danger"></a></td>
+                <td class="text-center"><a href="<?php echo e(url('/aufgabe_example')); ?>" class="glyphicon glyphicon-minus btn-warning"></a></td>
+                <td class="text-center"><a href="<?php echo e(url('/aufgabe_example')); ?>" class="glyphicon glyphicon-remove btn-danger"></a></td>
+
             </tr>
             <tr>
                 <td>Klaus</td>
                 <td>Peter</td>
-                <td class="text-center"><a href="<?php echo e(url('/aufgabe_example')); ?>" class="glyphicon glyphicon-minus-sign btn-warning"></a></td>
-                <td class="text-center"><a href="<?php echo e(url('/aufgabe_example')); ?>" class="glyphicon glyphicon-remove-sign btn-danger"></a></td>
-                <td class="text-center"><a href="<?php echo e(url('/aufgabe_example')); ?>" class="glyphicon glyphicon-ok-sign btn-success"></a></td>
-                <td class="text-center"><a href="<?php echo e(url('/aufgabe_example')); ?>" class="glyphicon glyphicon-minus-sign btn-warning"></a></td>
-                <td class="text-center"><a href="<?php echo e(url('/aufgabe_example')); ?>" class="glyphicon glyphicon-remove-sign btn-danger"></a></td>
-                <td class="text-center"><a href="<?php echo e(url('/aufgabe_example')); ?>" class="glyphicon glyphicon-ok-sign btn-success"></a></td>
+                <td class="text-center"><a href="<?php echo e(url('/aufgabe_example')); ?>" class="glyphicon glyphicon-minus btn-warning"></a></td>
+                <td class="text-center"><a href="<?php echo e(url('/aufgabe_example')); ?>" class="glyphicon glyphicon-remove btn-danger"></a></td>
+                <td class="text-center"><a href="<?php echo e(url('/aufgabe_example')); ?>" class="glyphicon glyphicon-ok btn-success"></a></td>
+                <td class="text-center"><a href="<?php echo e(url('/aufgabe_example')); ?>" class="glyphicon glyphicon-minus btn-warning"></a></td>
+                <td class="text-center"><a href="<?php echo e(url('/aufgabe_example')); ?>" class="glyphicon glyphicon-remove btn-danger"></a></td>
+                <td class="text-center"><a href="<?php echo e(url('/aufgabe_example')); ?>" class="glyphicon glyphicon-ok btn-success"></a></td>
             </tr>
             </tbody>
         </table>
+
     </div>
     </div>
 

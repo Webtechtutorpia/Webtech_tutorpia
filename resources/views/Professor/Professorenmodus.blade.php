@@ -25,22 +25,22 @@
 
                         <div class="form group">
                             <label for="Aufgabenname" class="control-label">Aufgabenname</label>
-                            <input type="text" class="form-control" id="Aufgabenname" placeholder="Hier Aufgabenname eintragen">
+                            <input type="text" class="form-control" id="Aufgabenname" placeholder="Hier Aufgabenname eintragen" name="tfAufgabenname">
                         </div>
 
 
                         <div class="form group">
                             <label for="Datum" class="control-label">Abgabedatum</label>
-                            <input type="text" class="form-control" id="Datum" placeholder="01.01.2017 29:59">
+                            <input type="text" class="form-control" id="Datum" placeholder="01.01.2017 29:59" name="tfAbgabedatum">
                         </div>
 
                         <div class="form group">
                             <label for="Aufgabenstellung" class="control-label">Aufgabenbeschreibung</label>
-                            <textarea id="Aufgabenstellung" class="" rows="5" placeholder="Hier Aufgabenbeschreibung eintragen"></textarea>
+                            <textarea name="taAufgabenbeschreibung" id="Aufgabenstellung" class="" rows="5" placeholder="Hier Aufgabenbeschreibung eintragen"></textarea>
                         </div>
 
                         <div class="form-group" style="margin-top: 2em;">
-                            <button type="submit" class="btn btn-primary" value="Abschicken" style="float: right;" >
+                            <button type="submit" class="btn btn-primary" value="Abschicken" style="float: right;">
                                 Abschicken
                             </button>
                         </div>
