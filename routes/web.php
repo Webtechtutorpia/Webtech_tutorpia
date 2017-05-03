@@ -56,6 +56,8 @@ Route::get('professorenmodus', function () {
 });
 
 
+
+
 Route::get('images/{filename}', function ($filename)
 {
     $path = storage_path() . '/Images/' . $filename;

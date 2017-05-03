@@ -6,6 +6,7 @@
 
             <div class="col-md-6">
         <h3>Wilkommen zurück {{ Auth::user()->name }}!</h3>
+
     </div>
 
 

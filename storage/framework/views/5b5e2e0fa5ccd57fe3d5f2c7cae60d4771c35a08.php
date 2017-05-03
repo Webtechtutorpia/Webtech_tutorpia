@@ -4,6 +4,7 @@
 
             <div class="col-md-6">
         <h3>Wilkommen zurück <?php echo e(Auth::user()->name); ?>!</h3>
+                <h3>Wilkommen zurück <?php echo e(Auth::user()->rolle); ?>!</h3>
     </div>
 
 
