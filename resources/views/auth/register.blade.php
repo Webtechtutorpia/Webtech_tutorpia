@@ -24,8 +24,7 @@
                                 @endif
                             </div>
                         </div>
-                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
-                            {{ csrf_field() }}
+
 
                             <div class="form-group{{ $errors->has('rolle') ? ' has-error' : '' }}">
                                 <label for="rolle" class="col-md-4 control-label">Rolle</label>

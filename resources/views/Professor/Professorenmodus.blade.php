@@ -1,6 +1,5 @@
 @extends('layouts.app')
 
-@section('prof')
 
 @section('content')
     @if (Auth::user()->rolle=="Professor")
@@ -22,12 +21,12 @@
                     </div>
 
                     <div class="panel-body ">
-
+                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/professorenmodus') }}">
+                            {{ csrf_field() }}
                         <div class="form group">
                             <label for="Aufgabenname" class="control-label">Aufgabenname</label>
-                            <input type="text" class="form-control" id="Aufgabenname" placeholder="Hier Aufgabenname eintragen">
+                            <input type="text" class="form-control" name = "Aufgabenname" id="Aufgabenname" placeholder="Hier Aufgabenname eintragen">
                         </div>
-
 
                         <div class="form group">
                             <label for="Datum" class="control-label">Abgabedatum</label>
@@ -40,10 +39,11 @@
                         </div>
 
                         <div class="form-group" style="margin-top: 2em;">
-                            <button type="submit" class="btn btn-primary" value="Abschicken" style="float: right;" >
+                            <button type="submit" class="btn btn-primary" value="Abschicken" style="float: right" >
                                 Abschicken
                             </button>
                         </div>
+                        </form>
                     </div>
                 </div>
                 <div class="panel panel-default">

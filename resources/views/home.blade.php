@@ -8,6 +8,8 @@
                 <div class="panel-heading"></div>
 
                 <div class="panel-body">
+
+                    <h3>{{$aufgabenname}}</h3>
                     Login erfolgreich
                 </div>
             </div>

@@ -23,9 +23,7 @@
                                 <?php endif; ?>
                             </div>
                         </div>
-                        <form class="form-horizontal" role="form" method="POST" action="<?php echo e(url('/register')); ?>">
-                            <?php echo e(csrf_field()); ?>
-
+                        
 
                             <div class="form-group<?php echo e($errors->has('rolle') ? ' has-error' : ''); ?>">
                                 <label for="rolle" class="col-md-4 control-label">Rolle</label>

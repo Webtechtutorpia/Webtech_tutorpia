@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,7 +53,7 @@ Route::get('aufgabe_example', function () {
 
 
 Route::get('professorenmodus', function () {
-    return view('Professor.Professorenmodus');
+    return view('Professor.Professorenmodus',['posted'=>false]);
 });
 
 
@@ -72,4 +73,8 @@ Route::get('images/{filename}', function ($filename)
 
     return $response;
 });
+
+
+Route::post('professorenmodus', 'TestController@test');
+
 

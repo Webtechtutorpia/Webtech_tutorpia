@@ -6,6 +6,8 @@
                 <div class="panel-heading"></div>
 
                 <div class="panel-body">
+
+                    <h3><?php echo e($aufgabenname); ?></h3>
                     Login erfolgreich
                 </div>
             </div>
