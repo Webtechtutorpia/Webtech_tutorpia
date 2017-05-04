@@ -16,14 +16,14 @@ class DatabaseSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'TestStudent',
             'email' => 'student@student',
-            'password' => 'Tutorpia',
+            'password' => bcrypt('Tutorpia'),
             'Rolle' => 'Student'
         ]);
         //TestTutor
         DB::table('users')->insert([
             'name' => 'TestTutor',
             'email' => 'Tutor@Tutor',
-            'password' => 'Tutorpia',
+            'password' => bcrypt('Tutorpia'),
             'Rolle' => 'Tutor'
         ]);
 
@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'TestProf',
             'email' => 'Prof@Prof',
-            'password' => 'Tutorpia',
+            'password' => bcrypt('Tutorpia'),
             'Rolle' => 'Prof'
         ]);
     }
