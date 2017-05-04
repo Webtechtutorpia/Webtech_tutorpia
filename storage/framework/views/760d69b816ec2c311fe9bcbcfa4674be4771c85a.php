@@ -1,17 +1,18 @@
-<?php $__env->startSection('prof'); ?>
-
 <?php $__env->startSection('content'); ?>
+    <?php if(Auth::user()->rolle=="Professor"): ?>
+        <script type="text/javascript" src="<?php echo e(URL::asset('js/jquery.js')); ?>"></script>
+        <script type="text/javascript" src="<?php echo e(URL::asset('js/professorenmodus.js')); ?>"></script>
 
     <div class="container">
         <div class="row">
-            <div class="col-md-offset-1">
-                <h3 class="col-md-6"> Professorenmodus: ALDA!</h3>
+            <div class="">
+                <h3 class="col-md-5" id="test"> Professorenmodus: ALDA!</h3>
             </div>
 
-            <a href class="glyphicon glyphicon-plus col-md-offset-10 col-xs-offset-10" id="bigsize-right"></a>
+            <span class="glyphicon glyphicon-plus col-md-offset-12 " id="bigsize-right" onclick="plus()"></span>
 
 
-            <div class="col-md-10 col-md-offset-1">
+            <div class="col-md-11">
 
                 <div class="panel panel-default">
                     <div class="panel-heading"><b>Aufgabe 2 </b>
@@ -20,12 +21,13 @@
                     </div>
 
                     <div class="panel-body ">
+                        <form class="form-horizontal" role="form" method="POST" action="<?php echo e(url('/professorenmodus')); ?>">
+                            <?php echo e(csrf_field()); ?>
 
                         <div class="form group">
                             <label for="Aufgabenname" class="control-label">Aufgabenname</label>
-                            <input type="text" class="form-control" id="Aufgabenname" placeholder="Hier Aufgabenname eintragen">
+                            <input type="text" class="form-control" name = "Aufgabenname" id="Aufgabenname" placeholder="Hier Aufgabenname eintragen">
                         </div>
-
 
                         <div class="form group">
                             <label for="Datum" class="control-label">Abgabedatum</label>
@@ -38,10 +40,11 @@
                         </div>
 
                         <div class="form-group" style="margin-top: 2em;">
-                            <button type="submit" class="btn btn-primary" value="Abschicken" style="float: right;" >
+                            <button type="submit" class="btn btn-primary" value="Abschicken" style="float: right" >
                                 Abschicken
                             </button>
                         </div>
+                        </form>
                     </div>
                 </div>
                 <div class="panel panel-default">
@@ -78,6 +81,7 @@
     </div>
     </div>
     </div>
+    <?php endif; ?>
 
 <?php $__env->stopSection(); ?>
 

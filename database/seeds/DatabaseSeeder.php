@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'TestProf',
             'email' => 'Prof@Prof',
             'password' => bcrypt('Tutorpia'),
-            'Rolle' => 'Prof'
+            'Rolle' => 'Professor'
         ]);
     }
 }

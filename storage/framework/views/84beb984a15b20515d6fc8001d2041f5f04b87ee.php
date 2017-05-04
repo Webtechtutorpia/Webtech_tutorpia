@@ -1,20 +1,19 @@
 <?php $__env->startSection('content'); ?>
-
-
-    <div class="col-md-12 text-center">
-        <h3>Wilkommen zurück Max Mustermann!</h3>
-    </div>
     <div class="container">
         <div class="row">
-            <div class="col-md-5">
-            </div>
+
+            <div class="col-md-6">
+        <h3>Wilkommen zurück <?php echo e(Auth::user()->name); ?>!</h3>
+
+    </div>
 
 
-            <div class="col-md-12">
+
+            <div class="col-md-6">
                 <div class="panel panel-success">
                     <div class="panel-heading"><b>Neueste Aktivitäten</b></div>
                     <div class="panel-body">
-                        <div class="row">
+
                             <div class="col-xs-12 col-md-12">
                                 <table class="table-responsive">
                                     <tr>
@@ -40,7 +39,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
 

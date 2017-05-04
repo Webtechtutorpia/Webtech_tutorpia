@@ -1,15 +1,18 @@
 @extends('layouts.app')
 
-<script src="public/js/professorenmodus.js"></script>
+
 @section('content')
     @if (Auth::user()->rolle=="Professor")
+        <script type="text/javascript" src="{{ URL::asset('js/jquery.js') }}"></script>
+        <script type="text/javascript" src="{{ URL::asset('js/professorenmodus.js') }}"></script>
+
     <div class="container">
         <div class="row">
             <div class="">
-                <h3 class="col-md-5"> Professorenmodus: ALDA!</h3>
+                <h3 class="col-md-5" id="test"> Professorenmodus: ALDA!</h3>
             </div>
 
-            <a href class="glyphicon glyphicon-plus col-md-offset-12 " id="bigsize-right"></a>
+            <span class="glyphicon glyphicon-plus col-md-offset-12 " id="bigsize-right" onclick="plus()" onemouseover="" ></span>
 
 
             <div class="col-md-11">
