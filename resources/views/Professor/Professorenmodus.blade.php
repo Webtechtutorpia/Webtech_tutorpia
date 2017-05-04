@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-
+<script src="public/js/professorenmodus.js"></script>
 @section('content')
     @if (Auth::user()->rolle=="Professor")
     <div class="container">

@@ -3,11 +3,11 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -52,16 +52,20 @@
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
-                    
-
+                    <?php if(Auth::check()): ?>
+                        
                     <ul class="nav navbar-nav">
                         <li role="presentation" class="active"><a href="/overview">Übersicht</a></li>
                         <li role="presentation"><a href="/kurse">Kurse</a></li>
                         <li role="presentation"><a href="/abgabe">Abgaben</a></li>
+                        <?php if(Auth::user()->rolle=="Professor"): ?>
+                            <li role="presentation"><a href="/professorenmodus">Aufgaben</a></li>
+                        <?php else: ?>
                         <li role="presentation"><a href="/aufgabe_example">Aufgaben</a></li>
+                            <?php endif; ?>
                     </ul>
 
-                
+                <?php endif; ?>
                 <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
@@ -113,7 +117,7 @@
             <li class="first foot"><a href="<?php echo e(url('/datenschutz')); ?>">Datenschutz</a></li>
             <li><a href="<?php echo e(url('/impressum')); ?>">Impressum</a></li>
             <li><a href="<?php echo e(url('/contact')); ?>">Kontakt</a></li>
-            <li class="col-md-offset-7"><button type="button" class="btn btn-group-sm btn-primary" aria-label="Links ausrichten">
+            <li class="col-md-offset-7""><button type="button" class="btn btn-group-sm btn-primary" aria-label="Links ausrichten">
                     <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
                 </button>
                 like uns auf Facebook</li>
