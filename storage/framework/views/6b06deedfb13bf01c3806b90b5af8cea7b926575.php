@@ -1,4 +1,5 @@
 <?php $__env->startSection('content'); ?>
+    <?php if(Auth::user()->rolle=="Tutor" || Auth::user()->rolle=="Professor" ): ?>
     <div class="container">
         <div class="row">
         <h2>Tutorenmodus: ALDA</h2>
@@ -75,6 +76,6 @@
     </div>
     </div>
 
-
+    <?php endif; ?>
     <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

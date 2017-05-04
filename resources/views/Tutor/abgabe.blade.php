@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    @if (Auth::user()->rolle=="Tutor" || Auth::user()->rolle=="Professor" )
     <div class="container">
         <div class="row">
         <h2>Tutorenmodus: ALDA</h2>
@@ -77,5 +78,5 @@
     </div>
     </div>
 
-
+    @endif
     @endsection

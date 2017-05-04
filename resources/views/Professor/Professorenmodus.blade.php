@@ -3,7 +3,7 @@
 @section('prof')
 
 @section('content')
-
+    @if (Auth::user()->rolle=="Professor")
     <div class="container">
         <div class="row">
             <div class="">
@@ -80,5 +80,6 @@
     </div>
     </div>
     </div>
+    @endif
 
 @endsection

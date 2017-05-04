@@ -53,12 +53,16 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <?php if(Auth::check()): ?>
-
+                        
                     <ul class="nav navbar-nav">
                         <li role="presentation" class="active"><a href="/overview">Übersicht</a></li>
                         <li role="presentation"><a href="/kurse">Kurse</a></li>
                         <li role="presentation"><a href="/abgabe">Abgaben</a></li>
+                        <?php if(Auth::user()->rolle=="Professor"): ?>
+                            <li role="presentation"><a href="/professorenmodus">Aufgaben</a></li>
+                        <?php else: ?>
                         <li role="presentation"><a href="/aufgabe_example">Aufgaben</a></li>
+                            <?php endif; ?>
                     </ul>
 
                 <?php endif; ?>

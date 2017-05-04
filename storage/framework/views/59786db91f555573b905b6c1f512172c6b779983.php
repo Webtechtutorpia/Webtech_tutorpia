@@ -1,7 +1,7 @@
 <?php $__env->startSection('prof'); ?>
 
 <?php $__env->startSection('content'); ?>
-
+    <?php if(Auth::user()->rolle=="Professor"): ?>
     <div class="container">
         <div class="row">
             <div class="">
@@ -78,6 +78,7 @@
     </div>
     </div>
     </div>
+    <?php endif; ?>
 
 <?php $__env->stopSection(); ?>
 

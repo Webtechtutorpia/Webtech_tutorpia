@@ -57,7 +57,11 @@
                         <li role="presentation" class="active"><a href="/overview">Übersicht</a></li>
                         <li role="presentation"><a href="/kurse">Kurse</a></li>
                         <li role="presentation"><a href="/abgabe">Abgaben</a></li>
+                        @if (Auth::user()->rolle=="Professor")
+                            <li role="presentation"><a href="/professorenmodus">Aufgaben</a></li>
+                        @else
                         <li role="presentation"><a href="/aufgabe_example">Aufgaben</a></li>
+                            @endif
                     </ul>
 
                 @endif
