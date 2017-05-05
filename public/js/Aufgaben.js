@@ -18,26 +18,3 @@ function Bodyhandler(){
 // })
 
 }
-
-// $(function(){
-//
-//
-//     $('.panel-heading').click(function(){
-//         {
-//             console.log('getroffen');
-//
-//         }
-//     })
-//
-//
-// }
-
-
-function plus () {
-$("#test").hide();
-}
-
-
-$("#test").mouseover(function(){
-    $("#test").css("background-color", "yellow");
-});
