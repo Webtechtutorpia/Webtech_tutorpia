@@ -1,3 +1,6 @@
+<style> .blue{
+        color:blue;
+    }</style>
 <?php $__env->startSection('content'); ?>
     <?php if(Auth::user()->rolle=="Professor"): ?>
 
@@ -9,18 +12,17 @@
                     <h3 class="col-md-5" id="test"> Professorenmodus: ALDA!</h3>
                 </div>
 
-                <span class="glyphicon glyphicon-plus col-md-offset-12 " id="bigsize-right" onclick="plus()"
-                      onemouseover=""></span>
+                <span class="glyphicon glyphicon-plus col-md-offset-12" id="bigsize-right" id="plus" onclick="add()"></span>
 
 
                 <div class="col-md-11">
-
-                    <div class="panel panel-default">
+                    <div class="panel panel-default ">
                         <div class="panel-heading" onclick="Bodyhandler()"><b>Aufgabe 7 </b>
-                            <a href style="display: inline" id="middlesize-right" class="glyphicon glyphicon-trash"></a>
-                            <a href style="display: inline" id="middlesize-right" class="glyphicon glyphicon-cog"></a>
+                            
+                            <i  style="display: inline" class="middlesize-right glyphicon glyphicon-trash" onclick="remove()"></i>
+                            <i style="display: inline" class="middlesize-right glyphicon glyphicon-cog"></i>
                         </div>
-                        <div class="panel-body">
+                        <div class="panel-body" style="display:none">
                             <div class="form group">
                                 <form class="form-horizontal" role="form" method="POST"
                                       action="<?php echo e(url('/professorenmodus')); ?>">
@@ -54,12 +56,10 @@
                     </div>
                     <div class="panel panel-default">
                         <div class="panel-heading" onclick="Bodyhandler()"><b>Aufgabe 2 </b>
-                            <a href style="display: inline" id="middlesize-right"
-                               class="glyphicon glyphicon-trash"></a>
-                            <a href style="display: inline" id="middlesize-right"
-                               class="glyphicon glyphicon-cog"></a>
+                            <i style="display: inline" class="middlesize-right glyphicon glyphicon-trash"></i>
+                            <i style="display: inline" class="middlesize-right glyphicon glyphicon-cog"></i>
                         </div>
-                        <div class="panel-body">
+                        <div class="panel-body" style="display:none">
                             <div class="form group">
                                 <form class="form-horizontal" role="form" method="POST"
                                       action="<?php echo e(url('/professorenmodus')); ?>">
@@ -91,14 +91,12 @@
 
                         </div>
                     </div>
-
                     <div class="panel panel-default">
                         <div class="panel-heading" onclick="Bodyhandler()"><b>Aufgabe 3 </b>
-                            <a href style="display: inline" id="middlesize-right"
-                               class="glyphicon glyphicon-trash"></a>
-                            <a href="display: inline" id="middlesize-right" class="glyphicon glyphicon-cog"></a>
+                            <i style="display: inline" class="middlesize-right glyphicon glyphicon-trash"></i>
+                            <i href="display: inline" class="middlesize-right glyphicon glyphicon-cog"></i>
                         </div>
-                        <div class="panel-body">
+                        <div class="panel-body" style="display:none;">
                             <div class="form group">
                                 <form class="form-horizontal" role="form" method="POST"
                                       action="<?php echo e(url('/professorenmodus')); ?>">
@@ -131,16 +129,12 @@
                         </div>
 
                     </div>
-
-
                     <div class="panel panel-default">
                         <div class="panel-heading" onclick="Bodyhandler()"><b>Aufgabe 4 </b>
-                            <a href style="display: inline" id="middlesize-right"
-                               class="glyphicon glyphicon-trash"></a>
-                            <a href style="display: inline" id="middlesize-right"
-                               class="glyphicon glyphicon-cog"></a>
+                            <i style="display: inline" class="middlesize-right glyphicon glyphicon-trash"></i>
+                            <i style="display: inline" class="middlesize-right glyphicon glyphicon-cog"></i>
                         </div>
-                        <div class="panel-body">
+                        <div class="panel-body" style="display:none;">
                             <div class="form group">
                                 <form class="form-horizontal" role="form" method="POST"
                                       action="<?php echo e(url('/professorenmodus')); ?>">
