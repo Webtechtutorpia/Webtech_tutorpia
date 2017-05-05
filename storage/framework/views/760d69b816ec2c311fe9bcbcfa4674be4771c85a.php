@@ -1,7 +1,7 @@
 <?php $__env->startSection('content'); ?>
     <?php if(Auth::user()->rolle=="Professor"): ?>
-        <script type="text/javascript" src="<?php echo e(URL::asset('js/jquery.js')); ?>"></script>
-        <script type="text/javascript" src="<?php echo e(URL::asset('js/professorenmodus.js')); ?>"></script>
+
+        
 
     <div class="container">
         <div class="row">
@@ -9,7 +9,7 @@
                 <h3 class="col-md-5" id="test"> Professorenmodus: ALDA!</h3>
             </div>
 
-            <span class="glyphicon glyphicon-plus col-md-offset-12 " id="bigsize-right" onclick="plus()"></span>
+            <span class="glyphicon glyphicon-plus col-md-offset-12 " id="bigsize-right" onclick="plus()" onemouseover="" ></span>
 
 
             <div class="col-md-11">

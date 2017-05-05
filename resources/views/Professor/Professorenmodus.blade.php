@@ -3,8 +3,8 @@
 
 @section('content')
     @if (Auth::user()->rolle=="Professor")
-        <script type="text/javascript" src="{{ URL::asset('js/jquery.js') }}"></script>
-        <script type="text/javascript" src="{{ URL::asset('js/professorenmodus.js') }}"></script>
+
+        {{--<script type="text/javascript" src="{{ URL::asset('js/professorenmodus.js') }}"></script>--}}
 
     <div class="container">
         <div class="row">
