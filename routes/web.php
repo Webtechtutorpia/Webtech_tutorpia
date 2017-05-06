@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 |
 */
 
+use Tutorpia\User;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -49,6 +51,15 @@ Route::get('aufgabe_example', function () {
     return view('Tutor.Aufgabenansicht_example');
 });
 
+Route::get('Jannis', function(){
+
+ //   return response()->json(['key' => User::find(1)]);
+  // return User::find(1)
+    $parameter  = User::find(1);
+    return view('home')->with(['user' => User::find(2),
+        'userb' => $parameter
+    ]);
+});
 
 
 Route::get('professorenmodus', function () {

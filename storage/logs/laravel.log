@@ -6281,3 +6281,24 @@ Stack trace:
 #40 D:\Webtech_tutorpia\public\index.php(53): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
 #41 D:\Webtech_tutorpia\server.php(21): require_once('D:\\Webtech_tuto...')
 #42 {main}  
+[2017-05-06 14:40:08] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'users' not found' in C:\Users\janni\Webtech_tutorpia\routes\web.php:56
+Stack trace:
+#0 {main}  
+[2017-05-06 14:40:26] local.ERROR: exception 'Symfony\Component\Console\Exception\CommandNotFoundException' with message 'Command "migrate;" is not defined.
+
+Did you mean one of these?
+    migrate
+    migrate:status
+    migrate:refresh
+    migrate:rollback
+    migrate:install
+    migrate:reset' in C:\Users\janni\Webtech_tutorpia\vendor\symfony\console\Application.php:534
+Stack trace:
+#0 C:\Users\janni\Webtech_tutorpia\vendor\symfony\console\Application.php(182): Symfony\Component\Console\Application->find('migrate;')
+#1 C:\Users\janni\Webtech_tutorpia\vendor\symfony\console\Application.php(116): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#2 C:\Users\janni\Webtech_tutorpia\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(121): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#3 C:\Users\janni\Webtech_tutorpia\artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#4 {main}  
+[2017-05-06 14:46:12] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '/'' in C:\Users\janni\Webtech_tutorpia\routes\web.php:57
+Stack trace:
+#0 {main}  

@@ -9,8 +9,9 @@
 
                 <div class="panel-body">
 
-                    <h3>{{$actifity}}</h3>
-                    Login erfolgreich
+                    <h1>{{$user->name}}</h1>
+                    <h1>{{$userb->name}}</h1>
+
                 </div>
             </div>
         </div>
