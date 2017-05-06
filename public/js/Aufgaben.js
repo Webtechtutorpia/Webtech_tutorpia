@@ -5,7 +5,7 @@ function Bodyhandler(){
     console.log('getroffen');
     var Bodyelement = $(event.target).parent().children('.panel-body');
     if($(Bodyelement).is(':visible')){
-        $(Bodyelement).hide();
+        $(Bodyelement).hide('slow', 'linear');
         //$(".panel-body").hide('slow','linear');
     }
     else {

@@ -276,7 +276,9 @@ class ComposerStaticInit5392c372fbd4bb7aa8210c0b9cdbad43
     );
 
     public static $classMap = array (
+        'Activityseeder' => __DIR__ . '/../..' . '/database/seeds/Activityseeder.php',
         'AddColumnToUsers' => __DIR__ . '/../..' . '/database/migrations/2017_04_30_143855_add_column_to_users.php',
+        'CreateActitity' => __DIR__ . '/../..' . '/database/migrations/2017_05_06_071359_createActitity.php',
         'CreateNotificationsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_30_071547_create_notifications_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',

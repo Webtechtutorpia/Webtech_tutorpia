@@ -6,7 +6,9 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Activityseeder' => $baseDir . '/database/seeds/Activityseeder.php',
     'AddColumnToUsers' => $baseDir . '/database/migrations/2017_04_30_143855_add_column_to_users.php',
+    'CreateActitity' => $baseDir . '/database/migrations/2017_05_06_071359_createActitity.php',
     'CreateNotificationsTable' => $baseDir . '/database/migrations/2017_04_30_071547_create_notifications_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',

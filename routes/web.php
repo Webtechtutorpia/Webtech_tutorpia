@@ -28,9 +28,8 @@ Route::get('hilfe', function () {
 Route::get('contact', function () {
     return view('contact');
 });
-Route::get('overview', function () {
-    return view('Tutor.overview');
-});
+Route::get('overview','OverviewController@showfirstActifty');
+   // return view('Tutor.overview'));
 Route::get('abgabe', function () {
     return view('Tutor.abgabe');
 });

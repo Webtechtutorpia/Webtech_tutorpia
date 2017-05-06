@@ -7,7 +7,7 @@
 
                 <div class="panel-body">
 
-                    <h3><?php echo e($aufgabenname); ?></h3>
+                    <h3><?php echo e($actifity); ?></h3>
                     Login erfolgreich
                 </div>
             </div>

@@ -9,7 +9,7 @@
 
                 <div class="panel-body">
 
-                    <h3>{{$aufgabenname}}</h3>
+                    <h3>{{$actifity}}</h3>
                     Login erfolgreich
                 </div>
             </div>

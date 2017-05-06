@@ -3,13 +3,13 @@ function Bodyhandler(){
 
     var Bodyelement = $(event.target).parent().children('.panel-body');
     if($(Bodyelement).is(':visible')){
-        $(Bodyelement).hide();
+        $(Bodyelement).hide('slow','linear');
         //$(".panel-body").hide('slow','linear');
     }
     else {
         //$(".panel-body").show('slow','linear');
         console.log('öffnen');
-        $(Bodyelement).show();
+        $(Bodyelement).show('slow','linear');
     }
 
 

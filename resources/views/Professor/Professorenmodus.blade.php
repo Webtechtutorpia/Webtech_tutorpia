@@ -20,7 +20,6 @@
                 <div class="col-md-11">
                     <div class="panel panel-default ">
                         <div class="panel-heading" onclick="Bodyhandler()"><b>Aufgabe 7 </b>
-                            {{--??????--}}
                             <i  style="display: inline" class="middlesize-right glyphicon glyphicon-trash" onclick="remove()"></i>
                             <i style="display: inline" class="middlesize-right glyphicon glyphicon-cog"></i>
                         </div>
