@@ -13,7 +13,9 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-theme.min.css" rel="stylesheet">
     <link href="<?php echo e(asset('css/main.css')); ?>" rel="stylesheet" type="text/css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    
+    <script type="text/javascript" src="<?php echo e(URL::asset('js/jquery.js')); ?>"></script>
+    <script type="text/javascript" src="<?php echo e(URL::asset('js/layout.js')); ?>"></script>
     <title><?php echo e(config('app.name', 'Tutorpia')); ?></title>
 
 
@@ -50,14 +52,14 @@
                     </a>
                 </div>
 
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                <div class="collapse navbar-collapse" id="app-navbar-collapse" onmouseover="hoverselectednavbar()">
                     <!-- Left Side Of Navbar -->
                     <?php if(Auth::check()): ?>
                         
                     <ul class="nav navbar-nav">
-                        <li role="presentation" class="active"><a href="/overview">Übersicht</a></li>
-                        <li role="presentation"><a href="/kurse">Kurse</a></li>
-                        <li role="presentation"><a href="/abgabe">Abgaben</a></li>
+                        <li role="presentation" name="Übersicht"><a href="/overview">Übersicht</a></li>
+                        <li role="presentation" name="Kurse"><a href="/kurse">Kurse</a></li>
+                        <li role="presentation" name="Abgaben"><a href="/abgabe">Abgaben</a></li>
                         <?php if(Auth::user()->rolle=="Professor"): ?>
                             <li role="presentation"><a href="/professorenmodus">Aufgaben</a></li>
                         <?php else: ?>
@@ -117,7 +119,7 @@
             <li class="first foot"><a href="<?php echo e(url('/datenschutz')); ?>">Datenschutz</a></li>
             <li><a href="<?php echo e(url('/impressum')); ?>">Impressum</a></li>
             <li><a href="<?php echo e(url('/contact')); ?>">Kontakt</a></li>
-            <li class="col-md-offset-7""><button type="button" class="btn btn-group-sm btn-primary" aria-label="Links ausrichten">
+            <li class="col-md-offset-7"><button type="button" class="btn btn-group-sm btn-primary" aria-label="Links ausrichten">
                     <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
                 </button>
                 like uns auf Facebook</li>

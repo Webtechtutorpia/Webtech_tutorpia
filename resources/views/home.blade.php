@@ -9,8 +9,8 @@
 
                 <div class="panel-body">
 
-                    <h1>{{$user->name}}</h1>
-                    <h1>{{$userb->name}}</h1>
+                    <h1>{{ Auth::user()->name }}</h1>
+                    <h1>{{ Auth::user()->name }}</h1>
 
                 </div>
             </div>

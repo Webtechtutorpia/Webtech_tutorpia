@@ -38,7 +38,7 @@ class OverviewController extends Controller
 
        $actifity = $this->getfirstActifity();
        $parameters =['actifity'=> $actifity , 'test'=> 'test'];
-       return view('home', $parameters);
+       return view('Tutor/overview', $parameters);
     }
 
 

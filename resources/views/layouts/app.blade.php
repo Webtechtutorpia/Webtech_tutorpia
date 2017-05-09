@@ -117,7 +117,7 @@
             <li class="first foot"><a href="{{ url('/datenschutz') }}">Datenschutz</a></li>
             <li><a href="{{ url('/impressum') }}">Impressum</a></li>
             <li><a href="{{ url('/contact') }}">Kontakt</a></li>
-            <li class="col-md-offset-7""><button type="button" class="btn btn-group-sm btn-primary" aria-label="Links ausrichten">
+            <li class="col-md-offset-7"><button type="button" class="btn btn-group-sm btn-primary" aria-label="Links ausrichten">
                     <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
                 </button>
                 like uns auf Facebook</li>

@@ -7,8 +7,9 @@
 
                 <div class="panel-body">
 
-                    <h3><?php echo e($aufgabenname); ?></h3>
-                    Login erfolgreich
+                    <h1><?php echo e(Auth::user()->name); ?></h1>
+                    <h1><?php echo e(Auth::user()->name); ?></h1>
+
                 </div>
             </div>
         </div>
