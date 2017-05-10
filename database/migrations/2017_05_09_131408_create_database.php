@@ -21,7 +21,7 @@ class CreateDatabase extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('Rolle')->default();
+            $table->string('rolle')->default();
             $table->rememberToken();
             $table->timestamps();
         });
@@ -35,47 +35,47 @@ class CreateDatabase extends Migration
         //Erzeuge kurstabelle
         Schema::create('kurs', function (Blueprint $table){
             $table->increments('id');
-            $table->string('Bezeichnung');
+            $table->string('bezeichnung');
             $table->Integer('geleitet_von')->unsigned();
             //Constraints
             $table->foreign('geleitet_von')->references('id')->on('users');
         });
 //        //Erzeuge Aufgabentabelle
-        Schema::create('Aufgabe', function (Blueprint $table){
+        Schema::create('aufgabe', function (Blueprint $table){
             $table->increments('id');
-            $table->string('Aufgabenname');
-            $table->Date('Abgabedatum');
-            $table->string('Aufgabenbeschreibung');
-            $table->Integer('erstellt_von')->unsigned();
+            $table->string('aufgabenname');
+            $table->string('abgabedatum');
+            $table->string('aufgabenbeschreibung');
+            $table->Integer('erstellt_von')->default(1)->unsigned();
             $table->timestamps();
-            $table->date('deleted_at');
+            $table->date('deleted_at')->default(date("Y-m-d"));
             //Constraints
             $table->foreign('erstellt_von')->references('id')->on('users');
         });
 //        //Erzeuge Abgabentabelle
-        Schema::create('Abgabe', function (Blueprint $table){
+        Schema::create('abgabe', function (Blueprint $table){
             $table->increments('id');
-            $table->string('Aufgabenname');
-            $table->Date('Abgabedatum');
-            $table->string('Aufgabenbeschreibung');
+            $table->string('aufgabenname');
+            $table->Date('abgabedatum');
+            $table->string('aufgabenbeschreibung');
             $table->Integer('erstellt')->unsigned();
             $table->Integer('zugehoerig_zu')->unsigned();
             $table->timestamps();
             //Constraints
             $table->foreign('erstellt')->references('id')->on('users');
-            $table->foreign('zugehoerig_zu')->references('id')->on('Aufgabe')->onDelete('Cascade');
+            $table->foreign('zugehoerig_zu')->references('id')->on('aufgabe')->onDelete('Cascade');
         });
 //        //Erzeuge Aktivität
-        Schema::create('Aktivitaet', function (Blueprint $table){
+        Schema::create('activity', function (Blueprint $table){
             $table->increments('id');
             $table->date('created_at');
-            $table->Date('Abgabedatum');
-            $table->string('Aufgabenbeschreibung');
+            $table->Date('abgabedatum');
+            $table->string('aufgabenbeschreibung');
             $table->Integer('zuordnung_aufgabe')->unsigned();
             $table->Integer('zuordnung_abgabe')->unsigned();
             //Constraints
-            $table->foreign('zuordnung_aufgabe')->references('id')->on('Aufgabe')->nullable();
-            $table->foreign('zuordnung_abgabe') ->references('id')->on('Abgabe')->nullable();
+            $table->foreign('zuordnung_aufgabe')->references('id')->on('aufgabe')->nullable();
+            $table->foreign('zuordnung_abgabe') ->references('id')->on('abgabe')->nullable();
         });
 
         Schema::enableForeignKeyConstraints();
@@ -93,9 +93,9 @@ class CreateDatabase extends Migration
         Schema::dropIfExists('password_resets');
         Schema::dropIfExists('kurs');
         Schema::dropIfExists('users');
-        Schema::dropIfExists('Aufgabe');
-        Schema::dropIfExists('Abgabe');
-        Schema::dropIfExists('Aktivitaet');
+        Schema::dropIfExists('aufgabe');
+        Schema::dropIfExists('abgabe');
+        Schema::dropIfExists('activity');
         Schema::enableForeignKeyConstraints();
     }
 }

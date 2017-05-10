@@ -7,8 +7,9 @@
 
                 <div class="panel-body">
 
-                    <h1><?php echo e(Auth::user()->name); ?></h1>
-                    <h1><?php echo e(Auth::user()->name); ?></h1>
+
+                    <p><?php echo e($aufgabenname); ?></p>
+                    <p><?php echo e($datum); ?></p>
 
                 </div>
             </div>

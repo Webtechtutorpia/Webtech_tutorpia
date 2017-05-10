@@ -18,17 +18,11 @@ class SessionController extends Controller
 // Add Formular test
     public function putSession(Request $request){
         $request->session() -> put('Aufgabenname', input('Sender-firstname'));
-        $request->session() -> put ('Aufgabenstellung', input(''))
+        $request->session() -> put ('Aufgabenstellung', input(''));
         $request->session()->put('session_name','www.hc-kr.com');
         echo 'a data hasbeen added to the session';
     }
 
-
-    // create new function for put method
-    public function putSession(Request $request){
-        $request->session()->put('session_name','www.hc-kr.com');
-        echo 'a data hasbeen added to the session';
-    }
     // create new function to delete session
     public function forgetSession(Request $request){
         $request->session()->forget('session_name');

@@ -9,8 +9,9 @@
 
                 <div class="panel-body">
 
-                    <h1>{{ Auth::user()->name }}</h1>
-                    <h1>{{ Auth::user()->name }}</h1>
+
+                    <p>{{ $aufgabenname}}</p>
+                    <p>{{ $datum}}</p>
 
                 </div>
             </div>

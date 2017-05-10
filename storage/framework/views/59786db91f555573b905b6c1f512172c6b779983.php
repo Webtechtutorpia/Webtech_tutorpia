@@ -17,30 +17,40 @@
 
                 <div class="col-md-11">
                     <div class="panel panel-default ">
-                        <div class="panel-heading" onclick="Bodyhandler()"><b>Aufgabe 7 </b>
+                        <div class="panel-heading" onclick="Bodyhandler()"><b>Aufgabe 1 </b>
                             <i  style="display: inline" class="middlesize-right glyphicon glyphicon-trash" onclick="remove()"></i>
                             <i style="display: inline" class="middlesize-right glyphicon glyphicon-cog"></i>
                         </div>
                         <div class="panel-body" style="display:none">
+                            <?php if(count($errors) > 0): ?>
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+                                            <li><?php echo e($error); ?></li>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
+                                    </ul>
+                                </div>
+                            <?php endif; ?>
+                            <form class="form-horizontal" role="form" method="POST"
+                                  action="<?php echo e(url('/professorenmodus')); ?>">
+                                <?php echo e(csrf_field()); ?>
+
                             <div class="form group">
-                                <form class="form-horizontal" role="form" method="POST"
-                                      action="<?php echo e(url('/professorenmodus')); ?>">
-                                    <?php echo e(csrf_field()); ?>
 
                                     <label for="Aufgabenname" class="control-label">Aufgabenname</label>
-                                    <input type="text" class="form-control" name="Aufgabenname" id="Aufgabenname"
+                                    <input type="text" class="form-control" name="aufgabenname" id="Aufgabenname"
                                            placeholder="Hier Aufgabenname eintragen">
                             </div>
 
                             <div class="form group">
-                                <label for="Datum" class="control-label">Abgabedatum</label>
-                                <input type="text" class="form-control" id="Datum" placeholder="01.01.2017 29:59">
+                                <label for="date" class="control-label">Abgabedatum</label>
+                                <input type="text" class="form-control" name="abgabedatum" id="Datum" placeholder="01.01.2017 29:59">
                             </div>
 
                             <div class="form group">
-                                <label for="Aufgabenstellung" class="control-label">Aufgabenbeschreibung</label>
-                                <textarea id="Aufgabenstellung" class="" rows="5"
-                                          placeholder="Hier Aufgabenbeschreibung eintragen"></textarea>
+                                <label for="Aufgabenbeschreibung" class="control-label">Aufgabenbeschreibung</label>
+                                <textarea name="aufgabenbeschreibung" id="Aufgabenbeschreibung" class="" rows="5"
+                                          placeholder="Hier Aufgabenstellung eintragen"></textarea>
                             </div>
 
                             <div class="form-group" style="margin-top: 2em;">
@@ -59,10 +69,11 @@
                             <i style="display: inline" class="middlesize-right glyphicon glyphicon-cog"></i>
                         </div>
                         <div class="panel-body" style="display:none">
+                            <form class="form-horizontal" role="form" method="POST"
+                                  action="<?php echo e(url('/professorenmodus')); ?>">
+                                <?php echo e(csrf_field()); ?>
+
                             <div class="form group">
-                                <form class="form-horizontal" role="form" method="POST"
-                                      action="<?php echo e(url('/professorenmodus')); ?>">
-                                    <?php echo e(csrf_field()); ?>
 
                                     <label for="Aufgabenname" class="control-label">Aufgabenname</label>
                                     <input type="text" class="form-control" name="Aufgabenname" id="Aufgabenname"
@@ -75,7 +86,7 @@
                             </div>
 
                             <div class="form group">
-                                <label for="Aufgabenstellung" class="control-label">Aufgabenbeschreibung</label>
+                                <label for="Aufgabenbeschreibung" class="control-label">Aufgabenbeschreibung</label>
                                 <textarea id="Aufgabenstellung" class="" rows="5"
                                           placeholder="Hier Aufgabenbeschreibung eintragen"></textarea>
                             </div>
@@ -85,9 +96,9 @@
                                         style="float: right">
                                     Abschicken
                                 </button>
-                                </form>
-                            </div>
 
+                            </div>
+                            </form>
                         </div>
                     </div>
                     <div class="panel panel-default">
@@ -96,10 +107,11 @@
                             <i href="display: inline" class="middlesize-right glyphicon glyphicon-cog"></i>
                         </div>
                         <div class="panel-body" style="display:none;">
+                            <form class="form-horizontal" role="form" method="POST"
+                                  action="<?php echo e(url('/professorenmodus')); ?>">
+                                <?php echo e(csrf_field()); ?>
+
                             <div class="form group">
-                                <form class="form-horizontal" role="form" method="POST"
-                                      action="<?php echo e(url('/professorenmodus')); ?>">
-                                    <?php echo e(csrf_field()); ?>
 
                                     <label for="Aufgabenname" class="control-label">Aufgabenname</label>
                                     <input type="text" class="form-control" name="Aufgabenname" id="Aufgabenname"
@@ -112,7 +124,7 @@
                             </div>
 
                             <div class="form group">
-                                <label for="Aufgabenstellung" class="control-label">Aufgabenbeschreibung</label>
+                                <label for="Aufgabenbeschreibung" class="control-label">Aufgabenbeschreibung</label>
                                 <textarea id="Aufgabenstellung" class="" rows="5"
                                           placeholder="Hier Aufgabenbeschreibung eintragen"></textarea>
                             </div>
@@ -122,9 +134,9 @@
                                         style="float: right">
                                     Abschicken
                                 </button>
-                                </form>
-                            </div>
 
+                            </div>
+                            </form>
                         </div>
 
                     </div>
@@ -134,10 +146,11 @@
                             <i style="display: inline" class="middlesize-right glyphicon glyphicon-cog"></i>
                         </div>
                         <div class="panel-body" style="display:none;">
+                            <form class="form-horizontal" role="form" method="POST"
+                                  action="<?php echo e(url('/professorenmodus')); ?>">
+                                <?php echo e(csrf_field()); ?>
+
                             <div class="form group">
-                                <form class="form-horizontal" role="form" method="POST"
-                                      action="<?php echo e(url('/professorenmodus')); ?>">
-                                    <?php echo e(csrf_field()); ?>
 
                                     <label for="Aufgabenname" class="control-label">Aufgabenname</label>
                                     <input type="text" class="form-control" name="Aufgabenname" id="Aufgabenname"
@@ -150,7 +163,7 @@
                             </div>
 
                             <div class="form group">
-                                <label for="Aufgabenstellung" class="control-label">Aufgabenbeschreibung</label>
+                                <label for="Aufgabenbeschreibung" class="control-label">Aufgabenbeschreibung</label>
                                 <textarea id="Aufgabenstellung" class="" rows="5"
                                           placeholder="Hier Aufgabenbeschreibung eintragen"></textarea>
                             </div>
@@ -160,9 +173,9 @@
                                         style="float: right">
                                     Abschicken
                                 </button>
-                                </form>
-                            </div>
 
+                            </div>
+                            </form>
                         </div>
                     </div>
 

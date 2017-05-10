@@ -1,12 +1,10 @@
-@extends('layouts.app')
-
 <style> .blue{
         color:blue;
     }</style>
-@section('content')
-    @if (Auth::user()->rolle=="Professor")
+<?php $__env->startSection('content'); ?>
+    <?php if(Auth::user()->rolle=="Professor"): ?>
 
-        <script type="text/javascript" src="{{ URL::asset('js/professorenmodus.js') }}"></script>
+        <script type="text/javascript" src="<?php echo e(URL::asset('js/professorenmodus.js')); ?>"></script>
 
         <div class="container">
             <div class="row">
@@ -24,34 +22,35 @@
                             <i style="display: inline" class="middlesize-right glyphicon glyphicon-cog"></i>
                         </div>
                         <div class="panel-body" style="display:none">
-                            @if (count($errors) > 0)
+                            <?php if(count($errors) > 0): ?>
                                 <div class="alert alert-danger">
                                     <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
+                                        <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+                                            <li><?php echo e($error); ?></li>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
                                     </ul>
                                 </div>
-                            @endif
+                            <?php endif; ?>
                             <form class="form-horizontal" role="form" method="POST"
-                                  action="{{ url('/professorenmodus') }}">
-                                {{ csrf_field() }}
+                                  action="<?php echo e(url('/professorenmodus')); ?>">
+                                <?php echo e(csrf_field()); ?>
+
                             <div class="form group">
 
                                     <label for="Aufgabenname" class="control-label">Aufgabenname</label>
-                                    <input type="text" class="form-control" name="aufgabenname" id="Aufgabenname"
+                                    <input type="text" class="form-control" name="Aufgabenname" id="Aufgabenname"
                                            placeholder="Hier Aufgabenname eintragen">
                             </div>
 
                             <div class="form group">
                                 <label for="date" class="control-label">Abgabedatum</label>
-                                <input type="text" class="form-control" name="abgabedatum" id="Datum" placeholder="01.01.2017 29:59">
+                                <input type="text" class="form-control" name="Datum" id="Datum" placeholder="01.01.2017 29:59">
                             </div>
 
                             <div class="form group">
-                                <label for="Aufgabenbeschreibung" class="control-label">Aufgabenbeschreibung</label>
-                                <textarea name="aufgabenbeschreibung" id="Aufgabenbeschreibung" class="" rows="5"
-                                          placeholder="Hier Aufgabenstellung eintragen"></textarea>
+                                <label for="Aufgabenstellung" class="control-label">Aufgabenbeschreibung</label>
+                                <textarea id="Aufgabenstellung" class="" rows="5"
+                                          placeholder="Hier Aufgabenbeschreibung eintragen"></textarea>
                             </div>
 
                             <div class="form-group" style="margin-top: 2em;">
@@ -71,8 +70,9 @@
                         </div>
                         <div class="panel-body" style="display:none">
                             <form class="form-horizontal" role="form" method="POST"
-                                  action="{{ url('/professorenmodus') }}">
-                                {{ csrf_field() }}
+                                  action="<?php echo e(url('/professorenmodus')); ?>">
+                                <?php echo e(csrf_field()); ?>
+
                             <div class="form group">
 
                                     <label for="Aufgabenname" class="control-label">Aufgabenname</label>
@@ -86,7 +86,7 @@
                             </div>
 
                             <div class="form group">
-                                <label for="Aufgabenbeschreibung" class="control-label">Aufgabenbeschreibung</label>
+                                <label for="Aufgabenstellung" class="control-label">Aufgabenbeschreibung</label>
                                 <textarea id="Aufgabenstellung" class="" rows="5"
                                           placeholder="Hier Aufgabenbeschreibung eintragen"></textarea>
                             </div>
@@ -108,8 +108,9 @@
                         </div>
                         <div class="panel-body" style="display:none;">
                             <form class="form-horizontal" role="form" method="POST"
-                                  action="{{ url('/professorenmodus') }}">
-                                {{ csrf_field() }}
+                                  action="<?php echo e(url('/professorenmodus')); ?>">
+                                <?php echo e(csrf_field()); ?>
+
                             <div class="form group">
 
                                     <label for="Aufgabenname" class="control-label">Aufgabenname</label>
@@ -123,7 +124,7 @@
                             </div>
 
                             <div class="form group">
-                                <label for="Aufgabenbeschreibung" class="control-label">Aufgabenbeschreibung</label>
+                                <label for="Aufgabenstellung" class="control-label">Aufgabenbeschreibung</label>
                                 <textarea id="Aufgabenstellung" class="" rows="5"
                                           placeholder="Hier Aufgabenbeschreibung eintragen"></textarea>
                             </div>
@@ -146,8 +147,9 @@
                         </div>
                         <div class="panel-body" style="display:none;">
                             <form class="form-horizontal" role="form" method="POST"
-                                  action="{{ url('/professorenmodus') }}">
-                                {{ csrf_field() }}
+                                  action="<?php echo e(url('/professorenmodus')); ?>">
+                                <?php echo e(csrf_field()); ?>
+
                             <div class="form group">
 
                                     <label for="Aufgabenname" class="control-label">Aufgabenname</label>
@@ -161,7 +163,7 @@
                             </div>
 
                             <div class="form group">
-                                <label for="Aufgabenbeschreibung" class="control-label">Aufgabenbeschreibung</label>
+                                <label for="Aufgabenstellung" class="control-label">Aufgabenbeschreibung</label>
                                 <textarea id="Aufgabenstellung" class="" rows="5"
                                           placeholder="Hier Aufgabenbeschreibung eintragen"></textarea>
                             </div>
@@ -184,6 +186,8 @@
         </div>
         </div>
         </div>
-    @endif
+    <?php endif; ?>
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

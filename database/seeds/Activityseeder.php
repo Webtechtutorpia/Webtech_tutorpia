@@ -11,18 +11,14 @@ class Activityseeder extends Seeder
      */
     public function run()
     {
-        DB::table('Actifity')->insert([
+        DB::table('Aktivitaet')->insert([
             'created_at' => new DateTime(),
-            'Rolle' => 'Tutor',
-            'Name' => 'Max',
-            'Activityart' => 1,
+
         ]);
 
-        DB::table('Actifity')->insert([
+        DB::table('Aktivitaet')->insert([
             'created_at' => new DateTime(),
-            'Rolle' => 'Professor',
-            'Name' => 'Anton',
-            'Activityart' => 2,
+
         ]);
     }
 }

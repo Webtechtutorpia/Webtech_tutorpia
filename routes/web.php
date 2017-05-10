@@ -69,6 +69,7 @@ Route::get('professorenmodus', function () {
 
 
 
+
 Route::get('images/{filename}', function ($filename)
 {
     $path = storage_path() . '/Images/' . $filename;
@@ -85,6 +86,9 @@ Route::get('images/{filename}', function ($filename)
 });
 
 
-Route::post('professorenmodus', 'TestController@test');
+Route::post('professorenmodus', 'AufgabeController@store');
+
+Route::resource('myinputs', 'MyinputController');
+
 
 

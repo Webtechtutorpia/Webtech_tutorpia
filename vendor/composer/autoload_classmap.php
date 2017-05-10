@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'Activityseeder' => $baseDir . '/database/seeds/Activityseeder.php',
     'CreateDatabase' => $baseDir . '/database/migrations/2017_05_09_131408_create_database.php',
+    'CreateMyinputsTable' => $baseDir . '/database/migrations/2017_05_09_163458_create_myinputs_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',
     'File_Iterator_Facade' => $vendorDir . '/phpunit/php-file-iterator/src/Facade.php',
