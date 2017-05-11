@@ -277,6 +277,8 @@ class ComposerStaticInit5392c372fbd4bb7aa8210c0b9cdbad43
 
     public static $classMap = array (
         'Activityseeder' => __DIR__ . '/../..' . '/database/seeds/Activityseeder.php',
+        'AufgabeSeeder' => __DIR__ . '/../..' . '/database/seeds/AufgabeSeeder.php',
+        'AufgabenSeeder' => __DIR__ . '/../..' . '/database/seeds/AufgabenSeeder.php',
         'CreateDatabase' => __DIR__ . '/../..' . '/database/migrations/2017_05_09_131408_create_database.php',
         'CreateMyinputsTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_09_163458_create_myinputs_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
@@ -811,6 +813,7 @@ class ComposerStaticInit5392c372fbd4bb7aa8210c0b9cdbad43
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
         'TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
+        'UserSeeder' => __DIR__ . '/../..' . '/database/seeds/UserSeeder.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

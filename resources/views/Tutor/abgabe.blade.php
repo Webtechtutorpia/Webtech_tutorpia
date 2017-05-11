@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    <script type="text/javascript" src="{{ URL::asset('js/Abgabe.js') }}"></script>
     @if (Auth::user()->rolle=="Tutor" || Auth::user()->rolle=="Professor" )
     <div class="container">
         <div class="row">
@@ -10,7 +11,7 @@
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="Suche nach...">
                 <span class="input-group-btn">
-             <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+             <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true" onkeypress=""></span></button>
       </span>
 
             </div>

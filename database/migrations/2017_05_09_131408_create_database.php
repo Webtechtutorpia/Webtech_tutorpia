@@ -48,7 +48,8 @@ class CreateDatabase extends Migration
             $table->string('aufgabenbeschreibung');
             $table->Integer('erstellt_von')->default(1)->unsigned();
             $table->timestamps();
-            $table->date('deleted_at')->default(date("Y-m-d"));
+            //->default(date("Y-m-d"))
+            $table->date('deleted_at')->nullable();
             //Constraints
             $table->foreign('erstellt_von')->references('id')->on('users');
         });

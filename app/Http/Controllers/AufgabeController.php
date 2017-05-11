@@ -61,5 +61,9 @@ class AufgabeController extends Controller
 
     }
 
+    public function read( Request $request) {
+
+}
+
 
 }
