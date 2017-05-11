@@ -24,6 +24,7 @@
                         <div class="panel-body" style="display:none">
                             <?php if(count($errors) > 0): ?>
                                 <div class="alert alert-danger">
+                                    <p>Leider sind folgende Fehler aufgetreten:</p>
                                     <ul>
                                         <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
                                             <li><?php echo e($error); ?></li>
@@ -38,7 +39,7 @@
                             <div class="form group">
 
                                     <label for="Aufgabenname" class="control-label">Aufgabenname</label>
-                                    <input type="text" class="form-control" name="aufgabenname" id="Aufgabenname"
+                                    <input type="text" class="form-control" name="aufgabenname" id="Aufgabenname" 
                                            placeholder="Hier Aufgabenname eintragen">
                             </div>
 

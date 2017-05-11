@@ -8,7 +8,7 @@ class Aufgabe extends Model
 {
     protected $table = 'aufgabe';
     protected $fillable = [
-        'aufgabenname','abgabedatum','aufgabenbeschreibung'
+        'aufgabenname','abgabedatum','aufgabenbeschreibung','erstellt_von'
 ];
 
 

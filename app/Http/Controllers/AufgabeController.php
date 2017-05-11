@@ -6,6 +6,7 @@ use Tutorpia\Aufgabe;
 use View;
 use Illuminate\Http\Request;
 use Tutorpia\Http\Requests;
+use Auth;
 
 
 
@@ -56,9 +57,31 @@ class AufgabeController extends Controller
             'aufgabenname'      =>  $request->aufgabenname,
             'abgabedatum'         => $request->abgabedatum,
             'aufgabenbeschreibung' =>  $request->aufgabenbeschreibung,
+            'erstellt_von' => Auth::user()->id
         ]);
         return back();
 
+    }
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'aufgabenname'       => 'required',
+            'abgabedatum'      => 'required',
+            'aufgabenbeschreibung' => 'required']);
+
+        $aufgabe = Aufgabe::find($id);
+        $aufgabe->update($request->all());
+
+        return back();
+    }
+    public function edit($id)
+    {
+        // get the myinput
+        $aufgabe = Aufgabe::find($id);
+
+        // show the edit form and pass the myinput
+        return View::make('Professor.Professorenmodus')
+            ->with('aufgabe', $aufgabe);
     }
 
     public function read( Request $request) {
