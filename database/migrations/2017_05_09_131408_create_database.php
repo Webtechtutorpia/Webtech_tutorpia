@@ -45,25 +45,26 @@ class CreateDatabase extends Migration
             $table->increments('id');
             $table->string('aufgabenname');
             $table->string('abgabedatum');
-            $table->string('aufgabenbeschreibung');
+            $table->string('aufgabenbeschreibung')->nullable();
             $table->Integer('erstellt_von')->default(1)->unsigned();
+            $table->Integer('kurs')->unsigned();
             $table->timestamps();
             //->default(date("Y-m-d"))
             $table->date('deleted_at')->nullable();
             //Constraints
+            $table->foreign('kurs')->references('id')->on('kurs');
             $table->foreign('erstellt_von')->references('id')->on('users');
         });
 //        //Erzeuge Abgabentabelle
         Schema::create('abgabe', function (Blueprint $table){
             $table->increments('id');
-            $table->string('aufgabenname');
-            $table->Date('abgabedatum');
-            $table->string('aufgabenbeschreibung');
-            $table->Integer('erstellt')->unsigned();
+            $table->Date('abgabedatum')-> nullable();
+            $table->string('zustand');
+            $table->Integer('user')->unsigned();
             $table->Integer('zugehoerig_zu')->unsigned();
             $table->timestamps();
             //Constraints
-            $table->foreign('erstellt')->references('id')->on('users');
+            $table->foreign('user')->references('id')->on('users');
             $table->foreign('zugehoerig_zu')->references('id')->on('aufgabe')->onDelete('Cascade');
         });
 //        //Erzeuge Aktivität

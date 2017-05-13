@@ -276,9 +276,9 @@ class ComposerStaticInit5392c372fbd4bb7aa8210c0b9cdbad43
     );
 
     public static $classMap = array (
+        'Abgabeseeder' => __DIR__ . '/../..' . '/database/seeds/Abgabeseeder.php',
         'Activityseeder' => __DIR__ . '/../..' . '/database/seeds/Activityseeder.php',
         'AufgabeSeeder' => __DIR__ . '/../..' . '/database/seeds/AufgabeSeeder.php',
-        'AufgabenSeeder' => __DIR__ . '/../..' . '/database/seeds/AufgabenSeeder.php',
         'CreateDatabase' => __DIR__ . '/../..' . '/database/migrations/2017_05_09_131408_create_database.php',
         'CreateMyinputsTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_09_163458_create_myinputs_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
@@ -353,6 +353,7 @@ class ComposerStaticInit5392c372fbd4bb7aa8210c0b9cdbad43
         'Hamcrest\\Type\\IsString' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Type/IsString.php',
         'Hamcrest\\Util' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Util.php',
         'Hamcrest\\Xml\\HasXPath' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
+        'Kursseeder' => __DIR__ . '/../..' . '/database/seeds/Kursseeder.php',
         'PHPUnit\\Framework\\Assert' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/Assert.php',
         'PHPUnit\\Framework\\BaseTestListener' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/BaseTestListener.php',
         'PHPUnit\\Framework\\TestCase' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/TestCase.php',

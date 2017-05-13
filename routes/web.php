@@ -64,7 +64,8 @@ Route::get('Jannis', function(){
 Route::get('search','AbgabeController@readUser');
 Route::get('json', 'AbgabeController@readUser');
 Route::get('testen', 'AbgabeController@test');
-
+Route::get('tabelle', 'AbgabeController@readAufgaben');
+Route::get('readuser','AbgabeController@readAll');
 Route::get('professorenmodus', function () {
     return view('Professor.Professorenmodus',['posted'=>false]);
 });

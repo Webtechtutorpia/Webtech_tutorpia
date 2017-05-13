@@ -20,15 +20,14 @@
                 </div>
                 <button onclick="add()"> add</button>
                 <button onclick="remove()">remove</button>
+                <div id="ausgabe">hallo</div>
                 
                 <table class="table table-responsive" id="tabelle">
                     <thead>
-                    <tr>
+                    <tr id="head">
                         <th> Name</th>
                     </tr>
                     </thead>
-
-
                 </table>
 
                 
@@ -90,7 +89,7 @@
                 
                 
 
-                <div id="ausgabe">hallo</div>
+
             </div>
         </div>
 

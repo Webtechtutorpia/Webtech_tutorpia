@@ -6,9 +6,9 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Abgabeseeder' => $baseDir . '/database/seeds/Abgabeseeder.php',
     'Activityseeder' => $baseDir . '/database/seeds/Activityseeder.php',
     'AufgabeSeeder' => $baseDir . '/database/seeds/AufgabeSeeder.php',
-    'AufgabenSeeder' => $baseDir . '/database/seeds/AufgabenSeeder.php',
     'CreateDatabase' => $baseDir . '/database/migrations/2017_05_09_131408_create_database.php',
     'CreateMyinputsTable' => $baseDir . '/database/migrations/2017_05_09_163458_create_myinputs_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
@@ -83,6 +83,7 @@ return array(
     'Hamcrest\\Type\\IsString' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Type/IsString.php',
     'Hamcrest\\Util' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Util.php',
     'Hamcrest\\Xml\\HasXPath' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
+    'Kursseeder' => $baseDir . '/database/seeds/Kursseeder.php',
     'PHPUnit\\Framework\\Assert' => $vendorDir . '/phpunit/phpunit/src/ForwardCompatibility/Assert.php',
     'PHPUnit\\Framework\\BaseTestListener' => $vendorDir . '/phpunit/phpunit/src/ForwardCompatibility/BaseTestListener.php',
     'PHPUnit\\Framework\\TestCase' => $vendorDir . '/phpunit/phpunit/src/ForwardCompatibility/TestCase.php',

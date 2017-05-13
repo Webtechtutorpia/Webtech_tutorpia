@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class AufgabenSeeder extends Seeder
+class Kursseeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,10 @@ class AufgabenSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('kurs')->insert([
+           'bezeichnung'=>'ALDA',
+           'geleitet_von' =>4
+        ]);
+
     }
 }

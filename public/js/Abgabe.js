@@ -1,22 +1,57 @@
 $( document ).ready(function() {
     console.log( "ready!" );
-    search('');
+    // aufgaben auslesen
+    $.getJSON("/tabelle?fach=1", function (data){
+
+        $.each(data, function(index,aufgabe) {
+            $('#head').append('<th>'+aufgabe.aufgabenname+'</th>');
+        });
+      $('#head').append('</thead>');
+      $('#tabelle').append('</table>');
+    });
+   search('');
 });
     function search(name) {
     //nachfragen delay und Buchstabe zuwenig Problem
-        console.log(name);
+        console.log('search');
         remove();
         $('#ausgabe').html("");
        var x= jQuery('<tbody></tbody>');
         $.getJSON( "/json?tfsearch="+name, function(data) {
-            $.each(data, function(index,user) {
-               // var link = "<p>"+user.name +"</p>";
-                $(x).append('<tr><td>'+ user.name + '</td></tr>');
+            $.each(data, function (index, user) {
+                // var link = "<p>"+user.name +"</p>";
+                $(x).append('<tr><td>' + user.name + '</td></tr>');
                 $(x).appendTo('#tabelle');
-              //  $(link).appendTo("#ausgabe");
+                //  $(link).appendTo("#ausgabe");
+
             });
+
         });
     };
+
+function search2(name) {
+    //nachfragen delay und Buchstabe zuwenig Problem
+    console.log('search');
+    remove();
+    $('#ausgabe').html("");
+    var user;
+    var x= jQuery('<tbody></tbody>');
+    $.getJSON( "/json?tfsearch="+name, function(data) {
+        $.each(data, function (index, user) {
+            // var link = "<p>"+user.name +"</p>";
+            if ( user!=user.name){
+            user = user.name;
+            $(x).append('<tr><td>' + user.name + '</td></tr>');
+            };
+            el
+
+            $(x).appendTo('#tabelle');
+            //  $(link).appendTo("#ausgabe");
+
+        });
+
+    });
+};
 
 
     // ungenutzt
