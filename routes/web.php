@@ -61,11 +61,18 @@ Route::get('Jannis', function(){
     ]);
 });
 
+
+//Abgabe
 Route::get('search','AbgabeController@readUser');
 Route::get('json', 'AbgabeController@readUser');
 Route::get('testen', 'AbgabeController@test');
 Route::get('tabelle', 'AbgabeController@readAufgaben');
 Route::get('readuser','AbgabeController@readAll');
+
+
+//Professorenmodus
+Route::get('leseaufgaben','AufgabeController@read');
+Route::get('createaufgabe','AufgabeController@store');
 Route::get('professorenmodus', function () {
     return view('Professor.Professorenmodus',['posted'=>false]);
 });

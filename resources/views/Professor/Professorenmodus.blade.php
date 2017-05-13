@@ -5,7 +5,7 @@
     }</style>
 @section('content')
     @if (Auth::user()->rolle=="Professor")
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script type="text/javascript" src="{{ URL::asset('js/professorenmodus.js') }}"></script>
 
         <div class="container">
@@ -14,7 +14,7 @@
                     <h3 class="col-md-5" id="test"> Professorenmodus: ALDA!</h3>
                 </div>
 
-                <span class="glyphicon glyphicon-plus col-md-offset-12" id="bigsize-right" id="plus" onclick="add(this)"></span>
+                <div class="glyphicon glyphicon-plus col-md-offset-12" id="bigsize-right" id="plus" onclick="add(this)"></div>
 
 
                 <div class="col-md-11">
@@ -67,7 +67,7 @@
                     </div>
                     <div class="panel panel-default">
                         <div class="panel-heading" onclick="Bodyhandler(this)"><b>Aufgabe 2 </b>
-                            <i style="display: inline" class="middlesize-right glyphicon glyphicon-trash"></i>
+                            <i style="display: inline" class="middlesize-right glyphicon glyphicon-trash" onclick="remove(this)"></i>
                             <i style="display: inline" class="middlesize-right glyphicon glyphicon-cog"></i>
                         </div>
                         <div class="panel-body" style="display:none">
@@ -104,7 +104,7 @@
                     </div>
                     <div class="panel panel-default">
                         <div class="panel-heading" onclick="Bodyhandler(this)"><b>Aufgabe 3 </b>
-                            <i style="display: inline" class="middlesize-right glyphicon glyphicon-trash"></i>
+                            <i style="display: inline" class="middlesize-right glyphicon glyphicon-trash" onclick="remove(this)"></i>
                             <i href="display: inline" class="middlesize-right glyphicon glyphicon-cog"></i>
                         </div>
                         <div class="panel-body" style="display:none;">
@@ -142,7 +142,7 @@
                     </div>
                     <div class="panel panel-default">
                         <div class="panel-heading" onclick="Bodyhandler(this)"><b>Aufgabe 4 </b>
-                            <i style="display: inline" class="middlesize-right glyphicon glyphicon-trash"></i>
+                            <i style="display: inline" class="middlesize-right glyphicon glyphicon-trash" onclick="remove(this);"></i>
                             <i style="display: inline" class="middlesize-right glyphicon glyphicon-cog"></i>
                         </div>
                         <div class="panel-body" style="display:none;">

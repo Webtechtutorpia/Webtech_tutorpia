@@ -44,10 +44,10 @@ class CreateDatabase extends Migration
         Schema::create('aufgabe', function (Blueprint $table){
             $table->increments('id');
             $table->string('aufgabenname');
-            $table->string('abgabedatum');
+            $table->string('abgabedatum')->default(date("Y-m-d"));
             $table->string('aufgabenbeschreibung')->nullable();
             $table->Integer('erstellt_von')->default(1)->unsigned();
-            $table->Integer('kurs')->unsigned();
+            $table->Integer('kurs')->unsigned()->nullable();
             $table->timestamps();
             //->default(date("Y-m-d"))
             $table->date('deleted_at')->nullable();

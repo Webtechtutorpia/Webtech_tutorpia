@@ -7,9 +7,8 @@ use View;
 use Illuminate\Http\Request;
 use Tutorpia\Http\Requests;
 use Auth;
-
-
-
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 class AufgabeController extends Controller
 {
 //    function validateAndSave(Request $request) {
@@ -42,24 +41,36 @@ class AufgabeController extends Controller
 //        return $errMsg;
 //    }
 
+    public function read(Request $request){
+
+        $fach=1;
+        $aufgaben= db::table('aufgabe')->join('kurs','aufgabe.kurs','=','kurs.id')->where('kurs.id',$fach)->get();
+        return response()->json($aufgaben);
+    }
+
+
     public function store(Request $request)
     {
         // validate
 
-        $this->validate($request, [
-            'aufgabenname'       => 'required',
-            'abgabedatum'      => 'required',
-            'aufgabenbeschreibung' => 'required']);
+//        $this->validate($request, [
+//            'aufgabenname'       => 'required',
+//            'abgabedatum'      => 'required',
+//            'aufgabenbeschreibung' => 'required']);
 
+        $fach=1;
 
         // store
         Aufgabe::create([
             'aufgabenname'      =>  $request->aufgabenname,
-            'abgabedatum'         => $request->abgabedatum,
+          'abgabedatum'         => Carbon::now()->format('d-m-Y'),
             'aufgabenbeschreibung' =>  $request->aufgabenbeschreibung,
-            'erstellt_von' => Auth::user()->id
+            'erstellt_von' => Auth::user()->id,
+           'kurs'=> 1
+           //'kurs'=> $request->input('kurs')
+            //kurs schreibts nichtohne model
+
         ]);
-        return back();
 
     }
     public function update(Request $request, $id)
@@ -84,9 +95,7 @@ class AufgabeController extends Controller
             ->with('aufgabe', $aufgabe);
     }
 
-    public function read( Request $request) {
 
-}
 
 
 }

@@ -3,7 +3,7 @@
     }</style>
 <?php $__env->startSection('content'); ?>
     <?php if(Auth::user()->rolle=="Professor"): ?>
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script type="text/javascript" src="<?php echo e(URL::asset('js/professorenmodus.js')); ?>"></script>
 
         <div class="container">
@@ -12,18 +12,19 @@
                     <h3 class="col-md-5" id="test"> Professorenmodus: ALDA!</h3>
                 </div>
 
-                <span class="glyphicon glyphicon-plus col-md-offset-12" id="bigsize-right" id="plus" onclick="add()"></span>
+                <div class="glyphicon glyphicon-plus col-md-offset-12" id="bigsize-right" id="plus" onclick="add(this)"></div>
 
 
                 <div class="col-md-11">
                     <div class="panel panel-default ">
-                        <div class="panel-heading" onclick="Bodyhandler()"><b>Aufgabe 1 </b>
+                        <div class="panel-heading" onclick="Bodyhandler(this)"><b>Aufgabe 1 </b>
                             <i  style="display: inline" class="middlesize-right glyphicon glyphicon-trash" onclick="remove()"></i>
                             <i style="display: inline" class="middlesize-right glyphicon glyphicon-cog"></i>
                         </div>
                         <div class="panel-body" style="display:none">
                             <?php if(count($errors) > 0): ?>
                                 <div class="alert alert-danger">
+                                    <p>Leider sind folgende Fehler aufgetreten:</p>
                                     <ul>
                                         <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
                                             <li><?php echo e($error); ?></li>
@@ -38,7 +39,7 @@
                             <div class="form group">
 
                                     <label for="Aufgabenname" class="control-label">Aufgabenname</label>
-                                    <input type="text" class="form-control" name="aufgabenname" id="Aufgabenname"
+                                    <input type="text" class="form-control" name="aufgabenname" id="Aufgabenname" 
                                            placeholder="Hier Aufgabenname eintragen">
                             </div>
 
@@ -64,8 +65,8 @@
                         </div>
                     </div>
                     <div class="panel panel-default">
-                        <div class="panel-heading" onclick="Bodyhandler()"><b>Aufgabe 2 </b>
-                            <i style="display: inline" class="middlesize-right glyphicon glyphicon-trash"></i>
+                        <div class="panel-heading" onclick="Bodyhandler(this)"><b>Aufgabe 2 </b>
+                            <i style="display: inline" class="middlesize-right glyphicon glyphicon-trash" onclick="remove(this)"></i>
                             <i style="display: inline" class="middlesize-right glyphicon glyphicon-cog"></i>
                         </div>
                         <div class="panel-body" style="display:none">
@@ -102,8 +103,8 @@
                         </div>
                     </div>
                     <div class="panel panel-default">
-                        <div class="panel-heading" onclick="Bodyhandler()"><b>Aufgabe 3 </b>
-                            <i style="display: inline" class="middlesize-right glyphicon glyphicon-trash"></i>
+                        <div class="panel-heading" onclick="Bodyhandler(this)"><b>Aufgabe 3 </b>
+                            <i style="display: inline" class="middlesize-right glyphicon glyphicon-trash" onclick="remove(this)"></i>
                             <i href="display: inline" class="middlesize-right glyphicon glyphicon-cog"></i>
                         </div>
                         <div class="panel-body" style="display:none;">
@@ -141,8 +142,8 @@
 
                     </div>
                     <div class="panel panel-default">
-                        <div class="panel-heading" onclick="Bodyhandler()"><b>Aufgabe 4 </b>
-                            <i style="display: inline" class="middlesize-right glyphicon glyphicon-trash"></i>
+                        <div class="panel-heading" onclick="Bodyhandler(this)"><b>Aufgabe 4 </b>
+                            <i style="display: inline" class="middlesize-right glyphicon glyphicon-trash" onclick="remove(this);"></i>
                             <i style="display: inline" class="middlesize-right glyphicon glyphicon-cog"></i>
                         </div>
                         <div class="panel-body" style="display:none;">

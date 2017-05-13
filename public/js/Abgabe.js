@@ -2,7 +2,6 @@ $( document ).ready(function() {
     console.log( "ready!" );
     // aufgaben auslesen
     $.getJSON("/tabelle?fach=1", function (data){
-
         $.each(data, function(index,aufgabe) {
             $('#head').append('<th>'+aufgabe.aufgabenname+'</th>');
         });
@@ -43,7 +42,7 @@ function search2(name) {
             user = user.name;
             $(x).append('<tr><td>' + user.name + '</td></tr>');
             };
-            el
+
 
             $(x).appendTo('#tabelle');
             //  $(link).appendTo("#ausgabe");
