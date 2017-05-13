@@ -7,13 +7,13 @@
         <div class="row">
         <h2>Tutorenmodus: ALDA</h2>
 
-            <div class="col-md-4 col-md-offset-8">
+            <div class="col-md-4 col-md-offset-8" id="anhang">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Suche nach...">
+            <form method="get" action="/search">
+                <input type="text" class="form-control" placeholder="Suche nach..." name="tfsearch"  onkeypress="search(this.value)">
                 <span class="input-group-btn">
-             <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true" onkeypress=""></span></button>
-      </span>
-
+             <button class="btn btn-default" type="submit" ><span class="glyphicon glyphicon-search" aria-hidden="true" ></span></button></span>
+            </form>
             </div>
             </div>
         {{--<div class="table-responsive">--}}
@@ -76,6 +76,7 @@
             </tbody>
         </table>
 
+          
     </div>
     </div>
 

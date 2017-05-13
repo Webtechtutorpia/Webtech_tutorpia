@@ -9,13 +9,13 @@
 
                 <div class="panel-body">
 
-
-                    <p>{{ $aufgabenname}}</p>
-                    <p>{{ $datum}}</p>
-
+                    {{--<p>{{ $aufgabenname}}</p>--}}
+                    {{--<p>{{ $datum}}</p>--}}
+                    <p>{{ $name }}</p>
                 </div>
             </div>
         </div>
     </div>
 </div>
 @endsection
+

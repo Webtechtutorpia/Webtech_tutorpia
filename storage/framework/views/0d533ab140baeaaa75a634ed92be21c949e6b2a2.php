@@ -7,14 +7,15 @@
 
                 <div class="panel-body">
 
-                    <h1><?php echo e($user->name); ?></h1>
-                    <h1><?php echo e($userb->name); ?></h1>
-
+                    
+                    
+                    <p><?php echo e($name); ?></p>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <?php $__env->stopSection(); ?>
+
 
 <?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

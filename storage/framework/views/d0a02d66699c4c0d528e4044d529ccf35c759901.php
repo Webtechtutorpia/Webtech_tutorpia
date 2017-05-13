@@ -1,15 +1,17 @@
 <?php $__env->startSection('content'); ?>
+    <script type="text/javascript" src="<?php echo e(URL::asset('js/Abgabe.js')); ?>"></script>
+    <?php if(Auth::user()->rolle=="Tutor" || Auth::user()->rolle=="Professor" ): ?>
     <div class="container">
         <div class="row">
         <h2>Tutorenmodus: ALDA</h2>
 
-            <div class="col-md-4 col-md-offset-8">
+            <div class="col-md-4 col-md-offset-8" id="anhang">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Suche nach...">
+            <form method="get" action="/search">
+                <input type="text" class="form-control" placeholder="Suche nach..." name="tfsearch"  onkeypress="search(this.value)">
                 <span class="input-group-btn">
-             <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-      </span>
-
+             <button class="btn btn-default" type="submit" ><span class="glyphicon glyphicon-search" aria-hidden="true" ></span></button></span>
+            </form>
             </div>
             </div>
         
@@ -72,9 +74,11 @@
             </tbody>
         </table>
 
+            <form method="get" action="/testen"> <input type="text" name="tf" value="hallo"> <input type="submit" value="absch"></form>
+            <div id="ausgabe">TEaXT</div>
     </div>
     </div>
 
-
+    <?php endif; ?>
     <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
