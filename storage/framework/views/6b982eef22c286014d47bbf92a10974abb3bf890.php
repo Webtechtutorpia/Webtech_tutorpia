@@ -1,4 +1,8 @@
 <?php $__env->startSection('content'); ?>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script> $( document ).ready(function() {
+            $("li[name='Übersicht']").css('background-color', '#f5f8fa');
+        });</script>
     <div class="container">
         <div class="row">
 

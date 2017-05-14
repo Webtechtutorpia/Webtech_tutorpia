@@ -1,6 +1,9 @@
 <?php $__env->startSection('content'); ?>
     
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script> $( document ).ready(function() {
+            $("li[name='Abgaben']").css('background-color', '#f5f8fa');
+        });</script>
     <script type="text/javascript" src="<?php echo e(URL::asset('js/Abgabe.js')); ?>"></script>
     <?php if(Auth::user()->rolle=="Tutor" || Auth::user()->rolle=="Professor" ): ?>
         <div class="container">

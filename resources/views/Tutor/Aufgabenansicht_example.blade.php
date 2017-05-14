@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script> $( document ).ready(function() {
+            $("li[name='Aufgaben']").css('background-color', '#f5f8fa');
+        });</script>
     <script type="text/javascript" src="{{ URL::asset('js/Aufgaben.js') }}"></script>
 
     <div class="container">

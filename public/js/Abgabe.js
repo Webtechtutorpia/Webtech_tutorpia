@@ -1,4 +1,5 @@
 $( document ).ready(function() {
+    $("li[name='Abgaben']").css('background-color','#f5f8fa');
     console.log( "ready!" );
     // aufgaben auslesen
     $.getJSON("/tabelle?fach=1", function (data){

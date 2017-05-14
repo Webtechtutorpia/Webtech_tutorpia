@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script> $( document ).ready(function() {
+            $("li[name='Kurse']").css('background-color', '#f5f8fa');
+        });</script>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-8">

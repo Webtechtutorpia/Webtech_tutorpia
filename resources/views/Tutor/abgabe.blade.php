@@ -3,6 +3,9 @@
 @section('content')
     {{--Problem jquery aus layouts lädt nicht schnell genug--}}
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script> $( document ).ready(function() {
+            $("li[name='Abgaben']").css('background-color', '#f5f8fa');
+        });</script>
     <script type="text/javascript" src="{{ URL::asset('js/Abgabe.js') }}"></script>
     @if (Auth::user()->rolle=="Tutor" || Auth::user()->rolle=="Professor" )
         <div class="container">

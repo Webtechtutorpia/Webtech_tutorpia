@@ -1,15 +1,13 @@
-@extends('layouts.app')
-
 <style> .blue{
         color:blue;
     }</style>
-@section('content')
-    @if (Auth::user()->rolle=="Professor")
+<?php $__env->startSection('content'); ?>
+    <?php if(Auth::user()->rolle=="Professor"): ?>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script> $( document ).ready(function() {
                 $("li[name='Profmodus']").css('background-color', '#f5f8fa');
             });</script>
-        <script type="text/javascript" src="{{ URL::asset('js/professorenmodus.js') }}"></script>
+        <script type="text/javascript" src="<?php echo e(URL::asset('js/professorenmodus.js')); ?>"></script>
 
         <div class="container">
             <div class="row">
@@ -19,20 +17,22 @@
 
                 <span class="glyphicon glyphicon-plus col-md-offset-12" id="bigsize-right" id="plus" onclick="add(this)"></span>
 
-                @if (Session::has('message'))
-                    <div class="alert alert-info">{{ Session::get('message') }}</div>
-                @endif
+                <?php if(Session::has('message')): ?>
+                    <div class="alert alert-info"><?php echo e(Session::get('message')); ?></div>
+                <?php endif; ?>
 
-                @foreach($myinputs as $key => $value)
+                <?php $__currentLoopData = $myinputs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
                     <div class="col-md-11">
                         <div class="panel panel-default ">
                             <div class="panel-heading" onclick="Bodyhandler(this)">
 
-                                <b>{{$value->aufgabenname}}</b>
+                                <b><?php echo e($value->aufgabenname); ?></b>
                                 <div class="pull-right">
-                                    <form action="./Professor/{{$value->id }}"  onsubmit="return confirm('Sind Sie sicher, dass Sie {{ $value->aufgabenname}} wirklich löschen wollen?')" method="POST">
-                                        {{ csrf_field() }}
-                                        {{ method_field('DELETE') }}
+                                    <form action="./Professor/<?php echo e($value->id); ?>"  onsubmit="return confirm('Sind Sie sicher, dass Sie <?php echo e($value->aufgabenname); ?> wirklich löschen wollen?')" method="POST">
+                                        <?php echo e(csrf_field()); ?>
+
+                                        <?php echo e(method_field('DELETE')); ?>
+
                                         <button type="submit">
                                             <i class="middlesize-right glyphicon glyphicon-trash"></i>
                                         </button>
@@ -42,36 +42,38 @@
 
                             </div>
                             <div class="panel-body" style="display:none">
-                                @if (count($errors) > 0)
+                                <?php if(count($errors) > 0): ?>
                                     <div class="alert alert-danger">
                                         <ul>
-                                            @foreach ($errors->all() as $error)
-                                                <li>{{ $error }}</li>
-                                            @endforeach
+                                            <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+                                                <li><?php echo e($error); ?></li>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
                                         </ul>
                                     </div>
-                                @endif
+                                <?php endif; ?>
 
                                 <form class="form-horizontal" role="form" method="POST"
-                                      action="{{ url('Professor') }}/{{$value->id }}" onsubmit="return confirm('Sind Sie sicher, dass Sie {{ $value->aufgabenname}} ändern wollen?')">
-                                    {{ csrf_field() }}
-                                    {{ method_field('PATCH')}}
+                                      action="<?php echo e(url('Professor')); ?>/<?php echo e($value->id); ?>" onsubmit="return confirm('Sind Sie sicher, dass Sie <?php echo e($value->aufgabenname); ?> ändern wollen?')">
+                                    <?php echo e(csrf_field()); ?>
+
+                                    <?php echo e(method_field('PATCH')); ?>
+
                                     <div class="form group">
 
                                         <label for="Aufgabenname" class="control-label">Aufgabenname</label>
-                                        <input type="text" class="form-control" name="aufgabenname" id="Aufgabenname"  value="{{$value->aufgabenname}}"
+                                        <input type="text" class="form-control" name="aufgabenname" id="Aufgabenname"  value="<?php echo e($value->aufgabenname); ?>"
                                                placeholder="Hier Aufgabenname eintragen">
                                     </div>
 
                                     <div class="form group">
                                         <label for="date" class="control-label">Abgabedatum</label>
-                                        <input type="text" class="form-control" name="abgabedatum" id="Datum" placeholder="01.01.2017 29:59" value="{{$value->abgabedatum}}">
+                                        <input type="text" class="form-control" name="abgabedatum" id="Datum" placeholder="01.01.2017 29:59" value="<?php echo e($value->abgabedatum); ?>">
                                     </div>
 
                                     <div class="form group">
                                         <label for="Aufgabenbeschreibung" class="control-label">Aufgabenbeschreibung</label>
                                         <textarea name="aufgabenbeschreibung" id="Aufgabenbeschreibung" class="" rows="5"
-                                                  placeholder="Hier Aufgabenstellung eintragen">{{$value->aufgabenbeschreibung}}</textarea>
+                                                  placeholder="Hier Aufgabenstellung eintragen"><?php echo e($value->aufgabenbeschreibung); ?></textarea>
                                     </div>
 
                                     <div class="form-group" style="margin-top: 2em;">
@@ -86,11 +88,12 @@
                             </div>
                         </div>
                     </div>
-                @endforeach
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
             </div>
         </div>
 
 
-    @endif
+    <?php endif; ?>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

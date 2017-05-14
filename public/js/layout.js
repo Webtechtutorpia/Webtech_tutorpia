@@ -7,9 +7,10 @@ function hoverselectednavbar(){
             $("li").removeClass("active");
             // add class to the one we clicked
             $(this).addClass("active");
-            // stop the page from jumping to the top
-            return false;
+        },function(){
+            $(this).removeClass('active');
         });
+
     });
 }
 

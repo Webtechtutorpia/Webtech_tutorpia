@@ -1,6 +1,13 @@
 
+
+$(document).ready(function () {
+
+    $("li[name='Aufgaben']").css('background-color','#f5f8fa');
+});
+
+
+$( "input[name='first_name']" );
 function Bodyhandler(){
-//
 // $(".panel panel-default").onclick(function(){
     console.log('getroffen');
     var Bodyelement = $(event.target).parent().children('.panel-body');

@@ -1,5 +1,9 @@
 
-$( document ).ready(function() {
+
+
+
+$(document).ready(function() {
+   console.log($("input[name='aufgabenname']").val());
     console.log('ready');
     var x=jQuery('<div>hier ist ein text </div>',{id:"hi"}).appendTo('#test');
     $.getJSON("/leseaufgaben?fach=1", function (data){
