@@ -14,32 +14,37 @@ class AufgabeSeeder extends Seeder
         //Testaufgabe
         DB::table('aufgabe')->insert([
             'aufgabenname' => 'Aufgabe1',
-            'abgabedatum' => 'Heute',
+            'abgabedatum' => '31.07.2017',
+            'aufgabenbeschreibung'=>'Bitte rechnen sie diese 5 Zahlen zusammen',
             'kurs' => 1
 
         ]);
 
         DB::table('aufgabe')->insert([
             'aufgabenname' => 'Aufgabe2',
-            'abgabedatum' => 'Heute',
+            'abgabedatum' => '05.02.2017',
+            'aufgabenbeschreibung'=>'Bitte addieren sie es zusammen',
             'kurs' => 1
         ]);
 
         DB::table('aufgabe')->insert([
             'aufgabenname' => 'Aufgabe3',
-            'abgabedatum' => 'Heute',
+            'abgabedatum' => '15.05.2017',
+            'aufgabenbeschreibung'=>'Bitte rechnen sie diese 5 Zahlen zusammen',
             'kurs' => 1
         ]);
 
         DB::table('aufgabe')->insert([
             'aufgabenname' => 'Aufgabe4',
-            'abgabedatum' => 'Heute',
+            'abgabedatum' => '31.05.2017',
+            'aufgabenbeschreibung'=>'Bitte rechnen sie diese 5 Zahlen zusammen',
             'kurs' => 1
         ]);
 
         DB::table('aufgabe')->insert([
             'aufgabenname' => 'Aufgabe5',
-            'abgabedatum' => 'Heute',
+            'abgabedatum' => '17.06.2017',
+            'aufgabenbeschreibung'=>'Bitte bearbeiten sie AUfgabe 1 nochmal',
             'kurs' => 1
         ]);
 

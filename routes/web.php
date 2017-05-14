@@ -11,10 +11,8 @@ use Illuminate\Http\Request;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 use Tutorpia\User;
-use Tutorpia\AufgabeModel;
-use Carbon\Carbon;
+
 Route::get('/', function () {
     return view('welcome');
 });

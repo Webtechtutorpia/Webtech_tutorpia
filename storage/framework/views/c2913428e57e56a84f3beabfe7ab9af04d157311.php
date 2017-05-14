@@ -44,7 +44,7 @@
                                             <td>Professor</td>
                                             <td class="text-center"><a
                                                         class="btn btn-primary btn-md col-md-11 col-md-offset-2 col-xs-11 col-xs-offset-1"
-                                                        href="<?php echo e(url('/professorenmodus')); ?>" role="button">ProfMode</a></td>
+                                                        href="<?php echo e(url('/Professor')); ?>" role="button">ProfMode</a></td>
                                             <td class="text-center"><a
                                                         class="btn btn-primary btn-md col-md-11 col-md-offset-1 col-xs-11 col-xs-offset-3"
                                                         href="<?php echo e(url('/abgabe')); ?>" role="button">Abgabenübersicht</a></td>

@@ -85,11 +85,6 @@ class AufgabeController extends Controller
 
     }
 
-    public function create()
-    {
-        // load the create form (app/views/myinputs/create.blade.php)
-        return View::make('Professor.Professorenmodus');
-    }
 
     public function update(Request $request, $id)
     {
@@ -110,7 +105,7 @@ class AufgabeController extends Controller
         // get all the myinputs
         $aufgabe = Aufgabe::all();
         // load the view and pass the myinputs
-        return View::make('Professor.Professorenmodus')->with('myinputs', $aufgabe);
+        return View::make('Professor.ProfMode')->with('myinputs', $aufgabe);
 
     }
     public function destroy($id)

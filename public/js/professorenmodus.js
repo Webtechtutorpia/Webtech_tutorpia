@@ -95,18 +95,18 @@ function add(element) {
     });
     //Body Elements
     var body = $('<div/>', {class: "panel-body", style: "display:none"});
-    var formbeginn=$('<form>', {method: "post"});
+    var formbeginn=$('<form>', {method: "POST",action:"{{ url('Professor') }}"});
     var formend=$('</form>');
     var label1 = $('<label> Aufgabenname </label>',{ class: "control-label", for: "Aufgabenname"});
-    var tf1= $('<input/>',{ type: "text", name: "Aufgabenname", placeholder : "Aufgabenname"});
+    var tf1= $('<input/>',{ type: "text", name: "aufgabenname", placeholder : "Aufgabenname"});
 
     var label2 = $('<label> Abgabedatum </label>',{ class: "control-label", for: "Abgabedatum"});
-    var tf2= $('<input/>',{ type: "text", name: "Abgabedatum", placeholder : "01.01.2017 23:59"});
+    var tf2= $('<input/>',{ type: "text", name: "abgabedatum", placeholder : "01.01.2017 23:59"});
 
     var label3 = $('<label> Aufgabstellung </label>',{ class: "control-label", for: "Aufgabenbeschreibung"});
-    var ta= $('<textarea/>',{ type: "text", name: "Abgabedatum", placeholder : "Hier Aufgabenstellung eintragen"});
+    var ta= $('<textarea/>',{ type: "text", name: "aufgabebeschreibung", placeholder : "Hier Aufgabenstellung eintragen"});
 
-    var abschicken = $('<button> abschicken </button>',{onclick: "update()"}).addClass('btn btn-primary');
+    var abschicken = $('<button> Hinzufügen </button>',{onclick: "update()"}).addClass('btn btn-primary');
     //flaot fehlt noch
     heading.html("Aufgabe X");
     //Append heading
@@ -123,16 +123,12 @@ function add(element) {
     $(panel).append(body);
     $(div).append(panel);
     $(element).after(div);
+    
     //Objekt in Datenbank schreiben
     $.ajax('/create?aufgabenname='+1 +'&aufgabenbeschreibung=test&kurs=1');
 }
 
-    function update(){
-        $.ajax('/update?aufgabenname='+1 +'&aufgabenbeschreibung=test&kurs=1&id=4');
-    }
+// function update(){
+//     $.ajax('/update?aufgabenname='+1 +'&aufgabenbeschreibung=test&kurs=1&id=4');
+// }
 
-function remove(element){
-    console.log("trifft");
-    $(element).parent().parent().remove();
-
-}
