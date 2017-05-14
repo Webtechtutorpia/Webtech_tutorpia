@@ -9,186 +9,281 @@
         <div class="container">
             <div class="row">
                 <div class="">
-                    <h3 class="col-md-5" id="test"> Professorenmodus: ALDA!</h3>
+                    <h3 class="col-md-5" id="test"> Professorenmodus: ALDA</h3>
                 </div>
 
-                <span class="glyphicon glyphicon-plus col-md-offset-12" id="bigsize-right" id="plus" onclick="add()"></span>
+                <span class="glyphicon glyphicon-plus col-md-offset-12" id="bigsize-right" id="plus" onclick="add(this)"></span>
 
+                <?php if(Session::has('message')): ?>
+                    <div class="alert alert-info"><?php echo e(Session::get('message')); ?></div>
+                <?php endif; ?>
 
-                <div class="col-md-11">
-                    <div class="panel panel-default ">
-                        <div class="panel-heading" onclick="Bodyhandler()"><b>Aufgabe 1 </b>
-                            <i  style="display: inline" class="middlesize-right glyphicon glyphicon-trash" onclick="remove()"></i>
-                            <i style="display: inline" class="middlesize-right glyphicon glyphicon-cog"></i>
-                        </div>
-                        <div class="panel-body" style="display:none">
-                            <?php if(count($errors) > 0): ?>
-                                <div class="alert alert-danger">
-                                    <p>Leider sind folgende Fehler aufgetreten:</p>
-                                    <ul>
-                                        <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
-                                            <li><?php echo e($error); ?></li>
-                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
-                                    </ul>
+                <?php $__currentLoopData = $myinputs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+                    <div class="col-md-11">
+                        <div class="panel panel-default ">
+                            <div class="panel-heading" onclick="Bodyhandler(this)">
+
+                                <b><?php echo e($value->aufgabenname); ?></b>
+                                <div class="pull-right">
+                                    <form action="./Professor/<?php echo e($value->id); ?>"  onsubmit="return confirm('Sind Sie sicher, dass Sie <?php echo e($value->aufgabenname); ?> wirklich löschen wollen?')" method="POST">
+                                        <?php echo e(csrf_field()); ?>
+
+                                        <?php echo e(method_field('DELETE')); ?>
+
+                                        <button type="submit">
+                                            <i class="middlesize-right glyphicon glyphicon-trash"></i>
+                                        </button>
+                                    </form>
                                 </div>
-                            <?php endif; ?>
-                            <form class="form-horizontal" role="form" method="POST"
-                                  action="<?php echo e(url('/professorenmodus')); ?>">
-                                <?php echo e(csrf_field()); ?>
 
-                            <div class="form group">
 
-                                    <label for="Aufgabenname" class="control-label">Aufgabenname</label>
-                                    <input type="text" class="form-control" name="aufgabenname" id="Aufgabenname" 
-                                           placeholder="Hier Aufgabenname eintragen">
                             </div>
+                            <div class="panel-body" style="display:none">
+                                <?php if(count($errors) > 0): ?>
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+                                                <li><?php echo e($error); ?></li>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
+                                        </ul>
+                                    </div>
+                                <?php endif; ?>
 
-                            <div class="form group">
-                                <label for="date" class="control-label">Abgabedatum</label>
-                                <input type="text" class="form-control" name="abgabedatum" id="Datum" placeholder="01.01.2017 29:59">
-                            </div>
+                                <form class="form-horizontal" role="form" method="POST"
+                                      action="<?php echo e(url('Professor')); ?>/<?php echo e($value->id); ?>" onsubmit="return confirm('Sind Sie sicher, dass Sie <?php echo e($value->aufgabenname); ?> ändern wollen?')">
+                                    <?php echo e(csrf_field()); ?>
 
-                            <div class="form group">
-                                <label for="Aufgabenbeschreibung" class="control-label">Aufgabenbeschreibung</label>
-                                <textarea name="aufgabenbeschreibung" id="Aufgabenbeschreibung" class="" rows="5"
-                                          placeholder="Hier Aufgabenstellung eintragen"></textarea>
-                            </div>
+                                    <?php echo e(method_field('PATCH')); ?>
 
-                            <div class="form-group" style="margin-top: 2em;">
-                                <button type="submit" class="btn btn-primary" value="Abschicken"
-                                        style="float: right">
-                                    Abschicken
-                                </button>
+                                    <div class="form group">
+
+                                        <label for="Aufgabenname" class="control-label">Aufgabenname</label>
+                                        <input type="text" class="form-control" name="aufgabenname" id="Aufgabenname"  value="<?php echo e($value->aufgabenname); ?>"
+                                               placeholder="Hier Aufgabenname eintragen">
+                                    </div>
+
+                                    <div class="form group">
+                                        <label for="date" class="control-label">Abgabedatum</label>
+                                        <input type="text" class="form-control" name="abgabedatum" id="Datum" placeholder="01.01.2017 29:59" value="<?php echo e($value->abgabedatum); ?>">
+                                    </div>
+
+                                    <div class="form group">
+                                        <label for="Aufgabenbeschreibung" class="control-label">Aufgabenbeschreibung</label>
+                                        <textarea name="aufgabenbeschreibung" id="Aufgabenbeschreibung" class="" rows="5"
+                                                  placeholder="Hier Aufgabenstellung eintragen"><?php echo e($value->aufgabenbeschreibung); ?></textarea>
+                                    </div>
+
+                                    <div class="form-group" style="margin-top: 2em;">
+                                        <button type="submit" class="btn btn-primary" value="Abschicken"
+                                                style="float: right">
+                                            Bearbeiten
+
+                                        </button>
+
+                                    </div>
                                 </form>
                             </div>
-
                         </div>
                     </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading" onclick="Bodyhandler()"><b>Aufgabe 2 </b>
-                            <i style="display: inline" class="middlesize-right glyphicon glyphicon-trash"></i>
-                            <i style="display: inline" class="middlesize-right glyphicon glyphicon-cog"></i>
-                        </div>
-                        <div class="panel-body" style="display:none">
-                            <form class="form-horizontal" role="form" method="POST"
-                                  action="<?php echo e(url('/professorenmodus')); ?>">
-                                <?php echo e(csrf_field()); ?>
-
-                            <div class="form group">
-
-                                    <label for="Aufgabenname" class="control-label">Aufgabenname</label>
-                                    <input type="text" class="form-control" name="Aufgabenname" id="Aufgabenname"
-                                           placeholder="Hier Aufgabenname eintragen">
-                            </div>
-
-                            <div class="form group">
-                                <label for="Datum" class="control-label">Abgabedatum</label>
-                                <input type="text" class="form-control" id="Datum" placeholder="01.01.2017 29:59">
-                            </div>
-
-                            <div class="form group">
-                                <label for="Aufgabenbeschreibung" class="control-label">Aufgabenbeschreibung</label>
-                                <textarea id="Aufgabenstellung" class="" rows="5"
-                                          placeholder="Hier Aufgabenbeschreibung eintragen"></textarea>
-                            </div>
-
-                            <div class="form-group" style="margin-top: 2em;">
-                                <button type="submit" class="btn btn-primary" value="Abschicken"
-                                        style="float: right">
-                                    Abschicken
-                                </button>
-
-                            </div>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading" onclick="Bodyhandler()"><b>Aufgabe 3 </b>
-                            <i style="display: inline" class="middlesize-right glyphicon glyphicon-trash"></i>
-                            <i href="display: inline" class="middlesize-right glyphicon glyphicon-cog"></i>
-                        </div>
-                        <div class="panel-body" style="display:none;">
-                            <form class="form-horizontal" role="form" method="POST"
-                                  action="<?php echo e(url('/professorenmodus')); ?>">
-                                <?php echo e(csrf_field()); ?>
-
-                            <div class="form group">
-
-                                    <label for="Aufgabenname" class="control-label">Aufgabenname</label>
-                                    <input type="text" class="form-control" name="Aufgabenname" id="Aufgabenname"
-                                           placeholder="Hier Aufgabenname eintragen">
-                            </div>
-
-                            <div class="form group">
-                                <label for="Datum" class="control-label">Abgabedatum</label>
-                                <input type="text" class="form-control" id="Datum" placeholder="01.01.2017 29:59">
-                            </div>
-
-                            <div class="form group">
-                                <label for="Aufgabenbeschreibung" class="control-label">Aufgabenbeschreibung</label>
-                                <textarea id="Aufgabenstellung" class="" rows="5"
-                                          placeholder="Hier Aufgabenbeschreibung eintragen"></textarea>
-                            </div>
-
-                            <div class="form-group" style="margin-top: 2em;">
-                                <button type="submit" class="btn btn-primary" value="Abschicken"
-                                        style="float: right">
-                                    Abschicken
-                                </button>
-
-                            </div>
-                            </form>
-                        </div>
-
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading" onclick="Bodyhandler()"><b>Aufgabe 4 </b>
-                            <i style="display: inline" class="middlesize-right glyphicon glyphicon-trash"></i>
-                            <i style="display: inline" class="middlesize-right glyphicon glyphicon-cog"></i>
-                        </div>
-                        <div class="panel-body" style="display:none;">
-                            <form class="form-horizontal" role="form" method="POST"
-                                  action="<?php echo e(url('/professorenmodus')); ?>">
-                                <?php echo e(csrf_field()); ?>
-
-                            <div class="form group">
-
-                                    <label for="Aufgabenname" class="control-label">Aufgabenname</label>
-                                    <input type="text" class="form-control" name="Aufgabenname" id="Aufgabenname"
-                                           placeholder="Hier Aufgabenname eintragen">
-                            </div>
-
-                            <div class="form group">
-                                <label for="Datum" class="control-label">Abgabedatum</label>
-                                <input type="text" class="form-control" id="Datum" placeholder="01.01.2017 29:59">
-                            </div>
-
-                            <div class="form group">
-                                <label for="Aufgabenbeschreibung" class="control-label">Aufgabenbeschreibung</label>
-                                <textarea id="Aufgabenstellung" class="" rows="5"
-                                          placeholder="Hier Aufgabenbeschreibung eintragen"></textarea>
-                            </div>
-
-                            <div class="form-group" style="margin-top: 2em;">
-                                <button type="submit" class="btn btn-primary" value="Abschicken"
-                                        style="float: right">
-                                    Abschicken
-                                </button>
-
-                            </div>
-                            </form>
-                        </div>
-                    </div>
-
-
-                </div>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
             </div>
+        </div>
 
-        </div>
-        </div>
-        </div>
+
     <?php endif; ?>
 
 <?php $__env->stopSection(); ?>
 
+
+
+
+        
+    
+
+    
+        
+        
+
+        
+            
+                
+                    
+                
+
+                
+
+
+                
+                    
+                        
+                            
+                            
+                        
+                        
+                            
+                                
+                                    
+                                    
+                                        
+                                            
+                                        
+                                    
+                                
+                            
+                            
+                                  
+                                
+                            
+
+                                    
+                                    
+                                           
+                            
+
+                            
+                                
+                                
+                            
+
+                            
+                                
+                                
+                                          
+                            
+
+                            
+                                
+                                        
+                                    
+                                
+                                
+                            
+
+                        
+                    
+                    
+                        
+                            
+                            
+                        
+                        
+                            
+                                  
+                                
+                            
+
+                                    
+                                    
+                                           
+                            
+
+                            
+                                
+                                
+                            
+
+                            
+                                
+                                
+                                          
+                            
+
+                            
+                                
+                                        
+                                    
+                                
+
+                            
+                            
+                        
+                    
+                    
+                        
+                            
+                            
+                        
+                        
+                            
+                                  
+                                
+                            
+
+                                    
+                                    
+                                           
+                            
+
+                            
+                                
+                                
+                            
+
+                            
+                                
+                                
+                                          
+                            
+
+                            
+                                
+                                        
+                                    
+                                
+
+                            
+                            
+                        
+
+                    
+                    
+                        
+                            
+                            
+                        
+                        
+                            
+                                  
+                                
+                            
+
+                                    
+                                    
+                                           
+                            
+
+                            
+                                
+                                
+                            
+
+                            
+                                
+                                
+                                          
+                            
+
+                            
+                                
+                                        
+                                    
+                                
+
+                            
+                            
+                        
+                    
+
+
+                
+            
+
+        
+        
+        
+    
+
+
+
+<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 <?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -72,13 +72,11 @@ Route::get('readuser','AbgabeController@readAll');
 
 
 //Professorenmodus
-Route::get('leseaufgaben','AufgabeController@read');
-Route::get('createaufgabe','AufgabeController@create');
-Route::get('create', 'AufgabeController@create');
-Route::get('update', 'AufgabeController@update');
-Route::get('professorenmodus', function () {
-    return view('Professor.Professorenmodus',['posted'=>false]);
-});
+//Route::get('leseaufgaben','AufgabeController@read');
+//Route::get('createaufgabe','AufgabeController@create');
+//Route::get('create', 'AufgabeController@create');
+//Route::get('update', 'AufgabeController@update');
+
 
 
 
@@ -100,7 +98,7 @@ Route::get('images/{filename}', function ($filename)
 });
 
 
-Route::post('professorenmodus', 'AufgabeController@store');
+Route::resource('Professor','AufgabeController');
 
 Route::resource('myinputs', 'MyinputController');
 

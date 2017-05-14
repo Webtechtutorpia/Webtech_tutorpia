@@ -55,17 +55,17 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse" onmouseover="hoverselectednavbar()">
                     <!-- Left Side Of Navbar -->
                     <?php if(Auth::check()): ?>
-                        
-                    <ul class="nav navbar-nav">
-                        <li role="presentation" name="Übersicht"><a href="/overview">Übersicht</a></li>
-                        <li role="presentation" name="Kurse"><a href="/kurse">Kurse</a></li>
-                        <li role="presentation" name="Abgaben"><a href="/abgabe">Abgaben</a></li>
-                        <?php if(Auth::user()->rolle=="Professor"): ?>
-                            <li role="presentation"><a href="/professorenmodus">Aufgaben</a></li>
-                        <?php else: ?>
-                        <li role="presentation"><a href="/aufgabe_example">Aufgaben</a></li>
+
+                        <ul class="nav navbar-nav">
+                            <li role="presentation" name="Übersicht"><a href="/overview">Übersicht</a></li>
+                            <li role="presentation" name="Kurse"><a href="/kurse">Kurse</a></li>
+                            <li role="presentation" name="Abgaben"><a href="/abgabe">Abgaben</a></li>
+                            <?php if(Auth::user()->rolle=="Professor"): ?>
+                                <li role="presentation"><a href="/Professor">Aufgaben</a></li>
+                            <?php else: ?>
+                                <li role="presentation"><a href="/aufgabe_example">Aufgaben</a></li>
                             <?php endif; ?>
-                    </ul>
+                        </ul>
 
                 <?php endif; ?>
                 <!-- Right Side Of Navbar -->

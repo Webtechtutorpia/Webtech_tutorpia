@@ -2,121 +2,126 @@
 
 namespace Tutorpia\Http\Controllers;
 
-
-//use Tutorpia\Aufgabe;
+use Tutorpia\Aufgabe;
 use View;
 use Illuminate\Http\Request;
 use Tutorpia\Http\Requests;
 use Auth;
-use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
-use Tutorpia\AufgabeModel;
 class AufgabeController extends Controller
 {
-//    function validateAndSave(Request $request) {
-//        $errMsg = $this->validate2($request);
+//    public function read(Request $request){
 //
-//        $parameters = [
-//            'posted'=>true,
-//            'aufgabenname'=>$request->input('Aufgabenname'),
-//            'datum'=>$request->input('Datum')
-//        ];
-//        if (!empty($errMsg)) {
-//            return view('Professor.professorenmodus',$parameters);
-//        } else {
-//           $this->save($request);
-//            return view('home',$parameters);
-//
-//
+//        $fach=1;
+//        $aufgaben= db::table('aufgabe')->join('kurs','aufgabe.kurs','=','kurs.id')->where('kurs.id',$fach)->get();
+//        return response()->json($aufgaben);
 //    }
-//    function validate2(Request $request)
+//
+//
+//    public function store(Request $request)
 //    {
-//        $errMsg = "";
-//        if (empty($request->input('Aufgabenname'))) {
-//            $errMsg = $errMsg . "Das Feld Aufgabenname muss ausgefüllt sein.<BR>";
-//        }
 //
-//        if (empty($request->input('Datum'))) {
-//            $errMsg = $errMsg . "Das Feld Datum muss ausgefüllt sein.<BR>";
-//        }
+//        Aufgabe::create([
+//            'aufgabenname'      =>  $request->aufgabenname,
+//          'abgabedatum'         => Carbon::now()->format('d-m-Y'),
+//            'aufgabenbeschreibung' =>  $request->aufgabenbeschreibung,
+//            'erstellt_von' => Auth::user()->id,
+//           'kurs'=> 1
+//           //'kurs'=> $request->input('kurs')
+//            //kurs schreibts nichtohne model
 //
-//        return $errMsg;
+//        ]);
+//
 //    }
-
-    public function read(Request $request){
-
-        $fach=1;
-        $aufgaben= db::table('aufgabe')->join('kurs','aufgabe.kurs','=','kurs.id')->where('kurs.id',$fach)->get();
-        return response()->json($aufgaben);
-    }
+//
+//    public function create(Request $request){
+//        //mit Eloquent
+//
+//                $this->validate($request, [
+//            'aufgabenname'       => 'required',
+//            'abgabedatum'      => 'required',
+//            'aufgabenbeschreibung' => 'required']);
+//
+//
+//        $aufgabe = new AufgabeModel();
+//        $aufgabe->aufgabenname = $request->aufgabenname;
+//        $aufgabe->abgabedatum = Carbon::now()->format('d-m-Y');
+//        $aufgabe->aufgabenbeschreibung = $request->input('aufgabenbeschreibung','');
+//        $aufgabe-> erstellt_von = Auth::user()->id;
+//        $aufgabe->kurs = $request->input('kurs','1');
+//        $aufgabe->save();
+//
+//    }
+//    public function update(Request $request)
+//    {
+//
+//        $aufgabe = AufgabeModel::find($request->id);
+//        $aufgabe->aufgabenname = $request->aufgabe;
+//        $aufgabe->save();
+//
+//        return response()->json($aufgabe);
+//
+//    }
+//
 
 
     public function store(Request $request)
     {
         // validate
 
-//        $this->validate($request, [
-//            'aufgabenname'       => 'required',
-//            'abgabedatum'      => 'required',
-//            'aufgabenbeschreibung' => 'required']);
-
-        $fach=1;
-
-        // store
-        Aufgabe::create([
-            'aufgabenname'      =>  $request->aufgabenname,
-          'abgabedatum'         => Carbon::now()->format('d-m-Y'),
-            'aufgabenbeschreibung' =>  $request->aufgabenbeschreibung,
-            'erstellt_von' => Auth::user()->id,
-           'kurs'=> 1
-           //'kurs'=> $request->input('kurs')
-            //kurs schreibts nichtohne model
-
-        ]);
-
-    }
-
-    public function create(Request $request){
-        //mit Eloquent
-
-                $this->validate($request, [
+        $this->validate($request, [
             'aufgabenname'       => 'required',
             'abgabedatum'      => 'required',
             'aufgabenbeschreibung' => 'required']);
 
 
-        $aufgabe = new AufgabeModel();
-        $aufgabe->aufgabenname = $request->aufgabenname;
-        $aufgabe->abgabedatum = Carbon::now()->format('d-m-Y');
-        $aufgabe->aufgabenbeschreibung = $request->input('aufgabenbeschreibung','');
-        $aufgabe-> erstellt_von = Auth::user()->id;
-        $aufgabe->kurs = $request->input('kurs','1');
-        $aufgabe->save();
+        // store
+        Aufgabe::create([
+            'aufgabenname'      =>  $request->aufgabenname,
+            'abgabedatum'         => $request->abgabedatum,
+            'aufgabenbeschreibung' =>  $request->aufgabenbeschreibung,
+            'erstellt_von' => Auth::user()->id
+        ]);
+        return back();
 
     }
-    public function update(Request $request)
+
+    public function create()
     {
-//        $this->validate($request, [
-//            'aufgabenname'       => 'required',
-//            'abgabedatum'      => 'required',
-//            'aufgabenbeschreibung' => 'required']);
-
-        $aufgabe = AufgabeModel::find($request->id);
-       $aufgabe->aufgabenname=$request->aufgabe;
-       $aufgabe->save();
-
-        return response()->json($aufgabe);
-
-
+        // load the create form (app/views/myinputs/create.blade.php)
+        return View::make('Professor.Professorenmodus');
     }
-    public function edit($id)
+
+    public function update(Request $request, $id)
     {
-        // get the myinput
+        $this->validate($request, [
+            'aufgabenname'       => 'required',
+            'abgabedatum'      => 'required',
+            'aufgabenbeschreibung' => 'required']);
+
         $aufgabe = Aufgabe::find($id);
-        // show the edit form and pass the myinput
-        return View::make('Professor.Professorenmodus')
-            ->with('aufgabe', $aufgabe);
+        $aufgabe->update($request->all());
+
+        return back();
     }
+
+
+    public function index()
+    {
+        // get all the myinputs
+        $aufgabe = Aufgabe::all();
+        // load the view and pass the myinputs
+        return View::make('Professor.Professorenmodus')->with('myinputs', $aufgabe);
+
+    }
+    public function destroy($id)
+    {
+        // delete
+        $aufgabe = Aufgabe::find($id);
+        $aufgabe->delete();
+        // redirect
+        return back();
+    }
+
 
 
 
