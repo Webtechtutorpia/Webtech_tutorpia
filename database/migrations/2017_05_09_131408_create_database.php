@@ -26,6 +26,7 @@ class CreateDatabase extends Migration
             $table->timestamps();
         });
 
+
         //Erzeuge passwortvergessen table
         Schema::create('password_resets', function (Blueprint $table) {
             $table->string('email')->index();

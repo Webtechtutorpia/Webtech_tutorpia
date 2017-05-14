@@ -11,7 +11,7 @@
 
                     {{--<p>{{ $aufgabenname}}</p>--}}
                     {{--<p>{{ $datum}}</p>--}}
-                    <p>{{ $name }}</p>
+                    <p>{{ $aufgabenname}}</p>
                 </div>
             </div>
         </div>

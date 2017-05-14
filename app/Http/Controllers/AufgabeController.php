@@ -2,13 +2,15 @@
 
 namespace Tutorpia\Http\Controllers;
 
-use Tutorpia\Aufgabe;
+
+//use Tutorpia\Aufgabe;
 use View;
 use Illuminate\Http\Request;
 use Tutorpia\Http\Requests;
 use Auth;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use Tutorpia\AufgabeModel;
 class AufgabeController extends Controller
 {
 //    function validateAndSave(Request $request) {
@@ -24,7 +26,7 @@ class AufgabeController extends Controller
 //        } else {
 //           $this->save($request);
 //            return view('home',$parameters);
-//        }
+//
 //
 //    }
 //    function validate2(Request $request)
@@ -73,23 +75,44 @@ class AufgabeController extends Controller
         ]);
 
     }
-    public function update(Request $request, $id)
-    {
-        $this->validate($request, [
+
+    public function create(Request $request){
+        //mit Eloquent
+
+                $this->validate($request, [
             'aufgabenname'       => 'required',
             'abgabedatum'      => 'required',
             'aufgabenbeschreibung' => 'required']);
 
-        $aufgabe = Aufgabe::find($id);
-        $aufgabe->update($request->all());
 
-        return back();
+        $aufgabe = new AufgabeModel();
+        $aufgabe->aufgabenname = $request->aufgabenname;
+        $aufgabe->abgabedatum = Carbon::now()->format('d-m-Y');
+        $aufgabe->aufgabenbeschreibung = $request->input('aufgabenbeschreibung','');
+        $aufgabe-> erstellt_von = Auth::user()->id;
+        $aufgabe->kurs = $request->input('kurs','1');
+        $aufgabe->save();
+
+    }
+    public function update(Request $request)
+    {
+//        $this->validate($request, [
+//            'aufgabenname'       => 'required',
+//            'abgabedatum'      => 'required',
+//            'aufgabenbeschreibung' => 'required']);
+
+        $aufgabe = AufgabeModel::find($request->id);
+       $aufgabe->aufgabenname=$request->aufgabe;
+       $aufgabe->save();
+
+        return response()->json($aufgabe);
+
+
     }
     public function edit($id)
     {
         // get the myinput
         $aufgabe = Aufgabe::find($id);
-
         // show the edit form and pass the myinput
         return View::make('Professor.Professorenmodus')
             ->with('aufgabe', $aufgabe);

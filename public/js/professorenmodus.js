@@ -106,7 +106,7 @@ function add(element) {
     var label3 = $('<label> Aufgabstellung </label>',{ class: "control-label", for: "Aufgabenbeschreibung"});
     var ta= $('<textarea/>',{ type: "text", name: "Abgabedatum", placeholder : "Hier Aufgabenstellung eintragen"});
 
-    var abschicken = $('<button> abschicken </button>').addClass('btn btn-primary');
+    var abschicken = $('<button> abschicken </button>',{onclick: "update()"}).addClass('btn btn-primary');
     //flaot fehlt noch
     heading.html("Aufgabe X");
     //Append heading
@@ -121,13 +121,15 @@ function add(element) {
     $(body).append(label3).append(ta);
     $(body).append(abschicken).append(formend);
     $(panel).append(body);
-
-
     $(div).append(panel);
-
     $(element).after(div);
+    //Objekt in Datenbank schreiben
+    $.ajax('/create?aufgabenname='+1 +'&aufgabenbeschreibung=test&kurs=1');
 }
 
+    function update(){
+        $.ajax('/update?aufgabenname='+1 +'&aufgabenbeschreibung=test&kurs=1&id=4');
+    }
 
 function remove(element){
     console.log("trifft");

@@ -9,7 +9,7 @@
 
                     
                     
-                    <p><?php echo e($name); ?></p>
+                    <p><?php echo e($aufgabenname); ?></p>
                 </div>
             </div>
         </div>

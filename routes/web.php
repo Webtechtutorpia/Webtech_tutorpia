@@ -1,6 +1,6 @@
 <?php
-use Illuminate\Http\Request;
 
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,7 +13,8 @@ use Illuminate\Http\Request;
 */
 
 use Tutorpia\User;
-
+use Tutorpia\AufgabeModel;
+use Carbon\Carbon;
 Route::get('/', function () {
     return view('welcome');
 });
@@ -72,7 +73,9 @@ Route::get('readuser','AbgabeController@readAll');
 
 //Professorenmodus
 Route::get('leseaufgaben','AufgabeController@read');
-Route::get('createaufgabe','AufgabeController@store');
+Route::get('createaufgabe','AufgabeController@create');
+Route::get('create', 'AufgabeController@create');
+Route::get('update', 'AufgabeController@update');
 Route::get('professorenmodus', function () {
     return view('Professor.Professorenmodus',['posted'=>false]);
 });
