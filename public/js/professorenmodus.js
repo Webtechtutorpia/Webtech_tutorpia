@@ -88,14 +88,15 @@ function Bodyhandler(element){
 function add(element){
     $(".neueAufgabe").show();
 }
-// $(".papierkorb").click(function(){
-//     $(".neueAufgabe").hide();
-// });
+
+
 function verstecken(element){
     $(".neueAufgabe").hide();
 }
 
-
+function buttonFaerben(element){
+    $(".speichern").prop('disabled', false);
+}
 
 
 
