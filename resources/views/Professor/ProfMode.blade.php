@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 <style> .blue{
         color:blue;
     }</style>
@@ -13,11 +12,19 @@
 
         <div class="container">
             <div class="row">
+
                 <div class="">
                     <h3 class="col-md-5" id="test"> Professorenmodus: ALDA</h3>
                 </div>
 
-                <span class="glyphicon glyphicon-plus col-md-offset-12" id="bigsize-right" id="plus" onclick="add(this)"></span>
+                {{--<span class="glyphicon glyphicon-plus col-md-offset-12" id="bigsize-right" id="plus" onclick="add(this)"></span>--}}
+
+                <button class="btn btn-link col-md-offset-10">
+                    <a href="{{ URL::to('Professor/create') }}"><span class="glyphicon glyphicon-plus" id="bigsize-right" id="plus"></span></a>
+                </button>
+            </div>
+                @yield('aufgabe')
+
 
                 @if (Session::has('message'))
                     <div class="alert alert-info">{{ Session::get('message') }}</div>

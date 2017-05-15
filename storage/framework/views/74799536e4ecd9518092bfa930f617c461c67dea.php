@@ -61,9 +61,9 @@
                             <li role="presentation" name="Kurse"><a href="/kurse">Kurse</a></li>
                             <li role="presentation" name="Abgaben"><a href="/abgabe">Abgaben</a></li>
                             <?php if(Auth::user()->rolle=="Professor"): ?>
-                                <li role="presentation"><a href="/Professor">Aufgaben</a></li>
+                                <li role="presentation"name="Profmodus"><a href="/Professor">Professorenmodus</a></li>
                             <?php else: ?>
-                                <li role="presentation"><a href="/aufgabe_example">Aufgaben</a></li>
+                                <li role="presentation" name="Aufgaben"><a href="/aufgabe_example">Aufgaben</a></li>
                             <?php endif; ?>
                         </ul>
 
@@ -113,19 +113,35 @@
 </main>
 <!-- Scripts -->
 <script src="/js/app.js"></script>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/de_DE/sdk.js#xfbml=1&version=v2.9";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
 <footer class="bg-success">
-    <div>
-        <ul id="navlist">
-            <li class="first foot"><a href="<?php echo e(url('/datenschutz')); ?>">Datenschutz</a></li>
-            <li><a href="<?php echo e(url('/impressum')); ?>">Impressum</a></li>
-            <li><a href="<?php echo e(url('/contact')); ?>">Kontakt</a></li>
-            <li class="col-md-offset-7"><button type="button" class="btn btn-group-sm btn-primary" aria-label="Links ausrichten">
-                    <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-                </button>
-                like uns auf Facebook</li>
 
+    <div class="collapse navbar-collapse" id="app-navbar-collapse" onmouseover="hoverselectednavbar()">
+        <ul id="navlist" class="navbar navbar-nav">
+            <li class="first foot" name="Datenschutz"><a href="<?php echo e(url('/datenschutz')); ?>">Datenschutz</a></li>
+            <li name="Impressum"><a href="<?php echo e(url('/impressum')); ?>">Impressum</a></li>
+            <li name="Kontakt"><a href="<?php echo e(url('/contact')); ?>">Kontakt</a></li>
+            <li> <div class="fb-follow" data-href="https://www.facebook.com/zuck" data-layout="standard" data-size="large" data-show-faces="false" style="float:right"></div></li>
+        </ul>
+        <ul class="navbar navbar-right">
+            <li class="col-md-offset-7" name="Facebook" style="list-style: none">
+                
+                
+                
+                
+
+                
+            </li>
         </ul>
     </div>
+
 </footer>
 </body>
 </html>

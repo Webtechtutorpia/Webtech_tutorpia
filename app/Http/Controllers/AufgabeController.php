@@ -63,6 +63,11 @@ class AufgabeController extends Controller
 //    }
 //
 
+    public function create()
+    {
+        $aufgabe = Aufgabe::all();
+        return View::make('Professor.Aufgabe')->with('myinputs', $aufgabe);
+    }
 
     public function store(Request $request)
     {
@@ -81,7 +86,8 @@ class AufgabeController extends Controller
             'aufgabenbeschreibung' =>  $request->aufgabenbeschreibung,
             'erstellt_von' => Auth::user()->id
         ]);
-        return back();
+        $aufgabe = Aufgabe::all();
+        return View::make('Professor.ProfMode')->with('myinputs', $aufgabe);;
 
     }
 

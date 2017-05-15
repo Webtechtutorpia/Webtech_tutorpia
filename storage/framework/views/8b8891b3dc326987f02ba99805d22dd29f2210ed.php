@@ -3,16 +3,27 @@
     }</style>
 <?php $__env->startSection('content'); ?>
     <?php if(Auth::user()->rolle=="Professor"): ?>
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script> $( document ).ready(function() {
+                $("li[name='Profmodus']").css('background-color', '#f5f8fa');
+            });</script>
         <script type="text/javascript" src="<?php echo e(URL::asset('js/professorenmodus.js')); ?>"></script>
 
         <div class="container">
             <div class="row">
+
                 <div class="">
                     <h3 class="col-md-5" id="test"> Professorenmodus: ALDA</h3>
                 </div>
 
-                <span class="glyphicon glyphicon-plus col-md-offset-12" id="bigsize-right" id="plus" onclick="add(this)"></span>
+                
+
+                <button class="btn btn-link col-md-offset-10">
+                    <a href="<?php echo e(URL::to('Professor/create')); ?>"><span class="glyphicon glyphicon-plus" id="bigsize-right" id="plus"></span></a>
+                </button>
+            </div>
+                <?php echo $__env->yieldContent('aufgabe'); ?>
+
 
                 <?php if(Session::has('message')): ?>
                     <div class="alert alert-info"><?php echo e(Session::get('message')); ?></div>
