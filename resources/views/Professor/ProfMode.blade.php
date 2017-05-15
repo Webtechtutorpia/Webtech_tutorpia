@@ -17,19 +17,75 @@
                     <h3 class="col-md-5" id="test"> Professorenmodus: ALDA</h3>
                 </div>
 
-                {{--<span class="glyphicon glyphicon-plus col-md-offset-12" id="bigsize-right" id="plus" onclick="add(this)"></span>--}}
+                <span class="glyphicon glyphicon-plus col-md-offset-12" id="bigsize-right" id="plus" onclick="add(this)"></span>
 
-                <button class="btn btn-link col-md-offset-10">
-                    <a href="{{ URL::to('Professor/create') }}"><span class="glyphicon glyphicon-plus" id="bigsize-right" id="plus"></span></a>
-                </button>
+
+            <div class="col-md-11 neueAufgabe" style="display:none">
+                <div class="panel panel-default ">
+                    <div class="panel-heading" onclick="Bodyhandler(this)">
+
+                        <b>neue Aufgabe</b>
+                        <div class="pull-right">
+                                <button type="submit" onclick="verstecken(this)">
+                                    <i class="middlesize-right glyphicon glyphicon-trash"></i>
+                                </button>
+
+
+                        </div>
+
+
+                    </div>
+                    <div class="panel-body" style="display:none">
+                        @if (count($errors) > 0)
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
+                        <form class="form-horizontal" role="form" method="POST"
+                              action="{{ url('Professor') }}" >
+                            {{ csrf_field() }}
+
+                            <div class="form group">
+
+                                <label for="Aufgabenname" class="control-label">Aufgabenname</label>
+                                <input type="text" class="form-control" name="aufgabenname" id="Aufgabenname"
+                                       placeholder="Hier Aufgabenname eintragen">
+                            </div>
+
+                            <div class="form group">
+                                <label for="date" class="control-label">Abgabedatum</label>
+                                <input type="text" class="form-control" name="abgabedatum" id="Datum" placeholder="01.01.2017 29:59" >
+                            </div>
+
+                            <div class="form group">
+                                <label for="Aufgabenbeschreibung" class="control-label">Aufgabenbeschreibung</label>
+                                <textarea name="aufgabenbeschreibung" id="Aufgabenbeschreibung" class="" rows="5"
+                                          placeholder="Hier Aufgabenstellung eintragen"></textarea>
+                            </div>
+
+                            <div class="form-group" style="margin-top: 2em;">
+                                <button type="submit" class="btn btn-primary" value="Abschicken"
+                                        style="float: right">
+                                    Hinzufügen
+
+                                </button>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-                @yield('aufgabe')
 
 
                 @if (Session::has('message'))
                     <div class="alert alert-info">{{ Session::get('message') }}</div>
                 @endif
-
+                {{--je nach Datenbankeintrag Element anzeigen--}}
                 @foreach($myinputs as $key => $value)
                     <div class="col-md-11">
                         <div class="panel panel-default ">

@@ -63,12 +63,6 @@ class AufgabeController extends Controller
 //    }
 //
 
-    public function create()
-    {
-        $aufgabe = Aufgabe::all();
-        return View::make('Professor.Aufgabe')->with('myinputs', $aufgabe);
-    }
-
     public function store(Request $request)
     {
         // validate
