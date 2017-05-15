@@ -37,6 +37,7 @@ class CreateDatabase extends Migration
         Schema::create('kurs', function (Blueprint $table){
             $table->increments('id');
             $table->string('bezeichnung');
+            $table->string('rolle');
             $table->Integer('geleitet_von')->unsigned();
             //Constraints
             $table->foreign('geleitet_von')->references('id')->on('users');
