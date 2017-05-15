@@ -78,10 +78,10 @@ class AufgabeController extends Controller
             'aufgabenname'      =>  $request->aufgabenname,
             'abgabedatum'         => $request->abgabedatum,
             'aufgabenbeschreibung' =>  $request->aufgabenbeschreibung,
-            'erstellt_von' => Auth::user()->id
+            'erstellt_von' => Auth::user()->id,
         ]);
         $aufgabe = Aufgabe::all();
-        return View::make('Professor.ProfMode')->with('myinputs', $aufgabe);;
+        return back();
 
     }
 
@@ -92,7 +92,6 @@ class AufgabeController extends Controller
             'aufgabenname'       => 'required',
             'abgabedatum'      => 'required',
             'aufgabenbeschreibung' => 'required']);
-
         $aufgabe = Aufgabe::find($id);
         $aufgabe->update($request->all());
 
@@ -107,6 +106,14 @@ class AufgabeController extends Controller
         // load the view and pass the myinputs
         return View::make('Professor.ProfMode')->with('myinputs', $aufgabe);
 
+    }
+    public function show($kurs)
+    {
+        // get the myinput
+        $aufgabe = Aufgabe::where('kurs','=',$kurs)->get();
+
+        // show the view and pass the myinput to it
+        return View::make('Professor.ProfMode')->with('myinputs', $aufgabe);
     }
     public function destroy($id)
     {

@@ -12,8 +12,12 @@ class Kursseeder extends Seeder
     public function run()
     {
         DB::table('kurs')->insert([
-           'bezeichnung'=>'ALDA',
-           'geleitet_von' =>4
+        'bezeichnung'=>'ALDA',
+        'geleitet_von' =>4
+    ]);
+        DB::table('kurs')->insert([
+            'bezeichnung'=>'BESY',
+            'geleitet_von' =>4
         ]);
 
     }

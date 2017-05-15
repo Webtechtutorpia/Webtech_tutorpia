@@ -24,7 +24,7 @@ class AufgabeSeeder extends Seeder
             'aufgabenname' => 'Aufgabe2',
             'abgabedatum' => '05.02.2017',
             'aufgabenbeschreibung'=>'Bitte addieren sie es zusammen',
-            'kurs' => 1
+            'kurs' => 2
         ]);
 
         DB::table('aufgabe')->insert([

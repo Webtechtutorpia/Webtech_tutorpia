@@ -14,7 +14,7 @@
     <link href="css/bootstrap-theme.min.css" rel="stylesheet">
     <link href="<?php echo e(asset('css/main.css')); ?>" rel="stylesheet" type="text/css">
     
-    <script type="text/javascript" src="<?php echo e(URL::asset('js/jquery.js')); ?>"></script>
+    
     <script type="text/javascript" src="<?php echo e(URL::asset('js/layout.js')); ?>"></script>
     <title><?php echo e(config('app.name', 'Tutorpia')); ?></title>
 

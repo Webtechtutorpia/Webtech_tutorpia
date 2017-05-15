@@ -14,7 +14,7 @@
     <link href="css/bootstrap-theme.min.css" rel="stylesheet">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet" type="text/css">
     {{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>--}}
-    <script type="text/javascript" src="{{ URL::asset('js/jquery.js') }}"></script>
+    {{--<script type="text/javascript" src="{{ URL::asset('js/jquery.js') }}"></script>--}}
     <script type="text/javascript" src="{{ URL::asset('js/layout.js') }}"></script>
     <title>{{ config('app.name', 'Tutorpia') }}</title>
 

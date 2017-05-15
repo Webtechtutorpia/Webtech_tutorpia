@@ -11,12 +11,12 @@ class Activityseeder extends Seeder
      */
     public function run()
     {
-        DB::table('Aktivitaet')->insert([
+        DB::table('Activity')->insert([
             'created_at' => new DateTime(),
 
         ]);
 
-        DB::table('Aktivitaet')->insert([
+        DB::table('Activity')->insert([
             'created_at' => new DateTime(),
 
         ]);

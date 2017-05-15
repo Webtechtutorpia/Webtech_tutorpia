@@ -13,7 +13,7 @@
             <div class="row">
 
                 <div class="">
-                    <h3 class="col-md-5" id="test"> Professorenmodus: ALDA</h3>
+                    <h3 class="col-md-5" id="test"> Professorenmodus: BESY</h3>
                 </div>
 
                 <span class="glyphicon glyphicon-plus col-md-offset-12" id="bigsize-right" id="plus" onclick="add(this)"></span>
