@@ -24,6 +24,11 @@
                                         <th class="col-md-3 col-xs-3"><p>Zeit</p></th>
                                         <th class="col-md-9 col-xs-9"><p>Ereignis</p></th>
                                     </tr>
+                                    <?php if(Session::has('message')): ?>
+                                        <div class="alert alert-info"><?php echo e(Session::get('message')); ?></div>
+                                    <?php endif; ?>
+                                    
+                                    <?php $__currentLoopData = $myinputs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
                                     <tr>
                                         <td class="col-md-3 col-xs-3"> <p>20.04.17 23:59</p></td>
                                         <td class="col-md-9 col-xs-9"><p>Tutor hat deine Übungsaufgabe Nr 3 im Kurs ALDA
@@ -37,7 +42,7 @@
                                     </tr>
 
 
-
+<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
                                 </table>
                             </div>
                         </div>

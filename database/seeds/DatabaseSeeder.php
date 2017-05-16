@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(AufgabeSeeder::class);
         $this->call(Abgabeseeder::class);
         $this->call(BelegungSeeder::class);
+        $this->call(Activityseeder::class);
 
 
     }

@@ -12,12 +12,18 @@ class Activityseeder extends Seeder
     public function run()
     {
         DB::table('Activity')->insert([
-            'created_at' => new DateTime(),
+            'abgabedatum' => '31.07.2017',
+            'aufgabenname' => 'Aufgabe1',
+         'zuordnung_aufgabe'=>1,
+        'zuordnung_abgabe'=>2
 
         ]);
 
         DB::table('Activity')->insert([
-            'created_at' => new DateTime(),
+            'abgabedatum' => '05.02.2017',
+            'aufgabenname' => 'Aufgabe2',
+            'zuordnung_aufgabe'=>2,
+            'zuordnung_abgabe'=>3
 
         ]);
     }

@@ -29,7 +29,7 @@ Route::get('hilfe', function () {
 Route::get('contact', function () {
     return view('contact');
 });
-Route::get('overview','OverviewController@showfirstActifty');
+//Route::get('overview','OverviewController@showfirstActifty');
    // return view('Tutor.overview'));
 Route::get('abgabe', function () {
     return view('Tutor.abgabe');
@@ -97,6 +97,7 @@ Route::get('images/{filename}', function ($filename)
 
 
 Route::resource('Professor','AufgabeController');
+Route::resource('Activity','ActivityController');
 Route::resource('Tutor','BelegungController');
 
 Route::resource('myinputs', 'MyinputController');

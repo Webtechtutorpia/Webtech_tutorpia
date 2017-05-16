@@ -2,7 +2,9 @@
 
 namespace Tutorpia\Http\Controllers;
 
+
 use Tutorpia\Aufgabe;
+use Tutorpia\Activity;
 use View;
 use Illuminate\Http\Request;
 use Tutorpia\Http\Requests;
@@ -80,7 +82,11 @@ class AufgabeController extends Controller
             'aufgabenbeschreibung' =>  $request->aufgabenbeschreibung,
             'erstellt_von' => Auth::user()->id,
         ]);
-        $aufgabe = Aufgabe::all();
+
+        Activity::create([
+            'abgabedatum'         => $request->abgabedatum,
+            'aufgabenname'      =>  $request->aufgabenname,
+        ]);
         return back();
 
     }
