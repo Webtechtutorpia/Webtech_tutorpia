@@ -36,7 +36,7 @@ class CreateDatabase extends Migration
         //Erzeuge kurstabelle
         Schema::create('kurs', function (Blueprint $table){
             $table->increments('id');
-            $table->string('bezeichnung');
+            $table->string('bezeichnung')->index();;
             $table->Integer('geleitet_von')->unsigned();
             //Constraints
             $table->foreign('geleitet_von')->references('id')->on('users');
@@ -44,10 +44,11 @@ class CreateDatabase extends Migration
         Schema::create('belegung', function (Blueprint $table){
             $table->increments('id');
             $table->Integer('user')->unsigned();
-            $table->Integer('kurs')->unsigned();;
+            $table->string('kurs')->index();
+            $table->string('rolle');
             //Constraints
             $table->foreign('user')->references('id')->on('users');
-            $table->foreign('kurs')->references('id')->on('kurs');
+            $table->foreign('kurs')->references('bezeichnung')->on('kurs');
         });
 
 //        //Erzeuge Aufgabentabelle

@@ -19,6 +19,10 @@ class Kursseeder extends Seeder
             'bezeichnung'=>'BESY',
             'geleitet_von' =>4
         ]);
+        DB::table('kurs')->insert([
+            'bezeichnung'=>'WebTech',
+            'geleitet_von' =>4
+        ]);
 
     }
 }

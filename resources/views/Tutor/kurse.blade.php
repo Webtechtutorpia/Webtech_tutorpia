@@ -35,33 +35,30 @@
                                         @foreach($myinputs as $key => $value)
                                         <tr>
                                             <td>{{$value->kurs}}</td>
-                                            <td>{{Auth::user()->rolle}}</td>
-                                            <td class="text-center"><a
-                                                        class="btn btn-primary btn-md col-md-11 col-md-offset-2 col-xs-11 col-xs-offset-1"
-                                                        href="{{ url('/abgabe') }}" role="button">Abgabenübersicht</a></td>
-                                            <td></td>
+                                            <td>{{$value->rolle}}</td>
+                                            @if($value->rolle=="Professor")
+                                                <td class="text-center"><a
+                                                class="btn btn-primary btn-md col-md-11 col-md-offset-2 col-xs-11 col-xs-offset-1"
+                                                href="{{ url('/Professor') }}/{{$value->id}}" role="button">ProfMode</a></td>
+                                                <td class="text-center"><a
+                                                class="btn btn-primary btn-md col-md-11 col-md-offset-1 col-xs-11 col-xs-offset-3"
+                                                href="{{ url('/abgabe') }}" role="button">Abgabenübersicht</a></td>
+                                                @endif
+                                            @if($value->rolle=="Tutor")
+                                                <td class="text-center"><a
+                                                            class="btn btn-primary btn-md col-md-11 col-md-offset-1 col-xs-11 col-xs-offset-3"
+                                                            href="{{ url('/abgabe') }}" role="button">Abgabenübersicht</a></td>
+                                                <td></td>
+                                            @endif
+                                            @if($value->rolle=="Student")
+                                                <td class="text-center"><a
+                                                class="btn btn-primary btn-md col-md-11 col-md-offset-2 col-xs-11 col-xs-offset-1"
+                                                href="{{ url('/aufgabe_example') }}" role="button">Aufgabenstatus</a>
+                                                </td>
+                                                <td></td>
+                                            @endif
                                         </tr>
                                         @endforeach
-                                        {{--<tr>--}}
-                                            {{--<td>DBIS</td>--}}
-                                            {{--<td>Student</td>--}}
-                                            {{--<td class="text-center"><a--}}
-                                                        {{--class="btn btn-primary btn-md col-md-11 col-md-offset-2 col-xs-11 col-xs-offset-1"--}}
-                                                        {{--href="{{ url('/aufgabe_example') }}" role="button">Aufgabenstatus</a>--}}
-                                            {{--</td>--}}
-                                            {{--<td></td>--}}
-                                        {{--</tr>--}}
-                                        {{--<tr>--}}
-                                            {{--<td>BESY</td>--}}
-                                            {{--<td>Professor</td>--}}
-                                            {{--<td class="text-center"><a--}}
-                                                        {{--class="btn btn-primary btn-md col-md-11 col-md-offset-2 col-xs-11 col-xs-offset-1"--}}
-                                                        {{--href="{{ url('/Professor') }}/2" role="button">ProfMode</a></td>--}}
-                                            {{--<td class="text-center"><a--}}
-                                                        {{--class="btn btn-primary btn-md col-md-11 col-md-offset-1 col-xs-11 col-xs-offset-3"--}}
-                                                        {{--href="{{ url('/abgabe') }}" role="button">Abgabenübersicht</a></td>--}}
-                                        {{--</tr>--}}
-
                                         </tbody>
                                     </table>
                                 </div>
@@ -80,66 +77,21 @@
                                         </tr>
                                         </thead>
                                         <tbody>
+                                        @if (Session::has('message'))
+                                            <div class="alert alert-info">{{ Session::get('message') }}</div>
+                                        @endif
+                                        {{--je nach Datenbankeintrag Element anzeigen--}}
+                                        @foreach($alle as $key2 => $value2 )
+                                            @if($value2 != $value)
                                         <tr>
-                                            <td>WAST1</td>
-                                            <td class="text-center">
-                                                <button type="button" class="btn btn-primary btn-md col-md-offset-3">eintragen
-                                                </button>
-                                            </td>
-                                        <tr>
-                                            <td>WAST2</td>
-                                            <td class="text-center">
-                                                <button type="button" class="btn btn-primary btn-md col-md-offset-3">eintragen
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>SOTE 1</td>
-                                            <td class="text-center">
-                                                <button type="button" class="btn btn-primary btn-md col-md-offset-3">eintragen
-                                                </button>
-                                            </td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>SOTE 2</td>
-                                            <td class="text-center">
-                                                <button type="button" class="btn btn-primary btn-md col-md-offset-3">eintragen
-                                                </button>
-                                            </td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>WEBTECH</td>
-                                            <td class="text-center">
-                                                <button type="button" class="btn btn-primary btn-md col-md-offset-3">eintragen
-                                                </button>
-                                            </td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>MAWI 1</td>
-                                            <td class="text-center">
-                                                <button type="button" class="btn btn-primary btn-md col-md-offset-3">eintragen
-                                                </button>
-                                            </td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>SYAN</td>
-                                            <td class="text-center">
-                                                <button type="button" class="btn btn-primary btn-md col-md-offset-3">eintragen
-                                                </button>
-                                            </td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>WAST1</td>
+                                            <td>{{$value2->kurs}}</td>
                                             <td class="text-center">
                                                 <button type="button" class="btn btn-primary btn-md col-md-offset-3">eintragen
                                                 </button>
                                             </td>
                                         </tr>
+                                        @endif
+                                        @endforeach
 
                                         </tbody>
                                     </table>

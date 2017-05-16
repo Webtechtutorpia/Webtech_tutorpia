@@ -8,6 +8,6 @@ class Belegung extends Model
 {
     protected $table = 'belegung';
     protected $fillable = [
-        'user','kurs'
+        'user','kurs','rolle'
     ];
 }

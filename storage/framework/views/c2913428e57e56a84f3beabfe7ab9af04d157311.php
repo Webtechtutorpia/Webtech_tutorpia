@@ -33,33 +33,30 @@
                                         <?php $__currentLoopData = $myinputs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
                                         <tr>
                                             <td><?php echo e($value->kurs); ?></td>
-                                            <td><?php echo e(Auth::user()->rolle); ?></td>
-                                            <td class="text-center"><a
-                                                        class="btn btn-primary btn-md col-md-11 col-md-offset-2 col-xs-11 col-xs-offset-1"
-                                                        href="<?php echo e(url('/abgabe')); ?>" role="button">Abgabenübersicht</a></td>
-                                            <td></td>
+                                            <td><?php echo e($value->rolle); ?></td>
+                                            <?php if($value->rolle=="Professor"): ?>
+                                                <td class="text-center"><a
+                                                class="btn btn-primary btn-md col-md-11 col-md-offset-2 col-xs-11 col-xs-offset-1"
+                                                href="<?php echo e(url('/Professor')); ?>/<?php echo e($value->id); ?>" role="button">ProfMode</a></td>
+                                                <td class="text-center"><a
+                                                class="btn btn-primary btn-md col-md-11 col-md-offset-1 col-xs-11 col-xs-offset-3"
+                                                href="<?php echo e(url('/abgabe')); ?>" role="button">Abgabenübersicht</a></td>
+                                                <?php endif; ?>
+                                            <?php if($value->rolle=="Tutor"): ?>
+                                                <td class="text-center"><a
+                                                            class="btn btn-primary btn-md col-md-11 col-md-offset-1 col-xs-11 col-xs-offset-3"
+                                                            href="<?php echo e(url('/abgabe')); ?>" role="button">Abgabenübersicht</a></td>
+                                                <td></td>
+                                            <?php endif; ?>
+                                            <?php if($value->rolle=="Student"): ?>
+                                                <td class="text-center"><a
+                                                class="btn btn-primary btn-md col-md-11 col-md-offset-2 col-xs-11 col-xs-offset-1"
+                                                href="<?php echo e(url('/aufgabe_example')); ?>" role="button">Aufgabenstatus</a>
+                                                </td>
+                                                <td></td>
+                                            <?php endif; ?>
                                         </tr>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
-                                        
-                                            
-                                            
-                                            
-                                                        
-                                                        
-                                            
-                                            
-                                        
-                                        
-                                            
-                                            
-                                            
-                                                        
-                                                        
-                                            
-                                                        
-                                                        
-                                        
-
                                         </tbody>
                                     </table>
                                 </div>
@@ -78,66 +75,21 @@
                                         </tr>
                                         </thead>
                                         <tbody>
+                                        <?php if(Session::has('message')): ?>
+                                            <div class="alert alert-info"><?php echo e(Session::get('message')); ?></div>
+                                        <?php endif; ?>
+                                        
+                                        <?php $__currentLoopData = $alle; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key2 => $value2): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+                                            <?php if($value2 != $value): ?>
                                         <tr>
-                                            <td>WAST1</td>
-                                            <td class="text-center">
-                                                <button type="button" class="btn btn-primary btn-md col-md-offset-3">eintragen
-                                                </button>
-                                            </td>
-                                        <tr>
-                                            <td>WAST2</td>
-                                            <td class="text-center">
-                                                <button type="button" class="btn btn-primary btn-md col-md-offset-3">eintragen
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>SOTE 1</td>
-                                            <td class="text-center">
-                                                <button type="button" class="btn btn-primary btn-md col-md-offset-3">eintragen
-                                                </button>
-                                            </td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>SOTE 2</td>
-                                            <td class="text-center">
-                                                <button type="button" class="btn btn-primary btn-md col-md-offset-3">eintragen
-                                                </button>
-                                            </td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>WEBTECH</td>
-                                            <td class="text-center">
-                                                <button type="button" class="btn btn-primary btn-md col-md-offset-3">eintragen
-                                                </button>
-                                            </td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>MAWI 1</td>
-                                            <td class="text-center">
-                                                <button type="button" class="btn btn-primary btn-md col-md-offset-3">eintragen
-                                                </button>
-                                            </td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>SYAN</td>
-                                            <td class="text-center">
-                                                <button type="button" class="btn btn-primary btn-md col-md-offset-3">eintragen
-                                                </button>
-                                            </td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>WAST1</td>
+                                            <td><?php echo e($value2->kurs); ?></td>
                                             <td class="text-center">
                                                 <button type="button" class="btn btn-primary btn-md col-md-offset-3">eintragen
                                                 </button>
                                             </td>
                                         </tr>
+                                        <?php endif; ?>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
 
                                         </tbody>
                                     </table>
