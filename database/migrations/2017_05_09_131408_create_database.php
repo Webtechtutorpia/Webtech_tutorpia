@@ -37,11 +37,19 @@ class CreateDatabase extends Migration
         Schema::create('kurs', function (Blueprint $table){
             $table->increments('id');
             $table->string('bezeichnung');
-            $table->string('rolle');
             $table->Integer('geleitet_von')->unsigned();
             //Constraints
             $table->foreign('geleitet_von')->references('id')->on('users');
         });
+        Schema::create('belegung', function (Blueprint $table){
+            $table->increments('id');
+            $table->Integer('user')->unsigned();
+            $table->Integer('kurs')->unsigned();;
+            //Constraints
+            $table->foreign('user')->references('id')->on('users');
+            $table->foreign('kurs')->references('id')->on('kurs');
+        });
+
 //        //Erzeuge Aufgabentabelle
         Schema::create('aufgabe', function (Blueprint $table){
             $table->increments('id');
@@ -97,6 +105,7 @@ class CreateDatabase extends Migration
         Schema::dropIfExists('password_resets');
         Schema::dropIfExists('kurs');
         Schema::dropIfExists('users');
+        Schema::dropIfExists('belegung');
         Schema::dropIfExists('aufgabe');
         Schema::dropIfExists('abgabe');
         Schema::dropIfExists('activity');

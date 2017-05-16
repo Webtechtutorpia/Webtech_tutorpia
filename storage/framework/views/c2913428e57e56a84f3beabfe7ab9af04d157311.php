@@ -26,33 +26,40 @@
                                         </tr>
                                         </thead>
                                         <tbody>
+                                        <?php if(Session::has('message')): ?>
+                                            <div class="alert alert-info"><?php echo e(Session::get('message')); ?></div>
+                                        <?php endif; ?>
+                                        
+                                        <?php $__currentLoopData = $myinputs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
                                         <tr>
-                                            <td>ALDA</td>
-                                            <td>Tutor</td>
+                                            <td><?php echo e($value->kurs); ?></td>
+                                            <td><?php echo e(Auth::user()->rolle); ?></td>
                                             <td class="text-center"><a
                                                         class="btn btn-primary btn-md col-md-11 col-md-offset-2 col-xs-11 col-xs-offset-1"
                                                         href="<?php echo e(url('/abgabe')); ?>" role="button">Abgabenübersicht</a></td>
                                             <td></td>
                                         </tr>
-                                        <tr>
-                                            <td>DBIS</td>
-                                            <td>Student</td>
-                                            <td class="text-center"><a
-                                                        class="btn btn-primary btn-md col-md-11 col-md-offset-2 col-xs-11 col-xs-offset-1"
-                                                        href="<?php echo e(url('/aufgabe_example')); ?>" role="button">Aufgabenstatus</a>
-                                            </td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>BESY</td>
-                                            <td>Professor</td>
-                                            <td class="text-center"><a
-                                                        class="btn btn-primary btn-md col-md-11 col-md-offset-2 col-xs-11 col-xs-offset-1"
-                                                        href="<?php echo e(url('/Professor')); ?>/2" role="button">ProfMode</a></td>
-                                            <td class="text-center"><a
-                                                        class="btn btn-primary btn-md col-md-11 col-md-offset-1 col-xs-11 col-xs-offset-3"
-                                                        href="<?php echo e(url('/abgabe')); ?>" role="button">Abgabenübersicht</a></td>
-                                        </tr>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
+                                        
+                                            
+                                            
+                                            
+                                                        
+                                                        
+                                            
+                                            
+                                        
+                                        
+                                            
+                                            
+                                            
+                                                        
+                                                        
+                                            
+                                                        
+                                                        
+                                        
+
                                         </tbody>
                                     </table>
                                 </div>

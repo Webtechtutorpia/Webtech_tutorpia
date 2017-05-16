@@ -13,12 +13,10 @@ class Kursseeder extends Seeder
     {
         DB::table('kurs')->insert([
         'bezeichnung'=>'ALDA',
-        'rolle'=>'Tutor',
         'geleitet_von' =>4
     ]);
         DB::table('kurs')->insert([
             'bezeichnung'=>'BESY',
-            'rolle'=>'Professor',
             'geleitet_von' =>4
         ]);
 

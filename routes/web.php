@@ -34,9 +34,9 @@ Route::get('overview','OverviewController@showfirstActifty');
 Route::get('abgabe', function () {
     return view('Tutor.abgabe');
 });
-Route::get('kurse', function () {
-    return view('Tutor.kurse');
-});
+//Route::get('kurse', function () {
+//    return view('Tutor.kurse');
+//});
 Route::get('datenschutz', function () {
     return view('datenschutz');
 });
@@ -97,6 +97,7 @@ Route::get('images/{filename}', function ($filename)
 
 
 Route::resource('Professor','AufgabeController');
+Route::resource('Tutor','BelegungController');
 
 Route::resource('myinputs', 'MyinputController');
 

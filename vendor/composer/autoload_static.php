@@ -279,6 +279,7 @@ class ComposerStaticInit5392c372fbd4bb7aa8210c0b9cdbad43
         'Abgabeseeder' => __DIR__ . '/../..' . '/database/seeds/Abgabeseeder.php',
         'Activityseeder' => __DIR__ . '/../..' . '/database/seeds/Activityseeder.php',
         'AufgabeSeeder' => __DIR__ . '/../..' . '/database/seeds/AufgabeSeeder.php',
+        'BelegungSeeder' => __DIR__ . '/../..' . '/database/seeds/BelegungSeeder.php',
         'CreateDatabase' => __DIR__ . '/../..' . '/database/migrations/2017_05_09_131408_create_database.php',
         'CreateMyinputsTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_09_163458_create_myinputs_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',

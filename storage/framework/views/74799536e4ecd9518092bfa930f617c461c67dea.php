@@ -58,7 +58,7 @@
 
                         <ul class="nav navbar-nav">
                             <li role="presentation" name="Übersicht"><a href="/overview">Übersicht</a></li>
-                            <li role="presentation" name="Kurse"><a href="/kurse">Kurse</a></li>
+                            <li role="presentation" name="Kurse"><a href="/Tutor">Kurse</a></li>
                             <li role="presentation" name="Abgaben"><a href="/abgabe">Abgaben</a></li>
                             <?php if(Auth::user()->rolle=="Professor"): ?>
                                 <li role="presentation"name="Profmodus"><a href="/Professor">Professorenmodus</a></li>

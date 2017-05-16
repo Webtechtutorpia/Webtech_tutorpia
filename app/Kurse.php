@@ -9,7 +9,7 @@ class Kurse extends Model
 
     protected $table = 'kurs';
     protected $fillable = [
-        'bezeichnung','rolle','geleitet_von'
+        'bezeichnung','geleitet_von'
     ];
 
 

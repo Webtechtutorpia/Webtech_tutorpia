@@ -28,33 +28,40 @@
                                         </tr>
                                         </thead>
                                         <tbody>
+                                        @if (Session::has('message'))
+                                            <div class="alert alert-info">{{ Session::get('message') }}</div>
+                                        @endif
+                                        {{--je nach Datenbankeintrag Element anzeigen--}}
+                                        @foreach($myinputs as $key => $value)
                                         <tr>
-                                            <td>ALDA</td>
-                                            <td>Tutor</td>
+                                            <td>{{$value->kurs}}</td>
+                                            <td>{{Auth::user()->rolle}}</td>
                                             <td class="text-center"><a
                                                         class="btn btn-primary btn-md col-md-11 col-md-offset-2 col-xs-11 col-xs-offset-1"
                                                         href="{{ url('/abgabe') }}" role="button">Abgabenübersicht</a></td>
                                             <td></td>
                                         </tr>
-                                        <tr>
-                                            <td>DBIS</td>
-                                            <td>Student</td>
-                                            <td class="text-center"><a
-                                                        class="btn btn-primary btn-md col-md-11 col-md-offset-2 col-xs-11 col-xs-offset-1"
-                                                        href="{{ url('/aufgabe_example') }}" role="button">Aufgabenstatus</a>
-                                            </td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>BESY</td>
-                                            <td>Professor</td>
-                                            <td class="text-center"><a
-                                                        class="btn btn-primary btn-md col-md-11 col-md-offset-2 col-xs-11 col-xs-offset-1"
-                                                        href="{{ url('/Professor') }}/2" role="button">ProfMode</a></td>
-                                            <td class="text-center"><a
-                                                        class="btn btn-primary btn-md col-md-11 col-md-offset-1 col-xs-11 col-xs-offset-3"
-                                                        href="{{ url('/abgabe') }}" role="button">Abgabenübersicht</a></td>
-                                        </tr>
+                                        @endforeach
+                                        {{--<tr>--}}
+                                            {{--<td>DBIS</td>--}}
+                                            {{--<td>Student</td>--}}
+                                            {{--<td class="text-center"><a--}}
+                                                        {{--class="btn btn-primary btn-md col-md-11 col-md-offset-2 col-xs-11 col-xs-offset-1"--}}
+                                                        {{--href="{{ url('/aufgabe_example') }}" role="button">Aufgabenstatus</a>--}}
+                                            {{--</td>--}}
+                                            {{--<td></td>--}}
+                                        {{--</tr>--}}
+                                        {{--<tr>--}}
+                                            {{--<td>BESY</td>--}}
+                                            {{--<td>Professor</td>--}}
+                                            {{--<td class="text-center"><a--}}
+                                                        {{--class="btn btn-primary btn-md col-md-11 col-md-offset-2 col-xs-11 col-xs-offset-1"--}}
+                                                        {{--href="{{ url('/Professor') }}/2" role="button">ProfMode</a></td>--}}
+                                            {{--<td class="text-center"><a--}}
+                                                        {{--class="btn btn-primary btn-md col-md-11 col-md-offset-1 col-xs-11 col-xs-offset-3"--}}
+                                                        {{--href="{{ url('/abgabe') }}" role="button">Abgabenübersicht</a></td>--}}
+                                        {{--</tr>--}}
+
                                         </tbody>
                                     </table>
                                 </div>
