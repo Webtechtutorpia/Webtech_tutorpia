@@ -30,15 +30,23 @@
                                         <div class="alert alert-info">{{ Session::get('message') }}</div>
                                     @endif
                                     {{--je nach Datenbankeintrag Element anzeigen--}}
+
                                     @foreach($myinputs as $key => $value)
                                     <tr>
                                         <td class="col-md-3 col-xs-3"> <p>{{$value->created_at}}</p></td>
-                                        <td class="col-md-9 col-xs-9"><p>Tutor hat deine {{$value->aufgabenname}} im Kurs ALDA
+                                        @if($value->zuordnung_aufgabe != NULL)
+                                            <td class="col-md-9 col-xs-9"><p>{{$value->bearbeitet_von}} hat {{$value->aufgabenname}} mit Abgabe am {{$value->abgabedatum}} erstellt.</p>
+                                            </td>
+
+                                        @else
+                                        <td class="col-md-9 col-xs-9"><p>{{$value->bearbeitet_von}} hat deine {{$value->aufgabenname}} im Kurs ALDA
                                                 abgenommen.</p>
                                         </td>
+                                        @endif
                                     </tr>
 
 @endforeach
+
                                 </table>
                             </div>
                         </div>

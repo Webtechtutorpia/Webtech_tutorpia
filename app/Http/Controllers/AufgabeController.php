@@ -76,7 +76,7 @@ class AufgabeController extends Controller
 
 
         // store
-        Aufgabe::create([
+        $id=Aufgabe::create([
             'aufgabenname'      =>  $request->aufgabenname,
             'abgabedatum'         => $request->abgabedatum,
             'aufgabenbeschreibung' =>  $request->aufgabenbeschreibung,
@@ -86,6 +86,8 @@ class AufgabeController extends Controller
         Activity::create([
             'abgabedatum'         => $request->abgabedatum,
             'aufgabenname'      =>  $request->aufgabenname,
+            'zuordnung_aufgabe' => $id->id,
+            'bearbeitet_von' => Auth::user()->name,
         ]);
         return back();
 

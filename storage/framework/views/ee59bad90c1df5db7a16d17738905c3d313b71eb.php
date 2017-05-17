@@ -28,15 +28,23 @@
                                         <div class="alert alert-info"><?php echo e(Session::get('message')); ?></div>
                                     <?php endif; ?>
                                     
+                                    
                                     <?php $__currentLoopData = $myinputs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
                                     <tr>
                                         <td class="col-md-3 col-xs-3"> <p><?php echo e($value->created_at); ?></p></td>
-                                        <td class="col-md-9 col-xs-9"><p>Tutor hat deine <?php echo e($value->aufgabenname); ?> im Kurs ALDA
+                                        <?php if($value->zuordnung_aufgabe != NULL): ?>
+                                            <td class="col-md-9 col-xs-9"><p><?php echo e($value->bearbeitet_von); ?> hat <?php echo e($value->aufgabenname); ?> mit Abgabe am <?php echo e($value->abgabedatum); ?> erstellt.</p>
+                                            </td>
+
+                                        <?php else: ?>
+                                        <td class="col-md-9 col-xs-9"><p><?php echo e($value->bearbeitet_von); ?> hat deine <?php echo e($value->aufgabenname); ?> im Kurs ALDA
                                                 abgenommen.</p>
                                         </td>
+                                        <?php endif; ?>
                                     </tr>
 
 <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
+
                                 </table>
                             </div>
                         </div>

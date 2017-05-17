@@ -83,8 +83,9 @@ class CreateDatabase extends Migration
             $table->increments('id');
             $table->String('abgabedatum');
             $table->string('aufgabenname');
-            $table->Integer('zuordnung_aufgabe')->unsigned()-> nullable();;
-            $table->Integer('zuordnung_abgabe')->unsigned()-> nullable();;
+            $table->string('bearbeitet_von');
+            $table->Integer('zuordnung_aufgabe')->unsigned()-> nullable();
+            $table->Integer('zuordnung_abgabe')->unsigned()-> nullable();
             $table->timestamps();
             //Constraints
             $table->foreign('zuordnung_aufgabe')->references('id')->on('aufgabe')->nullable();

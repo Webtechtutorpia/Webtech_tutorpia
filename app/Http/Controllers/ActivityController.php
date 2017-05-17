@@ -15,9 +15,10 @@ class ActivityController extends Controller
     public function index()
     {
         // get all the myinputs
-        $aufgabe = Activity::all();
+        $activity = Activity::all();
+
         // load the view and pass the myinputs
-        return View::make('Activity.overview')->with('myinputs', $aufgabe);
+        return View::make('Activity.overview')->with('myinputs', $activity);
 
     }
 }

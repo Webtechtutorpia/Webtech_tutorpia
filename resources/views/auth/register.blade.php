@@ -7,7 +7,6 @@
             <div class="panel panel-success">
                 <div class="panel-heading">Registrierung</div>
                 <div class="panel-body">
-                    {{--<form action="/overview">--}}
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                         {{ csrf_field() }}
 
