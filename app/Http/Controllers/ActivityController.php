@@ -4,6 +4,7 @@ namespace Tutorpia\Http\Controllers;
 
 
 use Tutorpia\Activity;
+use Tutorpia\Aufgabe;
 use Tutorpia\Belegung;
 use View;
 use Illuminate\Http\Request;

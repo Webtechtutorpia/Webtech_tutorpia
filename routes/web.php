@@ -46,9 +46,9 @@ Route::get('impressum', function () {
 
 
 
-Route::get('aufgabe_example', function () {
-    return view('Tutor.Aufgabenansicht_example');
-});
+//Route::get('aufgabe_example', function () {
+//    return view('Tutor.Aufgabenansicht_example');
+//});
 
 Route::get('Jannis', function(){
 
@@ -98,8 +98,8 @@ Route::get('images/{filename}', function ($filename)
 
 Route::resource('Professor','AufgabeController');
 Route::resource('Activity','ActivityController');
-Route::resource('Tutor','BelegungController');
-
+Route::resource('Kurse','BelegungController');
+Route::resource('Tutor','AbgabeController');
 Route::resource('myinputs', 'MyinputController');
 
 

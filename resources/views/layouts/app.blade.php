@@ -57,12 +57,12 @@
 
                         <ul class="nav navbar-nav">
                             <li role="presentation" name="Übersicht"><a href="/Activity">Übersicht</a></li>
-                            <li role="presentation" name="Kurse"><a href="/Tutor">Kurse</a></li>
+                            <li role="presentation" name="Kurse"><a href="/Kurse">Kurse</a></li>
                             <li role="presentation" name="Abgaben"><a href="/abgabe">Abgaben</a></li>
                             @if (Auth::user()->rolle=="Professor")
                                 <li role="presentation"name="Profmodus"><a href="/Professor">Professorenmodus</a></li>
                             @else
-                                <li role="presentation" name="Aufgaben"><a href="/aufgabe_example">Aufgaben</a></li>
+                                <li role="presentation" name="Aufgaben"><a href="/Tutor">Aufgaben</a></li>
                             @endif
                         </ul>
 

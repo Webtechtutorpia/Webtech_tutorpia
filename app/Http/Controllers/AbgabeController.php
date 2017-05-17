@@ -2,7 +2,12 @@
 
 namespace Tutorpia\Http\Controllers;
 
+use Tutorpia\Abgabe;
+use Tutorpia\Aufgabe;
+use View;
 use Illuminate\Http\Request;
+use Tutorpia\Http\Requests;
+use Auth;
 use Tutorpia\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 
@@ -36,6 +41,16 @@ class AbgabeController extends Controller
 
 
 
+
+    }
+
+    public function index()
+    {
+        // get all the myinputs
+        $abgabe = Aufgabe::all();
+
+        // load the view and pass the myinputs
+        return View::make('Tutor.Aufgabenansicht_example')->with('myinputs', $abgabe);
 
     }
 

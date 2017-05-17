@@ -11,9 +11,10 @@
         <div class="row">
 
             <h2>Studentenmodus: DBIS</h2>
-        </div>
+
         <div class="col-md-12 col-xs-12 ">
             <h4> Übungsblatt 1</h4>
+
             <div class="panel panel-success aufgabe ">
                 <div class="panel-heading" onclick="Bodyhandler()"> Aufgabe 1
                     <div style="display: inline; float: right" class="glyphicon glyphicon-ok"></div>
@@ -21,7 +22,7 @@
                 <div class="panel-body">
                     <div class=" panel-group" style="padding-bottom: 1%">
                         <div class="col-md-3 col-xs-6 size"> Aufgabenstellung:</div>
-                        <div class="col-md-9 col-xs-12 size"> Aufgaben 1</div>
+                        <div class="col-md-9 col-xs-12 size">Aufgabe 1</div>
                     </div>
 
                     <div class="panel group" style="padding-bottom: 1%">
@@ -56,6 +57,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
         <div class="col-md-12 col-xs-12 ">
             <h4> Übungsblatt 2</h4>
@@ -86,19 +88,24 @@
                 </div>
             </div>
         </div>
+            @if (Session::has('message'))
+                <div class="alert alert-info">{{ Session::get('message') }}</div>
+            @endif
+            {{--je nach Datenbankeintrag Element anzeigen--}}
+            @foreach($myinputs as $key => $value)
         <div class="col-md-12 col-xs-12">
             <div class="panel panel-warning aufgabe ">
-                <div class="panel-heading" onclick="Bodyhandler()"> Aufgabe 4
+                <div class="panel-heading" onclick="Bodyhandler()"> {{$value->aufgabenname}}
                     <div style="display: inline; float: right" class="glyphicon glyphicon-minus"></div>
                 </div>
                 <div class="panel-body">
                     <div class=" panel-group" style="padding-bottom: 1%;">
                         <div class="col-md-3 col-xs-6 size"> Aufgabenstellung:</div>
-                        <div class="col-md-9 col-xs-12 size"> Aufgabe 3</div>
+                        <div class="col-md-9 col-xs-12 size"> {{$value->aufgabenname}}</div>
                     </div>
                     <div class=" panel-group" style="padding-bottom: 1%;">
                         <div class="col-md-3  col-xs-6 size">Abgabe bis :</div>
-                        <div class="col-md-3  col-xs-6 size"> 30.05.2017 19:55</div>
+                        <div class="col-md-3  col-xs-6 size"> {{$value->abgabedatum}}</div>
                         <div class="col-md-3  col-xs-6 size">Aufgabe hochladen:</div>
                         <div class="col-md-3  col-xs-4 size">
                             <button class="btn-primary btn" style="padding: 0px 12px;" type="button">Upload</button>
@@ -115,6 +122,8 @@
                 </div>
             </div>
         </div>
+            @endforeach
+
         <div class="col-md-12 col-xs-12">
             <h4> Übungsblatt Nr 4</h4>
             <div class="panel panel-danger aufgabe ">
@@ -152,46 +161,5 @@
     </div>
 
 
-    </table>
-    </div>
-    </div>
-    </div>
-    </div>
 
-    </div>
-    </div>
 @endsection
-{{--<div class="table-responsive">--}}
-{{--<table>--}}
-{{--<Tr>--}}
-{{--<td class="col-md-1 col-xs-2 size"> Aufgabenstellung:</td>--}}
-{{--<td class="col-md-4 col-xs-10 size"> Übungblatt Nr 1 Aufgaben 1 & 2</td>--}}
-{{--</Tr>--}}
-{{--<Tr>--}}
-{{--<td class="col-md-1 col-xs-2 size">Upload am:</td>--}}
-{{--<td class="col-md-2 col-xs-10 size"><span--}}
-{{--class="label label-default size"> 21.04.2017 18:30 </span></td>--}}
-{{--<td class="col-md-1 size"> korregiert am:</td>--}}
-{{--<td class="col-md-1 size"><span--}}
-{{--class="label label-default size"> 22.04.2017  15:29 </span></td>--}}
-{{--</Tr>--}}
-{{--<Tr>--}}
-{{--<td class="col-md-1 size">abgenommen durch:</td>--}}
-{{--<td class="col-md-2 size"><span class="label label-default size"> Tutor1 </span>--}}
-{{--</td>--}}
-{{--<td class="col-md-1 size"> korregierte Version:</td>--}}
-{{--<td class="col-md-1 size"> <div class="glyphicon glyphicon-envelope text-center" style="display: inline"></div> </td>--}}
-{{--<td class="col-md-1 size">--}}
-{{--<button class="btn-primary btn " type="button">Download</button>--}}
-{{--</td>--}}
-{{--</Tr>--}}
-{{--<Tr>--}}
-{{--<td class="col-md-1 size">Kommentar:</td>--}}
-{{--<td class="col-md-4 size"> <div class="glyphicon glyphicon-envelope text-center" style="display: inline"></div> </td>--}}
-{{--<td class="col-md-4 size"><span class="label label-default size"> nichts zu beanstanden. sehr gut weiter so! </span>--}}
-{{--</td>--}}
-{{--<td class="col-md-1 size"> Tutoren kontaktieren:</td>--}}
-{{--<td class="col-md-1 size"><span> <a href class="glyphicon glyphicon-envelope"></a>   </span>--}}
-{{--</td>--}}
-{{--</Tr>--}}
-{{--</table>--}}

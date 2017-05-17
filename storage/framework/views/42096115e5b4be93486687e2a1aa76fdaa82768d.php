@@ -9,9 +9,10 @@
         <div class="row">
 
             <h2>Studentenmodus: DBIS</h2>
-        </div>
+
         <div class="col-md-12 col-xs-12 ">
             <h4> Übungsblatt 1</h4>
+
             <div class="panel panel-success aufgabe ">
                 <div class="panel-heading" onclick="Bodyhandler()"> Aufgabe 1
                     <div style="display: inline; float: right" class="glyphicon glyphicon-ok"></div>
@@ -19,7 +20,7 @@
                 <div class="panel-body">
                     <div class=" panel-group" style="padding-bottom: 1%">
                         <div class="col-md-3 col-xs-6 size"> Aufgabenstellung:</div>
-                        <div class="col-md-9 col-xs-12 size"> Aufgaben 1</div>
+                        <div class="col-md-9 col-xs-12 size">Aufgabe 1</div>
                     </div>
 
                     <div class="panel group" style="padding-bottom: 1%">
@@ -54,6 +55,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
         <div class="col-md-12 col-xs-12 ">
             <h4> Übungsblatt 2</h4>
@@ -84,19 +86,25 @@
                 </div>
             </div>
         </div>
+            <?php if(Session::has('message')): ?>
+                <div class="alert alert-info"><?php echo e(Session::get('message')); ?></div>
+            <?php endif; ?>
+            
+            <?php $__currentLoopData = $myinputs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
         <div class="col-md-12 col-xs-12">
             <div class="panel panel-warning aufgabe ">
-                <div class="panel-heading" onclick="Bodyhandler()"> Aufgabe 4
+                <div class="panel-heading" onclick="Bodyhandler()"> <?php echo e($value->aufgabenname); ?>
+
                     <div style="display: inline; float: right" class="glyphicon glyphicon-minus"></div>
                 </div>
                 <div class="panel-body">
                     <div class=" panel-group" style="padding-bottom: 1%;">
                         <div class="col-md-3 col-xs-6 size"> Aufgabenstellung:</div>
-                        <div class="col-md-9 col-xs-12 size"> Aufgabe 3</div>
+                        <div class="col-md-9 col-xs-12 size"> <?php echo e($value->aufgabenname); ?></div>
                     </div>
                     <div class=" panel-group" style="padding-bottom: 1%;">
                         <div class="col-md-3  col-xs-6 size">Abgabe bis :</div>
-                        <div class="col-md-3  col-xs-6 size"> 30.05.2017 19:55</div>
+                        <div class="col-md-3  col-xs-6 size"> <?php echo e($value->abgabedatum); ?></div>
                         <div class="col-md-3  col-xs-6 size">Aufgabe hochladen:</div>
                         <div class="col-md-3  col-xs-4 size">
                             <button class="btn-primary btn" style="padding: 0px 12px;" type="button">Upload</button>
@@ -113,6 +121,8 @@
                 </div>
             </div>
         </div>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
+
         <div class="col-md-12 col-xs-12">
             <h4> Übungsblatt Nr 4</h4>
             <div class="panel panel-danger aufgabe ">
@@ -150,47 +160,7 @@
     </div>
 
 
-    </table>
-    </div>
-    </div>
-    </div>
-    </div>
 
-    </div>
-    </div>
 <?php $__env->stopSection(); ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

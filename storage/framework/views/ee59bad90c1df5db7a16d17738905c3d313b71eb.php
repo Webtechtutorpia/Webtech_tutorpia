@@ -28,7 +28,7 @@
                                         <div class="alert alert-info"><?php echo e(Session::get('message')); ?></div>
                                     <?php endif; ?>
                                     
-                                    
+
                                     <?php $__currentLoopData = $myinputs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
                                     <tr>
                                         <td class="col-md-3 col-xs-3"> <p><?php echo e($value->created_at); ?></p></td>

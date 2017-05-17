@@ -16,7 +16,7 @@ class BelegungController extends Controller
         $kurse = Belegung::where('user','=',Auth::user()->id)->get();
         $alle=Belegung::all();
         // load the view and pass the myinputs
-        return View::make('Tutor.kurse')->with('myinputs', $kurse)->with('alle',$alle);
+        return View::make('Kurse.kurse')->with('myinputs', $kurse)->with('alle',$alle);
 
     }
 
