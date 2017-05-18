@@ -65,6 +65,7 @@ class AufgabeController extends Controller
 //    }
 //
 
+
     public function store(Request $request)
     {
         // validate
@@ -80,6 +81,7 @@ class AufgabeController extends Controller
             'aufgabenname'      =>  $request->aufgabenname,
             'abgabedatum'         => $request->abgabedatum,
             'aufgabenbeschreibung' =>  $request->aufgabenbeschreibung,
+            'kurs'=> session()->get('global_variable'),
             'erstellt_von' => Auth::user()->id,
         ]);
 
@@ -89,6 +91,7 @@ class AufgabeController extends Controller
             'zuordnung_aufgabe' => $id->id,
             'bearbeitet_von' => Auth::user()->name,
         ]);
+        $aufgabe = Aufgabe::all();
         return back();
 
     }
@@ -117,6 +120,7 @@ class AufgabeController extends Controller
     }
     public function show($kurs)
     {
+        session()->put('global_variable', $kurs);
         // get the myinput
         $aufgabe = Aufgabe::where('kurs','=',$kurs)->get();
 
