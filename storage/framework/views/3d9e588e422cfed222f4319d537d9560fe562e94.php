@@ -14,7 +14,7 @@
     <link href="css/bootstrap-theme.min.css" rel="stylesheet">
     <link href="<?php echo e(asset('css/main.css')); ?>" rel="stylesheet" type="text/css">
     
-    <script type="text/javascript" src="<?php echo e(URL::asset('js/jquery.js')); ?>"></script>
+    
     <script type="text/javascript" src="<?php echo e(URL::asset('js/layout.js')); ?>"></script>
     <title><?php echo e(config('app.name', 'Tutorpia')); ?></title>
 
@@ -57,13 +57,13 @@
                     <?php if(Auth::check()): ?>
 
                         <ul class="nav navbar-nav">
-                            <li role="presentation" name="Übersicht"><a href="/overview">Übersicht</a></li>
-                            <li role="presentation" name="Kurse"><a href="/kurse">Kurse</a></li>
+                            <li role="presentation" name="Übersicht"><a href="/Activity">Übersicht</a></li>
+                            <li role="presentation" name="Kurse"><a href="/Kurse">Kurse</a></li>
                             <li role="presentation" name="Abgaben"><a href="/abgabe">Abgaben</a></li>
                             <?php if(Auth::user()->rolle=="Professor"): ?>
                                 <li role="presentation"name="Profmodus"><a href="/Professor">Professorenmodus</a></li>
                             <?php else: ?>
-                                <li role="presentation" name="Aufgaben"><a href="/aufgabe_example">Aufgaben</a></li>
+                                <li role="presentation" name="Aufgaben"><a href="/Tutor">Aufgaben</a></li>
                             <?php endif; ?>
                         </ul>
 
