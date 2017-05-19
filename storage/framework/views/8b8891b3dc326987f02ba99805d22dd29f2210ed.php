@@ -20,14 +20,14 @@
 
 
             <div class="col-md-11 neueAufgabe" style="display:none">
-                <div class="panel panel-default ">
+                <div class="panel panel-success ">
                     <div class="panel-heading" onclick="Bodyhandler(this)">
 
                         <b>neue Aufgabe</b>
                         <div class="pull-right">
-                                <button type="submit" onclick="verstecken(this)">
-                                    <i class="middlesize-right glyphicon glyphicon-trash"></i>
-                                </button>
+
+                                    <i onclick="verstecken(this)" class="middlesize-right glyphicon glyphicon-trash"></i>
+
 
 
                         </div>
@@ -98,7 +98,7 @@
 
                                         <?php echo e(method_field('DELETE')); ?>
 
-                                        <button type="submit">
+                                       
                                             <i class="middlesize-right glyphicon glyphicon-trash"></i>
                                         </button>
                                     </form>
