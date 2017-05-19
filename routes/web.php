@@ -99,6 +99,7 @@ Route::get('images/{filename}', function ($filename)
 Route::resource('Professor','AufgabeController');
 Route::resource('Activity','ActivityController');
 Route::resource('Kurse','BelegungController');
+Route::resource('Aufgabenansicht','AufgabenansichtController');
 Route::resource('Tutor','AbgabeController');
 Route::resource('myinputs', 'MyinputController');
 

@@ -63,7 +63,7 @@
                             <?php if(Auth::user()->rolle=="Professor"): ?>
                                 <li role="presentation"name="Profmodus"><a href="/Professor">Professorenmodus</a></li>
                             <?php else: ?>
-                                <li role="presentation" name="Aufgaben"><a href="/Tutor">Aufgaben</a></li>
+                                <li role="presentation" name="Aufgaben"><a href="/Aufgabenansicht">Aufgaben</a></li>
                             <?php endif; ?>
                         </ul>
 

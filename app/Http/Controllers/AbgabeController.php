@@ -44,15 +44,7 @@ class AbgabeController extends Controller
 
     }
 
-    public function index()
-    {
-        // get all the myinputs
-        $abgabe = Aufgabe::all();
 
-        // load the view and pass the myinputs
-        return View::make('Tutor.Aufgabenansicht_example')->with('myinputs', $abgabe);
-
-    }
 
 
 }
