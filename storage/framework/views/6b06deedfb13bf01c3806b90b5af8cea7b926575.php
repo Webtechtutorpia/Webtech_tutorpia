@@ -52,15 +52,15 @@
                     <div class="alert alert-info"><?php echo e(Session::get('message')); ?></div>
                 <?php endif; ?>
                 
-                <?php ($name=""); ?>
+                <?php ($id=0); ?>
                 <?php $__currentLoopData = $ergebnismenge; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key2 => $zeile): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
-                    <?php if($name ==""): ?>
+                    <?php if($id ==0): ?>
                         <tr>
                             <td><?php echo e($zeile->name); ?></td>
 
                             <?php endif; ?>
 
-                    <?php if($zeile->name!=$name && $name!=""): ?>
+                    <?php if($zeile->id!=$id && $id!=""): ?>
                         </tr>
                         <tr>
                                 <td><?php echo e($zeile->name); ?></td>
@@ -74,7 +74,7 @@
                         <?php else: ?>
                         <td><?php echo e($zeile->zustand); ?></td>
                     <?php endif; ?>
-                <?php ($name=$zeile->name); ?>
+                <?php ($id=$zeile->id); ?>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
                         </tr>
 

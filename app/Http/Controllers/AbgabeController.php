@@ -54,7 +54,7 @@ class AbgabeController extends Controller
 
 
         // load the view and pass the myinputs
-        return View::make('Tutor.abgabe')->with('myinputs', $aufgabe)->with('name',$alle);
+        return View::make('Tutor.abgabe')->with('myinputs', $aufgabe)->with('ergebnismenge',$alle);
 
     }
     public function show($kurs)
@@ -77,6 +77,7 @@ class AbgabeController extends Controller
             ->select('*')
             ->where('aufgabe.kurs',session()->get('global_variable'))
             ->orderBy('users.name', 'asc')
+            ->orderBy('users.id','asc')
             ->get();
         // show the view and pass the myinput to it
         return View::make('Tutor.abgabe')->with('myinputs', $aufgabe)->with('ergebnismenge',$abgabe);

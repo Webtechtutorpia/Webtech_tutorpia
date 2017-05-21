@@ -54,15 +54,15 @@
                     <div class="alert alert-info">{{ Session::get('message') }}</div>
                 @endif
                 {{--je nach Datenbankeintrag Element anzeigen--}}
-                @php($name="")
+                @php($id=0)
                 @foreach($ergebnismenge as $key2 => $zeile )
-                    @if($name =="")
+                    @if($id ==0)
                         <tr>
                             <td>{{$zeile->name}}</td>
 
                             @endif
 
-                    @if($zeile->name!=$name && $name!="")
+                    @if($zeile->id!=$id && $id!="")
                         </tr>
                         <tr>
                                 <td>{{$zeile->name}}</td>
@@ -76,7 +76,7 @@
                         @else
                         <td>{{$zeile->zustand}}</td>
                     @endif
-                @php($name=$zeile->name)
+                @php($id=$zeile->id)
                 @endforeach
                         </tr>
 
