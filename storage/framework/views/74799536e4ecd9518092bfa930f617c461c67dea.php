@@ -59,11 +59,11 @@
                         <ul class="nav navbar-nav">
                             <li role="presentation" name="Übersicht"><a href="/Activity">Übersicht</a></li>
                             <li role="presentation" name="Kurse"><a href="/Kurse">Kurse</a></li>
-                            <li role="presentation" name="Abgaben"><a href="/abgabe">Abgaben</a></li>
+                            <li role="presentation" name="Abgaben"><a href="/Tutor">Abgaben</a></li>
                             <?php if(Auth::user()->rolle=="Professor"): ?>
                                 <li role="presentation"name="Profmodus"><a href="/Professor">Professorenmodus</a></li>
                             <?php else: ?>
-                                <li role="presentation" name="Aufgaben"><a href="/Tutor">Aufgaben</a></li>
+                                <li role="presentation" name="Aufgaben"><a href="/Aufgabenansicht">Aufgaben</a></li>
                             <?php endif; ?>
                         </ul>
 
@@ -125,7 +125,7 @@
 
     <div class="collapse navbar-collapse" id="app-navbar-collapse" onmouseover="hoverselectednavbar()">
         <ul id="navlist" class="navbar navbar-nav">
-            <li class="first foot" name="Datenschutz"><a href="<?php echo e(url('/datenschutz')); ?>">Datenschutz</a></li>
+            <li class="first foot" name="Datenschutz"><a href="/Datenschutz">Datenschutz</a></li>
             <li name="Impressum"><a href="<?php echo e(url('/impressum')); ?>">Impressum</a></li>
             <li name="Kontakt"><a href="<?php echo e(url('/contact')); ?>">Kontakt</a></li>
             <li> <div class="fb-follow" data-href="https://www.facebook.com/zuck" data-layout="standard" data-size="large" data-show-faces="false" style="float:right"></div></li>

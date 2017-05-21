@@ -33,7 +33,7 @@
                                     <tr>
                                         <td class="col-md-3 col-xs-3"> <p><?php echo e($value->created_at); ?></p></td>
                                         <?php if($value->zuordnung_aufgabe != NULL): ?>
-                                            <td class="col-md-9 col-xs-9"><p><?php echo e($value->bearbeitet_von); ?> hat <?php echo e($value->aufgabenname); ?> mit Abgabe am <?php echo e($value->abgabedatum); ?> erstellt.</p>
+                                            <td class="col-md-9 col-xs-9"><p><?php echo e($value->bearbeitet_von); ?> hat <?php echo e($value->aufgabenname); ?> am <?php echo e($value->abgabedatum); ?> erstellt.</p>
                                             </td>
 
                                         <?php else: ?>

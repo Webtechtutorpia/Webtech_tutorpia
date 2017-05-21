@@ -11,7 +11,7 @@ class Activityseeder extends Seeder
      */
     public function run()
     {
-        DB::table('Activity')->insert([
+        DB::table('activity')->insert([
             'abgabedatum' => '31.07.2017',
             'aufgabenname' => 'Aufgabe1',
             'bearbeitet_von'=>'TestProf',
@@ -20,7 +20,7 @@ class Activityseeder extends Seeder
 
         ]);
 
-        DB::table('Activity')->insert([
+        DB::table('activity')->insert([
             'abgabedatum' => '05.02.2017',
             'aufgabenname' => 'Aufgabe2',
             'bearbeitet_von'=>'TestTutor',

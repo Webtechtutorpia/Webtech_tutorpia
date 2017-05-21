@@ -47,6 +47,12 @@ class AufgabeSeeder extends Seeder
             'aufgabenbeschreibung'=>'Bitte bearbeiten sie AUfgabe 1 nochmal',
             'kurs' => 1
         ]);
+        DB::table('aufgabe')->insert([
+            'aufgabenname' => 'Aufgabe6',
+            'abgabedatum' => '17.06.2017',
+            'aufgabenbeschreibung'=>'Bitte bearbeiten sie AUfgabe 1 nochmal',
+            'kurs' => 2
+        ]);
 
     }
 }
