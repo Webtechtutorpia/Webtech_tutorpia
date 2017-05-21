@@ -35,64 +35,53 @@
                     </thead>
                 </table>
 
-                {{--<table class="table">--}}
-                {{--<thead>--}}
-                {{--<tr>--}}
-                {{--<th class="col-md-3 col-xs-3">Vorname</th>--}}
-                {{--<th class="col-md-3 col-xs-3">Nachname</th>--}}
-                {{--<th class="col-md-1 col-xs-1">Aufgabe1</th>--}}
-                {{--<th class="col-md-1 col-xs-3">Aufgabe2</th>--}}
-                {{--<th class="col-md-1 col-xs-3">Aufgabe3</th>--}}
-                {{--<th class="col-md-1 col-xs-3">Aufgabe4</th>--}}
-                {{--<th class="col-md-1 col-xs-3">Aufgabe5</th>--}}
-                {{--<th class="col-md-1 col-xs-3">Aufgabe6</th>--}}
+                <table class="table">
+                <thead>
+                <tr>
+                <th class="col-md-3 col-xs-3">Name</th>
+                    @if (Session::has('message'))
+                        <div class="alert alert-info">{{ Session::get('message') }}</div>
+                    @endif
+                    {{--je nach Datenbankeintrag Element anzeigen--}}
+                    @foreach($myinputs as $key => $value)
+                <th class="col-md-1 col-xs-1">{{$value->aufgabenname}}</th>
+                        @endforeach
 
-                {{--</tr>--}}
-                {{--</thead>--}}
-                {{--<tbody>--}}
-                {{--<tr>--}}
-                {{--<td>John</td>--}}
-                {{--<td>Doe</td>--}}
-                {{--<td class="text-center"><a href="{{ url('/aufgabe_example') }}" class="glyphicon glyphicon-minus btn-warning"></a></td>--}}
-                {{--<td class="text-center"><a href="{{ url('/aufgabe_example') }}" class="glyphicon glyphicon-remove btn-danger"></a></td>--}}
-                {{--<td class="text-center"><a href="{{ url('/aufgabe_example') }}" class="glyphicon glyphicon-ok btn-success"></a></td>--}}
-                {{--<td class="text-center"><a href="{{ url('/aufgabe_example') }}" class="glyphicon glyphicon-minus btn-warning"></a></td>--}}
-                {{--<td class="text-center"><a href="{{ url('/aufgabe_example') }}" class="glyphicon glyphicon-remove btn-danger"></a></td>--}}
-                {{--<td class="text-center"><a href="{{ url('/aufgabe_example') }}" class="glyphicon glyphicon-ok btn-success"></a></td>--}}
-                {{--</tr>--}}
-                {{--<tr>--}}
-                {{--<td>Mary</td>--}}
-                {{--<td>Moe</td>--}}
-                {{--<td class="text-center"><a href="{{ url('/aufgabe_example') }}" class="glyphicon glyphicon-ok btn-success"></a></td>--}}
-                {{--<td class="text-center"><a href="{{ url('/aufgabe_example') }}" class="glyphicon glyphicon-minus btn-warning"></a></td>--}}
-                {{--<td class="text-center"><a href="{{ url('/aufgabe_example') }}" class="glyphicon glyphicon-remove btn-danger"></a></td>--}}
-                {{--<td class="text-center"><a href="{{ url('/aufgabe_example') }}" class="glyphicon glyphicon-ok btn-success"></a></td>--}}
-                {{--<td class="text-center"><a href="{{ url('/aufgabe_example') }}" class="glyphicon glyphicon-minus btn-warning"></a></td>--}}
-                {{--<td class="text-center"><a href="{{ url('/aufgabe_example') }}" class="glyphicon glyphicon-remove btn-danger"></a></td>--}}
-                {{--</tr>--}}
-                {{--<tr>--}}
-                {{--<td>July</td>--}}
-                {{--<td>Dooley</td>--}}
-                {{--<td class="text-center"><a href="{{ url('/aufgabe_example') }}" class="glyphicon glyphicon-remove btn-danger"></a></td>--}}
-                {{--<td class="text-center"><a href="{{ url('/aufgabe_example') }}" class="glyphicon glyphicon-ok btn-success"></a></td>--}}
-                {{--<td class="text-center"><a href="{{ url('/aufgabe_example') }}" class="glyphicon glyphicon-minus btn-warning"></a></td>--}}
-                {{--<td class="text-center"><a href="{{ url('/aufgabe_example') }}" class="glyphicon glyphicon-remove btn-danger"></a></td>--}}
-                {{--<td class="text-center"><a href="{{ url('/aufgabe_example') }}" class="glyphicon glyphicon-minus btn-warning"></a></td>--}}
-                {{--<td class="text-center"><a href="{{ url('/aufgabe_example') }}" class="glyphicon glyphicon-remove btn-danger"></a></td>--}}
+                </tr>
+                </thead>
+                <tbody>
+                @if (Session::has('message'))
+                    <div class="alert alert-info">{{ Session::get('message') }}</div>
+                @endif
+                {{--je nach Datenbankeintrag Element anzeigen--}}
+                @php($name="")
+                @foreach($ergebnismenge as $key2 => $zeile )
+                    @if($name =="")
+                        <tr>
+                            <td>{{$zeile->name}}</td>
 
-                {{--</tr>--}}
-                {{--<tr>--}}
-                {{--<td>Klaus</td>--}}
-                {{--<td>Peter</td>--}}
+                            @endif
+
+                    @if($zeile->name!=$name && $name!="")
+                        </tr>
+                        <tr>
+                                <td>{{$zeile->name}}</td>
+
+
                 {{--<td class="text-center"><a href="{{ url('/aufgabe_example') }}" class="glyphicon glyphicon-minus btn-warning"></a></td>--}}
                 {{--<td class="text-center"><a href="{{ url('/aufgabe_example') }}" class="glyphicon glyphicon-remove btn-danger"></a></td>--}}
                 {{--<td class="text-center"><a href="{{ url('/aufgabe_example') }}" class="glyphicon glyphicon-ok btn-success"></a></td>--}}
-                {{--<td class="text-center"><a href="{{ url('/aufgabe_example') }}" class="glyphicon glyphicon-minus btn-warning"></a></td>--}}
-                {{--<td class="text-center"><a href="{{ url('/aufgabe_example') }}" class="glyphicon glyphicon-remove btn-danger"></a></td>--}}
-                {{--<td class="text-center"><a href="{{ url('/aufgabe_example') }}" class="glyphicon glyphicon-ok btn-success"></a></td>--}}
-                {{--</tr>--}}
-                {{--</tbody>--}}
-                {{--</table>--}}
+                <td>{{$zeile->zustand}}</td>
+
+                        @else
+                        <td>{{$zeile->zustand}}</td>
+                    @endif
+                @php($name=$zeile->name)
+                @endforeach
+                        </tr>
+
+                </tbody>
+                </table>
 
 
             </div>

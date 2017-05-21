@@ -98,7 +98,7 @@
 
                                         <?php echo e(method_field('DELETE')); ?>
 
-                                       
+                                        <button type="submit">
                                             <i class="middlesize-right glyphicon glyphicon-trash"></i>
                                         </button>
                                     </form>

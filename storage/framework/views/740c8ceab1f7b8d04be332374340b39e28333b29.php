@@ -40,12 +40,12 @@
                                                 href="<?php echo e(url('/Professor')); ?>/<?php echo e($value->id); ?>" role="button">ProfMode</a></td>
                                                 <td class="text-center"><a
                                                 class="btn btn-primary btn-md col-md-11 col-md-offset-1 col-xs-11 col-xs-offset-3"
-                                                href="<?php echo e(url('/abgabe')); ?>" role="button">Abgabenübersicht</a></td>
+                                                href="<?php echo e(url('/Tutor')); ?>/<?php echo e($value->id); ?> " role="button">Abgabenübersicht</a></td>
                                                 <?php endif; ?>
                                             <?php if($value->rolle=="Tutor"): ?>
                                                 <td class="text-center"><a
                                                             class="btn btn-primary btn-md col-md-11 col-md-offset-1 col-xs-11 col-xs-offset-3"
-                                                            href="<?php echo e(url('/abgabe')); ?>" role="button">Abgabenübersicht</a></td>
+                                                            href="<?php echo e(url('/Tutor')); ?>/<?php echo e($value->id); ?>" role="button">Abgabenübersicht</a></td>
                                                 <td></td>
                                             <?php endif; ?>
                                             <?php if($value->rolle=="Student"): ?>

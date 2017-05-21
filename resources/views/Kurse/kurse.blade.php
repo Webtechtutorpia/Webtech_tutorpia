@@ -42,12 +42,12 @@
                                                 href="{{ url('/Professor') }}/{{$value->id}}" role="button">ProfMode</a></td>
                                                 <td class="text-center"><a
                                                 class="btn btn-primary btn-md col-md-11 col-md-offset-1 col-xs-11 col-xs-offset-3"
-                                                href="{{ url('/abgabe') }}" role="button">Abgabenübersicht</a></td>
+                                                href="{{ url('/Tutor')}}/{{$value->id}} " role="button">Abgabenübersicht</a></td>
                                                 @endif
                                             @if($value->rolle=="Tutor")
                                                 <td class="text-center"><a
                                                             class="btn btn-primary btn-md col-md-11 col-md-offset-1 col-xs-11 col-xs-offset-3"
-                                                            href="{{ url('/abgabe') }}" role="button">Abgabenübersicht</a></td>
+                                                            href="{{ url('/Tutor') }}/{{$value->id}}" role="button">Abgabenübersicht</a></td>
                                                 <td></td>
                                             @endif
                                             @if($value->rolle=="Student")
