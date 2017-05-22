@@ -39,21 +39,21 @@
                                             @if($value->rolle=="Professor")
                                                 <td class="text-center"><a
                                                 class="btn btn-primary btn-md col-md-11 col-md-offset-2 col-xs-11 col-xs-offset-1"
-                                                href="{{ url('/Professor') }}/{{$value->id}}" role="button">ProfMode</a></td>
+                                                href="{{ url('/Professor') }}/{{$value->kurs}}" role="button">ProfMode</a></td>
                                                 <td class="text-center"><a
                                                 class="btn btn-primary btn-md col-md-11 col-md-offset-1 col-xs-11 col-xs-offset-3"
-                                                href="{{ url('/Tutor')}}/{{$value->id}} " role="button">Abgabenübersicht</a></td>
+                                                href="{{ url('/Tutor')}}/{{$value->kurs}} " role="button">Abgabenübersicht</a></td>
                                                 @endif
                                             @if($value->rolle=="Tutor")
                                                 <td class="text-center"><a
                                                             class="btn btn-primary btn-md col-md-11 col-md-offset-1 col-xs-11 col-xs-offset-3"
-                                                            href="{{ url('/Tutor') }}/{{$value->id}}" role="button">Abgabenübersicht</a></td>
+                                                            href="{{ url('/Tutor') }}/{{$value->kurs}}" role="button">Abgabenübersicht</a></td>
                                                 <td></td>
                                             @endif
                                             @if($value->rolle=="Student")
                                                 <td class="text-center"><a
                                                 class="btn btn-primary btn-md col-md-11 col-md-offset-2 col-xs-11 col-xs-offset-1"
-                                                href="{{ url('/Aufgabenansicht') }}/{{$value->id}} " role="button">Aufgabenstatus</a>
+                                                href="{{ url('/Aufgabenansicht') }}/{{$value->kurs}} " role="button">Aufgabenstatus</a>
                                                 </td>
                                                 <td></td>
                                             @endif

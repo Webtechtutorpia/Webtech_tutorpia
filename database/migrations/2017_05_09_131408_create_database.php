@@ -41,6 +41,20 @@ class CreateDatabase extends Migration
             //Constraints
             $table->foreign('geleitet_von')->references('id')->on('users');
         });
+        Schema::create('aufgabe', function (Blueprint $table){
+            $table->increments('id');
+            $table->string('aufgabenname');
+            $table->string('abgabedatum')->default(date("Y-m-d"));
+            $table->string('aufgabenbeschreibung')->nullable();
+            $table->Integer('erstellt_von')->default(1)->unsigned();
+            $table->string('kurs')->index();
+            $table->timestamps();
+            //->default(date("Y-m-d"))
+            $table->date('deleted_at')->nullable();
+            //Constraints
+            //$table->foreign('kurs')->references('id')->on('kurs');
+            $table->foreign('erstellt_von')->references('id')->on('users');
+        });
         Schema::create('belegung', function (Blueprint $table){
             $table->increments('id');
             $table->Integer('user')->unsigned();
@@ -48,28 +62,15 @@ class CreateDatabase extends Migration
             $table->string('rolle');
             //Constraints
             $table->foreign('user')->references('id')->on('users');
-            $table->foreign('kurs')->references('bezeichnung')->on('kurs');
+            $table->foreign('kurs')->references('kurs')->on('aufgabe');
         });
 
-//        //Erzeuge Aufgabentabelle
-        Schema::create('aufgabe', function (Blueprint $table){
-            $table->increments('id');
-            $table->string('aufgabenname');
-            $table->string('abgabedatum')->default(date("Y-m-d"));
-            $table->string('aufgabenbeschreibung')->nullable();
-            $table->Integer('erstellt_von')->default(1)->unsigned();
-            $table->Integer('kurs')->unsigned()->nullable();
-            $table->timestamps();
-            //->default(date("Y-m-d"))
-            $table->date('deleted_at')->nullable();
-            //Constraints
-            $table->foreign('kurs')->references('id')->on('kurs');
-            $table->foreign('erstellt_von')->references('id')->on('users');
-        });
+
 //        //Erzeuge Abgabentabelle
         Schema::create('abgabe', function (Blueprint $table){
             $table->increments('id');
-            $table->string('zustand')-> nullable();
+            $table->Date('abgabedatum')-> nullable();
+            $table->string('zustand')->nullable();
             $table->Integer('user')->unsigned();
             $table->Integer('zugehoerig_zu')->unsigned();
             $table->timestamps();
