@@ -69,8 +69,7 @@ class CreateDatabase extends Migration
 //        //Erzeuge Abgabentabelle
         Schema::create('abgabe', function (Blueprint $table){
             $table->increments('id');
-            $table->Date('abgabedatum')-> nullable();
-            $table->string('zustand');
+            $table->string('zustand')-> nullable();
             $table->Integer('user')->unsigned();
             $table->Integer('zugehoerig_zu')->unsigned();
             $table->timestamps();

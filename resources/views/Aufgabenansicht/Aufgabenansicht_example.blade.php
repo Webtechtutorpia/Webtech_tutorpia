@@ -93,8 +93,16 @@
             @endif
             {{--je nach Datenbankeintrag Element anzeigen--}}
             @foreach($myinputs as $key => $value)
-        <div class="col-md-12 col-xs-12">
-            <div class="panel panel-warning aufgabe ">
+            <div class="col-md-12 col-xs-12">
+            @if($value->zustand == null)
+                <div class="panel panel-warning aufgabe ">
+            @endif
+            @if($value->zustand == '+')
+                        <div class="panel panel-success aufgabe ">
+            @endif
+            @if($value->zustand == '-')
+                                <div class="panel panel-danger aufgabe ">
+            @endif
                 <div class="panel-heading" onclick="Bodyhandler()"> {{$value->aufgabenname}}
                     <div style="display: inline; float: right" class="glyphicon glyphicon-minus"></div>
                 </div>
@@ -117,7 +125,16 @@
                                                                      class="glyphicon glyphicon-envelope"></a></span>
                         </div>
                         <div class="col-md-3 col-xs-12"> Status:</div>
+                        @if($value->zustand == null)
                         <div class="col-md-3 col-xs-12 size">Warten auf Upload</div>
+                            @endif
+                        @if($value->zustand == '+')
+                            <div class="col-md-3 col-xs-12 size">erfolgreich abgenommen</div>
+                        @endif
+                        @if($value->zustand == '-')
+                            <div class="col-md-3 col-xs-12 size">Warten auf Bewertung</div>
+                        @endif
+
                     </div>
                 </div>
             </div>

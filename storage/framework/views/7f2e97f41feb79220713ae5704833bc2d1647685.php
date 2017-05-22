@@ -91,8 +91,16 @@
             <?php endif; ?>
             
             <?php $__currentLoopData = $myinputs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
-        <div class="col-md-12 col-xs-12">
-            <div class="panel panel-warning aufgabe ">
+            <div class="col-md-12 col-xs-12">
+            <?php if($value->zustand == null): ?>
+                <div class="panel panel-warning aufgabe ">
+            <?php endif; ?>
+            <?php if($value->zustand == '+'): ?>
+                        <div class="panel panel-success aufgabe ">
+            <?php endif; ?>
+            <?php if($value->zustand == '-'): ?>
+                                <div class="panel panel-danger aufgabe ">
+            <?php endif; ?>
                 <div class="panel-heading" onclick="Bodyhandler()"> <?php echo e($value->aufgabenname); ?>
 
                     <div style="display: inline; float: right" class="glyphicon glyphicon-minus"></div>
@@ -116,7 +124,16 @@
                                                                      class="glyphicon glyphicon-envelope"></a></span>
                         </div>
                         <div class="col-md-3 col-xs-12"> Status:</div>
+                        <?php if($value->zustand == null): ?>
                         <div class="col-md-3 col-xs-12 size">Warten auf Upload</div>
+                            <?php endif; ?>
+                        <?php if($value->zustand == '+'): ?>
+                            <div class="col-md-3 col-xs-12 size">erfolgreich abgenommen</div>
+                        <?php endif; ?>
+                        <?php if($value->zustand == '-'): ?>
+                            <div class="col-md-3 col-xs-12 size">Warten auf Bewertung</div>
+                        <?php endif; ?>
+
                     </div>
                 </div>
             </div>

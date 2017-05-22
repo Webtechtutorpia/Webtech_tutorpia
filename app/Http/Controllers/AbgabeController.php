@@ -50,11 +50,17 @@ class AbgabeController extends Controller
         // get all the myinputs
         $aufgabe = Aufgabe::all();
         $alle= User::all();
-
+        $abgabe= DB::table('abgabe')
+            ->join('aufgabe', 'abgabe.zugehoerig_zu', '=', 'aufgabe.id')
+            ->join('users', 'abgabe.user', '=', 'users.id')
+            ->select('*')
+            ->orderBy('users.name', 'asc')
+            ->orderBy('users.id','asc')
+            ->get();
 
 
         // load the view and pass the myinputs
-        return View::make('Tutor.abgabe')->with('myinputs', $aufgabe)->with('ergebnismenge',$alle);
+        return View::make('Tutor.abgabe')->with('myinputs', $aufgabe)->with('ergebnismenge',$abgabe);
 
     }
     public function show($kurs)
@@ -62,13 +68,6 @@ class AbgabeController extends Controller
         session()->put('global_variable', $kurs);
         // get the myinput
         $aufgabe = Aufgabe::where('kurs','=',$kurs)->get();
-//        $name=User::whereIn('id',function($query){
-//                $query->select('user')
-//                    ->from(with(new Belegung)->getTable())
-//                    ->where('kurs','ALDA')
-//                    ->where('rolle', 'Student');
-//            })->get();
-
 
            // SELECT * FROM `abgabe`,`aufgabe`,`users` WHERE abgabe.zugehoerig_zu=aufgabe.id and aufgabe.kurs=2 and abgabe.user=users.id order by users.id
         $abgabe= DB::table('abgabe')

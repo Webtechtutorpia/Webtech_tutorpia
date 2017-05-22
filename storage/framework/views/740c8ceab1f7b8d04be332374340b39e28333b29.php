@@ -51,7 +51,7 @@
                                             <?php if($value->rolle=="Student"): ?>
                                                 <td class="text-center"><a
                                                 class="btn btn-primary btn-md col-md-11 col-md-offset-2 col-xs-11 col-xs-offset-1"
-                                                href="<?php echo e(url('/aufgabe_example')); ?>" role="button">Aufgabenstatus</a>
+                                                href="<?php echo e(url('/Aufgabenansicht')); ?>/<?php echo e($value->id); ?> " role="button">Aufgabenstatus</a>
                                                 </td>
                                                 <td></td>
                                             <?php endif; ?>
