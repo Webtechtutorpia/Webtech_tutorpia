@@ -133,7 +133,9 @@
                         <div class="col-md-3  col-xs-6 size"> <?php echo e($value->abgabedatum); ?></div>
                         <div class="col-md-3  col-xs-6 size">Aufgabe hochladen:</div>
                         <div class="col-md-3  col-xs-4 size">
-                            <button class="btn-primary btn" style="padding: 0px 12px;" type="button">Upload</button>
+                            <a class="btn btn-primary btn"  href="<?php echo e(url('/FileUpload')); ?>" role="button">Upload</a>
+
+
                         </div>
                     </div>
                     <div class="panel-group" style="padding-bottom: 1%;">
