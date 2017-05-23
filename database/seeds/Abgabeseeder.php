@@ -25,13 +25,13 @@ class Abgabeseeder extends Seeder
         ]);
 
         DB::table('abgabe')->insert([
-            'zustand' => '-',
+            'zustand' => '/',
             'user' => 1,
             'zugehoerig_zu' => 3
         ]);
 
         DB::table('abgabe')->insert([
-            'zustand' => '+',
+            'zustand' => '.',
             'user' => 1,
             'zugehoerig_zu' => 4
         ]);
