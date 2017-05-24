@@ -35,7 +35,7 @@
                                     <tr>
                                         <td class="col-md-3 col-xs-3"> <p>{{$value->created_at}}</p></td>
                                         @if($value->zuordnung_aufgabe != NULL)
-                                            <td class="col-md-9 col-xs-9"><p>{{$value->bearbeitet_von}} hat {{$value->aufgabenname}} am {{$value->abgabedatum}} erstellt.</p>
+                                            <td class="col-md-9 col-xs-9"><p>{{$value->bearbeitet_von}} hat {{$value->aufgabenname}} mit Abgabe am {{$value->abgabedatum}} erstellt.</p>
                                             </td>
 
                                         @else

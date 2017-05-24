@@ -5,6 +5,7 @@ namespace Tutorpia\Http\Controllers;
 
 use Tutorpia\Aufgabe;
 use Tutorpia\Activity;
+use Tutorpia\Abgabe;
 use View;
 use Illuminate\Http\Request;
 use Tutorpia\Http\Requests;
@@ -91,7 +92,12 @@ class AufgabeController extends Controller
             'zuordnung_aufgabe' => $id->id,
             'bearbeitet_von' => Auth::user()->name,
         ]);
-        $aufgabe = Aufgabe::all();
+
+        Abgabe::create([
+            'zustand'    => '.',
+            'user'      =>  2,
+            'zugehoerig_zu' => $id->id,
+        ]);
         return back();
 
     }

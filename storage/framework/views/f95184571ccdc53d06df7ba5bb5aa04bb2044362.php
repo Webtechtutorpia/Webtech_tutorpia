@@ -3,22 +3,17 @@
     }</style>
 <?php $__env->startSection('content'); ?>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script> $( document ).ready(function() {
-                $("li[name='Profmodus']").css('background-color', '#f5f8fa');
-            });</script>
-        <script type="text/javascript" src="<?php echo e(URL::asset('js/professorenmodus.js')); ?>"></script>
+
 
         <div class="container">
             <div class="row">
 
                 <div class="">
                     <h3 class="col-md-5" id="test"> Datei auswählen:</h3>
+                    <br>
                 </div>
 
 
-                <div class="col-md-11">
-                </div>
 
                 <div class="col-md-11">
 

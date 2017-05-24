@@ -80,7 +80,7 @@
                                         <?php endif; ?>
                                         
                                         <?php $__currentLoopData = $alle; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key2 => $value2): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
-                                            <?php if($value2 != $value): ?>
+
                                         <tr>
                                             <td><?php echo e($value2->kurs); ?></td>
                                             <td class="text-center">
@@ -88,7 +88,7 @@
                                                 </button>
                                             </td>
                                         </tr>
-                                        <?php endif; ?>
+
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
 
                                         </tbody>

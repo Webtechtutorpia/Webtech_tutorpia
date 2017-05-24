@@ -95,26 +95,27 @@
             @foreach($myinputs as $key => $value)
             <div class="col-md-12 col-xs-12">
             @if($value->zustand == '/' )
-                <div class="panel panel-warning aufgabe ">
-                    <div class="panel-heading" onclick="Bodyhandler()"> {{$value->aufgabenname}}
+
+                <div class="panel panel-warning aufgabe " >
+                    <div class="panel-heading" onclick="Bodyhandler(this)"> {{$value->aufgabenname}}
                         <div style="display: inline; float: right" class="glyphicon glyphicon-minus"></div>
                     </div>
             @endif
                     @if( $value->zustand == '.')
                         <div class="panel panel-info aufgabe ">
-                            <div class="panel-heading" onclick="Bodyhandler()"> {{$value->aufgabenname}}
+                            <div class="panel-heading" onclick="Bodyhandler(this)"> {{$value->aufgabenname}}
                                 <div style="display: inline; float: right" class="glyphicon glyphicon-minus"></div>
                             </div>
                             @endif
             @if($value->zustand == '+')
                         <div class="panel panel-success aufgabe ">
-                            <div class="panel-heading" onclick="Bodyhandler()"> {{$value->aufgabenname}}
+                            <div class="panel-heading" onclick="Bodyhandler(this)"> {{$value->aufgabenname}}
                                 <div style="display: inline; float: right" class="glyphicon glyphicon-ok"></div>
                             </div>
             @endif
             @if($value->zustand == '-')
                                 <div class="panel panel-danger aufgabe ">
-                                    <div class="panel-heading" onclick="Bodyhandler()"> {{$value->aufgabenname}}
+                                    <div class="panel-heading" onclick="Bodyhandler(this)"> {{$value->aufgabenname}}
                                         <div style="display: inline; float: right" class="glyphicon glyphicon-remove"></div>
                                     </div>
 

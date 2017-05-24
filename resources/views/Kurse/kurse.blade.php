@@ -82,7 +82,7 @@
                                         @endif
                                         {{--je nach Datenbankeintrag Element anzeigen--}}
                                         @foreach($alle as $key2 => $value2 )
-                                            @if($value2 != $value)
+
                                         <tr>
                                             <td>{{$value2->kurs}}</td>
                                             <td class="text-center">
@@ -90,7 +90,7 @@
                                                 </button>
                                             </td>
                                         </tr>
-                                        @endif
+
                                         @endforeach
 
                                         </tbody>

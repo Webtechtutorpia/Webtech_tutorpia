@@ -93,29 +93,30 @@
             <?php $__currentLoopData = $myinputs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
             <div class="col-md-12 col-xs-12">
             <?php if($value->zustand == '/' ): ?>
-                <div class="panel panel-warning aufgabe ">
-                    <div class="panel-heading" onclick="Bodyhandler()"> <?php echo e($value->aufgabenname); ?>
+
+                <div class="panel panel-warning aufgabe " >
+                    <div class="panel-heading" onclick="Bodyhandler(this)"> <?php echo e($value->aufgabenname); ?>
 
                         <div style="display: inline; float: right" class="glyphicon glyphicon-minus"></div>
                     </div>
             <?php endif; ?>
                     <?php if( $value->zustand == '.'): ?>
                         <div class="panel panel-info aufgabe ">
-                            <div class="panel-heading" onclick="Bodyhandler()"> <?php echo e($value->aufgabenname); ?>
+                            <div class="panel-heading" onclick="Bodyhandler(this)"> <?php echo e($value->aufgabenname); ?>
 
                                 <div style="display: inline; float: right" class="glyphicon glyphicon-minus"></div>
                             </div>
                             <?php endif; ?>
             <?php if($value->zustand == '+'): ?>
                         <div class="panel panel-success aufgabe ">
-                            <div class="panel-heading" onclick="Bodyhandler()"> <?php echo e($value->aufgabenname); ?>
+                            <div class="panel-heading" onclick="Bodyhandler(this)"> <?php echo e($value->aufgabenname); ?>
 
                                 <div style="display: inline; float: right" class="glyphicon glyphicon-ok"></div>
                             </div>
             <?php endif; ?>
             <?php if($value->zustand == '-'): ?>
                                 <div class="panel panel-danger aufgabe ">
-                                    <div class="panel-heading" onclick="Bodyhandler()"> <?php echo e($value->aufgabenname); ?>
+                                    <div class="panel-heading" onclick="Bodyhandler(this)"> <?php echo e($value->aufgabenname); ?>
 
                                         <div style="display: inline; float: right" class="glyphicon glyphicon-remove"></div>
                                     </div>

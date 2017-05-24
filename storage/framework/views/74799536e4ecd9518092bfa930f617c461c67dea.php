@@ -125,9 +125,9 @@
 
     <div class="collapse navbar-collapse" id="app-navbar-collapse" onmouseover="hoverselectednavbar()">
         <ul id="navlist" class="navbar navbar-nav">
-            <li class="first foot" name="Datenschutz"><a href="/Datenschutz">Datenschutz</a></li>
-            <li name="Impressum"><a href="<?php echo e(url('/impressum')); ?>">Impressum</a></li>
-            <li name="Kontakt"><a href="<?php echo e(url('/contact')); ?>">Kontakt</a></li>
+            <li class="first foot" name="Datenschutz"><a style= "text-decoration: none" href="<?php echo e(url('/datenschutz')); ?>">Datenschutz</a></li>
+            <li name="Impressum"><a style= "text-decoration: none" href="<?php echo e(url('/impressum')); ?>">Impressum</a></li>
+            <li name="Kontakt"><a style= "text-decoration: none" href="<?php echo e(url('/contact')); ?>">Kontakt</a></li>
             <li> <div class="fb-follow" data-href="https://www.facebook.com/zuck" data-layout="standard" data-size="large" data-show-faces="false" style="float:right"></div></li>
         </ul>
         <ul class="navbar navbar-right">
