@@ -39,21 +39,21 @@
                                             @if($value->rolle=="Professor")
                                                 <td class="text-center"><a
                                                 class="btn btn-primary btn-md col-md-11 col-md-offset-2 col-xs-11 col-xs-offset-1"
-                                                href="{{ url('/Professor') }}/{{$value->id}}" role="button">ProfMode</a></td>
+                                                href="{{ url('/Professor') }}/{{$value->kurs}}" role="button">ProfMode</a></td>
                                                 <td class="text-center"><a
                                                 class="btn btn-primary btn-md col-md-11 col-md-offset-1 col-xs-11 col-xs-offset-3"
-                                                href="{{ url('/abgabe') }}" role="button">Abgabenübersicht</a></td>
+                                                href="{{ url('/Tutor')}}/{{$value->kurs}} " role="button">Abgabenübersicht</a></td>
                                                 @endif
                                             @if($value->rolle=="Tutor")
                                                 <td class="text-center"><a
                                                             class="btn btn-primary btn-md col-md-11 col-md-offset-1 col-xs-11 col-xs-offset-3"
-                                                            href="{{ url('/abgabe') }}" role="button">Abgabenübersicht</a></td>
+                                                            href="{{ url('/Tutor') }}/{{$value->kurs}}" role="button">Abgabenübersicht</a></td>
                                                 <td></td>
                                             @endif
                                             @if($value->rolle=="Student")
                                                 <td class="text-center"><a
                                                 class="btn btn-primary btn-md col-md-11 col-md-offset-2 col-xs-11 col-xs-offset-1"
-                                                href="{{ url('/aufgabe_example') }}" role="button">Aufgabenstatus</a>
+                                                href="{{ url('/Aufgabenansicht') }}/{{$value->kurs}} " role="button">Aufgabenstatus</a>
                                                 </td>
                                                 <td></td>
                                             @endif
@@ -82,7 +82,7 @@
                                         @endif
                                         {{--je nach Datenbankeintrag Element anzeigen--}}
                                         @foreach($alle as $key2 => $value2 )
-                                            @if($value2 != $value)
+
                                         <tr>
                                             <td>{{$value2->kurs}}</td>
                                             <td class="text-center">
@@ -90,7 +90,7 @@
                                                 </button>
                                             </td>
                                         </tr>
-                                        @endif
+
                                         @endforeach
 
                                         </tbody>

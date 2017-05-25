@@ -4,9 +4,9 @@ function hoverselectednavbar(){
     $(function() {
         $("li").hover(function() {
             // remove classes from all
-            $("li").removeClass("active");
+            $("li").removeClass('active');
             // add class to the one we clicked
-            $(this).addClass("active");
+            $(this).addClass('active');
         },function(){
             $(this).removeClass('active');
         });

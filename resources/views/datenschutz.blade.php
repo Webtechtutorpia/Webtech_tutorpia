@@ -3,9 +3,9 @@
 
 @section('content')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script> $( document ).ready(function() {
-            $("li[name='Datenschutz']").css('background-color', '#f5f8fa');
-        });</script>
+    {{--<script> $( document ).ready(function() {--}}
+            {{--$("li[name='Datenschutz']").css('background-color', '#f5f8fa');--}}
+        {{--});</script>--}}
     <div class="container">
 <p><strong>Datenschutzerklärung</strong></p>
 <p>Der Schutz und die Sicherheit von persönlichen Daten hat bei uns eine hohe Priorität. Daher halten wir uns strikt an die Regeln des deutschen Bundesdatenschutzgesetzes (BDSG). Nachfolgend werden Sie darüber informiert, welche Art von Daten erfasst und zu welchem Zweck sie erhoben werden:</p>

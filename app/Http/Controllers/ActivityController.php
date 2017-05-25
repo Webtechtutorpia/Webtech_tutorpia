@@ -10,6 +10,7 @@ use View;
 use Illuminate\Http\Request;
 use Tutorpia\Http\Requests;
 use Auth;
+use Illuminate\Support\Facades\DB;
 use Tutorpia\user;
 
 class ActivityController extends Controller
@@ -17,15 +18,13 @@ class ActivityController extends Controller
     public function index()
     {
         // get all the myinputs
-        $activity = Activity::all();
+        $activity= DB::table('activity')
+            ->select('*')
+            ->orderBy('created_at', 'desc')
+            ->get();
 
         // load the view and pass the myinputs
-        if(Auth::user()){
-            return View::make('Activity.overview')->with('myinputs', $activity);
-        }
-        else {
-            return view::make('home');
-        }
+        return View::make('Activity.overview')->with('myinputs', $activity);
 
     }
 }
