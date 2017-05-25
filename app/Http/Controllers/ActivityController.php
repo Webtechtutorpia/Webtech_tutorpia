@@ -10,6 +10,7 @@ use View;
 use Illuminate\Http\Request;
 use Tutorpia\Http\Requests;
 use Auth;
+use Tutorpia\user;
 
 class ActivityController extends Controller
 {
@@ -19,7 +20,12 @@ class ActivityController extends Controller
         $activity = Activity::all();
 
         // load the view and pass the myinputs
-        return View::make('Activity.overview')->with('myinputs', $activity);
+        if(Auth::user()){
+            return View::make('Activity.overview')->with('myinputs', $activity);
+        }
+        else {
+            return view::make('home');
+        }
 
     }
 }

@@ -7,13 +7,20 @@
 
                 <div class="panel-body">
 
-                    <h3><?php echo e($actifity); ?></h3>
-                    Login erfolgreich
+                    
+                    
+
+                    <style> .link{
+                            color: green;
+                            font-size: 18px;
+                        }</style>
+                    Diese Seite ist nur für angemeldete User nutzbar. registriere dich <a href="/register" class="link"> hier </a>oder logge dich <a href="/login" class="link">hier</a> ein um diese Seite im vollen Umfang nutzen zu können.
                 </div>
             </div>
         </div>
     </div>
 </div>
 <?php $__env->stopSection(); ?>
+
 
 <?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

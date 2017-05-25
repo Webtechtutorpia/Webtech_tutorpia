@@ -47,7 +47,7 @@ Route::get('impressum', function () {
 
 
 //Route::get('aufgabe_example', function () {
-//    return view('Tutor.Aufgabenansicht_example');
+//    return view('Aufgabenansicht.Aufgabenansicht_example');
 //});
 
 Route::get('Jannis', function(){
@@ -102,6 +102,7 @@ Route::resource('Kurse','BelegungController');
 Route::resource('Aufgabenansicht','AufgabenansichtController');
 Route::resource('Tutor','AbgabeController');
 Route::resource('myinputs', 'MyinputController');
+Route::resource('korrektur', 'KorrekturController');
 
 
 

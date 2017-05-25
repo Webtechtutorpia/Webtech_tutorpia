@@ -14,7 +14,7 @@
     <link href="css/bootstrap-theme.min.css" rel="stylesheet">
     <link href="<?php echo e(asset('css/main.css')); ?>" rel="stylesheet" type="text/css">
     
-    <script type="text/javascript" src="<?php echo e(URL::asset('js/jquery.js')); ?>"></script>
+    
     <script type="text/javascript" src="<?php echo e(URL::asset('js/layout.js')); ?>"></script>
     <title><?php echo e(config('app.name', 'Tutorpia')); ?></title>
 
@@ -55,17 +55,17 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse" onmouseover="hoverselectednavbar()">
                     <!-- Left Side Of Navbar -->
                     <?php if(Auth::check()): ?>
-                        
-                    <ul class="nav navbar-nav">
-                        <li role="presentation" name="Übersicht"><a href="/overview">Übersicht</a></li>
-                        <li role="presentation" name="Kurse"><a href="/kurse">Kurse</a></li>
-                        <li role="presentation" name="Abgaben"><a href="/abgabe">Abgaben</a></li>
-                        <?php if(Auth::user()->rolle=="Professor"): ?>
-                            <li role="presentation"><a href="/professorenmodus">Aufgaben</a></li>
-                        <?php else: ?>
-                        <li role="presentation"><a href="/aufgabe_example">Aufgaben</a></li>
+
+                        <ul class="nav navbar-nav">
+                            <li role="presentation" name="Übersicht"><a href="/Activity">Übersicht</a></li>
+                            <li role="presentation" name="Kurse"><a href="/Kurse">Kurse</a></li>
+                            <li role="presentation" name="Abgaben"><a href="/abgabe">Abgaben</a></li>
+                            <?php if(Auth::user()->rolle=="Professor"): ?>
+                                <li role="presentation"name="Profmodus"><a href="/Professor">Professorenmodus</a></li>
+                            <?php else: ?>
+                                <li role="presentation" name="Aufgaben"><a href="/Aufgabenansicht">Aufgaben</a></li>
                             <?php endif; ?>
-                    </ul>
+                        </ul>
 
                 <?php endif; ?>
                 <!-- Right Side Of Navbar -->
@@ -113,19 +113,35 @@
 </main>
 <!-- Scripts -->
 <script src="/js/app.js"></script>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/de_DE/sdk.js#xfbml=1&version=v2.9";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
 <footer class="bg-success">
-    <div>
-        <ul id="navlist">
-            <li class="first foot"><a href="<?php echo e(url('/datenschutz')); ?>">Datenschutz</a></li>
-            <li><a href="<?php echo e(url('/impressum')); ?>">Impressum</a></li>
-            <li><a href="<?php echo e(url('/contact')); ?>">Kontakt</a></li>
-            <li class="col-md-offset-7""><button type="button" class="btn btn-group-sm btn-primary" aria-label="Links ausrichten">
-                    <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-                </button>
-                like uns auf Facebook</li>
 
+    <div class="collapse navbar-collapse" id="app-navbar-collapse" onmouseover="hoverselectednavbar()">
+        <ul id="navlist" class="navbar navbar-nav">
+            <li class="first foot" name="Datenschutz"><a href="/Datenschutz">Datenschutz</a></li>
+            <li name="Impressum"><a href="<?php echo e(url('/impressum')); ?>">Impressum</a></li>
+            <li name="Kontakt"><a href="<?php echo e(url('/contact')); ?>">Kontakt</a></li>
+            <li> <div class="fb-follow" data-href="https://www.facebook.com/zuck" data-layout="standard" data-size="large" data-show-faces="false" style="float:right"></div></li>
+        </ul>
+        <ul class="navbar navbar-right">
+            <li class="col-md-offset-7" name="Facebook" style="list-style: none">
+                
+                
+                
+                
+
+                
+            </li>
         </ul>
     </div>
+
 </footer>
 </body>
 </html>

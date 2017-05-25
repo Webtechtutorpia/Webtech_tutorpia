@@ -11,7 +11,12 @@
 
                     {{--<p>{{ $aufgabenname}}</p>--}}
                     {{--<p>{{ $datum}}</p>--}}
-                    <p>{{ $aufgabenname}}</p>
+{{--                    <p>{{ $aufgabenname}}</p>--}}
+                    <style> .link{
+                            color: green;
+                            font-size: 18px;
+                        }</style>
+                    Diese Seite ist nur für angemeldete User nutzbar. registriere dich <a href="/register" class="link"> hier </a>oder logge dich <a href="/login" class="link">hier</a> ein um diese Seite im vollen Umfang nutzen zu können.
                 </div>
             </div>
         </div>
