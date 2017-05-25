@@ -17,14 +17,19 @@ class ActivityController extends Controller
 {
     public function index()
     {
-        // get all the myinputs
-        $activity= DB::table('activity')
-            ->select('*')
-            ->orderBy('created_at', 'desc')
-            ->get();
+        if(Auth::check()) {
 
-        // load the view and pass the myinputs
-        return View::make('Activity.overview')->with('myinputs', $activity);
+            // get all the myinputs
+            $activity = DB::table('activity')
+                ->select('*')
+                ->orderBy('created_at', 'desc')
+                ->get();
 
+            // load the view and pass the myinputs
+            return View::make('Activity.overview')->with('myinputs', $activity);
+        }
+        else {
+            return View::make('home');
+        }
     }
 }

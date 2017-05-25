@@ -95,7 +95,17 @@ Route::get('images/{filename}', function ($filename)
     return $response;
 });
 
-
+//
+//Route:: resource('Test', function(){
+//
+//    return view ('Activity.overview');
+////    if (user::Auth()) {
+////        return view ('Activity.overview');
+////    }
+////    else {
+////        return view('home');
+////    }
+//});
 Route::resource('Professor','AufgabeController');
 Route::resource('Activity','ActivityController');
 Route::resource('Kurse','BelegungController');

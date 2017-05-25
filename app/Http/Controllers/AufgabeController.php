@@ -118,11 +118,19 @@ class AufgabeController extends Controller
 
     public function index()
     {
-        // get all the myinputs
-        $aufgabe = Aufgabe::all();
-        // load the view and pass the myinputs
-        return View::make('Professor.ProfMode')->with('myinputs', $aufgabe);
 
+        if (Auth::check()) {
+
+
+            // get all the myinputs
+            $aufgabe = Aufgabe::all();
+            // load the view and pass the myinputs
+            return View::make('Professor.ProfMode')->with('myinputs', $aufgabe);
+        }
+        else {
+
+            return View::make('home');
+        }
     }
     public function show($kurs)
     {

@@ -13,7 +13,7 @@ class KorrekturController extends Controller
             'student' => 'Anton',
             'zustand' => '-'
         ];
-        if(Auth::user()) {
+        if(Auth::check()) {
 
             return view('Tutor.Aufgabenkorrektur', $parameter);
         }

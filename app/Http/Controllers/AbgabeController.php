@@ -47,21 +47,25 @@ class AbgabeController extends Controller
 
     public function index()
     {
-        // get all the myinputs
-        $aufgabe = Aufgabe::all();
-        $alle= User::all();
-        $abgabe= DB::table('abgabe')
-            ->join('aufgabe', 'abgabe.zugehoerig_zu', '=', 'aufgabe.id')
-            ->join('users', 'abgabe.user', '=', 'users.id')
-            ->select('*')
-            ->orderBy('users.name', 'asc')
-            ->orderBy('users.id','asc')
-            ->get();
+         if(Auth::check()) {
+             // get all the myinputs
+             $aufgabe = Aufgabe::all();
+             $alle = User::all();
+             $abgabe = DB::table('abgabe')
+                 ->join('aufgabe', 'abgabe.zugehoerig_zu', '=', 'aufgabe.id')
+                 ->join('users', 'abgabe.user', '=', 'users.id')
+                 ->select('*')
+                 ->orderBy('users.name', 'asc')
+                 ->orderBy('users.id', 'asc')
+                 ->get();
 
 
-        // load the view and pass the myinputs
-        return View::make('Tutor.abgabe')->with('myinputs', $aufgabe)->with('ergebnismenge',$abgabe);
-
+             // load the view and pass the myinputs
+             return View::make('Tutor.abgabe')->with('myinputs', $aufgabe)->with('ergebnismenge', $abgabe);
+         }
+         else {
+             return View::make('home');
+         }
     }
     public function show($kurs)
     {

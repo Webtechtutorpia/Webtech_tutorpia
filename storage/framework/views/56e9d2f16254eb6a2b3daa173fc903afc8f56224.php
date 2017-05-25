@@ -37,21 +37,21 @@
                                             <?php if($value->rolle=="Professor"): ?>
                                                 <td class="text-center"><a
                                                 class="btn btn-primary btn-md col-md-11 col-md-offset-2 col-xs-11 col-xs-offset-1"
-                                                href="<?php echo e(url('/Professor')); ?>/<?php echo e($value->id); ?>" role="button">ProfMode</a></td>
+                                                href="<?php echo e(url('/Professor')); ?>/<?php echo e($value->kurs); ?>" role="button">ProfMode</a></td>
                                                 <td class="text-center"><a
                                                 class="btn btn-primary btn-md col-md-11 col-md-offset-1 col-xs-11 col-xs-offset-3"
-                                                href="<?php echo e(url('/abgabe')); ?>" role="button">Abgabenübersicht</a></td>
+                                                href="<?php echo e(url('/Tutor')); ?>/<?php echo e($value->kurs); ?> " role="button">Abgabenübersicht</a></td>
                                                 <?php endif; ?>
                                             <?php if($value->rolle=="Tutor"): ?>
                                                 <td class="text-center"><a
                                                             class="btn btn-primary btn-md col-md-11 col-md-offset-1 col-xs-11 col-xs-offset-3"
-                                                            href="<?php echo e(url('/abgabe')); ?>" role="button">Abgabenübersicht</a></td>
+                                                            href="<?php echo e(url('/Tutor')); ?>/<?php echo e($value->kurs); ?>" role="button">Abgabenübersicht</a></td>
                                                 <td></td>
                                             <?php endif; ?>
                                             <?php if($value->rolle=="Student"): ?>
                                                 <td class="text-center"><a
                                                 class="btn btn-primary btn-md col-md-11 col-md-offset-2 col-xs-11 col-xs-offset-1"
-                                                href="<?php echo e(url('/aufgabe_example')); ?>" role="button">Aufgabenstatus</a>
+                                                href="<?php echo e(url('/Aufgabenansicht')); ?>/<?php echo e($value->kurs); ?> " role="button">Aufgabenstatus</a>
                                                 </td>
                                                 <td></td>
                                             <?php endif; ?>
@@ -80,7 +80,7 @@
                                         <?php endif; ?>
                                         
                                         <?php $__currentLoopData = $alle; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key2 => $value2): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
-                                            <?php if($value2 != $value): ?>
+
                                         <tr>
                                             <td><?php echo e($value2->kurs); ?></td>
                                             <td class="text-center">
@@ -88,7 +88,7 @@
                                                 </button>
                                             </td>
                                         </tr>
-                                        <?php endif; ?>
+
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
 
                                         </tbody>

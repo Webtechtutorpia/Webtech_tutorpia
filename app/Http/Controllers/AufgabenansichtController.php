@@ -14,12 +14,19 @@ class AufgabenansichtController extends Controller
 {
     public function index()
     {
-        // get all the myinputs
-        $abgabe = Aufgabe::all();
 
-        // load the view and pass the myinputs
-        return View::make('Aufgabenansicht.Aufgabenansicht_example')->with('myinputs', $abgabe);
+        if (Auth::check()) {
 
+
+            // get all the myinputs
+            $abgabe = Aufgabe::all();
+
+            // load the view and pass the myinputs
+            return View::make('Aufgabenansicht.Aufgabenansicht_example')->with('myinputs', $abgabe);
+        }
+        else {
+            return View::make('home');
+        }
     }
     public function show($kurs)
     {

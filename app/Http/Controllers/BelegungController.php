@@ -12,12 +12,18 @@ class BelegungController extends Controller
 {
     public function index()
     {
-        // get all the myinputs
-        $kurse = Belegung::where('user','=',Auth::user()->id)->get();
-        $alle=Belegung::where('user','!=',Auth::user()->id)->get();
-        // load the view and pass the myinputs
-        return View::make('Kurse.kurse')->with('myinputs', $kurse)->with('alle',$alle);
+        if (Auth::check()) {
 
+
+            // get all the myinputs
+            $kurse = Belegung::where('user', '=', Auth::user()->id)->get();
+            $alle = Belegung::where('user', '!=', Auth::user()->id)->get();
+            // load the view and pass the myinputs
+            return View::make('Kurse.kurse')->with('myinputs', $kurse)->with('alle', $alle);
+        }
+        else {
+            return View::make('home');
+        }
     }
 
 }

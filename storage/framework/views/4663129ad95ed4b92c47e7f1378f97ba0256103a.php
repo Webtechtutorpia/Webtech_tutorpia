@@ -11,7 +11,7 @@
                     
 
                     <style> .link{
-                            color: green;
+                            color: #45a049;
                             font-size: 18px;
                         }</style>
                     Diese Seite ist nur für angemeldete User nutzbar. registriere dich <a href="/register" class="link"> hier </a>oder logge dich <a href="/login" class="link">hier</a> ein um diese Seite im vollen Umfang nutzen zu können.
