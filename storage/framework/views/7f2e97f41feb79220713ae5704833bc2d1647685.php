@@ -1,14 +1,6 @@
 <?php $__env->startSection('content'); ?>
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script> $( document ).ready(function() {
-            $("li[name='Aufgaben']").css('background-color', '#f5f8fa');
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-Token': $('meta[name="_token"]').attr('content')
-                }
-            });
-        });</script>
     <script type="text/javascript" src="<?php echo e(URL::asset('js/Aufgaben.js')); ?>"></script>
 
     <div class="container" id="container">
@@ -32,13 +24,7 @@
 </div>
             <div id="liste"></div>
 
-            <script>
-                function ajaxSearch(name){
-                    $("#liste").load("/Aufgabenansicht/ajaxcityList?name="+name)
-                };
 
-
-            </script>
 
 
 
@@ -156,7 +142,7 @@
             <?php endif; ?>
 
 
-                <div class="panel-body">
+                <div class="panel-body notVisible">
                     <div class=" panel-group" style="padding-bottom: 1%;">
                         <div class="col-md-3 col-xs-6 size"> Aufgabenstellung:</div>
                         <div class="col-md-9 col-xs-12 size"> <?php echo e($value->aufgabenname); ?></div>

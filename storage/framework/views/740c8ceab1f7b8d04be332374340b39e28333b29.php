@@ -43,10 +43,16 @@
                                                 href="<?php echo e(url('/Tutor')); ?>/<?php echo e($value->kurs); ?> " role="button">Abgabenübersicht</a></td>
                                                 <?php endif; ?>
                                             <?php if($value->rolle=="Tutor"): ?>
+                                                
+                                                            
+                                                            
+                                                
+                                                <td class="text-center"><a
+                                                            class="btn btn-primary btn-md col-md-11 col-md-offset-2 col-xs-11 col-xs-offset-1"
+                                                            href="<?php echo e(url('/Tutor')); ?>/<?php echo e($value->kurs); ?>" role="button">Abgabenübersicht</a></td>
                                                 <td class="text-center"><a
                                                             class="btn btn-primary btn-md col-md-11 col-md-offset-1 col-xs-11 col-xs-offset-3"
-                                                            href="<?php echo e(url('/Tutor')); ?>/<?php echo e($value->kurs); ?>" role="button">Abgabenübersicht</a></td>
-                                                <td></td>
+                                                            href="<?php echo e(url('/Tutor/Aufgabenkorrektur')); ?> " role="button">Aufgabenkorrektur</a></td>
                                             <?php endif; ?>
                                             <?php if($value->rolle=="Student"): ?>
                                                 <td class="text-center"><a

@@ -32,7 +32,7 @@
                                                 @endif
 
 
-                                                <div class="panel-body">
+                                                <div class="panel-body notVisible" style="display:none">
                                                     <div class=" panel-group" style="padding-bottom: 1%;">
                                                         <div class="col-md-3 col-xs-6 size"> Aufgabenstellung:</div>
                                                         <div class="col-md-9 col-xs-12 size"> {{$value->aufgabenname}}</div>
@@ -72,6 +72,9 @@
                                     </div>
 
     @endforeach
+                                    @if (count($cities)==0)
+                                        <p> Es wurden keine mit deiner Suchanfrage übereinstimmenden Aufgaben gefunden.</p>
+    @endif
 
 
 

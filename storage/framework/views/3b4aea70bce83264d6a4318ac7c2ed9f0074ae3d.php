@@ -34,7 +34,7 @@
                                                 <?php endif; ?>
 
 
-                                                <div class="panel-body">
+                                                <div class="panel-body notVisible" style="display:none">
                                                     <div class=" panel-group" style="padding-bottom: 1%;">
                                                         <div class="col-md-3 col-xs-6 size"> Aufgabenstellung:</div>
                                                         <div class="col-md-9 col-xs-12 size"> <?php echo e($value->aufgabenname); ?></div>
@@ -74,6 +74,9 @@
                                     </div>
 
     <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
+                                    <?php if(count($cities)==0): ?>
+                                        <p> Es wurden keine mit deiner Suchanfrage übereinstimmenden Aufgaben gefunden.</p>
+    <?php endif; ?>
 
 
 

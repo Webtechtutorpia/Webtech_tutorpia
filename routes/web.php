@@ -106,6 +106,7 @@ Route::get('images/{filename}', function ($filename)
 ////        return view('home');
 ////    }
 //});
+Route::get('Tutor/Aufgabenkorrektur','KorrekturController@index');
 Route::resource('Professor','AufgabeController');
 Route::resource('Activity','ActivityController');
 Route::resource('Kurse','BelegungController');
@@ -119,5 +120,6 @@ Route::resource('korrektur', 'KorrekturController');
 Route::get('Aufgabenansicht/ajaxcityList','AufgabenansichtController@matchHTML');
 
 Route::get('Aufgabenansicht/{kurs}','AufgabenansichtController@show');
+
 
 
