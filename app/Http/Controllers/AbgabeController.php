@@ -69,21 +69,25 @@ class AbgabeController extends Controller
     }
     public function show($kurs)
     {
-        session()->put('global_variable', $kurs);
-        // get the myinput
-        $aufgabe = Aufgabe::where('kurs','=',$kurs)->get();
+        if (Auth::check()) {
+            session()->put('global_variable', $kurs);
+            // get the myinput
+            $aufgabe = Aufgabe::where('kurs', '=', $kurs)->get();
 
-           // SELECT * FROM `abgabe`,`aufgabe`,`users` WHERE abgabe.zugehoerig_zu=aufgabe.id and aufgabe.kurs=2 and abgabe.user=users.id order by users.id
-        $abgabe= DB::table('abgabe')
-            ->join('aufgabe', 'abgabe.zugehoerig_zu', '=', 'aufgabe.id')
-            ->join('users', 'abgabe.user', '=', 'users.id')
-            ->select('*')
-            ->where('aufgabe.kurs',session()->get('global_variable'))
-            ->orderBy('users.name', 'asc')
-            ->orderBy('users.id','asc')
-            ->get();
-        // show the view and pass the myinput to it
-        return View::make('Tutor.abgabe')->with('myinputs', $aufgabe)->with('ergebnismenge',$abgabe);
+            // SELECT * FROM `abgabe`,`aufgabe`,`users` WHERE abgabe.zugehoerig_zu=aufgabe.id and aufgabe.kurs=2 and abgabe.user=users.id order by users.id
+            $abgabe = DB::table('abgabe')
+                ->join('aufgabe', 'abgabe.zugehoerig_zu', '=', 'aufgabe.id')
+                ->join('users', 'abgabe.user', '=', 'users.id')
+                ->select('*')
+                ->where('aufgabe.kurs', session()->get('global_variable'))
+                ->orderBy('users.name', 'asc')
+                ->orderBy('users.id', 'asc')
+                ->get();
+            // show the view and pass the myinput to it
+            return View::make('Tutor.abgabe')->with('myinputs', $aufgabe)->with('ergebnismenge', $abgabe);
+        } else {
+            return View::make('home');
+        }
     }
 
 

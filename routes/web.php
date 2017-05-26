@@ -115,9 +115,9 @@ Route::resource('FileUpload','FileUploadController');
 Route::resource('myinputs', 'MyinputController');
 Route::resource('korrektur', 'KorrekturController');
 
-Route::get('/cityDetail/{cityId}', 'AufgabenansichtController@view');
 
 Route::get('Aufgabenansicht/ajaxcityList','AufgabenansichtController@matchHTML');
 
+Route::get('Aufgabenansicht/{kurs}','AufgabenansichtController@show');
 
 

@@ -134,12 +134,17 @@ class AufgabeController extends Controller
     }
     public function show($kurs)
     {
-        session()->put('global_variable', $kurs);
-        // get the myinput
-        $aufgabe = Aufgabe::where('kurs','=',$kurs)->get();
+        if (Auth::check()) {
+            session()->put('global_variable', $kurs);
+            // get the myinput
+            $aufgabe = Aufgabe::where('kurs', '=', $kurs)->get();
 
-        // show the view and pass the myinput to it
-        return View::make('Professor.ProfMode')->with('myinputs', $aufgabe);
+            // show the view and pass the myinput to it
+            return View::make('Professor.ProfMode')->with('myinputs', $aufgabe);
+        } else {
+
+            return View::make('home');
+        }
     }
     public function destroy($id)
     {
