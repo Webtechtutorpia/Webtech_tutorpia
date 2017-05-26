@@ -7,8 +7,10 @@ use View;
 use Illuminate\Http\Request;
 use Tutorpia\Http\Requests;
 use Auth;
+
 use Tutorpia\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+
 
 class AufgabenansichtController extends Controller
 {
@@ -30,19 +32,59 @@ class AufgabenansichtController extends Controller
     }
     public function show($kurs)
     {
-        session()->put('global_variable', $kurs);
+        if (Auth::check()) {
+            session()->put('global_variable', $kurs);
 
-        // SELECT * FROM `abgabe`,`aufgabe`,`users` WHERE abgabe.zugehoerig_zu=aufgabe.id and aufgabe.kurs=2 and abgabe.user=users.id order by users.id
-        $abgabe= DB::table('abgabe')
-            ->join('aufgabe', 'abgabe.zugehoerig_zu', '=', 'aufgabe.id')
-            ->join('users', 'abgabe.user', '=', 'users.id')
-            ->select('*')
-            ->where('aufgabe.kurs',session()->get('global_variable'))
-            ->where('users.id',Auth::user()->id)
-           //->where('users.name',"TestStudent")
-            ->orderBy('aufgabe.aufgabenname', 'asc')
-            ->get();
-        // show the view and pass the myinput to it
-        return View::make('Aufgabenansicht.Aufgabenansicht_example')->with('myinputs', $abgabe);
+            // SELECT * FROM `abgabe`,`aufgabe`,`users` WHERE abgabe.zugehoerig_zu=aufgabe.id and aufgabe.kurs=2 and abgabe.user=users.id order by users.id
+            $abgabe = DB::table('abgabe')
+                ->join('aufgabe', 'abgabe.zugehoerig_zu', '=', 'aufgabe.id')
+                ->join('users', 'abgabe.user', '=', 'users.id')
+                ->select('*')
+                ->where('aufgabe.kurs', session()->get('global_variable'))
+                ->where('users.id', Auth::user()->id)
+                //->where('users.name',"TestStudent")
+                ->orderBy('aufgabe.aufgabenname', 'asc')
+                ->get();
+            // show the view and pass the myinput to it
+            return View::make('Aufgabenansicht.Aufgabenansicht_example')->with('myinputs', $abgabe);
+        }
+        else{
+            return View::make('home');
+        }
+    }
+
+    public function matchHTML(Request $request)
+    {
+        $cities=$this->queryName($request);
+        return view('cityDetail',['cities'=>$cities]);
+
+
+    }
+
+
+private function queryName(Request $request){
+        if (isset($request->name)) {
+            $prefix = $request->name;
+        } else {
+            $prefix = '';
+        }
+        if ($prefix !== '') {
+            //$name = Aufgabe::where('aufgabenname','like',$prefix. '%')->get();
+            $name = DB::table('abgabe')
+                ->join('aufgabe', 'abgabe.zugehoerig_zu', '=', 'aufgabe.id')
+                ->join('users', 'abgabe.user', '=', 'users.id')
+                ->select('*')
+                ->where('aufgabe.kurs', session()->get('global_variable'))
+                ->where('users.id', Auth::user()->id)
+                ->where('Aufgabe.aufgabenname','like',$prefix.'%')
+                ->orderBy('users.name', 'asc')
+                ->get();
+        }
+        return $name;
+
+    }
+    public function view($cityId) {
+        $city = DB::table('aufgaben')->where('id',$cityId)->first();
+        return view('cityDetail',['city'=>$city]);
     }
 }

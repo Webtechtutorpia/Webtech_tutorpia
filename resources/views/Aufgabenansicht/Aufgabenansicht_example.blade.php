@@ -1,18 +1,49 @@
 @extends('layouts.app')
 
 @section('content')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script> $( document ).ready(function() {
             $("li[name='Aufgaben']").css('background-color', '#f5f8fa');
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-Token': $('meta[name="_token"]').attr('content')
+                }
+            });
         });</script>
     <script type="text/javascript" src="{{ URL::asset('js/Aufgaben.js') }}"></script>
 
-    <div class="container">
-        <div class="row">
+    <div class="container" id="container">
+        <div class="row" >
 
             <h2>Studentenmodus: DBIS</h2>
 
-        {{--<div class="col-md-12 col-xs-12 ">--}}
+            <div class="col-md-4 col-md-offset-8">
+
+
+                <form class="form-inline" method="get">
+                    <div class="form-group">
+                        <input type="hidden" name="_token" value="<?php Session::token()?>">
+                        <input type="text" name ="search_abgabe" value="{{$cityName or ''}}"id="search_abgabe" onkeyup="ajaxSearch(this.value)" class="form-control" placeholder="Suche nach..."
+                        autofocus onfocus="this.value=this.value;" autocomplete="off">
+
+                    </div>
+                    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+</form>
+
+</div>
+            <div id="liste"></div>
+
+            <script>
+                function ajaxSearch(name){
+                    $("#liste").load("/Aufgabenansicht/ajaxcityList?name="+name)
+                };
+
+
+            </script>
+
+
+{{--<div class="col-md-12 col-xs-12 ">--}}
             {{--<h4> Übungsblatt 1</h4>--}}
 
             {{--<div class="panel panel-success aufgabe ">--}}
@@ -92,6 +123,7 @@
                 <div class="alert alert-info">{{ Session::get('message') }}</div>
             @endif
             {{--je nach Datenbankeintrag Element anzeigen--}}
+            <h3>Alle Aufgaben:</h3>
             @foreach($myinputs as $key => $value)
             <div class="col-md-12 col-xs-12">
             @if($value->zustand == '/' )

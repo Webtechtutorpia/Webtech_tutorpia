@@ -13,8 +13,7 @@
                 <div class="col-md-4 col-md-offset-8" id="anhang">
                     <div class="input-group">
                         <form method="get" action="/search">
-                            <input type="text" class="form-control" placeholder="Suche nach..." name="tfsearch"
-                                   onkeypress="search(this.value)">
+                            <input type="text" class="form-control" placeholder="Suche nach..." id="tfsearch">
                             <span class="input-group-btn">
              <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"
                                                                  aria-hidden="true"></span></button></span>

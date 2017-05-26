@@ -1,16 +1,47 @@
 <?php $__env->startSection('content'); ?>
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script> $( document ).ready(function() {
             $("li[name='Aufgaben']").css('background-color', '#f5f8fa');
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-Token': $('meta[name="_token"]').attr('content')
+                }
+            });
         });</script>
     <script type="text/javascript" src="<?php echo e(URL::asset('js/Aufgaben.js')); ?>"></script>
 
-    <div class="container">
-        <div class="row">
+    <div class="container" id="container">
+        <div class="row" >
 
             <h2>Studentenmodus: DBIS</h2>
 
-        
+            <div class="col-md-4 col-md-offset-8">
+
+
+                <form class="form-inline" method="get">
+                    <div class="form-group">
+                        <input type="hidden" name="_token" value="<?php Session::token()?>">
+                        <input type="text" name ="search_abgabe" value="<?php echo e(isset($cityName) ? $cityName : ''); ?>"id="search_abgabe" onkeyup="ajaxSearch(this.value)" class="form-control" placeholder="Suche nach..."
+                        autofocus onfocus="this.value=this.value;" autocomplete="off">
+
+                    </div>
+                    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+</form>
+
+</div>
+            <div id="liste"></div>
+
+            <script>
+                function ajaxSearch(name){
+                    $("#liste").load("/Aufgabenansicht/ajaxcityList?name="+name)
+                };
+
+
+            </script>
+
+
+
             
 
             
@@ -90,6 +121,7 @@
                 <div class="alert alert-info"><?php echo e(Session::get('message')); ?></div>
             <?php endif; ?>
             
+            <h3>Alle Aufgaben:</h3>
             <?php $__currentLoopData = $myinputs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
             <div class="col-md-12 col-xs-12">
             <?php if($value->zustand == '/' ): ?>
