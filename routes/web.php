@@ -118,6 +118,7 @@ Route::resource('korrektur', 'KorrekturController');
 
 
 Route::get('Aufgabenansicht/ajaxcityList','AufgabenansichtController@matchHTML');
+Route::get('Aufgabenansicht/destroy/{id}','AufgabenansichtController@destroy');
 
 Route::get('Aufgabenansicht/{kurs}','AufgabenansichtController@show');
 

@@ -2,7 +2,7 @@
 
 namespace Tutorpia\Http\Controllers;
 
-use Tutorpia\Aufgabe;
+use Tutorpia\Abgabe;
 use View;
 use Illuminate\Http\Request;
 use Tutorpia\Http\Requests;
@@ -56,7 +56,7 @@ class AufgabenansichtController extends Controller
     public function matchHTML(Request $request)
     {
         $cities=$this->queryName($request);
-        return view('cityDetail',['cities'=>$cities]);
+        return view('gesuchteAufgabe',['cities'=>$cities]);
 
 
     }
@@ -83,8 +83,17 @@ private function queryName(Request $request){
         return $name;
 
     }
-    public function view($cityId) {
-        $city = DB::table('aufgaben')->where('id',$cityId)->first();
-        return view('cityDetail',['city'=>$city]);
+
+
+    public function destroy($id)
+    {
+        // delete
+        Abgabe::where('abgabeid',$id)->delete();
+
+
+
+
+        // redirect
+        return back();
     }
 }

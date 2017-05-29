@@ -70,7 +70,7 @@ class CreateDatabase extends Migration
 
 //        //Erzeuge Abgabentabelle
         Schema::create('abgabe', function (Blueprint $table){
-            $table->increments('id');
+            $table->increments('abgabeid');
             $table->string('zustand');
             $table->Integer('user')->unsigned();
             $table->Integer('zugehoerig_zu')->unsigned();
@@ -90,7 +90,7 @@ class CreateDatabase extends Migration
             $table->timestamps();
             //Constraints
             $table->foreign('zuordnung_aufgabe')->references('id')->on('aufgabe')->nullable();
-            $table->foreign('zuordnung_abgabe') ->references('id')->on('abgabe')->nullable();
+            $table->foreign('zuordnung_abgabe') ->references('abgabeid')->on('abgabe')->onDelete('Cascade')->nullable();
         });
 
         Schema::enableForeignKeyConstraints();
