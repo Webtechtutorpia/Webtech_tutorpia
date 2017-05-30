@@ -26,7 +26,7 @@
                         </div>
                         <div class="panel-group" style="padding-bottom: 1%;">
                             <div class="col-md-3 col-xs-6 size"> Tutoren kontaktieren:</div>
-                            <div class="col-md-3 col-xs-2 size"><span><a href="mailto:{{$value->email}}?subject=Fehler bei Abnahme von {{$value->aufgabenname}} bei {{$value->name}}"
+                            <div class="col-md-3 col-xs-2 size"><span><a href="mailto:{{$value->email}}?subject=Frage zur Abnahme von {{$value->aufgabenname}} bei {{$value->name}}"
                                                                          class="glyphicon glyphicon-envelope"></a></span>
                             </div>
                             <div class="col-md-3 col-xs-12"> Status:</div>
@@ -93,11 +93,9 @@
 
                         <div class="panel-group" style="padding-bottom: 1%;">
                             <div class="col-md-3 col-xs-6 size">Abnahme durch:</div>
-                            Word-wrap beachten
-                            <div class="col-md-3 col-xs-6 size" style="text-align: bottom"> Tutor1</div>
+                            <div class="col-md-3 col-xs-6 size"> Tutor1</div>
 
                             <div class="col-md-3 col-xs-6 size"> korregierte Version:</div>
-                            <td class="col-md-1 size"> <div class="glyphicon glyphicon-envelope text-center" style="display: inline"></div> </td>
                             <div class="col-md-3 col-xs-4 size">
                                 <button class="btn-primary btn " style="padding: 0px 12px;" type="button">Download
                                 </button>
@@ -110,10 +108,9 @@
                             </div>
                         </div>
                         <div class="panel-group" style="padding-bottom: 1%;">
-                            <div class="col-md-2  col-xs-12 size">Kommentar:</div>
-                            word-wrap
-                            <div class="col-md-10 col-xs-12 size">nichts zu beanstanden. sehr gut weiter so!
-                            </div>
+                            <div class="col-md-3 col-xs-12"> Status:</div>
+                            <div class="col-md-3 col-xs-12 size">erfolgreich abgegeben</div>
+
                         </div>
                     </div>
                 </div>
@@ -137,9 +134,12 @@
                             <div class="col-md-3  col-xs-6 size"> {{$value->created_at}}</div>
                             <div class="col-md-3  col-xs-6 size">Datei löschen:</div>
                             <div class="col-md-3  col-xs-4 size">
-                                <button class="btn-primary btn " style="padding: 0px 12px;" type="button">Delete
-                                </button>
-
+                                <form action="{{ url('Aufgabenansicht') }}/{{$value->abgabeid }}"  onsubmit="return confirm('Sind Sie sicher, dass Sie {{ $value->abgabeid}} wirklich löschen wollen?')" method="POST">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+                                    <button class="btn-primary btn"style="padding: 0px 12px;" type="submit">Delete
+                                    </button>
+                                </form>
                             </div>
                         </div>
                         <div class="panel-group" style="padding-bottom: 1%;">
@@ -154,6 +154,9 @@
                 </div>
             </div>
         @endif
+
+
+
 
     @endforeach
                                     @if (count($cities)==0)

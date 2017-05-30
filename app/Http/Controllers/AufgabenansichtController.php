@@ -2,7 +2,6 @@
 
 namespace Tutorpia\Http\Controllers;
 
-use Tutorpia\Abgabe;
 use View;
 use Illuminate\Http\Request;
 use Tutorpia\Http\Requests;
@@ -88,7 +87,7 @@ private function queryName(Request $request){
     public function destroy($id)
     {
         // delete
-        Abgabe::where('abgabeid',$id)->delete();
+        DB::table('abgabe')->where('abgabeid',$id)->update(['zustand'=>'.']);
 
 
 

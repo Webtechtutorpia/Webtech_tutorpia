@@ -127,11 +127,9 @@
 
                                 <div class="panel-group" style="padding-bottom: 1%;">
                                 <div class="col-md-3 col-xs-6 size">Abnahme durch:</div>
-                                Word-wrap beachten
-                                <div class="col-md-3 col-xs-6 size" style="text-align: bottom"> Tutor1</div>
+                                <div class="col-md-3 col-xs-6 size"> Tutor1</div>
 
                                 <div class="col-md-3 col-xs-6 size"> korregierte Version:</div>
-                                <td class="col-md-1 size"> <div class="glyphicon glyphicon-envelope text-center" style="display: inline"></div> </td>
                                 <div class="col-md-3 col-xs-4 size">
                                 <button class="btn-primary btn " style="padding: 0px 12px;" type="button">Download
                                 </button>
@@ -144,8 +142,8 @@
                                     </div>
                                 </div>
                                 <div class="panel-group" style="padding-bottom: 1%;">
-                                    <div class="col-md-3 col-xs-12"> Kommentar:</div>
-                                    <div class="col-md-3 col-xs-12 size">nichts zu beanstanden. sehr gut weiter so!</div>
+                                    <div class="col-md-3 col-xs-12"> Status:</div>
+                                    <div class="col-md-3 col-xs-12 size">erfolgreich abgegeben</div>
 
                                 </div>
                                 </div>
@@ -170,18 +168,13 @@
                                                 <div class="col-md-3  col-xs-6 size"> {{$value->created_at}}</div>
                                                 <div class="col-md-3  col-xs-6 size">Datei löschen:</div>
                                                 <div class="col-md-3  col-xs-4 size">
-                                                    <form action="{{ url('/Aufgabenansicht/destroy') }}/{{$value->abgabeid }}"  onsubmit="return confirm('Sind Sie sicher, dass Sie {{ $value->abgabeid}} wirklich löschen wollen?')" method="POST">
+                                                    <form action="{{ url('Aufgabenansicht') }}/{{$value->abgabeid }}"  onsubmit="return confirm('Sind Sie sicher, dass Sie die Datei von {{ $value->abgabeid}} wirklich löschen wollen?')" method="POST">
                                                         {{ csrf_field() }}
                                                         {{ method_field('DELETE') }}
                                                         <button class="btn-primary btn"style="padding: 0px 12px;" type="submit">Delete
                                                         </button>
                                                     </form>
                                                 </div>
-                                                {{--<div class="col-md-3  col-xs-4 size">--}}
-                                                    {{--<button class="btn-primary btn " style="padding: 0px 12px;" type="button">Delete--}}
-                                                    {{--</button>--}}
-
-                                                {{--</div>--}}
                                             </div>
                                             <div class="panel-group" style="padding-bottom: 1%;">
                                                 <div class="col-md-3 col-xs-6 size"> Tutor kontaktieren:</div>

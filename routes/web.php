@@ -110,17 +110,18 @@ Route::get('Tutor/Aufgabenkorrektur','KorrekturController@index');
 Route::resource('Professor','AufgabeController');
 Route::resource('Activity','ActivityController');
 Route::resource('Kurse','BelegungController');
-//Route::resource('Aufgabenansicht','AufgabenansichtController');
+Route::get('Aufgabenansicht/ajaxcityList','AufgabenansichtController@matchHTML');
+Route::resource('Aufgabenansicht','AufgabenansichtController');
 Route::resource('Tutor','AbgabeController');
 Route::resource('FileUpload','FileUploadController');
 Route::resource('myinputs', 'MyinputController');
 Route::resource('korrektur', 'KorrekturController');
 
 
-Route::get('Aufgabenansicht/ajaxcityList','AufgabenansichtController@matchHTML');
-Route::get('Aufgabenansicht/destroy/{id}','AufgabenansichtController@destroy');
 
-Route::get('Aufgabenansicht/{kurs}','AufgabenansichtController@show');
+//Route::get('Aufgabenansicht/destroy/{id}','AufgabenansichtController@destroy');
+
+//Route::get('Aufgabenansicht/{kurs}','AufgabenansichtController@show');
 
 
 
