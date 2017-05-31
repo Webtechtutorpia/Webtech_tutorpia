@@ -116,4 +116,6 @@ Route::resource('myinputs', 'MyinputController');
 Route::resource('korrektur', 'KorrekturController');
 
 
-
+Route::get('ttt', function () {
+    return view('Actifity.test');
+});;

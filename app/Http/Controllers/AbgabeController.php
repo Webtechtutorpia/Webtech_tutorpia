@@ -2,9 +2,11 @@
 
 namespace Tutorpia\Http\Controllers;
 
+use function MongoDB\BSON\toJSON;
 use Tutorpia\User;
 use Tutorpia\Belegung;
 use Tutorpia\Aufgabe;
+use Tutorpia\Abgabe;
 use View;
 use Illuminate\Http\Request;
 use Tutorpia\Http\Requests;
@@ -26,9 +28,29 @@ class AbgabeController extends Controller
     {
 
 
+
+
+        $abgabe = DB::table('abgabe')
+            ->join('aufgabe', 'abgabe.zugehoerig_zu', '=', 'aufgabe.id')
+            ->join('users', 'abgabe.user', '=', 'users.id')
+            ->select('*')
+            ->orderBy('users.name', 'asc')
+            ->orderBy('users.id', 'asc')
+            ->get();
+
+
+
         $user = $request->input('tfsearch', '');
-        $users = DB::table('users')->where('name', 'like', $user . '%')->get();
-        return response()->json($users);
+
+        $alle= Abgabe::select('user')->get();
+        $users =[
+            'id'=> $request->input('id'),
+            'users'=> User::where('name', 'like', $user . '%')->whereIn('id', $alle)->get(),
+//                'users' => User::whereIn('id', Users::all())->get(),
+            'aufgaben'=> Aufgabe::all(),
+            'abgaben'=> $abgabe
+        ];
+        return response($users);
 
     }
 
@@ -50,7 +72,10 @@ class AbgabeController extends Controller
          if(Auth::check()) {
              // get all the myinputs
              $aufgabe = Aufgabe::all();
+
+
              $alle = User::all();
+
              $abgabe = DB::table('abgabe')
                  ->join('aufgabe', 'abgabe.zugehoerig_zu', '=', 'aufgabe.id')
                  ->join('users', 'abgabe.user', '=', 'users.id')

@@ -26,15 +26,7 @@
                 <button onclick="remove()">remove</button>
                 <div id="ausgabe">hallo</div>
                 {{--<div class="table-responsive">--}}
-                <table class="table table-responsive" id="tabelle">
-                    <thead>
-                    <tr id="head">
-                        <th> Name</th>
-                    </tr>
-                    </thead>
-                </table>
-
-                <table class="table">
+                <table class="table table-responsive table-striped table-bordered" id="tabelle">
                 <thead>
                 <tr>
                 <th class="col-md-3 col-xs-3">Name</th>

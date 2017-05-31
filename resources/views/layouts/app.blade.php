@@ -108,6 +108,11 @@
 
     @yield('content')
 
+    @section('test')
+        <h1>das ist ein test</h1>
+    @endsection
+
+
 </main>
 <!-- Scripts -->
 <script src="/js/app.js"></script>

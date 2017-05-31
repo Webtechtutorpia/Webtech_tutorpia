@@ -11,7 +11,7 @@ class KorrekturController extends Controller
         $parameter= [
             'aufgabenname' => 'Aufgabe 5',
             'student' => 'Anton',
-            'zustand' => '-'
+            'zustand' => '+'
         ];
         if(Auth::check()) {
 
