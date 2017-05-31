@@ -111,6 +111,7 @@ Route::resource('Professor','AufgabeController');
 Route::resource('Activity','ActivityController');
 Route::resource('Kurse','BelegungController');
 Route::get('Aufgabenansicht/ajaxcityList','AufgabenansichtController@matchHTML');
+Route::get('Aufgabenansicht/bestimmteAbgabe/{id}/{name}','AufgabenansichtController@UserAbgaben');
 Route::resource('Aufgabenansicht','AufgabenansichtController');
 Route::resource('Tutor','AbgabeController');
 Route::resource('FileUpload','FileUploadController');
