@@ -77,6 +77,7 @@
                                         <thead>
                                         <tr class="success">
                                             <th class="col-md-4">andere Kurse</th>
+                                            <th class="col-md-4">Rolle</th>
                                             <th class="col-md-6"></th>
 
 
@@ -91,9 +92,16 @@
 
                                         <tr>
                                             <td>{{$value2->kurs}}</td>
+                                            <td>{{$value2->rolle}}</td>
                                             <td class="text-center">
-                                                <button type="button" class="btn btn-primary btn-md col-md-offset-3">eintragen
-                                                </button>
+                                                <form class="form-horizontal" role="form" method="POST"
+                                                      action="{{ url('Kurse') }}" >
+                                                    {{ csrf_field() }}
+                                                    <input type="hidden" name="kurs" value="{{$value2->kurs}}">
+                                                    <input type="hidden" name="rolle" value="{{$value2->rolle}}">
+                                                    <button type="submit" class="btn btn-primary btn-md col-md-offset-3">eintragen
+                                                    </button>
+                                                </form>
                                             </td>
                                         </tr>
 

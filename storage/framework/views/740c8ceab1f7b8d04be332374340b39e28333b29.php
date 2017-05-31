@@ -75,6 +75,7 @@
                                         <thead>
                                         <tr class="success">
                                             <th class="col-md-4">andere Kurse</th>
+                                            <th class="col-md-4">Rolle</th>
                                             <th class="col-md-6"></th>
 
 
@@ -89,9 +90,17 @@
 
                                         <tr>
                                             <td><?php echo e($value2->kurs); ?></td>
+                                            <td><?php echo e($value2->rolle); ?></td>
                                             <td class="text-center">
-                                                <button type="button" class="btn btn-primary btn-md col-md-offset-3">eintragen
-                                                </button>
+                                                <form class="form-horizontal" role="form" method="POST"
+                                                      action="<?php echo e(url('Kurse')); ?>" >
+                                                    <?php echo e(csrf_field()); ?>
+
+                                                    <input type="hidden" name="kurs" value="<?php echo e($value2->kurs); ?>">
+                                                    <input type="hidden" name="rolle" value="<?php echo e($value2->rolle); ?>">
+                                                    <button type="submit" class="btn btn-primary btn-md col-md-offset-3">eintragen
+                                                    </button>
+                                                </form>
                                             </td>
                                         </tr>
 
