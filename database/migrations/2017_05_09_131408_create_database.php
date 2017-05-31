@@ -41,20 +41,6 @@ class CreateDatabase extends Migration
             //Constraints
             $table->foreign('geleitet_von')->references('id')->on('users');
         });
-        Schema::create('aufgabe', function (Blueprint $table){
-            $table->increments('id');
-            $table->string('aufgabenname');
-            $table->string('abgabedatum')->default(date("Y-m-d"));
-            $table->string('aufgabenbeschreibung')->nullable();
-            $table->Integer('erstellt_von')->default(1)->unsigned();
-            $table->string('kurs')->index();
-            $table->timestamps();
-            //->default(date("Y-m-d"))
-            $table->date('deleted_at')->nullable();
-            //Constraints
-            //$table->foreign('kurs')->references('id')->on('kurs');
-            $table->foreign('erstellt_von')->references('id')->on('users');
-        });
         Schema::create('belegung', function (Blueprint $table){
             $table->increments('id');
             $table->Integer('user')->unsigned();
@@ -62,13 +48,29 @@ class CreateDatabase extends Migration
             $table->string('rolle');
             //Constraints
             $table->foreign('user')->references('id')->on('users');
-            $table->foreign('kurs')->references('kurs')->on('aufgabe');
+
         });
+        Schema::create('aufgabe', function (Blueprint $table){
+            $table->increments('id');
+            $table->string('aufgabenname');
+            $table->string('abgabedatum')->default(date("Y-m-d"));
+            $table->string('aufgabenbeschreibung')->nullable();
+            $table->Integer('erstellt_von')->default(1)->unsigned();
+            $table->string('kurs')->index()->nullable();;
+            $table->timestamps();
+            //->default(date("Y-m-d"))
+            $table->date('deleted_at')->nullable();
+            //Constraints
+            //$table->foreign('kurs')->references('id')->on('kurs');
+            $table->foreign('erstellt_von')->references('id')->on('users');
+            $table->foreign('kurs')->references('kurs')->on('belegung');
+        });
+
 
 
 //        //Erzeuge Abgabentabelle
         Schema::create('abgabe', function (Blueprint $table){
-            $table->increments('id');
+            $table->increments('abgabeid');
             $table->string('zustand');
             $table->Integer('user')->unsigned();
             $table->Integer('zugehoerig_zu')->unsigned();
@@ -88,7 +90,7 @@ class CreateDatabase extends Migration
             $table->timestamps();
             //Constraints
             $table->foreign('zuordnung_aufgabe')->references('id')->on('aufgabe')->nullable();
-            $table->foreign('zuordnung_abgabe') ->references('id')->on('abgabe')->nullable();
+            $table->foreign('zuordnung_abgabe') ->references('abgabeid')->on('abgabe')->onDelete('Cascade')->nullable();
         });
 
         Schema::enableForeignKeyConstraints();

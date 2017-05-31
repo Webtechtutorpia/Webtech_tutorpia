@@ -5,7 +5,6 @@
             <div class="panel panel-success">
                 <div class="panel-heading">Registrierung</div>
                 <div class="panel-body">
-                    
                     <form class="form-horizontal" role="form" method="POST" action="<?php echo e(url('/register')); ?>">
                         <?php echo e(csrf_field()); ?>
 
@@ -23,7 +22,7 @@
                                 <?php endif; ?>
                             </div>
                         </div>
-                        
+
 
                             <div class="form-group<?php echo e($errors->has('rolle') ? ' has-error' : ''); ?>">
                                 <label for="rolle" class="col-md-4 control-label">Rolle</label>

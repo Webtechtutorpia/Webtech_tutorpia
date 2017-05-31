@@ -32,4 +32,5 @@ class ActivityController extends Controller
             return View::make('home');
         }
     }
+
 }

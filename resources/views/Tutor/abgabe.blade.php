@@ -58,14 +58,33 @@
                         <tr>
                                 <td>{{$zeile->name}}</td>
 
-
-                {{--<td class="text-center"><a href="{{ url('/aufgabe_example') }}" class="glyphicon glyphicon-minus btn-warning"></a></td>--}}
-                {{--<td class="text-center"><a href="{{ url('/aufgabe_example') }}" class="glyphicon glyphicon-remove btn-danger"></a></td>--}}
-                {{--<td class="text-center"><a href="{{ url('/aufgabe_example') }}" class="glyphicon glyphicon-ok btn-success"></a></td>--}}
-                <td>{{$zeile->zustand}}</td>
+                            @if($zeile->zustand == '+')
+                                <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-ok btn-success"></a>
+                            @endif
+                            @if($zeile->zustand == '-')
+                                <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-remove btn-danger"></a></td>
+                            @endif
+                            @if($zeile->zustand == '.')
+                                <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-minus btn-info"></a></td>
+                            @endif
+                            @if($zeile->zustand == '/')
+                                <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-minus btn-warning"></a></td>
+                            @endif
 
                         @else
-                        <td>{{$zeile->zustand}}</td>
+                            @if($zeile->zustand == '+')
+                                    <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-ok btn-success"></a>
+                                @endif
+                                @if($zeile->zustand == '-')
+                                    <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-remove btn-danger"></a></td>
+                                    @endif
+                                @if($zeile->zustand == '.')
+                                    <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-minus btn-info"></a></td>
+                                @endif
+                                @if($zeile->zustand == '/')
+                                    <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-minus btn-warning"></a></td>
+                                @endif
+                            {{--<td>{{$zeile->zustand}}</td>--}}
                     @endif
                 @php($id=$zeile->id)
                 @endforeach

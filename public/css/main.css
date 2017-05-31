@@ -149,6 +149,9 @@
 a{
     text-decoration: none;
 }
+.notVisible{
+    display: none;
+}
 
 
 

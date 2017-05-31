@@ -10,6 +10,7 @@ use View;
 use Illuminate\Http\Request;
 use Tutorpia\Http\Requests;
 use Auth;
+use Illuminate\Support\Facades\DB;
 class AufgabeController extends Controller
 {
 //    public function read(Request $request){
@@ -92,12 +93,19 @@ class AufgabeController extends Controller
             'zuordnung_aufgabe' => $id->id,
             'bearbeitet_von' => Auth::user()->name,
         ]);
+        $users =DB::table('belegung')
+            ->join('users', 'belegung.user', '=', 'users.id')
+            ->select('users.id')
+            ->where('belegung.kurs',session()->get('global_variable'))
+            ->get();
 
-        Abgabe::create([
-            'zustand'    => '.',
-            'user'      =>  2,
-            'zugehoerig_zu' => $id->id,
-        ]);
+        foreach($users as $user) {
+            Abgabe::create([
+                'zustand' => '.',
+                'user' => $user->id,
+                'zugehoerig_zu' => $id->id,
+            ]);
+        }
         return back();
 
     }
@@ -134,18 +142,31 @@ class AufgabeController extends Controller
     }
     public function show($kurs)
     {
-        session()->put('global_variable', $kurs);
-        // get the myinput
-        $aufgabe = Aufgabe::where('kurs','=',$kurs)->get();
+        if (Auth::check()) {
+            session()->put('global_variable', $kurs);
+            // get the myinput
+            $aufgabe = Aufgabe::where('kurs', '=', $kurs)->get();
 
-        // show the view and pass the myinput to it
-        return View::make('Professor.ProfMode')->with('myinputs', $aufgabe);
+            // show the view and pass the myinput to it
+            return View::make('Professor.ProfMode')->with('myinputs', $aufgabe);
+        } else {
+
+            return View::make('home');
+        }
     }
     public function destroy($id)
     {
         // delete
+        $activity=Activity::where('zuordnung_aufgabe',$id)->first();
+        $activity->delete();
+
+        Abgabe::where('zugehoerig_zu',$id)->delete();
+
+
         $aufgabe = Aufgabe::find($id);
         $aufgabe->delete();
+
+
         // redirect
         return back();
     }

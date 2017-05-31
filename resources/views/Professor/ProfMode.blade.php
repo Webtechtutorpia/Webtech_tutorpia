@@ -35,7 +35,7 @@
 
 
                     </div>
-                    <div class="panel-body" style="display:none">
+                    <div class="panel-body notVisible">
                         @if (count($errors) > 0)
                             <div class="alert alert-danger">
                                 <ul>
@@ -93,7 +93,7 @@
 
                                 <b>{{$value->aufgabenname}}</b>
                                 <div class="pull-right">
-                                    <form action="./Professor/{{$value->id }}"  onsubmit="return confirm('Sind Sie sicher, dass Sie {{ $value->aufgabenname}} wirklich löschen wollen?')" method="POST">
+                                    <form action="{{ url('Professor') }}/{{$value->id }}"  onsubmit="return confirm('Sind Sie sicher, dass Sie {{ $value->aufgabenname}} wirklich löschen wollen?')" method="POST">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
                                         <button type="submit">
@@ -105,7 +105,7 @@
 
 
                             </div>
-                            <div class="panel-body" style="display:none">
+                            <div class="panel-body notVisible" >
                                 @if (count($errors) > 0)
                                     <div class="alert alert-danger">
                                         <ul>

@@ -13,8 +13,7 @@
                 <div class="col-md-4 col-md-offset-8" id="anhang">
                     <div class="input-group">
                         <form method="get" action="/search">
-                            <input type="text" class="form-control" placeholder="Suche nach..." name="tfsearch"
-                                   onkeypress="search(this.value)">
+                            <input type="text" class="form-control" placeholder="Suche nach..." id="tfsearch">
                             <span class="input-group-btn">
              <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"
                                                                  aria-hidden="true"></span></button></span>
@@ -65,14 +64,33 @@
                         <tr>
                                 <td><?php echo e($zeile->name); ?></td>
 
-
-                
-                
-                
-                <td><?php echo e($zeile->zustand); ?></td>
+                            <?php if($zeile->zustand == '+'): ?>
+                                <td class="text-center"><a href="<?php echo e(url('Aufgabenansicht/bestimmteAbgabe')); ?>/<?php echo e($zeile->user); ?>/<?php echo e($zeile->aufgabenname); ?>" class="glyphicon glyphicon-ok btn-success"></a>
+                            <?php endif; ?>
+                            <?php if($zeile->zustand == '-'): ?>
+                                <td class="text-center"><a href="<?php echo e(url('Aufgabenansicht/bestimmteAbgabe')); ?>/<?php echo e($zeile->user); ?>/<?php echo e($zeile->aufgabenname); ?>" class="glyphicon glyphicon-remove btn-danger"></a></td>
+                            <?php endif; ?>
+                            <?php if($zeile->zustand == '.'): ?>
+                                <td class="text-center"><a href="<?php echo e(url('Aufgabenansicht/bestimmteAbgabe')); ?>/<?php echo e($zeile->user); ?>/<?php echo e($zeile->aufgabenname); ?>" class="glyphicon glyphicon-minus btn-info"></a></td>
+                            <?php endif; ?>
+                            <?php if($zeile->zustand == '/'): ?>
+                                <td class="text-center"><a href="<?php echo e(url('Aufgabenansicht/bestimmteAbgabe')); ?>/<?php echo e($zeile->user); ?>/<?php echo e($zeile->aufgabenname); ?>" class="glyphicon glyphicon-minus btn-warning"></a></td>
+                            <?php endif; ?>
 
                         <?php else: ?>
-                        <td><?php echo e($zeile->zustand); ?></td>
+                            <?php if($zeile->zustand == '+'): ?>
+                                    <td class="text-center"><a href="<?php echo e(url('Aufgabenansicht/bestimmteAbgabe')); ?>/<?php echo e($zeile->user); ?>/<?php echo e($zeile->aufgabenname); ?>" class="glyphicon glyphicon-ok btn-success"></a>
+                                <?php endif; ?>
+                                <?php if($zeile->zustand == '-'): ?>
+                                    <td class="text-center"><a href="<?php echo e(url('Aufgabenansicht/bestimmteAbgabe')); ?>/<?php echo e($zeile->user); ?>/<?php echo e($zeile->aufgabenname); ?>" class="glyphicon glyphicon-remove btn-danger"></a></td>
+                                    <?php endif; ?>
+                                <?php if($zeile->zustand == '.'): ?>
+                                    <td class="text-center"><a href="<?php echo e(url('Aufgabenansicht/bestimmteAbgabe')); ?>/<?php echo e($zeile->user); ?>/<?php echo e($zeile->aufgabenname); ?>" class="glyphicon glyphicon-minus btn-info"></a></td>
+                                <?php endif; ?>
+                                <?php if($zeile->zustand == '/'): ?>
+                                    <td class="text-center"><a href="<?php echo e(url('Aufgabenansicht/bestimmteAbgabe')); ?>/<?php echo e($zeile->user); ?>/<?php echo e($zeile->aufgabenname); ?>" class="glyphicon glyphicon-minus btn-warning"></a></td>
+                                <?php endif; ?>
+                            
                     <?php endif; ?>
                 <?php ($id=$zeile->id); ?>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>

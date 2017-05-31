@@ -7,15 +7,20 @@
 
                 <div class="panel-body">
 
+                    
+                    
 
-                    <p><?php echo e($aufgabenname); ?></p>
-                    <p><?php echo e($datum); ?></p>
-
+                    <style> .link{
+                            color: #45a049;
+                            font-size: 18px;
+                        }</style>
+                    Diese Seite ist nur für angemeldete User nutzbar. registriere dich <a href="/register" class="link"> hier </a>oder logge dich <a href="/login" class="link">hier</a> ein um diese Seite im vollen Umfang nutzen zu können.
                 </div>
             </div>
         </div>
     </div>
 </div>
 <?php $__env->stopSection(); ?>
+
 
 <?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
