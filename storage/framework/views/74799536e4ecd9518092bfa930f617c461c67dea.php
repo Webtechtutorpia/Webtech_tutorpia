@@ -110,6 +110,11 @@
 
     <?php echo $__env->yieldContent('content'); ?>
 
+    <?php $__env->startSection('test'); ?>
+        <h1>das ist ein test</h1>
+    <?php $__env->stopSection(); ?>
+
+
 </main>
 <!-- Scripts -->
 <script src="/js/app.js"></script>
