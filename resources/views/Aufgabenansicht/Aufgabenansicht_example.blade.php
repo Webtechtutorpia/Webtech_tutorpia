@@ -52,6 +52,7 @@
 
                                                 <div class="form group">
                                                     <input type="hidden" name="aufgabenname" value="{{$value->aufgabenname}}">
+                                                    <input type="hidden" name="abgabeid" value="{{$value->abgabeid}}">
                                                     <input type="hidden" name="username" value="{{$value->name}}">
                                                     <input type="file" class="form-control" name="upload" id="upload" onkeypress="buttonFaerben(this)">
                                                 </div>
@@ -193,7 +194,7 @@
                                             </div>
                                             <div class=" panel-group" style="padding-bottom: 1%;">
                                                 <div class="col-md-3  col-xs-6 size">Upload am :</div>
-                                                <div class="col-md-3  col-xs-6 size"> {{$value->created_at}}</div>
+                                                <div class="col-md-3  col-xs-6 size"> {{$value->updated_at}}</div>
                                                 <div class="col-md-3  col-xs-6 size">Datei löschen:</div>
                                                 <div class="col-md-3  col-xs-4 size">
                                                     <form action="{{ url('Aufgabenansicht') }}/{{$value->abgabeid }}"  onsubmit="return confirm('Sind Sie sicher, dass Sie die Datei von {{ $value->abgabeid}} wirklich löschen wollen?')" method="POST">

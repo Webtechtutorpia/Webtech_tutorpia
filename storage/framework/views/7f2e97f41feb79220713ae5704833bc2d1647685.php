@@ -52,6 +52,7 @@
 
                                                 <div class="form group">
                                                     <input type="hidden" name="aufgabenname" value="<?php echo e($value->aufgabenname); ?>">
+                                                    <input type="hidden" name="abgabeid" value="<?php echo e($value->abgabeid); ?>">
                                                     <input type="hidden" name="username" value="<?php echo e($value->name); ?>">
                                                     <input type="file" class="form-control" name="upload" id="upload" onkeypress="buttonFaerben(this)">
                                                 </div>
@@ -196,7 +197,7 @@
                                             </div>
                                             <div class=" panel-group" style="padding-bottom: 1%;">
                                                 <div class="col-md-3  col-xs-6 size">Upload am :</div>
-                                                <div class="col-md-3  col-xs-6 size"> <?php echo e($value->created_at); ?></div>
+                                                <div class="col-md-3  col-xs-6 size"> <?php echo e($value->updated_at); ?></div>
                                                 <div class="col-md-3  col-xs-6 size">Datei löschen:</div>
                                                 <div class="col-md-3  col-xs-4 size">
                                                     <form action="<?php echo e(url('Aufgabenansicht')); ?>/<?php echo e($value->abgabeid); ?>"  onsubmit="return confirm('Sind Sie sicher, dass Sie die Datei von <?php echo e($value->abgabeid); ?> wirklich löschen wollen?')" method="POST">
