@@ -30,9 +30,7 @@
 
 
 
-            @if (Session::has('message'))
-                <div class="alert alert-info">{{ Session::get('message') }}</div>
-            @endif
+
             {{--je nach Datenbankeintrag Element anzeigen--}}
             <h3>Alle Aufgaben:</h3>
             @foreach($myinputs as $key => $value)
@@ -43,7 +41,37 @@
                                         <div class="panel-heading" onclick="Bodyhandler(this)"> {{$value->aufgabenname}}
                                             <div style="display: inline; float: right" class="glyphicon glyphicon-minus"></div>
                                         </div>
+
                                         <div class="panel-body notVisible">
+
+                                            <div class="fileUpload notVisible">
+                                            <form class="form-horizontal" role="form" method="POST"
+                                                  action="{{ url('FileUpload') }}" enctype="multipart/form-data">
+                                                {{ csrf_field() }}
+
+
+                                                <div class="form group">
+                                                    <input type="hidden" name="aufgabenname" value="{{$value->aufgabenname}}">
+                                                    <input type="hidden" name="username" value="{{$value->name}}">
+                                                    <input type="file" class="form-control" name="upload" id="upload" onkeypress="buttonFaerben(this)">
+                                                </div>
+
+
+                                                <div class="form-group" style="margin-top: 2em;">
+                                                    <button type="submit" class="btn btn-primary speichern" value="Abschicken"
+                                                            style="float: right">
+                                                        Datei hochladen
+                                                    </button>
+
+                                                </div>
+                                            </form>
+                                        </div>
+
+
+                                        <div class="austauschen">
+                                            @if (Session::has('message'))
+                                                <div class="alert alert-danger">{{ Session::get('message') }}</div>
+                                            @endif
                                             <div class=" panel-group" style="padding-bottom: 1%;">
                                                 <div class="col-md-3 col-xs-6 size"> Aufgabenstellung:</div>
                                                 <div class="col-md-9 col-xs-12 size"> {{$value->aufgabenname}}</div>
@@ -53,8 +81,7 @@
                                                 <div class="col-md-3  col-xs-6 size"> {{$value->abgabedatum}}</div>
                                                 <div class="col-md-3  col-xs-6 size">Aufgabe hochladen:</div>
                                                 <div class="col-md-3  col-xs-4 size">
-                                                    <a class="btn btn-primary btn"  href="{{ url('/FileUpload') }}" role="button">Upload</a>
-
+                                                    <a class="btn btn-primary btn" onclick="add(this)" role="button">Upload</a>
 
                                                 </div>
                                             </div>
@@ -66,6 +93,7 @@
                                                 <div class="col-md-3 col-xs-12"> Status:</div>
                                                 <div class="col-md-3 col-xs-12 size">Warten auf Upload</div>
                                             </div>
+                                        </div>
                                         </div>
                                     </div>
                                     </div>

@@ -3,32 +3,28 @@
 namespace Tutorpia\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Tutorpia\Aufgabe;
 use View;
 use Tutorpia\Http\Requests;
 use Auth;
+use Session;
 use Tutorpia\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
 class FileUploadController extends Controller
 {
-    public function index()
-    {
 
-
-        // load the view and pass the myinputs
-        return View::make('FileUpload.FileUpload');
-
-    }
     public function store(Request $request) {
         // Überprüfe, ob der Request die Datei "upload" enthält
         // und dieser Upload fehlerfrei abgelaufen ist
-        if ($request->hasFile('upload') && $request->file('upload')->isValid()) {
-            // Überprüfe, ob die hochgeladene Datei den MIME Typ PDF hat
-            if ($request->file('upload')->getMimeType() == 'application/pdf') {
-                // Verschiebe die Datei an den angegebenen Ort und gib ihr den angegebenen Namen
-                $request->file('upload')->move('/documents', 'NeuerName.pdf');
-            }
+        if (request()->hasFile('upload')) {
+            $name = $request->file('upload')->getClientOriginalName();
+            $path = $request->file('upload')->storeAs('files',$request->username.'_'.$request->aufgabenname.'_'.$name);
+            //$path = $request->file('avatar')->store('avatars/'.$request->user()->id, 's3');
+            return back();
         }
+        else{
+            Session::flash('message', 'Hochladen der Datei hat nicht funktioniert.Bitte erneut versuchen.');
+            return back();
+        }
+
     }
 
 }

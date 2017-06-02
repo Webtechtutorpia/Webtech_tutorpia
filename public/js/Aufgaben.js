@@ -23,3 +23,8 @@ function Bodyhandler(element){
 function ajaxSearch(name){
     $("#liste").load("/Aufgabenansicht/ajaxcityList?name="+name)
 };
+
+function add(element){
+    $(".austauschen").hide();
+    $(".fileUpload").show();
+}

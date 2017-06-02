@@ -28,9 +28,7 @@
 
 
 
-            <?php if(Session::has('message')): ?>
-                <div class="alert alert-info"><?php echo e(Session::get('message')); ?></div>
-            <?php endif; ?>
+
             
             <h3>Alle Aufgaben:</h3>
             <?php $__currentLoopData = $myinputs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
@@ -42,7 +40,38 @@
 
                                             <div style="display: inline; float: right" class="glyphicon glyphicon-minus"></div>
                                         </div>
+
                                         <div class="panel-body notVisible">
+
+                                            <div class="fileUpload notVisible">
+                                            <form class="form-horizontal" role="form" method="POST"
+                                                  action="<?php echo e(url('FileUpload')); ?>" enctype="multipart/form-data">
+                                                <?php echo e(csrf_field()); ?>
+
+
+
+                                                <div class="form group">
+                                                    <input type="hidden" name="aufgabenname" value="<?php echo e($value->aufgabenname); ?>">
+                                                    <input type="hidden" name="username" value="<?php echo e($value->name); ?>">
+                                                    <input type="file" class="form-control" name="upload" id="upload" onkeypress="buttonFaerben(this)">
+                                                </div>
+
+
+                                                <div class="form-group" style="margin-top: 2em;">
+                                                    <button type="submit" class="btn btn-primary speichern" value="Abschicken"
+                                                            style="float: right">
+                                                        Datei hochladen
+                                                    </button>
+
+                                                </div>
+                                            </form>
+                                        </div>
+
+
+                                        <div class="austauschen">
+                                            <?php if(Session::has('message')): ?>
+                                                <div class="alert alert-danger"><?php echo e(Session::get('message')); ?></div>
+                                            <?php endif; ?>
                                             <div class=" panel-group" style="padding-bottom: 1%;">
                                                 <div class="col-md-3 col-xs-6 size"> Aufgabenstellung:</div>
                                                 <div class="col-md-9 col-xs-12 size"> <?php echo e($value->aufgabenname); ?></div>
@@ -52,8 +81,7 @@
                                                 <div class="col-md-3  col-xs-6 size"> <?php echo e($value->abgabedatum); ?></div>
                                                 <div class="col-md-3  col-xs-6 size">Aufgabe hochladen:</div>
                                                 <div class="col-md-3  col-xs-4 size">
-                                                    <a class="btn btn-primary btn"  href="<?php echo e(url('/FileUpload')); ?>" role="button">Upload</a>
-
+                                                    <a class="btn btn-primary btn" onclick="add(this)" role="button">Upload</a>
 
                                                 </div>
                                             </div>
@@ -65,6 +93,7 @@
                                                 <div class="col-md-3 col-xs-12"> Status:</div>
                                                 <div class="col-md-3 col-xs-12 size">Warten auf Upload</div>
                                             </div>
+                                        </div>
                                         </div>
                                     </div>
                                     </div>

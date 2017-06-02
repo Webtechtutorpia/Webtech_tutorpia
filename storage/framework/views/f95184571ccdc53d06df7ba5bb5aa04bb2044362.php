@@ -28,20 +28,14 @@
                             <?php endif; ?>
 
                             <form class="form-horizontal" role="form" method="POST"
-                                  action="<?php echo e(url('FileUpload')); ?>" >
+                                  action="<?php echo e(url('FileUpload')); ?>" enctype="multipart/form-data">
                                 <?php echo e(csrf_field()); ?>
 
 
-                                
-
-                                    
-                                    
-                                           
-                                
 
                                 <div class="form group">
 
-                                    <input type="file" class="form-control" name="upload" id="File" onkeypress="buttonFaerben(this)">
+                                    <input type="file" class="form-control" name="upload" id="upload" onkeypress="buttonFaerben(this)">
                                 </div>
 
 
