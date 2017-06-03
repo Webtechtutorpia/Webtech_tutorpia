@@ -15,12 +15,22 @@ function getCookie(cname) {
     return "";
 }
 
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
 $(function() {
 
 
     $('li').bind('click', function(){
         if(getCookie('cookieconsent_status')=="") {
-            alert("Bitte bestätigen Sie erst unsere Cookies");
+           var akz = confirm("Bitte akzeptieren Sie erst unsere Cookies. Cookies erlauben?");
+           if (akz==true){
+               setCookie('cookieconsent_status', 'dismiss', 30 );
+               return true;
+           }
             return false;
         }
         else {
