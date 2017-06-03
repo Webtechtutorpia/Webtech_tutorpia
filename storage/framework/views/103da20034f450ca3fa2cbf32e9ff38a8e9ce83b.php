@@ -1,5 +1,8 @@
 <?php $__env->startSection('content'); ?>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
+            
+        
 
     <div class="container">
         <div class="row">
@@ -36,7 +39,8 @@
         <label for="subject">Nachricht</label>
         <textarea id="subject" name="subject" placeholder="Bitte Nachricht eintragen" style="height:200px"></textarea>
 
-        <input type=button" class=" btn-primary btn" type="submit" value="Bestätigen">
+        <input type=button"
+               class=" btn-primary btn" type="submit" value="Bestätigen">
 
             </form>
 </div>

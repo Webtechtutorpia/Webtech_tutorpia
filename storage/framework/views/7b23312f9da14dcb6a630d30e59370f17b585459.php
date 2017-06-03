@@ -13,9 +13,18 @@
     <link href="<?php echo e(asset('css/bootstrap.min.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('css/bootstrap-theme.min.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('css/main.css')); ?>" rel="stylesheet" type="text/css">
-    
-    
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+    <script type="text/javascript" src="<?php echo e(URL::asset('js/jquery.cookie.js')); ?>"></script>
+    <script type="text/javascript" src="<?php echo e(URL::asset('js/jquery-3.2.1.js')); ?>"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script type="text/javascript" src="<?php echo e(URL::asset('js/layout.js')); ?>"></script>
+    
+    <script>
+
+
+
+
+</script>
     <title><?php echo e(config('app.name', 'Tutorpia')); ?></title>
 
 
@@ -31,6 +40,8 @@
 </head>
 <body>
 <header>
+    <noscript>Diese Webseite funktioniert nur mit Javascript</noscript>
+
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container-fluid bg-success">
@@ -54,7 +65,8 @@
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse" onmouseover="hoverselectednavbar()">
                     <!-- Left Side Of Navbar -->
-                    <?php if(Auth::check()): ?>
+
+                   <?php if(Auth::check()): ?>
 
                         <ul class="nav navbar-nav">
                             <li role="presentation" name="Übersicht"><a href="/Activity">Übersicht</a></li>
@@ -73,7 +85,7 @@
                         <!-- Authentication Links -->
 
                         <?php if(Auth::guest()): ?>
-                            <li><a href="<?php echo e(url('/login')); ?>">Login</a></li>
+                            <li><a  href="<?php echo e(url('/login')); ?>" onclick="check()">Login</a></li>
                             <li><a href="<?php echo e(url('/register')); ?>">Registrierung</a></li>
                         <?php else: ?>
                             <li class="dropdown">
@@ -126,27 +138,39 @@
         js.src = "//connect.facebook.net/de_DE/sdk.js#xfbml=1&version=v2.9";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
-<footer class="bg-success">
-
-    <div class="collapse navbar-collapse" id="app-navbar-collapse" onmouseover="hoverselectednavbar()">
+<footer class="bg-success" style="height: 4.5em !important;">
+    <div class="collapse navbar-collapse  " id="app-navbar-collapse" onmouseover="hoverselectednavbar()">
         <ul id="navlist" class="navbar navbar-nav">
             <li class="first foot" name="Datenschutz"><a style= "text-decoration: none" href="<?php echo e(url('/datenschutz')); ?>">Datenschutz</a></li>
             <li name="Impressum"><a style= "text-decoration: none" href="<?php echo e(url('/impressum')); ?>">Impressum</a></li>
             <li name="Kontakt"><a style= "text-decoration: none" href="<?php echo e(url('/contact')); ?>">Kontakt</a></li>
-            <li> <div class="fb-follow" data-href="https://www.facebook.com/zuck" data-layout="standard" data-size="large" data-show-faces="false" style="float:right"></div></li>
         </ul>
         <ul class="navbar navbar-right">
             <li class="col-md-offset-7" name="Facebook" style="list-style: none">
-                
-                
-                
-                
-
-                
+                <div class="fb-like" data-href="https://www.facebook.com/Tutorpia" data-layout="button" data-action="like" data-size="large" data-show-faces="false" data-share="false" style="padding-right: 2em"></div>
             </li>
         </ul>
     </div>
 
 </footer>
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+<script>
+    window.addEventListener("load", function(){
+        window.cookieconsent.initialise({
+            "palette": {
+                "popup": {
+                    "background": "#f5f8fa",
+                    "text": "#777"
+                },
+                "button": {
+                    "background": "#c9e2b3",
+                    "text": "#ffffff"
+                }
+            },
+            "theme": "classic"
+        })});
+</script>
 </body>
 </html>
