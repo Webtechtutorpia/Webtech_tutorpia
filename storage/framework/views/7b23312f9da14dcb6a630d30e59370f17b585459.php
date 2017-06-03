@@ -26,8 +26,7 @@
 
 </script>
     <title><?php echo e(config('app.name', 'Tutorpia')); ?></title>
-
-
+   / <link rel="icon" type="image/jpg" href="images/euleicon.jpg">
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
 
@@ -58,6 +57,7 @@
                     <!-- Branding Image -->
 
                     <a class="navbar-brand" href="<?php echo e(url('/')); ?>">
+                        
                         <?php echo e(config('app.name', 'Tutorpia')); ?>
 
                     </a>
@@ -85,7 +85,7 @@
                         <!-- Authentication Links -->
 
                         <?php if(Auth::guest()): ?>
-                            <li><a  href="<?php echo e(url('/login')); ?>" onclick="check()">Login</a></li>
+                            <li><a  href="<?php echo e(url('/login')); ?>">Login</a></li>
                             <li><a href="<?php echo e(url('/register')); ?>">Registrierung</a></li>
                         <?php else: ?>
                             <li class="dropdown">
@@ -156,17 +156,18 @@
 
 
 <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
-<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
 <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
 <script>
     window.addEventListener("load", function(){
         window.cookieconsent.initialise({
             "palette": {
                 "popup": {
-                    "background": "#c9e2b3"
+                    "background": "#c9e2b3",
+                    "text": "#777777"
                 },
                 "button": {
-                    "background": "#f5f8fa"
+                    "background": "#f5f8fa",
+                    "text": "#777"
                 }
             },
             "content": {

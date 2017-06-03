@@ -26,8 +26,7 @@
 
 </script>
     <title>{{ config('app.name', 'Tutorpia') }}</title>
-
-
+   / <link rel="icon" type="image/jpg" href="images/euleicon.jpg">
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
 
@@ -58,6 +57,7 @@
                     <!-- Branding Image -->
 
                     <a class="navbar-brand" href="{{ url('/') }}">
+                        {{--<img style="max-width: 20px; max-height: 20px;" src="images/eule.jpg">--}}
                         {{ config('app.name', 'Tutorpia') }}
                     </a>
                 </div>
@@ -84,7 +84,7 @@
                         <!-- Authentication Links -->
 
                         @if (Auth::guest())
-                            <li><a  href="{{ url('/login') }}" onclick="check()">Login</a></li>
+                            <li><a  href="{{ url('/login') }}">Login</a></li>
                             <li><a href="{{ url('/register') }}">Registrierung</a></li>
                         @else
                             <li class="dropdown">
@@ -154,17 +154,18 @@
 
 
 <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
-<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
 <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
 <script>
     window.addEventListener("load", function(){
         window.cookieconsent.initialise({
             "palette": {
                 "popup": {
-                    "background": "#c9e2b3"
+                    "background": "#c9e2b3",
+                    "text": "#777777"
                 },
                 "button": {
-                    "background": "#f5f8fa"
+                    "background": "#f5f8fa",
+                    "text": "#777"
                 }
             },
             "content": {
