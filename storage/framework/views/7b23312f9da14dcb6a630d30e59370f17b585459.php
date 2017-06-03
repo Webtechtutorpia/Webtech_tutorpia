@@ -155,21 +155,26 @@
 </footer>
 
 
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
 <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
 <script>
     window.addEventListener("load", function(){
         window.cookieconsent.initialise({
             "palette": {
                 "popup": {
-                    "background": "#f5f8fa",
-                    "text": "#777"
+                    "background": "#c9e2b3"
                 },
                 "button": {
-                    "background": "#c9e2b3",
-                    "text": "#ffffff"
+                    "background": "#f5f8fa"
                 }
             },
-            "theme": "classic"
+            "content": {
+                "message": "Diese Webseite benötigt Cookies. Bitte akzeptieren unsere Cookiebestimmungen.",
+                "dismiss": "akzeptieren",
+                "link": "mehr Infos",
+                "href": "/datenschutz"
+            }
         })});
 </script>
 </body>
