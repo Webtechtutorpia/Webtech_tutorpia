@@ -36,10 +36,11 @@
             'csrfToken' => csrf_token(),
         ]); ?>
     </script>
+    <noscript>Diese Webseite funktioniert nur mit Javascript</noscript>
 </head>
 <body>
 <header>
-    <noscript>Diese Webseite funktioniert nur mit Javascript</noscript>
+
 
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
@@ -136,23 +137,37 @@
         js.src = "//connect.facebook.net/de_DE/sdk.js#xfbml=1&version=v2.9";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
-<footer class="bg-success" style="height: 4.5em !important;">
-    <div class="collapse navbar-collapse  " id="app-navbar-collapse" onmouseover="hoverselectednavbar()">
-        <ul id="navlist" class="navbar navbar-nav">
-            <li class="first foot" name="Datenschutz"><a style= "text-decoration: none" href="{{ url('/datenschutz') }}">Datenschutz</a></li>
-            <li name="Impressum"><a style= "text-decoration: none" href="{{ url('/impressum') }}">Impressum</a></li>
-            <li name="Kontakt"><a style= "text-decoration: none" href="{{ url('/contact') }}">Kontakt</a></li>
-        </ul>
-        <ul class="navbar navbar-right">
-            <li class="col-md-offset-7" name="Facebook" style="list-style: none">
-                <div class="fb-like" data-href="https://www.facebook.com/Tutorpia" data-layout="button" data-action="like" data-size="large" data-show-faces="false" data-share="false" style="padding-right: 2em"></div>
-            </li>
-        </ul>
+
+<footer>
+    <div class="footer">
+        <nav class="navbar navbar-default" style="margin-bottom: 0;">
+            <div class="container-fluid bg-success">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-collapse">
+                        <span class="sr-only">Toggle Navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+
+                <div class="collapse navbar-collapse" id="app-collapse" onmouseover="hoverselectednavbar()">
+                        <ul class="nav navbar-nav">
+                            <li class="first foot" name="Datenschutz"><a style= "text-decoration: none" href="{{ url('/datenschutz') }}">Datenschutz</a></li>
+                            <li name="Impressum"><a style= "text-decoration: none" href="{{ url('/impressum') }}">Impressum</a></li>
+                            <li name="Kontakt"><a style= "text-decoration: none" href="{{ url('/contact') }}">Kontakt</a></li>
+                        </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                    <li role="presentation" name="Facebook" style="list-style: none">
+                    <div class="fb-like" data-href="https://www.facebook.com/Tutorpia" data-layout="button" data-action="like" data-size="large" data-show-faces="false" data-share="false" style="padding-right: 10em; padding-top: 1em; padding-left:1em"></div>
+                    </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </div>
-
 </footer>
-
-
 <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
 <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
 <script>
