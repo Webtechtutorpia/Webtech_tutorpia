@@ -6,7 +6,7 @@
     <div class="container" id="container">
         <div class="row" >
 
-            <h2>Studentenmodus: DBIS</h2>
+            <h2>Studentenmodus: <?php echo e($kurs); ?></h2>
 
             <div class="col-md-4 col-md-offset-8">
 

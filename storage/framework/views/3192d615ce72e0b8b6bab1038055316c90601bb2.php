@@ -4,106 +4,217 @@
 <?php $__env->startSection('content'); ?>
     <?php if(Auth::user()->rolle=="Professor" || Auth::user()->rolle=="Tutor" ): ?>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        
-        
-        
         <script type="text/javascript" src="<?php echo e(URL::asset('js/professorenmodus.js')); ?>"></script>
 
         <div class="container">
             <div class="row">
+                <h2>Korrekturmodus: <?php echo e($kurs); ?></h2>
+
+                
+                    
 
 
-                <div class="col-md-12 col-xs-12 ">
-                    <h4> Kurs: bla</h4>
-
-
-                    <?php if($zustand== "+"): ?>
-                        <b>
-                            <div class="glyphicon glyphicon-plus"></div>
-                        </b>
-                        <div class="panel panel-success aufgabe ">
-                            <?php elseif($zustand=="-"): ?>
-                                <b>
-                                    <div class="glyphicon glyphicon-minus"></div>
-                                </b>
-                                <div class="panel panel-danger aufgabe">
-                                    <?php else: ?>
-                                        <b>unknown</b>
-                                        <div class="panel panel-warning aufgabe ">
-                                            <?php endif; ?>
-                                            <div class="panel-heading" onclick="Bodyhandler()">
-                                                <div style="display:inline">Aufgabe <?php echo e($aufgabenname); ?></div>
-                                                <div style="float:right ">Student: <?php echo e($student); ?></div>
-                                            </div>
-                                            <div class="panel-body">
-                                                <div class=" panel-group" style="padding-bottom: 1%;">
-                                                    <div class="col-md-3 col-xs-6 size"> Abgabedatum:</div>
-                                                    <div class="col-md-9 col-xs-12 size"> 28.05.2017 12:51</div>
-                                                </div>
-                                                <div class=" panel-group" style="padding-bottom: 1%;">
-                                                    <h4 class="col-md-12 col-xs-12 text-center">Studentenversion</h4>
-                                                    <div class="col-md-3  col-xs-6 size">Upload am :</div>
-                                                    <div class="col-md-3  col-xs-6 size"> 28.05.2017 12:51</div>
-                                                    <div class="col-md-3  col-xs-6 size">
-                                                        <button class="btn btn-default btn-primary">Download</button>
-                                                    </div>
+                    
+                        
+                            
+                        
+                        
+                            
+                                
+                                    
+                                
+                                
+                                    
+                                        
+                                        
+                                            
+                                            
+                                                
+                                                
+                                            
+                                            
+                                                
                                                     
-                                                    <h4 class="col-md-12 col-xs-12 Text-center">Tutorenberech </h4>
-                                                    <div class="col-md-3  col-xs-6 size">Korrigiert am :</div>
-                                                    <div class="col-md-3  col-xs-6 size"> 28.05.2017 12:51</div>
-                                                    <div class="col-md-6  col-xs-6 size">Abnahme durch: Tutor1</div>
+                                                    
+                                                
+                                                
+                                                    
+                                                    
+                                                    
+                                                    
+                                                        
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
 
-                                                    <div class="col-md-6 col-xs-6 size"> Datei: (Pfad)</div>
-                                                    <div class="col-md-3  col-xs-6 size btn-group">
-                                                        <button class="btn btn-default btn-primary">Download</button>
-                                                        <button class="btn btn-default btn-primary">Delete</button>
-                                                    </div>
+                                                    
+                                                    
+                                                        
+                                                        
+                                                    
 
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="Aufgabenname"
-                                                               class="control-label col-md-12 col-xs-12"
-                                                               style="text-decoration: none">Kommentar:</label>
-                                                        <div class="input-group col-md-12 col-xs-12">
-                                                        <input type="text" class="form-control" name="aufgabenname"
-                                                               id="Aufgabenname" onkeypress="buttonFaerben(this)"
-                                                               placeholder="Hier Kommentar eintragen">
-                                                            <div class="input-group-btn">
-                                                                <button class="btn btn-default btn-primary">setzen</button>
-                                                            </div>
-                                                        </div>
-                                                            <div class="col-md-3 col-xs-6 size">Status </div>
-                                                        <div class="dropdown">
+                                                    
+                                                    
+                                                        
+                                                               
+                                                               
+                                                        
+                                                        
+                                                               
+                                                               
+                                                            
+                                                                
+                                                            
+                                                        
+                                                            
+                                                        
 
-                                                            <div class="btn-group" role="group">
-                                                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                    Dropdown
-                                                                    <span class="caret"></span>
-                                                                </button>
-                                                                <ul class="dropdown-menu">
-                                                                    <li><a href="#">abnehmen</a></li>
-                                                                    <li><a href="#">ablehnen</a></li>
-                                                                    <li><a href="#">unbearbeitet</a></li>
-                                                                </ul>
-                                                                <button class="btn btn-default">Status ändern</button>
-                                                            </div>
-                                                    </div>
-                                                    </div>
-                                                    </div>
-                                                    <div class="input-group">
+                                                            
+                                                                
+                                                                    
+                                                                    
+                                                                
+                                                                
+                                                                    
+                                                                    
+                                                                    
+                                                                
+                                                                
+                                                            
+                                                    
+                                                    
+                                                    
+                                                    
 
 
 
-                                                </div>
+                                                
+                                            
+                                        
+    
+                    <?php $__currentLoopData = $myinputs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+
+                                    <div class="col-md-12 col-xs-12">
+                                        <div class="panel panel-info aufgabe ">
+                                            <div class="panel-heading" onclick="Bodyhandler(this)"> <?php echo e($value->aufgabenname); ?>
+
+                                                <div style="display: inline; float: right" class="glyphicon glyphicon-minus"></div>
                                             </div>
+
+                                            <div class="panel-body">
+
+                                                <div class="fileUpload notVisible">
+                                                    <form class="form-horizontal" role="form" method="POST"
+                                                          action="<?php echo e(url('FileUpload')); ?>" enctype="multipart/form-data">
+                                                        <?php echo e(csrf_field()); ?>
+
+
+
+                                                        <div class="form group">
+                                                            <input type="hidden" name="aufgabenname" value="<?php echo e($value->aufgabenname); ?>">
+                                                            <input type="hidden" name="abgabeid" value="<?php echo e($value->abgabeid); ?>">
+                                                            <input type="hidden" name="username" value="<?php echo e($value->name); ?>">
+                                                            <input type="file" class="form-control" name="upload" id="upload" onkeypress="buttonFaerben(this)">
+                                                        </div>
+
+
+                                                        <div class="form-group" style="margin-top: 2em;">
+                                                            <button type="submit" class="btn btn-primary speichern" value="Abschicken"
+                                                                    style="float: right">
+                                                                Datei hochladen
+                                                            </button>
+
+                                                        </div>
+                                                    </form>
+                                                </div>
+
+
+                                                <div class="austauschen">
+                                                    <?php if(Session::has('message')): ?>
+                                                        <div class="alert alert-danger"><?php echo e(Session::get('message')); ?></div>
+                                                    <?php endif; ?>
+
+                                            <table class = "table responsive">
+                                                <tr>
+                                                    <th>Studentenversion</th>
+                                                    <th></th>
+                                                </tr>
+                                                <tr>
+                                                    <td>Student:</td>
+                                                    <td><?php echo e($value->name); ?></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Aufgabenstellung:</td>
+                                                    <td><?php echo e($value->aufgabenname); ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Abgabedatum:</td>
+                                                    <td><?php echo e($value->abgabedatum); ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Upload am:</td>
+                                                    <td><?php echo e($value->updated_at); ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Datei:</td>
+                                                    <td><button class="btn btn-default btn-primary">Download</button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Student kontaktieren</td>
+                                                    <td><span><a href="mailto:<?php echo e($value->email); ?>?subject=Frage zur Abnahme von <?php echo e($value->aufgabenname); ?>"
+                                                                 class="glyphicon glyphicon-envelope"></a></span></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <th>Bewertungsbereich</th>
+                                                    <th></th>
+                                                </tr>
+                                                <form>
+                                                <tr>
+                                                    <td>Kommentar:</td>
+                                                    <td>
+                                                    <input type="text" class="form-control" name="aufgabenname"
+                                                    id="Aufgabenname" onkeypress="buttonFaerben(this)"
+                                                    placeholder="Hier Kommentar eintragen">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Status:</td>
+                                                    <td>
+                                                        <div class="btn-group" role="group">
+                                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        Auswahl
+                                                        <span class="caret"></span>
+                                                        </button>
+                                                        <ul class="dropdown-menu">
+                                                        <li><a href="#">abnehmen</a></li>
+                                                        <li><a href="#">ablehnen</a></li>
+                                                        <li><a href="#">unbearbeitet</a></li>
+                                                        </ul>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                    <tr>
+                                                        <td>Bewertung abschicken:</td>
+                                                        <td><button class="btn btn-primary">bewerten</button></td>
+                                                    </tr>
+                                                </form>
+                                            </table>
+                                                </div>
+                                                </div>
+                                        </div>
                                         </div>
 
 
+                    
 
-
-
-
-    <?php endif; ?>
-
+    <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
+            </div>
+        </div>
+<?php endif; ?>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
