@@ -45,7 +45,7 @@ class AufgabenansichtController extends Controller
                 ->orderBy('aufgabe.aufgabenname', 'asc')
                 ->get();
             // show the view and pass the myinput to it
-            return View::make('Aufgabenansicht.Aufgabenansicht_example')->with('myinputs', $abgabe);
+            return View::make('Aufgabenansicht.Aufgabenansicht_example')->with('myinputs', $abgabe)->with('kurs',session()->get('global_variable'));
         }
         else{
             return View::make('home');
@@ -105,6 +105,6 @@ private function queryName(Request $request){
             ->where('Aufgabe.aufgabenname','like',$name)
             ->orderBy('users.name', 'asc')
             ->get();
-        return View::make('Aufgabenansicht.Aufgabenansicht_example')->with('myinputs', $abgabe);
+        return View::make('Aufgabenansicht.Aufgabenansicht_example')->with('myinputs', $abgabe)->with('kurs',session()->get('global_variable'));
     }
 }

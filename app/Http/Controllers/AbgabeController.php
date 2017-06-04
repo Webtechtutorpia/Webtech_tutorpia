@@ -109,10 +109,23 @@ class AbgabeController extends Controller
                 ->orderBy('users.id', 'asc')
                 ->get();
             // show the view and pass the myinput to it
-            return View::make('Tutor.abgabe')->with('myinputs', $aufgabe)->with('ergebnismenge', $abgabe);
+            return View::make('Tutor.abgabe')->with('myinputs', $aufgabe)->with('ergebnismenge', $abgabe)->with('kurs',session()->get('global_variable'));
         } else {
             return View::make('home');
         }
+    }
+
+    public function UserAbgaben($id,$name){
+        $abgabe = DB::table('abgabe')
+            ->join('aufgabe', 'abgabe.zugehoerig_zu', '=', 'aufgabe.id')
+            ->join('users', 'abgabe.user', '=', 'users.id')
+            ->select('*')
+            ->where('aufgabe.kurs', session()->get('global_variable'))
+            ->where('users.id', $id)
+            ->where('Aufgabe.aufgabenname','like',$name)
+            ->orderBy('users.name', 'asc')
+            ->get();
+        return View::make('Tutor.Aufgabenkorrektur')->with('myinputs', $abgabe)->with('kurs',session()->get('global_variable'));
     }
 
 

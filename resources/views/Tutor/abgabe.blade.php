@@ -10,7 +10,7 @@
     @if (Auth::user()->rolle=="Tutor" || Auth::user()->rolle=="Professor" )
         <div class="container">
             <div class="row">
-                <h2>Tutorenmodus: ALDA</h2>
+                <h2>Tutorenmodus: {{$kurs}}</h2>
 
                 <div class="col-md-4 col-md-offset-8" id="anhang">
                     <div class="input-group">
@@ -22,10 +22,11 @@
                         </form>
                     </div>
                 </div>
-                <button onclick="add()"> add</button>
-                <button onclick="remove()">remove</button>
-                <div id="ausgabe">hallo</div>
+                {{--<button onclick="add()"> add</button>--}}
+                {{--<button onclick="remove()">remove</button>--}}
+                {{--<div id="ausgabe">hallo</div>--}}
                 {{--<div class="table-responsive">--}}
+
                 <table class="table table-responsive table-striped table-bordered" id="tabelle">
                 <thead>
                 <tr>
