@@ -34,7 +34,7 @@
 
 
                     </div>
-                    <div class="panel-body" style="display:none">
+                    <div class="panel-body notVisible">
                         <?php if(count($errors) > 0): ?>
                             <div class="alert alert-danger">
                                 <ul>
@@ -93,7 +93,7 @@
 
                                 <b><?php echo e($value->aufgabenname); ?></b>
                                 <div class="pull-right">
-                                    <form action="./Professor/<?php echo e($value->id); ?>"  onsubmit="return confirm('Sind Sie sicher, dass Sie <?php echo e($value->aufgabenname); ?> wirklich löschen wollen?')" method="POST">
+                                    <form action="<?php echo e(url('Professor')); ?>/<?php echo e($value->id); ?>"  onsubmit="return confirm('Sind Sie sicher, dass Sie <?php echo e($value->aufgabenname); ?> wirklich löschen wollen?')" method="POST">
                                         <?php echo e(csrf_field()); ?>
 
                                         <?php echo e(method_field('DELETE')); ?>
@@ -107,7 +107,7 @@
 
 
                             </div>
-                            <div class="panel-body" style="display:none">
+                            <div class="panel-body notVisible" >
                                 <?php if(count($errors) > 0): ?>
                                     <div class="alert alert-danger">
                                         <ul>

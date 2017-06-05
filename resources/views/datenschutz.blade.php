@@ -3,9 +3,7 @@
 
 @section('content')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    {{--<script> $( document ).ready(function() {--}}
-            {{--$("li[name='Datenschutz']").css('background-color', '#f5f8fa');--}}
-        {{--});</script>--}}
+
     <div class="container">
 <p><strong>Datenschutzerklärung</strong></p>
 <p>Der Schutz und die Sicherheit von persönlichen Daten hat bei uns eine hohe Priorität. Daher halten wir uns strikt an die Regeln des deutschen Bundesdatenschutzgesetzes (BDSG). Nachfolgend werden Sie darüber informiert, welche Art von Daten erfasst und zu welchem Zweck sie erhoben werden:</p>
@@ -17,4 +15,7 @@
 <p>7. Änderungen dieser Datenschutzbestimmungen<br>Wir werden diese Richtlinien zum Schutz Ihrer persönlichen Daten von Zeit zu Zeit aktualisieren. Sie sollten sich diese Richtlinien gelegentlich ansehen, um auf dem Laufenden darüber zu bleiben, wie wir Ihre Daten schützen und die Inhalte unserer Website stetig verbessern. Sollten wir wesentliche Änderungen bei der Sammlung, der Nutzung und/oder der Weitergabe der uns von Ihnen zur Verfügung gestellten personenbezogenen Daten vornehmen, werden wir Sie durch einen eindeutigen und gut sichtbaren Hinweis auf der Website darauf aufmerksam machen. Mit der Nutzung der Webseite erklären Sie sich mit den Bedingungen dieser Richtlinien zum Schutz persönlicher Daten einverstanden.</p>
 <p>Bei Fragen zu diesen Datenschutzbestimmungen wenden Sie sich bitte über unsere Kontakt-Seite an uns.</p>
     </div>
+    <script> $( document ).ready(function() {
+            $("li[name='Datenschutz']").css('background-color', '#f5f8fa');
+        });</script>
     @endsection

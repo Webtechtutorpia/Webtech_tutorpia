@@ -140,21 +140,6 @@
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
 
-    
-        
-            
-            
-            
-        
-        
-            
-                
-            
-        
-    
-
-
-
 <footer>
     <div class="footer">
         <nav class="navbar navbar-default" style="margin-bottom: 0;">

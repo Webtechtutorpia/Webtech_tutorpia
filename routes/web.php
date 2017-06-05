@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -95,17 +96,7 @@ Route::get('images/{filename}', function ($filename)
     return $response;
 });
 
-//
-//Route:: resource('Test', function(){
-//
-//    return view ('Activity.overview');
-////    if (user::Auth()) {
-////        return view ('Activity.overview');
-////    }
-////    else {
-////        return view('home');
-////    }
-//});
+
 Route::get('Tutor/Aufgabenkorrektur','KorrekturController@index');
 Route::resource('Professor','AufgabeController');
 Route::resource('Activity','ActivityController');
@@ -117,12 +108,22 @@ Route::resource('Tutor','AbgabeController');
 Route::resource('FileUpload','FileUploadController');
 Route::resource('myinputs', 'MyinputController');
 Route::resource('korrektur', 'KorrekturController');
-
+Route::resource('contactconfirmation','ContactController');
 
 
 //Route::get('Aufgabenansicht/destroy/{id}','AufgabenansichtController@destroy');
 
 //Route::get('Aufgabenansicht/{kurs}','AufgabenansichtController@show');
 
-
+//Route::get('/email', function(Request $request){
+//
+//    $data=['bodymessage'=>'Ich bin die Nachrichtd'
+//    ];
+//    Mail::send('contacts',$data, function($message) use ($data){
+//        $message->from('mail-z@gmx.de','Anton maier');
+//        $message->to('contacts.tutorpia@gmail.com', 'Tutorpia-Team')->subject('Welcome');
+//        $message->subject('Ich bin die Nachricht');
+//
+//    });
+//});
 
