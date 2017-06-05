@@ -96,40 +96,64 @@
                                         
     
                     <?php $__currentLoopData = $myinputs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
-
+                                <?php if( $value->zustand == '.'): ?>
                                     <div class="col-md-12 col-xs-12">
                                         <div class="panel panel-info aufgabe ">
                                             <div class="panel-heading" onclick="Bodyhandler(this)"> <?php echo e($value->aufgabenname); ?>
 
                                                 <div style="display: inline; float: right" class="glyphicon glyphicon-minus"></div>
                                             </div>
+                                            <?php endif; ?>
+                                            <?php if( $value->zustand == '/'): ?>
+                                                <div class="col-md-12 col-xs-12">
+                                                    <div class="panel panel-warning aufgabe ">
+                                                        <div class="panel-heading" onclick="Bodyhandler(this)"> <?php echo e($value->aufgabenname); ?>
+
+                                                            <div style="display: inline; float: right" class="glyphicon glyphicon-minus"></div>
+                                                        </div>
+                                                        <?php endif; ?>
+                                                        <?php if( $value->zustand == '+'): ?>
+                                                            <div class="col-md-12 col-xs-12">
+                                                                <div class="panel panel-success aufgabe ">
+                                                                    <div class="panel-heading" onclick="Bodyhandler(this)"> <?php echo e($value->aufgabenname); ?>
+
+                                                                        <div style="display: inline; float: right" class="glyphicon glyphicon-ok"></div>
+                                                                    </div>
+                                                                    <?php endif; ?>
+                                                                    <?php if( $value->zustand == '-'): ?>
+                                                                        <div class="col-md-12 col-xs-12">
+                                                                            <div class="panel panel-danger aufgabe ">
+                                                                                <div class="panel-heading" onclick="Bodyhandler(this)"> <?php echo e($value->aufgabenname); ?>
+
+                                                                                    <div style="display: inline; float: right" class="glyphicon glyphicon-remove"></div>
+                                                                                </div>
+                                                                                <?php endif; ?>
 
                                             <div class="panel-body">
 
-                                                <div class="fileUpload notVisible">
-                                                    <form class="form-horizontal" role="form" method="POST"
-                                                          action="<?php echo e(url('FileUpload')); ?>" enctype="multipart/form-data">
-                                                        <?php echo e(csrf_field()); ?>
+                                                
+                                                    
+                                                          
+                                                        
 
 
+                                                        
+                                                            
+                                                            
+                                                            
+                                                            
+                                                        
 
-                                                        <div class="form group">
-                                                            <input type="hidden" name="aufgabenname" value="<?php echo e($value->aufgabenname); ?>">
-                                                            <input type="hidden" name="abgabeid" value="<?php echo e($value->abgabeid); ?>">
-                                                            <input type="hidden" name="username" value="<?php echo e($value->name); ?>">
-                                                            <input type="file" class="form-control" name="upload" id="upload" onkeypress="buttonFaerben(this)">
-                                                        </div>
 
+                                                        
+                                                            
+                                                                    
+                                                                
+                                                            
 
-                                                        <div class="form-group" style="margin-top: 2em;">
-                                                            <button type="submit" class="btn btn-primary speichern" value="Abschicken"
-                                                                    style="float: right">
-                                                                Datei hochladen
-                                                            </button>
-
-                                                        </div>
-                                                    </form>
-                                                </div>
+                                                        
+                                                    
+                                                
 
 
                                                 <div class="austauschen">
@@ -173,36 +197,54 @@
                                                     <th>Bewertungsbereich</th>
                                                     <th></th>
                                                 </tr>
-                                                <form>
+                                                <?php if(count($errors) > 0): ?>
+                                                    <div class="alert alert-danger">
+
+                                                            <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+                                                                <p><?php echo e($error); ?></p>
+                                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
+
+                                                    </div>
+                                                <?php endif; ?>
+                                                <form class="form-horizontal" role="form" method="POST"
+                                                      action="<?php echo e(url('Tutor/Aufgabenkorrektur')); ?>">
+                                                    <?php echo e(csrf_field()); ?>
+
                                                 <tr>
                                                     <td>Kommentar:</td>
                                                     <td>
-                                                    <input type="text" class="form-control" name="aufgabenname"
-                                                    id="Aufgabenname" onkeypress="buttonFaerben(this)"
+                                                    <input required type="text" class="form-control" name="kommentar"
+                                                    id="kommentar" onkeypress="buttonFaerben(this)"
                                                     placeholder="Hier Kommentar eintragen">
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td>Status:</td>
                                                     <td>
-                                                        <div class="btn-group" role="group">
-                                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        Auswahl
-                                                        <span class="caret"></span>
-                                                        </button>
-                                                        <ul class="dropdown-menu">
-                                                        <li><a href="#">abnehmen</a></li>
-                                                        <li><a href="#">ablehnen</a></li>
-                                                        <li><a href="#">unbearbeitet</a></li>
-                                                        </ul>
-                                                        </div>
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        <select required name="bewertung">
+                                                            <option value="">Bitte auswählen:</option>
+                                                            <option value="abnehmen">abnehmen</option>
+                                                            <option value="ablehnen">ablehnen</option>
+
+                                                        </select>
                                                     </td>
                                                 </tr>
                                                     <tr>
                                                         <td>Bewertung abschicken:</td>
                                                         <td><button class="btn btn-primary">bewerten</button></td>
                                                     </tr>
-                                                </form>
+                                            </form>
                                             </table>
                                                 </div>
                                                 </div>

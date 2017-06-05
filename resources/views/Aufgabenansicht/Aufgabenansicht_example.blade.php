@@ -127,7 +127,7 @@
                                             <div class="panel-group" style="padding-bottom: 1%;">
                                                 <div class="col-md-3  col-xs-6 size">Kommentar: </div>
 
-                                                <div class="col-md-3 col-xs-2 size">Abgabezeitpunkt verstrichen
+                                                <div class="col-md-3 col-xs-2 size">{{$value->kommentar}}
                                                 </div>
                                             </div>
                                             </div>
@@ -164,7 +164,7 @@
                                 </button>
                                 </div>
                                 </div>
-                                <div class="panel-group " style=";">
+                                <div class="panel-group " >
                                 <div class="col-md-3 col-xs-6 size"> Tutor kontaktieren:</div>
                                     <div class="col-md-3 col-xs-2 size"><span><a href="mailto:{{$value->email}}?subject=Frage zur Abnahme von {{$value->aufgabenname}} bei {{$value->name}}"
                                                                                  class="glyphicon glyphicon-envelope"></a></span>
@@ -175,6 +175,10 @@
                                     <div class="col-md-3 col-xs-12 size">erfolgreich abgegeben</div>
 
                                 </div>
+                                    <div class="panel-group " >
+                                        <div class="col-md-3 col-xs-6 size"> Kommentar:</div>
+                                        <div class="col-md-3 col-xs-2 size">{{$value->kommentar}}</div>
+                                    </div>
                                 </div>
                                 </div>
                                 </div>
