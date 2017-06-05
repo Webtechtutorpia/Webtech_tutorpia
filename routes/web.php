@@ -70,13 +70,6 @@ Route::get('tabelle', 'AbgabeController@readAufgaben');
 Route::get('readuser','AbgabeController@readAll');
 
 
-//Professorenmodus
-//Route::get('leseaufgaben','AufgabeController@read');
-//Route::get('createaufgabe','AufgabeController@create');
-//Route::get('create', 'AufgabeController@create');
-//Route::get('update', 'AufgabeController@update');
-
-
 
 
 
@@ -102,9 +95,11 @@ Route::resource('Professor','AufgabeController');
 Route::resource('Activity','ActivityController');
 Route::resource('Kurse','BelegungController');
 Route::get('Aufgabenansicht/ajaxcityList','AufgabenansichtController@matchHTML');
-Route::get('Aufgabenansicht/bestimmteAbgabe/{id}/{name}','AbgabeController@UserAbgaben');
+Route::get('Aufgabenansicht/bestimmteAbgabe/{id}/{name}','KorrekturController@UserAbgaben');
+Route::resource('Tutor/Aufgabenkorrektur','KorrekturController');
 Route::resource('Aufgabenansicht','AufgabenansichtController');
 Route::resource('Tutor','AbgabeController');
+
 Route::resource('FileUpload','FileUploadController');
 Route::resource('myinputs', 'MyinputController');
 Route::resource('korrektur', 'KorrekturController');

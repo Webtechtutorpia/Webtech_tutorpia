@@ -74,6 +74,7 @@ class CreateDatabase extends Migration
             $table->string('zustand');
             $table->Integer('user')->unsigned();
             $table->Integer('zugehoerig_zu')->unsigned();
+            $table->string('kommentar')->nullable();
             $table->timestamps();
             //Constraints
             $table->foreign('user')->references('id')->on('users');

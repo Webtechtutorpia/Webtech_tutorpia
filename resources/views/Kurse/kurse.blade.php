@@ -52,9 +52,7 @@
                                                 <td class="text-center"><a
                                                             class="btn btn-primary btn-md col-md-11 col-md-offset-2 col-xs-11 col-xs-offset-1"
                                                             href="{{ url('/Tutor') }}/{{$value->kurs}}" role="button">Abgabenübersicht</a></td>
-                                                <td class="text-center"><a
-                                                            class="btn btn-primary btn-md col-md-11 col-md-offset-1 col-xs-11 col-xs-offset-3"
-                                                            href="{{ url('/Tutor/Aufgabenkorrektur')}} " role="button">Aufgabenkorrektur</a></td>
+                                                <td></td>
                                             @endif
                                             @if($value->rolle=="Student")
                                                 <td class="text-center"><a
