@@ -104,7 +104,8 @@ Route::resource('FileUpload','FileUploadController');
 Route::resource('myinputs', 'MyinputController');
 Route::resource('korrektur', 'KorrekturController');
 Route::resource('contactconfirmation','ContactController');
-
+Route::resource('admin', 'AdminController');
+Route::post('test','AdminController@test');
 
 //Route::get('Aufgabenansicht/destroy/{id}','AufgabenansichtController@destroy');
 

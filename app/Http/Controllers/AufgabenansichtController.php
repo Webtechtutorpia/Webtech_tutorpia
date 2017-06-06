@@ -4,9 +4,7 @@ namespace Tutorpia\Http\Controllers;
 
 use View;
 use Illuminate\Http\Request;
-use Tutorpia\Http\Requests;
 use Auth;
-
 use Tutorpia\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 

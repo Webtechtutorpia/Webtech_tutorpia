@@ -72,6 +72,11 @@
                         <ul class="nav navbar-nav">
                             <li role="presentation" name="Übersicht"><a href="/Activity">Übersicht</a></li>
                             <li role="presentation" name="Kurse"><a href="/Kurse">Kurse</a></li>
+                            <?php if(Auth::user()->rolle == 'admin' ): ?>
+
+                            <li role="presentation"><a href="/admin">Admin</a></li>
+                            <?php endif; ?>
+                            
                             
                             
                                 

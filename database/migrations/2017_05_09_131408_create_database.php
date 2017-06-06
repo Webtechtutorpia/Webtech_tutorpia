@@ -51,7 +51,7 @@ class CreateDatabase extends Migration
 
         });
         Schema::create('aufgabe', function (Blueprint $table){
-            $table->increments('id');
+            $table->increments('id')->unsigned();
             $table->string('aufgabenname');
             $table->string('abgabedatum')->default(date("Y-m-d"));
             $table->string('aufgabenbeschreibung')->nullable();

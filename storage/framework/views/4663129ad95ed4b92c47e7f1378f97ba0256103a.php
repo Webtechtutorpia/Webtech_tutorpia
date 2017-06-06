@@ -18,6 +18,8 @@
                 </div>
             </div>
         </div>
+        <?php echo e($l); ?>
+
     </div>
 </div>
 <?php $__env->stopSection(); ?>
