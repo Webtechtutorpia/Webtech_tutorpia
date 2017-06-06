@@ -43,7 +43,7 @@ class AdminController extends Controller
          $user->rolle = $request->rolle[$i];
          $user->save();
         }
-        $user= db::table('abgabe')->get();
+        $user= DB::table('abgabe')->get();
         $user=User::all();
         var_dump($user);
 //        $user->delete();

@@ -7,6 +7,7 @@ use View;
 
 use Illuminate\Http\Request;
 use Tutorpia\Http\Requests;
+use Tutorpia\Activity;
 use Auth;
 use Tutorpia\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -15,6 +16,7 @@ class KorrekturController extends Controller
 
     public function UserAbgaben($id,$name){
         session()->put('userid', $id);
+        session()->put('aufgabenname', $name);
         $aufgabenid=DB::table('aufgabe')
             ->select('id')
             ->where('aufgabenname','like',$name)
@@ -23,6 +25,7 @@ class KorrekturController extends Controller
             session()->put('aufgabenid', $wert->id);
 
         }
+
 
 
 
@@ -64,7 +67,12 @@ class KorrekturController extends Controller
             ->where('zugehoerig_zu','=',session()->get('aufgabenid'))
             ->update( array('zustand' => $zustand, 'kommentar'=>$request->kommentar,'updated_at'=>date('Y-m-d H:i:s')));
 
-       // return redirect()->route('/Tutor', ['kurs' => session()->get('global_variable')]);
+        Activity::create([
+            'aufgabenname'=>session()->get('aufgabenname'),
+            'zuordnung_abgabe' => session()->get('aufgabenid'),
+            'bearbeitet_von' => Auth::user()->name,
+        ]);
+
         return redirect()->action('AbgabeController@show', ['kurs' => session()->get('global_variable')]
     );
 

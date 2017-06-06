@@ -2,7 +2,6 @@
 
 namespace Tutorpia\Http\Controllers;
 
-use function MongoDB\BSON\toJSON;
 use Tutorpia\User;
 use Tutorpia\Belegung;
 use Tutorpia\Aufgabe;
@@ -12,7 +11,9 @@ use Illuminate\Http\Request;
 use Tutorpia\Http\Requests;
 use Auth;
 use Tutorpia\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
+
+use DB;
+
 
 class AbgabeController extends Controller
 {

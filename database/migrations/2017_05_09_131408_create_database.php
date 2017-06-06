@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
+
 class CreateDatabase extends Migration
 {
     /**
@@ -51,7 +52,7 @@ class CreateDatabase extends Migration
 
         });
         Schema::create('aufgabe', function (Blueprint $table){
-            $table->increments('id')->unsigned();
+            $table->increments('id');
             $table->string('aufgabenname');
             $table->string('abgabedatum')->default(date("Y-m-d"));
             $table->string('aufgabenbeschreibung')->nullable();
@@ -83,7 +84,7 @@ class CreateDatabase extends Migration
 //        //Erzeuge Aktivität
         Schema::create('activity', function (Blueprint $table){
             $table->increments('id');
-            $table->String('abgabedatum');
+            $table->String('abgabedatum')->nullable();
             $table->string('aufgabenname');
             $table->string('bearbeitet_von');
             $table->Integer('zuordnung_aufgabe')->unsigned()-> nullable();
