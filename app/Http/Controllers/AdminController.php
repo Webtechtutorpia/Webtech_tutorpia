@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Tutorpia\Http\Controllers\Controller;
 use Tutorpia\User;
+use View;
 use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
@@ -43,14 +44,16 @@ class AdminController extends Controller
          $user->rolle = $request->rolle[$i];
          $user->save();
         }
-        $user= DB::table('abgabe')->get();
-        $user=User::all();
-        var_dump($user);
+        $user = DB::table('users')->select('*')->get();
+        //$user= DB::table('users')->select('name')->get();
+        //$user=User::all();
+        //var_dump($user);
 //        $user->delete();
 
 
         Session::flash('success', 'Änderungen wurden übernommen');
-       return redirect('/');
+       //return redirect('/');
+         return View::make('Professor.test')->with('myinputs', $user);
     }
 }
 

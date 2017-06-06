@@ -71,6 +71,7 @@ class KorrekturController extends Controller
             'aufgabenname'=>session()->get('aufgabenname'),
             'zuordnung_abgabe' => session()->get('aufgabenid'),
             'bearbeitet_von' => Auth::user()->name,
+            'user'=>session()->get('userid')
         ]);
 
         return redirect()->action('AbgabeController@show', ['kurs' => session()->get('global_variable')]

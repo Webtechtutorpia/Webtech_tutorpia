@@ -22,6 +22,7 @@ class ActivityController extends Controller
             // get all the myinputs
             $activity = DB::table('activity')
                 ->select('*')
+                ->where('user','=',Auth::user()->id)
                 ->orderBy('created_at', 'desc')
                 ->get();
 

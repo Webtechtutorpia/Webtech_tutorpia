@@ -89,8 +89,10 @@ class CreateDatabase extends Migration
             $table->string('bearbeitet_von');
             $table->Integer('zuordnung_aufgabe')->unsigned()-> nullable();
             $table->Integer('zuordnung_abgabe')->unsigned()-> nullable();
+            $table->Integer('user')->unsigned()->nullable();
             $table->timestamps();
             //Constraints
+            $table->foreign('user')->references('id')->on('users');
             $table->foreign('zuordnung_aufgabe')->references('id')->on('aufgabe')->nullable();
             $table->foreign('zuordnung_abgabe') ->references('abgabeid')->on('abgabe')->onDelete('Cascade')->nullable();
         });
