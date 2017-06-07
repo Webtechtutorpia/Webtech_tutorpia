@@ -47,6 +47,7 @@ class CreateDatabase extends Migration
             $table->Integer('user')->unsigned();
             $table->string('kurs')->index();
             $table->string('rolle');
+            $table->timestamps();
             //Constraints
             $table->foreign('user')->references('id')->on('users');
 

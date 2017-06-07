@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Tutorpia\Http\Controllers\Controller;
 use Tutorpia\User;
+use Tutorpia\Belegung;
+use Tutorpia\Kurse;
 use View;
 use Illuminate\Support\Facades\DB;
 
@@ -15,12 +17,33 @@ class AdminController extends Controller
 
     public function index()
     {
-//        global $Users;
+        global $Users;
+        global $kurse;
+
+        $this->Users = User::all();
+        Session::put('Users', $this->Users);
+        $allekurse = Kurse::all();
+        $i = 0;
+        foreach ($allekurse as $kurs) {
+            $belegungen = DB::table('belegung')
+                ->join('users', 'users.id', '=', 'belegung.user')->select('belegung.id','belegung.rolle', 'name', 'email')
+                ->where('kurs', '=', $kurs->bezeichnung)->get();
+            $j = 0;
+//                foreach($belegungen as $belegung) {
+////                    $array=array('name'=>$belegung->name, 'email'=>$belegung->email, 'rolle'=> $belegung->rolle);
+//                    $array[$j]=$belegung;
+//                                      $j++;
+//
+//                }
+            $kurse[$i] = array('kurs' => $kurs->bezeichnung, 'belegungen' => $belegungen);
 
 
-            $this->Users = User::all();
-            Session::put('Users', $this->Users);
-            return view('Admin.admin')->with('Users', $this->Users);
+            $i++;
+        }
+        Session::put('kurse', $kurse);
+//        return response()->json($kurse);
+        return view('Admin.admin')->with('Users', $this->Users)->with('kurse', $kurse);
+
 
     }
 
@@ -36,25 +59,54 @@ class AdminController extends Controller
     public function test(Request $request)
     {
 
-        $Users= $request->session()->pull('Users');
+        $Users = $request->session()->pull('Users');
 //        $Users = Session::flash('Users', 'Änderung war erfolgreich');
-        for( $i=0; $i< sizeof($Users); $i++){
+        for ($i = 0; $i < sizeof($Users); $i++) {
 
-         $user=User::find($Users[$i]->id);
-         $user->rolle = $request->rolle[$i];
-         $user->save();
+            $user = User::find($Users[$i]->id);
+            $user->rolle = $request->rolle[$i];
+            $user->save();
         }
-        $user = DB::table('users')->select('*')->get();
-        //$user= DB::table('users')->select('name')->get();
-        //$user=User::all();
-        //var_dump($user);
-//        $user->delete();
+
+        //Forein Key lösch Problem bitte lösen
+//        $users = DB::table('users')->select('id')->where('name','=',$request->delete, 'or', 'email', '=', $request->delete)->get();
+//
+//        foreach ($users as $u)
+//        {
+//            var_dump($u->id);
+//        User::find($u->id)->delete();
+//        }
+
+
 
 
         Session::flash('success', 'Änderungen wurden übernommen');
-       //return redirect('/');
-         return View::make('Professor.test')->with('myinputs', $user);
+        return redirect('/');
+//         return View::make('Professor.test')->with('myinputs', $users);
+    }
+
+    public function test2(Request $request)
+    {
+        $Belegungen = $request->session()->pull('kurse');
+//        var_dump(sizeof($Belegungen['belegungen']));
+//        return response($Belegungen['belegungen']);
+//return response($Belegungen);
+   $j=0;
+        foreach($Belegungen as $belegung){
+            for ($i = 0; $i < sizeof($belegung['belegungen']); $i++) {
+            $test = Belegung::find($belegung['belegungen'][$i]->id);
+            $test->rolle = $request->kursrolle[$j];
+            $test->save();
+            $j++;
+        }
+        }
+//        for ($i = 0; $i < sizeof($Belegungen['belegungen']); $i++) {
+//
+//            $Belegung = Belegung::find($Belegungen->id);
+//
+//            $Belegung->rolle = $request->kursrolle[$i];
+//            $Belegung->save();
+//        }
     }
 }
-
 ?>

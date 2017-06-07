@@ -106,7 +106,7 @@ Route::resource('korrektur', 'KorrekturController');
 Route::resource('contactconfirmation','ContactController');
 Route::resource('admin', 'AdminController');
 Route::post('test','AdminController@test');
-
+Route::Post('test2', 'AdminController@test2');
 //Route::get('Aufgabenansicht/destroy/{id}','AufgabenansichtController@destroy');
 
 //Route::get('Aufgabenansicht/{kurs}','AufgabenansichtController@show');
