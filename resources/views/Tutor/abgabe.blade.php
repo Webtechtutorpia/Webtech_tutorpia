@@ -26,7 +26,7 @@
                 {{--<button onclick="remove()">remove</button>--}}
                 {{--<div id="ausgabe">hallo</div>--}}
                 {{--<div class="table-responsive">--}}
-
+                <button onclick="einfügen()">Test</button>
                 <table class="table table-responsive table-striped table-bordered" id="tabelle">
                 <thead>
                 <tr>
@@ -66,7 +66,7 @@
                                 <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-remove btn-danger"></a></td>
                             @endif
                             @if($zeile->zustand == '.')
-                                <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-minus btn-info"></a></td>
+                                <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-minus btn-warning"></a></td>
                             @endif
                             @if($zeile->zustand == '/')
                                 <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-minus btn-warning"></a></td>
@@ -80,7 +80,7 @@
                                     <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-remove btn-danger"></a></td>
                                     @endif
                                 @if($zeile->zustand == '.')
-                                    <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-minus btn-info"></a></td>
+                                    <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-minus btn-warning"></a></td>
                                 @endif
                                 @if($zeile->zustand == '/')
                                     <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-minus btn-warning"></a></td>

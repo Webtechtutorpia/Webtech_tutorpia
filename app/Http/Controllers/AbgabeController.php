@@ -28,16 +28,18 @@ class AbgabeController extends Controller
 
     public function readUser(Request $request)
     {
-
+        $kurs=session()->get('global_variable');
 
         $abgabe = DB::table('abgabe')
             ->join('aufgabe', 'abgabe.zugehoerig_zu', '=', 'aufgabe.id')
             ->join('users', 'abgabe.user', '=', 'users.id')
-            ->select('*')
+            ->join('belegung','users.id', '=', 'belegung.user')
+            ->select('*')->where('aufgabe.kurs',$kurs)
+            ->where('belegung.rolle','Student')
             ->orderBy('users.name', 'asc')
             ->orderBy('users.id', 'asc')
+            ->orderBy('aufgabe.aufgabenname')
             ->get();
-
 
         $user = $request->input('tfsearch', '');
 
@@ -46,9 +48,17 @@ class AbgabeController extends Controller
             'id' => $request->input('id'),
             'users' => User::where('name', 'like', $user . '%')->whereIn('id', $alle)->get(),
 //                'users' => User::whereIn('id', Users::all())->get(),
-            'aufgaben' => Aufgabe::all(),
+            'aufgaben' => DB::table('aufgabe')->where('kurs', $kurs)->get(),
             'abgaben' => $abgabe
         ];
+
+
+
+
+
+
+
+
         return response($users);
 
     }
@@ -100,10 +110,12 @@ class AbgabeController extends Controller
             $abgabe = DB::table('abgabe')
                 ->join('aufgabe', 'abgabe.zugehoerig_zu', '=', 'aufgabe.id')
                 ->join('users', 'abgabe.user', '=', 'users.id')
+                ->join('belegung','users.id', '=', 'belegung.user')
                 ->select('*')
-                ->where('aufgabe.kurs', session()->get('global_variable'))
+                ->where('aufgabe.kurs', session()->get('global_variable'))->where('belegung.rolle','Student')
                 ->orderBy('users.name', 'asc')
                 ->orderBy('users.id', 'asc')
+                ->orderBy('aufgabe.aufgabenname')
                 ->get();
             // show the view and pass the myinput to it
             return View::make('Tutor.abgabe')->with('myinputs', $aufgabe)->with('ergebnismenge', $abgabe)->with('kurs', session()->get('global_variable'));

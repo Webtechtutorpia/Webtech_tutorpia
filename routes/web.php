@@ -90,7 +90,7 @@ Route::get('images/{filename}', function ($filename)
 });
 
 
-Route::get('Tutor/Aufgabenkorrektur','KorrekturController@index');
+Route::get('Tutor/Aufgabenkorrektur','KorrekturController@UserAbgaben');
 Route::resource('Professor','AufgabeController');
 Route::resource('Activity','ActivityController');
 Route::resource('Kurse','BelegungController');
