@@ -35,6 +35,7 @@
                                     <tr>
                                         <td class="col-md-4 col-xs-8"> <p>{{$value->created_at}}</p></td>
                                         @if($value->zuordnung_aufgabe != NULL)
+{{--                                        @if($merkhilfe==false)--}}
                                             <td class="col-md-4 col-xs-8"><p>{{$value->bearbeitet_von}} hat {{$value->aufgabenname}} mit Abgabe am {{$value->abgabedatum}} erstellt.</p>
                                             </td>
 
