@@ -74,7 +74,7 @@
                             <li role="presentation" name="Kurse"><a href="/Kurse">Kurse</a></li>
                             <?php if(Auth::user()->rolle == 'admin' ): ?>
 
-                            <li role="presentation"><a href="/admin">Admin</a></li>
+                            <li role="presentation" name="Admin"><a href="/admin">Admin</a></li>
                             <?php endif; ?>
                             
                             

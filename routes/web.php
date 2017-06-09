@@ -107,6 +107,10 @@ Route::resource('contactconfirmation','ContactController');
 Route::resource('admin', 'AdminController');
 Route::post('test','AdminController@test');
 Route::Post('test2', 'AdminController@test2');
+Route::post('kursanlegen','AdminController@createKurs');
+Route::post('confirm','AufgabeController@confirmsite');
+Route::post('accept', 'AufgabeController@accept');
+Route::get('reset','AufgabeController@reset');
 //Route::get('Aufgabenansicht/destroy/{id}','AufgabenansichtController@destroy');
 
 //Route::get('Aufgabenansicht/{kurs}','AufgabenansichtController@show');

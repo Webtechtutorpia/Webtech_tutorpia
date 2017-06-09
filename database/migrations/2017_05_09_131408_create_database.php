@@ -40,7 +40,7 @@ class CreateDatabase extends Migration
             $table->string('bezeichnung')->index();;
             $table->Integer('geleitet_von')->unsigned();
             //Constraints
-            $table->foreign('geleitet_von')->references('id')->on('users');
+            $table->foreign('geleitet_von')->references('id')->on('users')->onDelete('Cascade');
         });
         Schema::create('belegung', function (Blueprint $table){
             $table->increments('id');
@@ -49,7 +49,7 @@ class CreateDatabase extends Migration
             $table->string('rolle');
             $table->timestamps();
             //Constraints
-            $table->foreign('user')->references('id')->on('users');
+            $table->foreign('user')->references('id')->on('users')->onDelete('Cascade');
 
         });
         Schema::create('aufgabe', function (Blueprint $table){
@@ -65,7 +65,7 @@ class CreateDatabase extends Migration
             //Constraints
             //$table->foreign('kurs')->references('id')->on('kurs');
             $table->foreign('erstellt_von')->references('id')->on('users');
-            $table->foreign('kurs')->references('kurs')->on('belegung');
+            $table->foreign('kurs')->references('kurs')->on('belegung')->onDelete('Cascade');
         });
 
 
@@ -94,8 +94,19 @@ class CreateDatabase extends Migration
             $table->timestamps();
             //Constraints
             $table->foreign('user')->references('id')->on('users');
-            $table->foreign('zuordnung_aufgabe')->references('id')->on('aufgabe')->nullable();
+            $table->foreign('zuordnung_aufgabe')->references('id')->on('aufgabe')->onDelete('Cascade')->nullable();
             $table->foreign('zuordnung_abgabe') ->references('abgabeid')->on('abgabe')->onDelete('Cascade')->nullable();
+        });
+
+        Schema::create('contact', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->string('subject');
+            $table->string('email');
+            $table->string('message');
+            $table->boolean('beantwortet')->default(false);
+            $table->timestamps();
+
         });
 
         Schema::enableForeignKeyConstraints();

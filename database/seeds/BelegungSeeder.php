@@ -37,6 +37,11 @@ class BelegungSeeder extends Seeder
             'kurs' =>'Webtech',
             'rolle'=>'Professor'
         ]);
+        DB::table('belegung')->insert([
+            'user'=>4,
+            'kurs'=>'Alda',
+            'rolle'=>'Professor'
+        ]);
 
 
 

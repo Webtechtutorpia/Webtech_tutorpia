@@ -5,6 +5,7 @@ namespace Tutorpia\Http\Controllers;
 use Illuminate\Http\Request;
 use Tutorpia\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
+use Tutorpia\Contact;
 
 class ContactController extends Controller
 {
@@ -26,7 +27,11 @@ class ContactController extends Controller
     public function store(Request $request)
     {
 
-
+        $this->validate($request, [
+            'name'       => 'required',
+            'subject'      => 'required',
+            'email' => 'required',
+            'message'=> 'required']);
 
 
 
@@ -34,8 +39,20 @@ class ContactController extends Controller
                 'name' => $request->name,
                 'subject' => $request->subject,
                 'email' => $request->email,
-                'message' => $request->message
+                'message' => $request->message,
+                'beantwortet'=> false
             ];
+
+
+            Contact::create([
+                'name'=>$data['name'],
+                'subject'=>$data['subject'],
+                'email'=> $data['email'],
+                'message'=>$data['message'],
+                'beantwortet'=> $data['beantwortet']
+            ]);
+
+
 
             Mail::send('contact', $data, function ($message) use ($data) {
                 $message->from($data['email'], $data['name']);
