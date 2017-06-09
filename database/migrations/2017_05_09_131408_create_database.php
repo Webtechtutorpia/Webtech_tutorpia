@@ -19,7 +19,7 @@ class CreateDatabase extends Migration
         //Erzeuge Userstabelle
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('name')->index();
             $table->string('email')->unique();
             $table->string('password');
             $table->string('rolle')->default();
@@ -37,7 +37,7 @@ class CreateDatabase extends Migration
         //Erzeuge kurstabelle
         Schema::create('kurs', function (Blueprint $table){
             $table->increments('id');
-            $table->string('bezeichnung')->index();;
+            $table->string('bezeichnung')->index();
             $table->Integer('geleitet_von')->unsigned();
             //Constraints
             $table->foreign('geleitet_von')->references('id')->on('users')->onDelete('Cascade');
@@ -57,14 +57,15 @@ class CreateDatabase extends Migration
             $table->string('aufgabenname');
             $table->string('abgabedatum')->default(date("Y-m-d"));
             $table->string('aufgabenbeschreibung')->nullable();
-            $table->Integer('erstellt_von')->default(1)->unsigned();
+            $table->string('erstellt_von')->index();
             $table->string('kurs')->index()->nullable();;
             $table->timestamps();
             //->default(date("Y-m-d"))
             $table->date('deleted_at')->nullable();
             //Constraints
             //$table->foreign('kurs')->references('id')->on('kurs');
-            $table->foreign('erstellt_von')->references('id')->on('users');
+            // Änderung reference von id zu name?
+            $table->foreign('erstellt_von')->references('name')->on('users');
             $table->foreign('kurs')->references('kurs')->on('belegung')->onDelete('Cascade');
         });
 
@@ -77,6 +78,7 @@ class CreateDatabase extends Migration
             $table->Integer('user')->unsigned();
             $table->Integer('zugehoerig_zu')->unsigned();
             $table->string('kommentar')->nullable();
+            $table->string('bearbeitet_von')->nullable();
             $table->timestamps();
             //Constraints
             $table->foreign('user')->references('id')->on('users');
@@ -128,6 +130,7 @@ class CreateDatabase extends Migration
         Schema::dropIfExists('aufgabe');
         Schema::dropIfExists('abgabe');
         Schema::dropIfExists('activity');
+        Schema::dropIfExists('contact');
         Schema::enableForeignKeyConstraints();
     }
 }

@@ -12,33 +12,46 @@ use Tutorpia\Http\Requests;
 use Auth;
 use Illuminate\Support\Facades\DB;
 use Tutorpia\user;
-
+use Carbon\Carbon;
 class ActivityController extends Controller
 {
     public function index()
     {
         if(Auth::check()) {
-//            global $merker;
 
-            // get all the myinputs
-            $activity = DB::table('activity')
-                ->select('*')
-                ->join('abgabe', 'activity.zuordnung_abgabe', '=', 'abgabe.abgabeid')
-                ->where('activity.user','=',Auth::user()->id)
-                ->orderBy('activity.created_at', 'desc')
+            $abgabe = DB::table('abgabe')
+                ->join('aufgabe', 'abgabe.zugehoerig_zu', '=', 'aufgabe.id')
+                ->select('abgabe.updated_at as abgabeupdated_at','abgabe.*','aufgabe.*')
+                ->where('abgabe.user','=',Auth::user()->id)
+                ->orderBy('abgabeupdated_at','desc')
                 ->get();
-//            $length=$activity->count();
-//            session()->put('anzahlzeilen',$activity->count() );
-//            if($length != (session()->get('anzahlzeilen'))){
-//               $merker=true;
-//            }
+
 
             // load the view and pass the myinputs
-            return View::make('Activity.overview')->with('myinputs', $activity);
+            return View::make('Activity.overview')->with('myinputs', $abgabe);
         }
         else {
             return View::make('home');
         }
+    }
+
+    public function ajax(){
+        $abgaben = DB::table('abgabe')
+            ->join('aufgabe', 'abgabe.zugehoerig_zu', '=', 'aufgabe.id')
+            ->select('abgabe.updated_at as abgabeupdated_at','abgabe.*','aufgabe.*')
+            ->where('abgabe.user','=',Auth::user()->id)
+            ->orderBy('abgabeupdated_at','desc')
+            ->get();
+        foreach ($abgaben as $abgabe){
+
+                $abgabe->abgabeupdated_at = Carbon::parse($abgabe->abgabeupdated_at)->format('d-m-Y H:i:s');
+
+
+
+
+        }
+
+        return response($abgaben);
     }
 
 }

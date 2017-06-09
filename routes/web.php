@@ -111,6 +111,7 @@ Route::post('kursanlegen','AdminController@createKurs');
 Route::post('confirm','AufgabeController@confirmsite');
 Route::post('accept', 'AufgabeController@accept');
 Route::get('reset','AufgabeController@reset');
+Route::get('aktualisieren', 'ActivityController@ajax');
 //Route::get('Aufgabenansicht/destroy/{id}','AufgabenansichtController@destroy');
 
 //Route::get('Aufgabenansicht/{kurs}','AufgabenansichtController@show');

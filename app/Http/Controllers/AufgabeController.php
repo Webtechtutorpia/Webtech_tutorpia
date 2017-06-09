@@ -84,7 +84,7 @@ class AufgabeController extends Controller
             'abgabedatum'         => $request->abgabedatum,
             'aufgabenbeschreibung' =>  $request->aufgabenbeschreibung,
             'kurs'=> session()->get('global_variable'),
-            'erstellt_von' => Auth::user()->id,
+            'erstellt_von' => Auth::user()->name,
         ]);
 
         Activity::create([
