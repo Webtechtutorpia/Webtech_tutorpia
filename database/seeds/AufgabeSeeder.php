@@ -16,6 +16,7 @@ class AufgabeSeeder extends Seeder
             'aufgabenname' => 'Aufgabe1',
             'abgabedatum' => '31.07.2017',
             'aufgabenbeschreibung'=>'Bitte rechnen sie diese 5 Zahlen zusammen',
+            'erstellt_von'=>'TestProf',
             'kurs' => 'ALDA'
 
         ]);
@@ -24,6 +25,7 @@ class AufgabeSeeder extends Seeder
             'aufgabenname' => 'Aufgabe2',
             'abgabedatum' => '05.02.2017',
             'aufgabenbeschreibung'=>'Bitte addieren sie es zusammen',
+            'erstellt_von'=>'TestProf',
             'kurs' =>'ALDA'
         ]);
 
@@ -31,6 +33,7 @@ class AufgabeSeeder extends Seeder
             'aufgabenname' => 'Aufgabe3',
             'abgabedatum' => '15.05.2017',
             'aufgabenbeschreibung'=>'Bitte rechnen sie diese 5 Zahlen zusammen',
+            'erstellt_von'=>'TestProf',
             'kurs' => 'ALDA'
         ]);
 
@@ -38,19 +41,22 @@ class AufgabeSeeder extends Seeder
             'aufgabenname' => 'Aufgabe4',
             'abgabedatum' => '31.05.2017',
             'aufgabenbeschreibung'=>'Bitte rechnen sie diese 5 Zahlen zusammen',
+            'erstellt_von'=>'TestProf',
             'kurs' => 'ALDA'
         ]);
 
         DB::table('aufgabe')->insert([
             'aufgabenname' => 'Aufgabe5',
             'abgabedatum' => '17.06.2017',
-            'aufgabenbeschreibung'=>'Bitte bearbeiten sie AUfgabe 1 nochmal',
+            'aufgabenbeschreibung'=>'Bitte bearbeiten sie Aufgabe 1 nochmal',
+            'erstellt_von'=>'TestProf',
             'kurs' => 'ALDA'
         ]);
         DB::table('aufgabe')->insert([
             'aufgabenname' => 'Aufgabe6',
             'abgabedatum' => '17.06.2017',
-            'aufgabenbeschreibung'=>'Bitte bearbeiten sie AUfgabe 1 nochmal',
+            'aufgabenbeschreibung'=>'Bitte bearbeiten sie Aufgabe 1 nochmal',
+            'erstellt_von'=>'TestProf',
             'kurs' => 'BESY'
         ]);
 

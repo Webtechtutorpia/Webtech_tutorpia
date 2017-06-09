@@ -19,18 +19,11 @@ class ActivityController extends Controller
     {
         if(Auth::check()) {
 
-
-            // get all the myinputs
-//            $activity = DB::table('activity')
-//                ->select('*')
-//                ->join('abgabe', 'activity.zuordnung_abgabe', '=', 'abgabe.abgabeid')
-//                ->where('activity.user','=',Auth::user()->id)
-//                ->orderBy('activity.created_at', 'desc')
-//                ->get();
             $abgabe = DB::table('abgabe')
                 ->join('aufgabe', 'abgabe.zugehoerig_zu', '=', 'aufgabe.id')
-                ->select('*')
+                ->select('abgabe.updated_at as abgabeupdated_at','abgabe.*','aufgabe.*')
                 ->where('abgabe.user','=',Auth::user()->id)
+                ->orderBy('abgabeupdated_at','desc')
                 ->get();
 
 

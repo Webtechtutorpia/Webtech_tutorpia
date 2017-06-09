@@ -31,14 +31,16 @@
                                     @endif
                                     {{--je nach Datenbankeintrag Element anzeigen--}}
 
-                                    @foreach($myinputs as $key => $value)
+                                    @foreach($myinputs as $key => $value )
                                     <tr>
-                                        <td class="col-md-4 col-xs-8"> <p>{{$value->created_at}}</p></td>
-                                        @if($value->zustand == '.')
-                                            <td class="col-md-4 col-xs-8"><p>{{$value->bearbeitet_von}} hat {{$value->aufgabenname}} mit Abgabe am {{$value->abgabedatum}} im Kurs {{$value->kurs}} erstellt.</p>
+                                        @if($value->zustand == '.'|| $value->zustand == '+' || $value->zustand == '-')
+                                            <td class="col-md-4 col-xs-8"> <p>{{Carbon\Carbon::parse($value->abgabeupdated_at)->format('d-m-Y H:i:s')}}</p></td>
+                                        @endif
+                                            @if($value->zustand == '.')
+                                            <td class="col-md-4 col-xs-8"><p>{{$value->erstellt_von}} hat {{$value->aufgabenname}} mit Abgabe am {{$value->abgabedatum}} im Kurs {{$value->kurs}} erstellt.</p>
                                             </td>
                                         @elseif($value->zustand == '+' || $value->zustand == '-')
-                                        <td class="col-md-4 col-xs-8"><p>{{$value->erstellt_von}} hat deine {{$value->aufgabenname}} im Kurs {{$value->kurs}} abgenommen.</p>
+                                        <td class="col-md-4 col-xs-8"><p>{{$value->bearbeitet_von}} hat deine {{$value->aufgabenname}} im Kurs {{$value->kurs}} abgenommen.</p>
                                         </td>
                                         @endif
                                     </tr>
