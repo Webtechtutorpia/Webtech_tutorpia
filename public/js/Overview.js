@@ -3,7 +3,7 @@ $(function(){
 
         window.setInterval(function(){
             ajax();
-        }, 1000);
+        }, 10000);
 
 });
 
