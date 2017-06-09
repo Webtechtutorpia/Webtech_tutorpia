@@ -32,14 +32,11 @@
                                     <?php $__currentLoopData = $myinputs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
                                     <tr>
                                         <td class="col-md-4 col-xs-8"> <p><?php echo e($value->created_at); ?></p></td>
-                                        <?php if($value->zuordnung_aufgabe != NULL): ?>
-
-                                            <td class="col-md-4 col-xs-8"><p><?php echo e($value->bearbeitet_von); ?> hat <?php echo e($value->aufgabenname); ?> mit Abgabe am <?php echo e($value->abgabedatum); ?> erstellt.</p>
+                                        <?php if($value->zustand == '.'): ?>
+                                            <td class="col-md-4 col-xs-8"><p><?php echo e($value->bearbeitet_von); ?> hat <?php echo e($value->aufgabenname); ?> mit Abgabe am <?php echo e($value->abgabedatum); ?> im Kurs <?php echo e($value->kurs); ?> erstellt.</p>
                                             </td>
-
-                                        <?php else: ?>
-                                        <td class="col-md-4 col-xs-8"><p><?php echo e($value->bearbeitet_von); ?> hat deine <?php echo e($value->aufgabenname); ?> im Kurs ALDA
-                                                abgenommen.</p>
+                                        <?php elseif($value->zustand == '+' || $value->zustand == '-'): ?>
+                                        <td class="col-md-4 col-xs-8"><p><?php echo e($value->erstellt_von); ?> hat deine <?php echo e($value->aufgabenname); ?> im Kurs <?php echo e($value->kurs); ?> abgenommen.</p>
                                         </td>
                                         <?php endif; ?>
                                     </tr>
@@ -56,5 +53,5 @@
 
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->yieldContent('test'); ?>
+
 <?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

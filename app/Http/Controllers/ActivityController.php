@@ -18,23 +18,24 @@ class ActivityController extends Controller
     public function index()
     {
         if(Auth::check()) {
-//            global $merker;
+
 
             // get all the myinputs
-            $activity = DB::table('activity')
+//            $activity = DB::table('activity')
+//                ->select('*')
+//                ->join('abgabe', 'activity.zuordnung_abgabe', '=', 'abgabe.abgabeid')
+//                ->where('activity.user','=',Auth::user()->id)
+//                ->orderBy('activity.created_at', 'desc')
+//                ->get();
+            $abgabe = DB::table('abgabe')
+                ->join('aufgabe', 'abgabe.zugehoerig_zu', '=', 'aufgabe.id')
                 ->select('*')
-                ->join('abgabe', 'activity.zuordnung_abgabe', '=', 'abgabe.abgabeid')
-                ->where('activity.user','=',Auth::user()->id)
-                ->orderBy('activity.created_at', 'desc')
+                ->where('abgabe.user','=',Auth::user()->id)
                 ->get();
-//            $length=$activity->count();
-//            session()->put('anzahlzeilen',$activity->count() );
-//            if($length != (session()->get('anzahlzeilen'))){
-//               $merker=true;
-//            }
+
 
             // load the view and pass the myinputs
-            return View::make('Activity.overview')->with('myinputs', $activity);
+            return View::make('Activity.overview')->with('myinputs', $abgabe);
         }
         else {
             return View::make('home');

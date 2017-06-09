@@ -34,14 +34,11 @@
                                     @foreach($myinputs as $key => $value)
                                     <tr>
                                         <td class="col-md-4 col-xs-8"> <p>{{$value->created_at}}</p></td>
-                                        @if($value->zuordnung_aufgabe != NULL)
-{{--                                        @if($merkhilfe==false)--}}
-                                            <td class="col-md-4 col-xs-8"><p>{{$value->bearbeitet_von}} hat {{$value->aufgabenname}} mit Abgabe am {{$value->abgabedatum}} erstellt.</p>
+                                        @if($value->zustand == '.')
+                                            <td class="col-md-4 col-xs-8"><p>{{$value->bearbeitet_von}} hat {{$value->aufgabenname}} mit Abgabe am {{$value->abgabedatum}} im Kurs {{$value->kurs}} erstellt.</p>
                                             </td>
-
-                                        @else
-                                        <td class="col-md-4 col-xs-8"><p>{{$value->bearbeitet_von}} hat deine {{$value->aufgabenname}} im Kurs ALDA
-                                                abgenommen.</p>
+                                        @elseif($value->zustand == '+' || $value->zustand == '-')
+                                        <td class="col-md-4 col-xs-8"><p>{{$value->erstellt_von}} hat deine {{$value->aufgabenname}} im Kurs {{$value->kurs}} abgenommen.</p>
                                         </td>
                                         @endif
                                     </tr>
@@ -58,4 +55,3 @@
 
 @endsection
 
-@yield('test')
