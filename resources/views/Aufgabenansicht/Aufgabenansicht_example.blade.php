@@ -205,15 +205,15 @@
                                     <div class="col-md-3  col-xs-6 size"> {{$value->updated_at}}</div>
                                     <div class="col-md-3  col-xs-6 size">Datei löschen:</div>
                                     <div class="col-md-3  col-xs-4 size">
-                                        <form action="{{ url('Aufgabenansicht') }}/{{$value->abgabeid }}"
-                                              onsubmit="return confirm('Sind Sie sicher, dass Sie die Datei von {{ $value->abgabeid}} wirklich löschen wollen?')"
-                                              method="POST">
-                                            {{ csrf_field() }}
-                                            {{ method_field('DELETE') }}
-                                            <button class="btn-primary btn" style="padding: 0px 12px;" type="submit">
-                                                Delete
-                                            </button>
-                                        </form>
+                                        {{--<form action="{{ url('Aufgabenansicht') }}/{{$value->abgabeid }}"--}}
+                                              {{--onsubmit="return confirm('Sind Sie sicher, dass Sie die Datei von {{ $value->abgabeid}} wirklich löschen wollen?')"--}}
+                                              {{--method="get" >--}}
+                                            {{--{{ csrf_field() }}--}}
+                                            {{--{{ method_field('DELETE') }}--}}
+                                            {{--<button class="btn-primary btn" style="padding: 0px 12px;" type="submit">Delete--}}
+                                            {{--</button>--}}
+                                            <button class="btn-primary btn" onclick="window.location.href='/delete?id={{$value->abgabeid}}'"></button>
+                                        {{--</form>--}}
                                     </div>
                                 </div>
                                 <div class="panel-group" style="padding-bottom: 1%;">

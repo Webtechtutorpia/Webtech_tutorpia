@@ -209,17 +209,15 @@
                                     <div class="col-md-3  col-xs-6 size"> <?php echo e($value->updated_at); ?></div>
                                     <div class="col-md-3  col-xs-6 size">Datei löschen:</div>
                                     <div class="col-md-3  col-xs-4 size">
-                                        <form action="<?php echo e(url('Aufgabenansicht')); ?>/<?php echo e($value->abgabeid); ?>"
-                                              onsubmit="return confirm('Sind Sie sicher, dass Sie die Datei von <?php echo e($value->abgabeid); ?> wirklich löschen wollen?')"
-                                              method="POST">
-                                            <?php echo e(csrf_field()); ?>
-
-                                            <?php echo e(method_field('DELETE')); ?>
-
-                                            <button class="btn-primary btn" style="padding: 0px 12px;" type="submit">
-                                                Delete
-                                            </button>
-                                        </form>
+                                        
+                                              
+                                              
+                                            
+                                            
+                                            
+                                            
+                                            <button class="btn-primary btn" onclick="window.location.href='/delete?id=<?php echo e($value->abgabeid); ?>'"></button>
+                                        
                                     </div>
                                 </div>
                                 <div class="panel-group" style="padding-bottom: 1%;">

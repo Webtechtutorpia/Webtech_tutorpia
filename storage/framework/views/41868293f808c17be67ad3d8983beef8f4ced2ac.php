@@ -185,7 +185,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td>Datei:</td>
-                                                    <td><button class="btn btn-default btn-primary">Download</button></td>
+                                                    <td><button class="btn btn-default btn-primary" onclick="window.location.href='/download?kurs=<?php echo e($kurs); ?>&id=<?php echo e($value->abgabeid); ?>'">Download</button></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Student kontaktieren</td>
