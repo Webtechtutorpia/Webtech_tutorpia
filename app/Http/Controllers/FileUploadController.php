@@ -26,7 +26,7 @@ class FileUploadController extends Controller
             $path = $request->file('upload')->storeAs('files', $request->username . '_' . $request->aufgabenname . '_' . $name);
             //$path = $request->file('avatar')->store('avatars/'.$request->user()->id, 's3');
             $pfad = 'app/files/'. $request->username . '_' . $request->aufgabenname . '_' . $name;
-            DB::table('abgabe')->where('abgabeid', '=', $request->abgabeid)->update(['zustand' => '/', 'pfad'=> $pfad]);
+            DB::table('abgabe')->where('abgabeid', '=', $request->abgabeid)->update(['zustand' => '/', 'pfad'=> $pfad, 'upload_am' => date('d-m-Y H:i:s')]);
             return back();
 //            }
 //            else{
@@ -42,7 +42,7 @@ class FileUploadController extends Controller
 
     public function delete(Request $request){
 
-        $abgabe=Abgabe::find($request->id);
+        $abgabe=Abgabe::find($request->abgabeid);
         $array= explode('/',$abgabe->pfad);
         $pruefe=Storage::exists('files/' . $array[sizeof($array)-1]);
         if($pruefe ){
@@ -57,7 +57,7 @@ class FileUploadController extends Controller
     }
     public function download(Request $request)
     {
-        $abgabe=Abgabe::find($request->id);
+        $abgabe=Abgabe::find($request->abgabeid);
         $path= storage_path($abgabe->pfad);
        return response()->download($path);
 

@@ -14,9 +14,7 @@
                     <div class="input-group">
                         <form method="get" action="/search">
                             <input type="text" class="form-control" placeholder="Suche nach..." id="tfsearch">
-                            <span class="input-group-btn">
-             <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"
-                                                                 aria-hidden="true"></span></button></span>
+
                         </form>
                     </div>
                 </div>
@@ -64,7 +62,8 @@
                                 <td class="text-center"><a href="<?php echo e(url('Aufgabenansicht/bestimmteAbgabe')); ?>/<?php echo e($zeile->user); ?>/<?php echo e($zeile->aufgabenname); ?>" class="glyphicon glyphicon-remove btn-danger"></a></td>
                             <?php endif; ?>
                             <?php if($zeile->zustand == '.'): ?>
-                                <td class="text-center"><a href="<?php echo e(url('Aufgabenansicht/bestimmteAbgabe')); ?>/<?php echo e($zeile->user); ?>/<?php echo e($zeile->aufgabenname); ?>" class="glyphicon glyphicon-minus btn-warning"></a></td>
+                                
+                                <td class="text-center">-</td>
                             <?php endif; ?>
                             <?php if($zeile->zustand == '/'): ?>
                                 <td class="text-center"><a href="<?php echo e(url('Aufgabenansicht/bestimmteAbgabe')); ?>/<?php echo e($zeile->user); ?>/<?php echo e($zeile->aufgabenname); ?>" class="glyphicon glyphicon-minus btn-warning"></a></td>
@@ -78,7 +77,9 @@
                                     <td class="text-center"><a href="<?php echo e(url('Aufgabenansicht/bestimmteAbgabe')); ?>/<?php echo e($zeile->user); ?>/<?php echo e($zeile->aufgabenname); ?>" class="glyphicon glyphicon-remove btn-danger"></a></td>
                                     <?php endif; ?>
                                 <?php if($zeile->zustand == '.'): ?>
-                                    <td class="text-center"><a href="<?php echo e(url('Aufgabenansicht/bestimmteAbgabe')); ?>/<?php echo e($zeile->user); ?>/<?php echo e($zeile->aufgabenname); ?>" class="glyphicon glyphicon-minus btn-warning"></a></td>
+
+                                    <td class="text-center">-</td>
+                                    
                                 <?php endif; ?>
                                 <?php if($zeile->zustand == '/'): ?>
                                     <td class="text-center"><a href="<?php echo e(url('Aufgabenansicht/bestimmteAbgabe')); ?>/<?php echo e($zeile->user); ?>/<?php echo e($zeile->aufgabenname); ?>" class="glyphicon glyphicon-minus btn-warning"></a></td>

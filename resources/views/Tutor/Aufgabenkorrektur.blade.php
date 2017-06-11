@@ -178,11 +178,18 @@
                                                 </tr>
                                                 <tr>
                                                     <td>Upload am:</td>
-                                                    <td>{{$value->updated_at}}</td>
+                                                    <td>{{$value->upload_am}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Datei:</td>
-                                                    <td><button class="btn btn-default btn-primary" onclick="window.location.href='/download?kurs={{$kurs}}&id={{$value->abgabeid}}'">Download</button></td>
+                                                    <td>
+                                                    <form action="/download" method="post">
+                                                        <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+                                                        <input type="hidden" name="kurs" value="{{$kurs}}">
+                                                        <input type="hidden" name="abgabeid" value="{{$value->abgabeid}}">
+                                                        <button type="submit" class="btn-primary btn">Download</button>
+                                                    </form>
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td>Student kontaktieren</td>

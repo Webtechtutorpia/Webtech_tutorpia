@@ -14,13 +14,11 @@
                 <form class="form-inline" method="get">
                     <div class="form-group">
                         <input type="hidden" name="_token" value="<?php Session::token()?>">
-                        <input type="text" name="search_abgabe" value="<?php echo e(isset($cityName) ? $cityName : ''); ?>" id="search_abgabe"
+                        <input type="text" name="search_abgabe" id="search_abgabe"
                                onkeyup="ajaxSearch(this.value)" class="form-control" placeholder="Suche nach..."
                                autofocus onfocus="this.value=this.value;" autocomplete="off">
 
                     </div>
-                    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"
-                                                                        aria-hidden="true"></span></button>
                 </form>
 
             </div>
@@ -116,7 +114,11 @@
                                     <div class="col-md-3  col-xs-6 size">Abgabe bis:</div>
                                     <div class="col-md-3  col-xs-6 size"><?php echo e($value->abgabedatum); ?> </div>
                                     <div class="col-md-3  col-xs-6 size">Abgabe abgelehnt:</div>
-                                    <div class="col-md-3 col-xs-6 size"><?php echo e($value->abgabedatum); ?></div>
+                                    <div class="col-md-3 col-xs-6 size"><?php echo e($value->korrigiert_am); ?></div>
+                                    <div class="col-md-3 col-xs-6 size">Abgelehnt durch:</div>
+                                    <div class="col-md-3 col-xs-6 size"><?php echo e($value->bearbeitet_von); ?></div>
+                                    <div class="col-md-3 col-xs-6 size">Datei:</div>
+                                    <div class="col-md-3 col-xs-6 size"><button class="btn btn-primary" onclick="window.location.href='/download?kurs=<?php echo e($kurs); ?>&id=<?php echo e($value->abgabeid); ?>'">Download</button></div>
                                 </div>
                                 <div class="panel-group" style="padding-bottom: 1%;">
                                     <div class="col-md-3 col-xs-6 size"> Tutor kontaktieren:</div>
@@ -154,18 +156,19 @@
 
                                 <div class="panel group" style="padding-bottom: 1%">
                                     <div class="col-md-3 col-xs-6 size ">Upload am:</div>
-                                    <div class="col-md-3 col-xs-6 size "><?php echo e($value->created_at); ?></div>
+                                    <div class="col-md-3 col-xs-6 size "><?php echo e($value->upload_am); ?></div>
                                     <div class="col-md-3 col-xs-6 size"> korregiert am:</div>
-                                    <div class="col-md-3  col-xs-6 size"> <?php echo e($value->updated_at); ?></div>
+                                    <div class="col-md-3  col-xs-6 size"> <?php echo e($value->korrigiert_am); ?></div>
                                 </div>
 
                                 <div class="panel-group" style="padding-bottom: 1%;">
                                     <div class="col-md-3 col-xs-6 size">Abnahme durch:</div>
-                                    <div class="col-md-3 col-xs-6 size"> Tutor1</div>
+                                    <div class="col-md-3 col-xs-6 size"> <?php echo e($value->bearbeitet_von); ?></div>
 
-                                    <div class="col-md-3 col-xs-6 size"> korregierte Version:</div>
+                                    <div class="col-md-3 col-xs-6 size"> Datei:</div>
                                     <div class="col-md-3 col-xs-4 size">
-                                        <button class="btn-primary btn " style="padding: 0px 12px;" type="button">
+                                        
+                                        <button class="btn btn-primary " type="button" onclick="window.location.href='/download?kurs=<?php echo e($kurs); ?>&id=<?php echo e($value->abgabeid); ?>'">
                                             Download
                                         </button>
                                     </div>
@@ -206,7 +209,7 @@
                                 </div>
                                 <div class=" panel-group" style="padding-bottom: 1%;">
                                     <div class="col-md-3  col-xs-6 size">Upload am :</div>
-                                    <div class="col-md-3  col-xs-6 size"> <?php echo e($value->updated_at); ?></div>
+                                    <div class="col-md-3  col-xs-6 size"> <?php echo e($value->upload_am); ?></div>
                                     <div class="col-md-3  col-xs-6 size">Datei löschen:</div>
                                     <div class="col-md-3  col-xs-4 size">
                                         
@@ -216,7 +219,13 @@
                                             
                                             
                                             
-                                            <button class="btn-primary btn" onclick="window.location.href='/delete?id=<?php echo e($value->abgabeid); ?>'"></button>
+
+                                        <form action="/delete" method="post">
+                                            <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+                                            <input type="hidden" name="abgabeid" value="<?php echo e($value->abgabeid); ?>">
+                                            <button type="submit" class="btn-primary btn">Delete</button>
+                                        </form>
+                                            
                                         
                                     </div>
                                 </div>

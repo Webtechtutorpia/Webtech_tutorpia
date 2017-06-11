@@ -112,8 +112,8 @@ Route::post('confirm','AufgabeController@confirmsite');
 Route::post('accept', 'AufgabeController@accept');
 Route::get('reset','AufgabeController@reset');
 Route::get('aktualisieren', 'ActivityController@ajax');
-Route::get('download','FileUploadController@download');
-Route::get('delete', 'FileUploadController@delete');
+Route::post('download','FileUploadController@download');
+Route::post('delete', 'FileUploadController@delete');
 //Route::get('Aufgabenansicht/destroy/{id}','AufgabenansichtController@destroy');
 
 //Route::get('Aufgabenansicht/{kurs}','AufgabenansichtController@show');

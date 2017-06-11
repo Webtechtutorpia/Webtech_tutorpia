@@ -80,6 +80,8 @@ class CreateDatabase extends Migration
             $table->string('kommentar')->nullable();
             $table->string('bearbeitet_von')->nullable();
             $table->string('pfad')->nullable();
+            $table->string('upload_am')->nullable();
+            $table->string('korrigiert_am')->nullable();
             $table->timestamps();
             //Constraints
             $table->foreign('user')->references('id')->on('users');

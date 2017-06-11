@@ -181,11 +181,18 @@
                                                 </tr>
                                                 <tr>
                                                     <td>Upload am:</td>
-                                                    <td><?php echo e($value->updated_at); ?></td>
+                                                    <td><?php echo e($value->upload_am); ?></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Datei:</td>
-                                                    <td><button class="btn btn-default btn-primary" onclick="window.location.href='/download?kurs=<?php echo e($kurs); ?>&id=<?php echo e($value->abgabeid); ?>'">Download</button></td>
+                                                    <td>
+                                                    <form action="/download" method="post">
+                                                        <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+                                                        <input type="hidden" name="kurs" value="<?php echo e($kurs); ?>">
+                                                        <input type="hidden" name="abgabeid" value="<?php echo e($value->abgabeid); ?>">
+                                                        <button type="submit" class="btn-primary btn">Download</button>
+                                                    </form>
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td>Student kontaktieren</td>
