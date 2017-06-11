@@ -71,9 +71,9 @@
 
                         <select name="leiter"  class="form-control">
                                 <?php $__currentLoopData = $Users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
-                                    <?php if($user->rolle=='Professor'): ?>
+
                                         <option value="<?php echo e($user->id); ?>"><?php echo e($user->name); ?></option>
-                                    <?php endif; ?>
+                             
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
                             </select>
                         <input type="submit" class="btn btn-primary form-control">

@@ -72,9 +72,9 @@
 
                         <select name="leiter"  class="form-control">
                                 @foreach($Users as $user)
-                                    @if($user->rolle=='Professor')
+
                                         <option value="{{$user->id}}">{{$user->name}}</option>
-                                    @endif
+                             
                                 @endforeach
                             </select>
                         <input type="submit" class="btn btn-primary form-control">

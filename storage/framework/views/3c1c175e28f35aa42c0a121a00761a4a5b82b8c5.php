@@ -225,8 +225,7 @@
                                             <input type="hidden" name="abgabeid" value="<?php echo e($value->abgabeid); ?>">
                                             <button type="submit" class="btn-primary btn">Delete</button>
                                         </form>
-                                            
-                                        
+
                                     </div>
                                 </div>
                                 <div class="panel-group" style="padding-bottom: 1%;">

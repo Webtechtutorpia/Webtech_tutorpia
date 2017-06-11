@@ -17,21 +17,21 @@ class UserSeeder extends Seeder
             'name' => 'TestStudent',
             'email' => 'student@student',
             'password' => bcrypt('Tutorpia'),
-            'Rolle' => 'Student'
+            'Rolle' => 'member'
         ]);
 
         DB::table('users')->insert([
             'name' => 'TestStudent2',
             'email' => 'student@student2',
             'password' => bcrypt('Tutorpia'),
-            'Rolle' => 'Student'
+            'Rolle' => 'member'
         ]);
         //TestTutor
         DB::table('users')->insert([
             'name' => 'TestTutor',
             'email' => 'Tutor@Tutor',
             'password' => bcrypt('Tutorpia'),
-            'Rolle' => 'Tutor'
+            'Rolle' => 'member'
         ]);
 
         //TestProf
@@ -39,7 +39,7 @@ class UserSeeder extends Seeder
             'name' => 'TestProf',
             'email' => 'Prof@Prof',
             'password' => bcrypt('Tutorpia'),
-            'Rolle' => 'Professor'
+            'Rolle' => 'member'
         ]);
         // Admin
         DB::table('users')->insert([
