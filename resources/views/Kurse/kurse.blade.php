@@ -39,21 +39,25 @@
                                             @if($value->rolle=="Professor")
                                                 <td class="text-center"><a
                                                 class="btn btn-primary btn-md col-md-11 col-md-offset-2 col-xs-11 col-xs-offset-1"
-                                                href="{{ url('/Professor') }}/{{$value->id}}" role="button">ProfMode</a></td>
+                                                href="{{ url('/Professor') }}/{{$value->kurs}}" role="button">ProfMode</a></td>
                                                 <td class="text-center"><a
                                                 class="btn btn-primary btn-md col-md-11 col-md-offset-1 col-xs-11 col-xs-offset-3"
-                                                href="{{ url('/Tutor')}}/{{$value->id}} " role="button">Abgabenübersicht</a></td>
+                                                href="{{ url('/Tutor')}}/{{$value->kurs}} " role="button">Abgabenübersicht</a></td>
                                                 @endif
                                             @if($value->rolle=="Tutor")
+                                                {{--<td class="text-center"><a--}}
+                                                            {{--class="btn btn-primary btn-md col-md-11 col-md-offset-1 col-xs-11 col-xs-offset-3"--}}
+                                                            {{--href="{{ url('/Tutor') }}/{{$value->kurs}}" role="button">Abgabenübersicht</a></td>--}}
+                                                {{--<td></td>--}}
                                                 <td class="text-center"><a
-                                                            class="btn btn-primary btn-md col-md-11 col-md-offset-1 col-xs-11 col-xs-offset-3"
-                                                            href="{{ url('/Tutor') }}/{{$value->id}}" role="button">Abgabenübersicht</a></td>
+                                                            class="btn btn-primary btn-md col-md-11 col-md-offset-2 col-xs-11 col-xs-offset-1"
+                                                            href="{{ url('/Tutor') }}/{{$value->kurs}}" role="button">Abgabenübersicht</a></td>
                                                 <td></td>
                                             @endif
                                             @if($value->rolle=="Student")
                                                 <td class="text-center"><a
                                                 class="btn btn-primary btn-md col-md-11 col-md-offset-2 col-xs-11 col-xs-offset-1"
-                                                href="{{ url('/aufgabe_example') }}" role="button">Aufgabenstatus</a>
+                                                href="{{ url('/Aufgabenansicht') }}/{{$value->kurs}} " role="button">Aufgabenstatus</a>
                                                 </td>
                                                 <td></td>
                                             @endif
@@ -71,6 +75,7 @@
                                         <thead>
                                         <tr class="success">
                                             <th class="col-md-4">andere Kurse</th>
+                                            {{--<th class="col-md-4">Rolle</th>--}}
                                             <th class="col-md-6"></th>
 
 
@@ -82,15 +87,22 @@
                                         @endif
                                         {{--je nach Datenbankeintrag Element anzeigen--}}
                                         @foreach($alle as $key2 => $value2 )
-                                            @if($value2 != $value)
+
                                         <tr>
                                             <td>{{$value2->kurs}}</td>
+                                            {{--<td>{{$value2->rolle}}</td>--}}
                                             <td class="text-center">
-                                                <button type="button" class="btn btn-primary btn-md col-md-offset-3">eintragen
-                                                </button>
+                                                <form class="form-horizontal" role="form" method="POST"
+                                                      action="{{ url('Kurse') }}" >
+                                                    {{ csrf_field() }}
+                                                    <input type="hidden" name="kurs" value="{{$value2->kurs}}">
+                                                    {{--<input type="hidden" name="rolle" value="{{$value2->rolle}}">--}}
+                                                    <button type="submit" class="btn btn-primary btn-md col-md-offset-3">eintragen
+                                                    </button>
+                                                </form>
                                             </td>
                                         </tr>
-                                        @endif
+
                                         @endforeach
 
                                         </tbody>

@@ -3,7 +3,7 @@
         color:blue;
     }</style>
 @section('content')
-    @if (Auth::user()->rolle=="Professor")
+    {{--@if (Auth::user()->rolle=="Professor")--}}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script> $( document ).ready(function() {
                 $("li[name='Profmodus']").css('background-color', '#f5f8fa');
@@ -14,7 +14,7 @@
             <div class="row">
 
                 <div class="">
-                    <h3 class="col-md-5" id="test"> Professorenmodus: BESY</h3>
+                    <h3 class="col-md-5" id="test"> Professorenmodus: {{session()->get('global_variable')}}</h3>
                 </div>
 
                 <span class="glyphicon glyphicon-plus col-md-offset-12" id="bigsize-right" id="plus" onclick="add(this)"></span>
@@ -35,23 +35,23 @@
 
 
                     </div>
-                    <div class="panel-body" style="display:none">
+                    <div class="panel-body notVisible">
                         @if (count($errors) > 0)
                             <div class="alert alert-danger">
-                                <ul>
+
                                     @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
+                                        <p>{{ $error }}</p>
                                     @endforeach
-                                </ul>
                             </div>
                         @endif
 
                         <form class="form-horizontal" role="form" method="POST"
-                              action="{{ url('Professor') }}" >
-                            {{ csrf_field() }}
+                              {{--action="{{ url('Professor') }}" >--}}
+                              action="{{ url('confirm')}}">
+
+                        {{ csrf_field() }}
 
                             <div class="form group">
-
                                 <label for="Aufgabenname" class="control-label">Aufgabenname</label>
                                 <input type="text" class="form-control" name="aufgabenname" id="Aufgabenname" onkeypress="buttonFaerben(this)"
                                        placeholder="Hier Aufgabenname eintragen">
@@ -93,7 +93,7 @@
 
                                 <b>{{$value->aufgabenname}}</b>
                                 <div class="pull-right">
-                                    <form action="./Professor/{{$value->id }}"  onsubmit="return confirm('Sind Sie sicher, dass Sie {{ $value->aufgabenname}} wirklich löschen wollen?')" method="POST">
+                                    <form action="{{ url('Professor') }}/{{$value->id }}"  onsubmit="return confirm('Sind Sie sicher, dass Sie {{ $value->aufgabenname}} wirklich löschen wollen?')" method="POST">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
                                         <button type="submit">
@@ -103,8 +103,9 @@
                                 </div>
 
 
+
                             </div>
-                            <div class="panel-body" style="display:none">
+                            <div class="panel-body notVisible" >
                                 @if (count($errors) > 0)
                                     <div class="alert alert-danger">
                                         <ul>
@@ -153,6 +154,6 @@
         </div>
 
 
-    @endif
+    {{--@endif--}}
 
 @endsection

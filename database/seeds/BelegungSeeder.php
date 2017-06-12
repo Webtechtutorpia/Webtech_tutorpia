@@ -31,10 +31,24 @@ class BelegungSeeder extends Seeder
             'kurs' =>'BESY',
             'rolle'=>'Student'
         ]);
+
         DB::table('belegung')->insert([
-            'user'=>2,
-            'kurs' =>'WebTech',
-            'rolle'=>'Student'
+            'user'=>4,
+            'kurs' =>'Webtech',
+            'rolle'=>'Professor'
         ]);
+        DB::table('belegung')->insert([
+            'user'=>4,
+            'kurs'=>'ALDA',
+            'rolle'=>'Professor'
+        ]);
+
+
+
+//        DB::table('belegung')->insert([
+//            'user'=>2,
+//            'kurs' =>'WebTech',
+//            'rolle'=>'Student'
+//        ]);
     }
 }

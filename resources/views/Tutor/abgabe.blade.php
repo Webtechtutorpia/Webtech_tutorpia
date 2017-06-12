@@ -7,35 +7,25 @@
             $("li[name='Abgaben']").css('background-color', '#f5f8fa');
         });</script>
     <script type="text/javascript" src="{{ URL::asset('js/Abgabe.js') }}"></script>
-    @if (Auth::user()->rolle=="Tutor" || Auth::user()->rolle=="Professor" )
+    {{--@if (Auth::user()->rolle=="Tutor" || Auth::user()->rolle=="Professor" )--}}
         <div class="container">
             <div class="row">
-                <h2>Tutorenmodus: ALDA</h2>
+                <h2>Tutorenmodus: {{$kurs}}</h2>
 
                 <div class="col-md-4 col-md-offset-8" id="anhang">
                     <div class="input-group">
                         <form method="get" action="/search">
-                            <input type="text" class="form-control" placeholder="Suche nach..." name="tfsearch"
-                                   onkeypress="search(this.value)">
-                            <span class="input-group-btn">
-             <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"
-                                                                 aria-hidden="true"></span></button></span>
+                            <input type="text" class="form-control" placeholder="Suche nach..." id="tfsearch">
+
                         </form>
                     </div>
                 </div>
-                <button onclick="add()"> add</button>
-                <button onclick="remove()">remove</button>
-                <div id="ausgabe">hallo</div>
+                {{--<button onclick="add()"> add</button>--}}
+                {{--<button onclick="remove()">remove</button>--}}
+                {{--<div id="ausgabe">hallo</div>--}}
                 {{--<div class="table-responsive">--}}
-                <table class="table table-responsive" id="tabelle">
-                    <thead>
-                    <tr id="head">
-                        <th> Name</th>
-                    </tr>
-                    </thead>
-                </table>
-
-                <table class="table">
+                <button onclick="einfügen()">Test</button>
+                <table class="table table-responsive table-striped table-bordered" id="tabelle">
                 <thead>
                 <tr>
                 <th class="col-md-3 col-xs-3">Name</th>
@@ -67,14 +57,38 @@
                         <tr>
                                 <td>{{$zeile->name}}</td>
 
+                            @if($zeile->zustand == '+')
+                                <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-ok btn-success"></a>
+                            @endif
+                            @if($zeile->zustand == '-')
+                                <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-remove btn-danger"></a></td>
+                            @endif
+                            @if($zeile->zustand == '.')
+                                <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-minus btn-info"></a></td>
+                                {{--<td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-minus btn-warning"></a></td>--}}
 
-                {{--<td class="text-center"><a href="{{ url('/aufgabe_example') }}" class="glyphicon glyphicon-minus btn-warning"></a></td>--}}
-                {{--<td class="text-center"><a href="{{ url('/aufgabe_example') }}" class="glyphicon glyphicon-remove btn-danger"></a></td>--}}
-                {{--<td class="text-center"><a href="{{ url('/aufgabe_example') }}" class="glyphicon glyphicon-ok btn-success"></a></td>--}}
-                <td>{{$zeile->zustand}}</td>
+                            @endif
+                            @if($zeile->zustand == '/')
+                                <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-minus btn-warning"></a></td>
+                            @endif
 
                         @else
-                        <td>{{$zeile->zustand}}</td>
+                            @if($zeile->zustand == '+')
+                                    <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-ok btn-success"></a>
+                                @endif
+                                @if($zeile->zustand == '-')
+                                    <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-remove btn-danger"></a></td>
+                                    @endif
+                                @if($zeile->zustand == '.')
+
+
+                                    <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-minus btn-info"></a></td>
+                                    {{--<td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-minus btn-info"></a></td>--}}
+                                @endif
+                                @if($zeile->zustand == '/')
+                                    <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-minus btn-warning"></a></td>
+                                @endif
+                            {{--<td>{{$zeile->zustand}}</td>--}}
                     @endif
                 @php($id=$zeile->id)
                 @endforeach
@@ -87,5 +101,5 @@
             </div>
         </div>
 
-    @endif
+    {{--@endif--}}
 @endsection

@@ -5,10 +5,12 @@ namespace Tutorpia\Http\Controllers;
 
 use Tutorpia\Aufgabe;
 use Tutorpia\Activity;
+use Tutorpia\Abgabe;
 use View;
 use Illuminate\Http\Request;
 use Tutorpia\Http\Requests;
 use Auth;
+use Illuminate\Support\Facades\DB;
 class AufgabeController extends Controller
 {
 //    public function read(Request $request){
@@ -82,7 +84,7 @@ class AufgabeController extends Controller
             'abgabedatum'         => $request->abgabedatum,
             'aufgabenbeschreibung' =>  $request->aufgabenbeschreibung,
             'kurs'=> session()->get('global_variable'),
-            'erstellt_von' => Auth::user()->id,
+            'erstellt_von' => Auth::user()->name,
         ]);
 
         Activity::create([
@@ -91,7 +93,19 @@ class AufgabeController extends Controller
             'zuordnung_aufgabe' => $id->id,
             'bearbeitet_von' => Auth::user()->name,
         ]);
-        $aufgabe = Aufgabe::all();
+        $users =DB::table('belegung')
+            ->join('users', 'belegung.user', '=', 'users.id')
+            ->select('users.id')
+            ->where('belegung.kurs',session()->get('global_variable'))
+            ->get();
+
+        foreach($users as $user) {
+            Abgabe::create([
+                'zustand' => '.',
+                'user' => $user->id,
+                'zugehoerig_zu' => $id->id,
+            ]);
+        }
         return back();
 
     }
@@ -112,32 +126,76 @@ class AufgabeController extends Controller
 
     public function index()
     {
-        // get all the myinputs
-        $aufgabe = Aufgabe::all();
-        // load the view and pass the myinputs
-        return View::make('Professor.ProfMode')->with('myinputs', $aufgabe);
 
+        if (Auth::check()) {
+
+
+            // get all the myinputs
+            $aufgabe = Aufgabe::all();
+            // load the view and pass the myinputs
+            return View::make('Professor.ProfMode')->with('myinputs', $aufgabe);
+        }
+        else {
+
+            return View::make('home');
+        }
     }
     public function show($kurs)
     {
-        session()->put('global_variable', $kurs);
-        // get the myinput
-        $aufgabe = Aufgabe::where('kurs','=',$kurs)->get();
+        if (Auth::check()) {
+            session()->put('global_variable', $kurs);
+            // get the myinput
+            $aufgabe = Aufgabe::where('kurs', '=', $kurs)->get();
 
-        // show the view and pass the myinput to it
-        return View::make('Professor.ProfMode')->with('myinputs', $aufgabe);
+            // show the view and pass the myinput to it
+            return View::make('Professor.ProfMode')->with('myinputs', $aufgabe);
+        } else {
+
+            return View::make('home');
+        }
     }
     public function destroy($id)
     {
         // delete
+        $activity=Activity::where('zuordnung_aufgabe',$id)->first();
+        $activity->delete();
+
+        Abgabe::where('zugehoerig_zu',$id)->delete();
+
+
         $aufgabe = Aufgabe::find($id);
         $aufgabe->delete();
+
+
         // redirect
         return back();
     }
 
+    public function confirmsite(Request $request)
+    {
+//        $parameter=[
+//            'name'=>'Aufgabe5',
+//            'datum'=>'27.05.2022 21:59',
+//            'beschreibung'=>'Das ist eine Testaufgabe'
+//        ];
+        return view ('Professor.anlegen_bestaetigung', ['request'=>$request]);
+    }
+    public function reset(Request $request){
+        $pfad='/Professor/'.session()->get('global_variable');
+//      return response('hallo');
+         return redirect($pfad);
+
+    }
+
+    public function accept(Request $request){
 
 
+        // in db schreiben
+
+        $pfad='/Professor/'.session()->get('global_variable');
+     return  response('hallo');
+        return view ('Professor.Profmode', ['myinputs'=>$request]);
+    }
 
 
 }

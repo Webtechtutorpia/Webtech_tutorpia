@@ -8,7 +8,7 @@ class Activity extends Model
 {
     protected $table = 'activity';
     protected $fillable = [
-        'abgabedatum','aufgabenname','bearbeitet_von','zuordnung_aufgabe','zuordnung_abgabe'
+        'abgabedatum','aufgabenname','bearbeitet_von','zuordnung_aufgabe','zuordnung_abgabe','user'
     ];
 
 

@@ -1,163 +1,249 @@
 @extends('layouts.app')
 
 @section('content')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script> $( document ).ready(function() {
-            $("li[name='Aufgaben']").css('background-color', '#f5f8fa');
-        });</script>
     <script type="text/javascript" src="{{ URL::asset('js/Aufgaben.js') }}"></script>
 
-    <div class="container">
+    <div class="container" id="container">
         <div class="row">
 
-            <h2>Studentenmodus: DBIS</h2>
+            <h2>Studentenmodus: {{$kurs}}</h2>
 
-        <div class="col-md-12 col-xs-12 ">
-            <h4> Übungsblatt 1</h4>
+            <div class="col-md-4 col-md-offset-8">
 
-            <div class="panel panel-success aufgabe ">
-                <div class="panel-heading" onclick="Bodyhandler()"> Aufgabe 1
-                    <div style="display: inline; float: right" class="glyphicon glyphicon-ok"></div>
-                </div>
-                <div class="panel-body">
-                    <div class=" panel-group" style="padding-bottom: 1%">
-                        <div class="col-md-3 col-xs-6 size"> Aufgabenstellung:</div>
-                        <div class="col-md-9 col-xs-12 size">Aufgabe 1</div>
-                    </div>
 
-                    <div class="panel group" style="padding-bottom: 1%">
-                        <div class="col-md-3 col-xs-6 size ">Upload am:</div>
-                        <div class="col-md-3 col-xs-6 size ">21.04.2017 18:34</div>
-                        <div class="col-md-3 col-xs-6 size"> korregiert am:</div>
-                        <div class="col-md-3  col-xs-6 size"> 22.04.2017 15:29</div>
-                    </div>
+                <form class="form-inline" method="get">
+                    <div class="form-group">
+                        <input type="hidden" name="_token" value="<?php Session::token()?>">
+                        <input type="text" name="search_abgabe" id="search_abgabe"
+                               onkeyup="ajaxSearch(this.value)" class="form-control" placeholder="Suche nach..."
+                               autofocus onfocus="this.value=this.value;" autocomplete="off">
 
-                    <div class="panel-group" style="padding-bottom: 1%;">
-                        <div class="col-md-3 col-xs-6 size">Abnahme durch:</div>
-                        {{--Word-wrap beachten--}}
-                        <div class="col-md-3 col-xs-6 size" style="text-align: bottom"> Tutor1</div>
+                    </div>
+                </form>
 
-                        <div class="col-md-3 col-xs-6 size"> korregierte Version:</div>
-                        {{--<td class="col-md-1 size"> <div class="glyphicon glyphicon-envelope text-center" style="display: inline"></div> </td>--}}
-                        <div class="col-md-3 col-xs-4 size">
-                            <button class="btn-primary btn " style="padding: 0px 12px;" type="button">Download
-                            </button>
-                        </div>
-                    </div>
-                    <div class="panel-group " style=";">
-                        <div class="col-md-3 col-xs-6 size"> Tutoren kontaktieren:</div>
-                        <div class="col-md-9 col-xs-2 size"><span> <a href class="glyphicon glyphicon-envelope"></a>   </span>
-                        </div>
-                    </div>
-                    <div class="panel-group" style="padding-bottom: 1%;">
-                        <div class="col-md-2  col-xs-12 size">Kommentar:</div>
-                        {{--word-wrap--}}
-                        <div class="col-md-10 col-xs-12 size">nichts zu beanstanden. sehr gut weiter so!
-                        </div>
-                    </div>
-                </div>
             </div>
+            <div id="liste"></div>
 
-        </div>
-        <div class="col-md-12 col-xs-12 ">
-            <h4> Übungsblatt 2</h4>
-            <div class="panel panel-warning aufgabe ">
-                <div class="panel-heading" onclick="Bodyhandler()"> Aufgabe 3
-                    <div style="display: inline; float: right" class="glyphicon glyphicon-minus"></div>
-                </div>
-                <div class="panel-body">
-                    <div class=" panel-group" style="padding-bottom: 1%;">
-                        <div class="col-md-3 col-xs-6 size"> Aufgabenstellung:</div>
-                        <div class="col-md-9 col-xs-12 size"> Aufgabe 3</div>
-                    </div>
-                    <div class=" panel-group" style="padding-bottom: 1%;">
-                        <div class="col-md-3  col-xs-6 size">Upload am :</div>
-                        <div class="col-md-3  col-xs-6 size"> 28.05.2017 12:51</div>
-                        <div class="col-md-3  col-xs-6 size">Datei löschen:</div>
-                        <div class="col-md-3  col-xs-4 size">
-                            <button class="btn-primary btn" style="padding: 0px 12px;" type="button">Delete</button>
-                        </div>
-                    </div>
-                    <div class="panel-group" style="padding-bottom: 1%;">
-                        <div class="col-md-3 col-xs-6 size"> Tutoren kontaktieren:</div>
-                        <div class="col-md-3 col-xs-2 size"><span> <a href class="glyphicon glyphicon-envelope"></a>   </span>
-                        </div>
-                        <div class="col-md-3 col-xs-12"> Status:</div>
-                        <div class="col-md-3 col-xs-12 size">Warten auf Bewertung</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-            @if (Session::has('message'))
-                <div class="alert alert-info">{{ Session::get('message') }}</div>
-            @endif
+
             {{--je nach Datenbankeintrag Element anzeigen--}}
+            <h3>Alle Aufgaben:</h3>
             @foreach($myinputs as $key => $value)
-        <div class="col-md-12 col-xs-12">
-            <div class="panel panel-warning aufgabe ">
-                <div class="panel-heading" onclick="Bodyhandler()"> {{$value->aufgabenname}}
-                    <div style="display: inline; float: right" class="glyphicon glyphicon-minus"></div>
-                </div>
-                <div class="panel-body">
-                    <div class=" panel-group" style="padding-bottom: 1%;">
-                        <div class="col-md-3 col-xs-6 size"> Aufgabenstellung:</div>
-                        <div class="col-md-9 col-xs-12 size"> {{$value->aufgabenname}}</div>
-                    </div>
-                    <div class=" panel-group" style="padding-bottom: 1%;">
-                        <div class="col-md-3  col-xs-6 size">Abgabe bis :</div>
-                        <div class="col-md-3  col-xs-6 size"> {{$value->abgabedatum}}</div>
-                        <div class="col-md-3  col-xs-6 size">Aufgabe hochladen:</div>
-                        <div class="col-md-3  col-xs-4 size">
-                            <button class="btn-primary btn" style="padding: 0px 12px;" type="button">Upload</button>
+
+                @if( $value->zustand == '.')
+                    <div class="col-md-12 col-xs-12">
+                        <div class="panel panel-info aufgabe ">
+                            <div class="panel-heading" onclick="Bodyhandler(this)"> {{$value->aufgabenname}}
+                                <div style="display: inline; float: right" class="glyphicon glyphicon-minus"></div>
+                            </div>
+
+                            <div class="panel-body notVisible">
+
+                                <div class="fileUpload notVisible">
+                                    <form class="form-horizontal" role="form" method="POST"
+                                          action="{{ url('FileUpload') }}" enctype="multipart/form-data">
+                                        {{ csrf_field() }}
+
+
+                                        <div class="form group">
+                                            <input type="hidden" name="aufgabenname" value="{{$value->aufgabenname}}">
+                                            <input type="hidden" name="abgabeid" value="{{$value->abgabeid}}">
+                                            <input type="hidden" name="username" value="{{$value->name}}">
+                                            <input type="file" class="form-control" name="upload" id="upload"
+                                                   onkeypress="buttonFaerben(this)">
+                                        </div>
+
+
+                                        <div class="form-group" style="margin-top: 2em;">
+                                            <button type="submit" class="btn btn-primary speichern" value="Abschicken"
+                                                    style="float: right">
+                                                Datei hochladen
+                                            </button>
+
+                                        </div>
+                                    </form>
+                                </div>
+
+
+                                <div class="austauschen">
+                                    @if (Session::has('message'))
+                                        <div class="alert alert-danger">{{ Session::get('message') }}</div>
+                                    @endif
+                                    <div class=" panel-group" style="padding-bottom: 1%;">
+                                        <div class="col-md-3 col-xs-6 size"> Aufgabenstellung:</div>
+                                        <div class="col-md-9 col-xs-12 size"> {{$value->aufgabenname}}</div>
+                                    </div>
+                                    <div class=" panel-group" style="padding-bottom: 1%;">
+                                        <div class="col-md-3  col-xs-6 size">Abgabe bis :</div>
+                                        <div class="col-md-3  col-xs-6 size"> {{$value->abgabedatum}}</div>
+                                        <div class="col-md-3  col-xs-6 size">Aufgabe hochladen:</div>
+                                        <div class="col-md-3  col-xs-4 size">
+                                            <a class="btn btn-primary btn" onclick="add(this)" role="button">Upload</a>
+
+                                        </div>
+                                    </div>
+                                    <div class="panel-group" style="padding-bottom: 1%;">
+                                        <div class="col-md-3 col-xs-6 size"> Tutoren kontaktieren:</div>
+                                        <div class="col-md-3 col-xs-2 size"><span><a
+                                                        href="mailto:{{$value->email}}?subject=Frage zur Abnahme von {{$value->aufgabenname}} bei {{$value->name}}"
+                                                        class="glyphicon glyphicon-envelope"></a></span>
+                                        </div>
+                                        <div class="col-md-3 col-xs-12"> Status:</div>
+                                        <div class="col-md-3 col-xs-12 size">Warten auf Upload</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="panel-group" style="padding-bottom: 1%;">
-                        <div class="col-md-3 col-xs-6 size"> Tutoren kontaktieren:</div>
-                        <div class="col-md-3 col-xs-2 size"><span><a href
-                                                                     class="glyphicon glyphicon-envelope"></a></span>
+
+                @endif
+                @if($value->zustand == '-')
+                    <div class="col-md-12 col-xs-12">
+                        <div class="panel panel-danger aufgabe ">
+                            <div class="panel-heading" onclick="Bodyhandler(this)"> {{$value->aufgabenname}}
+                                <div style="display: inline; float: right" class="glyphicon glyphicon-remove"></div>
+                            </div>
+                            <div class="panel-body notVisible">
+                                <div class=" panel-group" style="padding-bottom: 1%;">
+                                    <div class="col-md-3 col-xs-6 size"> Aufgabenstellung:</div>
+                                    <div class="col-md-9 col-xs-12 size"> {{$value->aufgabenname}}</div>
+                                </div>
+                                <div class=" panel-group" style="padding-bottom: 1%;">
+                                    <div class="col-md-3  col-xs-6 size">Abgabe bis:</div>
+                                    <div class="col-md-3  col-xs-6 size">{{$value->abgabedatum}} </div>
+                                    <div class="col-md-3  col-xs-6 size">Abgabe abgelehnt:</div>
+                                    <div class="col-md-3 col-xs-6 size">{{$value->korrigiert_am}}</div>
+                                    <div class="col-md-3 col-xs-6 size">Abgelehnt durch:</div>
+                                    <div class="col-md-3 col-xs-6 size">{{$value->bearbeitet_von}}</div>
+                                    <div class="col-md-3 col-xs-6 size">Datei:</div>
+                                    <div class="col-md-3 col-xs-6 size"><button class="btn btn-primary" onclick="window.location.href='/download?kurs={{$kurs}}&id={{$value->abgabeid}}'">Download</button></div>
+                                </div>
+                                <div class="panel-group" style="padding-bottom: 1%;">
+                                    <div class="col-md-3 col-xs-6 size"> Tutor kontaktieren:</div>
+                                    <div class="col-md-3 col-xs-2 size"><span><a
+                                                    href="mailto:{{$value->email}}?subject=Fehler bei Abnahme von {{$value->aufgabenname}} bei {{$value->name}}"
+                                                    class="glyphicon glyphicon-envelope"></a></span>
+                                    </div>
+                                    <div class="col-md-3 col-xs-12"> Status:</div>
+                                    <div class="col-md-3 col-xs-12 size"> Abgabe nicht erfolgreich</div>
+                                </div>
+                                <div class="panel-group" style="padding-bottom: 1%;">
+                                    <div class="col-md-3  col-xs-6 size">Kommentar:</div>
+
+                                    <div class="col-md-3 col-xs-2 size">{{$value->kommentar}}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-md-3 col-xs-12"> Status:</div>
-                        <div class="col-md-3 col-xs-12 size">Warten auf Upload</div>
                     </div>
-                </div>
-            </div>
-        </div>
+                @endif
+                @if($value->zustand == '+')
+                    <div class="col-md-12 col-xs-12 ">
+
+                        <div class="panel panel-success aufgabe ">
+                            <div class="panel-heading" onclick="Bodyhandler(this)"> {{$value->aufgabenname}}
+                                <div style="display: inline; float: right" class="glyphicon glyphicon-ok"></div>
+                            </div>
+                            <div class="panel-body notVisible">
+                                <div class=" panel-group" style="padding-bottom: 1%">
+                                    <div class="col-md-3 col-xs-6 size"> Aufgabenstellung:</div>
+                                    <div class="col-md-9 col-xs-12 size">{{$value->aufgabenname}}</div>
+                                </div>
+
+                                <div class="panel group" style="padding-bottom: 1%">
+                                    <div class="col-md-3 col-xs-6 size ">Upload am:</div>
+                                    <div class="col-md-3 col-xs-6 size ">{{ $value->upload_am}}</div>
+                                    <div class="col-md-3 col-xs-6 size"> korregiert am:</div>
+                                    <div class="col-md-3  col-xs-6 size"> {{$value->korrigiert_am}}</div>
+                                </div>
+
+                                <div class="panel-group" style="padding-bottom: 1%;">
+                                    <div class="col-md-3 col-xs-6 size">Abnahme durch:</div>
+                                    <div class="col-md-3 col-xs-6 size"> {{$value->bearbeitet_von}}</div>
+
+                                    <div class="col-md-3 col-xs-6 size"> Datei:</div>
+                                    <div class="col-md-3 col-xs-4 size">
+                                        {{--style="padding: 0px 12px;"--}}
+                                        <button class="btn btn-primary " type="button" onclick="window.location.href='/download?kurs={{$kurs}}&id={{$value->abgabeid}}'">
+                                            Download
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="panel-group ">
+                                    <div class="col-md-3 col-xs-6 size"> Tutor kontaktieren:</div>
+                                    <div class="col-md-3 col-xs-2 size"><span><a
+                                                    href="mailto:{{$value->email}}?subject=Frage zur Abnahme von {{$value->aufgabenname}} bei {{$value->name}}"
+                                                    class="glyphicon glyphicon-envelope"></a></span>
+                                    </div>
+                                </div>
+                                <div class="panel-group" style="padding-bottom: 1%;">
+                                    <div class="col-md-3 col-xs-12"> Status:</div>
+                                    <div class="col-md-3 col-xs-12 size">erfolgreich abgegeben</div>
+
+                                </div>
+                                <div class="panel-group ">
+                                    <div class="col-md-3 col-xs-6 size"> Kommentar:</div>
+                                    <div class="col-md-3 col-xs-2 size">{{$value->kommentar}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+
+                @if($value->zustand == '/')
+                    <div class="col-md-12 col-xs-12 ">
+
+                        <div class="panel panel-warning aufgabe ">
+                            <div class="panel-heading" onclick="Bodyhandler(this)"> {{$value->aufgabenname}}
+                                <div style="display: inline; float: right" class="glyphicon glyphicon-minus"></div>
+                            </div>
+                            <div class="panel-body notVisible">
+                                <div class=" panel-group" style="padding-bottom: 1%;">
+                                    <div class="col-md-3 col-xs-6 size"> Aufgabenstellung:</div>
+                                    <div class="col-md-9 col-xs-12 size"> {{$value->aufgabenname}}</div>
+                                </div>
+                                <div class=" panel-group" style="padding-bottom: 1%;">
+                                    <div class="col-md-3  col-xs-6 size">Upload am :</div>
+                                    <div class="col-md-3  col-xs-6 size"> {{$value->upload_am}}</div>
+                                    <div class="col-md-3  col-xs-6 size">Datei löschen:</div>
+                                    <div class="col-md-3  col-xs-4 size">
+                                        {{--<form action="{{ url('Aufgabenansicht') }}/{{$value->abgabeid }}"--}}
+                                              {{--onsubmit="return confirm('Sind Sie sicher, dass Sie die Datei von {{ $value->abgabeid}} wirklich löschen wollen?')"--}}
+                                              {{--method="get" >--}}
+                                            {{--{{ csrf_field() }}--}}
+                                            {{--{{ method_field('DELETE') }}--}}
+                                            {{--<button class="btn-primary btn" style="padding: 0px 12px;" type="submit">Delete--}}
+                                            {{--</button>--}}
+
+                                        <form action="/delete" method="post">
+                                            <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+                                            <input type="hidden" name="abgabeid" value="{{$value->abgabeid}}">
+                                            <button type="submit" class="btn-primary btn">Delete</button>
+                                        </form>
+
+                                    </div>
+                                </div>
+                                <div class="panel-group" style="padding-bottom: 1%;">
+                                    <div class="col-md-3 col-xs-6 size"> Tutor kontaktieren:</div>
+                                    <div class="col-md-3 col-xs-2 size"><span><a
+                                                    href="mailto:{{$value->email}}?subject=Frage zur {{$value->aufgabenname}} von {{$value->name}}"
+                                                    class="glyphicon glyphicon-envelope"></a></span>
+                                    </div>
+                                    <div class="col-md-3 col-xs-12"> Status:</div>
+                                    <div class="col-md-3 col-xs-12 size">Warten auf Bewertung</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+
+
+
             @endforeach
 
-        <div class="col-md-12 col-xs-12">
-            <h4> Übungsblatt Nr 4</h4>
-            <div class="panel panel-danger aufgabe ">
-                <div class="panel-heading" onclick="Bodyhandler()"> Aufgabe 2
-                    <div style="display: inline; float: right" class="glyphicon glyphicon-remove"></div></div>
-                    <div class="panel-body">
-                        <div class=" panel-group" style="padding-bottom: 1%;">
-                            <div class="col-md-3 col-xs-6 size"> Aufgabenstellung:</div>
-                            <div class="col-md-9 col-xs-12 size"> Übungblatt Nr 2 Aufgaben 1-4</div>
-                        </div>
-                        <div class=" panel-group" style="padding-bottom: 1%;">
-                            <div class="col-md-3  col-xs-6 size">Abgabe bis:</div>
-                            <div class="col-md-3  col-xs-6 size"> 20.04.2017 19:55</div>
-                            <div class="col-md-3  col-xs-6 size">Abgabe abgelehnt:</div>
-                            <div class="col-md-3 col-xs-6 size">20.04.2017 19:55</div>
-                        </div>
-                        <div class="panel-group" style="padding-bottom: 1%;">
-                            <div class="col-md-3 col-xs-6 size"> Tutoren kontaktieren:</div>
-                            <div class="col-md-3 col-xs-2 size"><span> <a href class="glyphicon glyphicon-envelope"></a>   </span>
-                            </div>
-                            <div class="col-md-3 col-xs-12"> Status:</div>
-                            <div class="col-md-3 col-xs-12 size"> Abgabzeitpunkt verstrichen</div>
-                        </div>
-                        <div class="panel-group" style="padding-bottom: 1%;">
-                            <div class="col-md-2  col-xs-12 size">Kommentar:</div>
-                            {{--word-wrap--}}
-                            <div class="col-md-12 col-xs-12 size">(Auto Generated) Abgabezeitpunkt verstrichen
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
         </div>
-    </div>
     </div>
 
 

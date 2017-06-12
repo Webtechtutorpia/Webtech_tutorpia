@@ -10,6 +10,7 @@ return array(
     'Activityseeder' => $baseDir . '/database/seeds/Activityseeder.php',
     'AufgabeSeeder' => $baseDir . '/database/seeds/AufgabeSeeder.php',
     'BelegungSeeder' => $baseDir . '/database/seeds/BelegungSeeder.php',
+    'ContactSeeder' => $baseDir . '/database/seeds/ContactSeeder.php',
     'CreateDatabase' => $baseDir . '/database/migrations/2017_05_09_131408_create_database.php',
     'CreateMyinputsTable' => $baseDir . '/database/migrations/2017_05_09_163458_create_myinputs_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
