@@ -21,7 +21,10 @@ class FileUploadController extends Controller
                 $name = $request->file('upload')->getClientOriginalName();
                 $path = $request->file('upload')->storeAs('files', $request->username . '_' . $request->aufgabenname . '_' . $name);
                 //$path = $request->file('avatar')->store('avatars/'.$request->user()->id, 's3');
-                DB::table('abgabe')->where('abgabeid', '=', $request->abgabeid)->update(['zustand' => '/']);
+                DB::table('abgabe')
+                    ->where('abgabeid', '=', $request->abgabeid)
+                    ->update(array('zustand' => '/','updated_at'=>date('Y-m-d H:i:s')));
+
                 return back();
 //            }
 //            else{

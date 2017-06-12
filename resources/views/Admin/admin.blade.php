@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
-
+    <div class="container">
+        <div class="row">
     @if(Auth::user()->rolle =='admin')
         <h1>Adminbereich</h1>
         <form method="post" action="{{Url ('test')}}">
@@ -97,4 +98,6 @@
             <input type="submit" value="abschicken">
         </form>
     @endif
+        </div>
+    </div>
 @endsection

@@ -39,7 +39,7 @@ class AufgabeSeeder extends Seeder
 
         DB::table('aufgabe')->insert([
             'aufgabenname' => 'Aufgabe4',
-            'abgabedatum' => '31.05.2017',
+            'abgabedatum' => '31.06.2017',
             'aufgabenbeschreibung'=>'Bitte rechnen sie diese 5 Zahlen zusammen',
             'erstellt_von'=>'TestProf',
             'kurs' => 'ALDA'

@@ -113,10 +113,16 @@
                                     <div class="col-md-9 col-xs-12 size"> <?php echo e($value->aufgabenname); ?></div>
                                 </div>
                                 <div class=" panel-group" style="padding-bottom: 1%;">
-                                    <div class="col-md-3  col-xs-6 size">Abgabe bis:</div>
-                                    <div class="col-md-3  col-xs-6 size"><?php echo e($value->abgabedatum); ?> </div>
+                                    <div class="col-md-3 col-xs-6 size ">Upload am:</div>
+                                    <div class="col-md-3 col-xs-6 size "><?php echo e(Carbon\Carbon::parse($value->abgabecreated_at)->format('d-m-Y H:i:s')); ?></div>
                                     <div class="col-md-3  col-xs-6 size">Abgabe abgelehnt:</div>
-                                    <div class="col-md-3 col-xs-6 size"><?php echo e($value->abgabedatum); ?></div>
+                                    <div class="col-md-3 col-xs-6 size"><?php echo e(Carbon\Carbon::parse($value->abgabeupdated_at)->format('d-m-Y H:i:s')); ?></div>
+                                </div>
+                                <div class="panel-group" style="padding-bottom: 1%;">
+                                    <div class="col-md-3 col-xs-6 size">Abnahme durch:</div>
+                                    <div class="col-md-3 col-xs-6 size"> <?php echo e($value->bearbeitet_von); ?></div>
+
+
                                 </div>
                                 <div class="panel-group" style="padding-bottom: 1%;">
                                     <div class="col-md-3 col-xs-6 size"> Tutor kontaktieren:</div>
@@ -154,21 +160,16 @@
 
                                 <div class="panel group" style="padding-bottom: 1%">
                                     <div class="col-md-3 col-xs-6 size ">Upload am:</div>
-                                    <div class="col-md-3 col-xs-6 size "><?php echo e($value->created_at); ?></div>
+                                    <div class="col-md-3 col-xs-6 size "><?php echo e(Carbon\Carbon::parse($value->abgabecreated_at)->format('d-m-Y H:i:s')); ?></div>
                                     <div class="col-md-3 col-xs-6 size"> korregiert am:</div>
-                                    <div class="col-md-3  col-xs-6 size"> <?php echo e($value->updated_at); ?></div>
+                                    <div class="col-md-3  col-xs-6 size"> <?php echo e(Carbon\Carbon::parse($value->abgabeupdated_at)->format('d-m-Y H:i:s')); ?></div>
                                 </div>
 
                                 <div class="panel-group" style="padding-bottom: 1%;">
                                     <div class="col-md-3 col-xs-6 size">Abnahme durch:</div>
-                                    <div class="col-md-3 col-xs-6 size"> Tutor1</div>
+                                    <div class="col-md-3 col-xs-6 size"> <?php echo e($value->bearbeitet_von); ?></div>
 
-                                    <div class="col-md-3 col-xs-6 size"> korregierte Version:</div>
-                                    <div class="col-md-3 col-xs-4 size">
-                                        <button class="btn-primary btn " style="padding: 0px 12px;" type="button">
-                                            Download
-                                        </button>
-                                    </div>
+
                                 </div>
                                 <div class="panel-group ">
                                     <div class="col-md-3 col-xs-6 size"> Tutor kontaktieren:</div>
@@ -204,9 +205,15 @@
                                     <div class="col-md-3 col-xs-6 size"> Aufgabenstellung:</div>
                                     <div class="col-md-9 col-xs-12 size"> <?php echo e($value->aufgabenname); ?></div>
                                 </div>
+                                <div class="panel-group" style="padding-bottom: 1%;">
+                                    <div class="col-md-3 col-xs-6 size">Abgabedatum:</div>
+                                    <div class="col-md-3 col-xs-6 size"> <?php echo e($value->abgabedatum); ?></div>
+
+
+                                </div>
                                 <div class=" panel-group" style="padding-bottom: 1%;">
                                     <div class="col-md-3  col-xs-6 size">Upload am :</div>
-                                    <div class="col-md-3  col-xs-6 size"> <?php echo e($value->updated_at); ?></div>
+                                    <div class="col-md-3  col-xs-6 size"> <?php echo e(Carbon\Carbon::parse($value->abgabecreated_at)->format('d-m-Y H:i:s')); ?></div>
                                     <div class="col-md-3  col-xs-6 size">Datei löschen:</div>
                                     <div class="col-md-3  col-xs-4 size">
                                         <form action="<?php echo e(url('Aufgabenansicht')); ?>/<?php echo e($value->abgabeid); ?>"
@@ -222,6 +229,7 @@
                                         </form>
                                     </div>
                                 </div>
+
                                 <div class="panel-group" style="padding-bottom: 1%;">
                                     <div class="col-md-3 col-xs-6 size"> Tutor kontaktieren:</div>
                                     <div class="col-md-3 col-xs-2 size"><span><a
