@@ -7,7 +7,7 @@
             $("li[name='Abgaben']").css('background-color', '#f5f8fa');
         });</script>
     <script type="text/javascript" src="{{ URL::asset('js/Abgabe.js') }}"></script>
-    @if (Auth::user()->rolle=="Tutor" || Auth::user()->rolle=="Professor" )
+    {{--@if (Auth::user()->rolle=="Tutor" || Auth::user()->rolle=="Professor" )--}}
         <div class="container">
             <div class="row">
                 <h2>Tutorenmodus: {{$kurs}}</h2>
@@ -64,8 +64,9 @@
                                 <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-remove btn-danger"></a></td>
                             @endif
                             @if($zeile->zustand == '.')
+                                <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-minus btn-info"></a></td>
                                 {{--<td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-minus btn-warning"></a></td>--}}
-                                <td class="text-center">-</td>
+
                             @endif
                             @if($zeile->zustand == '/')
                                 <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-minus btn-warning"></a></td>
@@ -80,7 +81,8 @@
                                     @endif
                                 @if($zeile->zustand == '.')
 
-                                    <td class="text-center">-</td>
+
+                                    <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-minus btn-info"></a></td>
                                     {{--<td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-minus btn-info"></a></td>--}}
                                 @endif
                                 @if($zeile->zustand == '/')
@@ -99,5 +101,5 @@
             </div>
         </div>
 
-    @endif
+    {{--@endif--}}
 @endsection

@@ -103,7 +103,7 @@ class AdminController extends Controller
         }
 
             $request->Session()->flash('message', 'Kursbereiche wurden erfolgreich geändert');
-//        return back();
+        return back();
         }
 //        for ($i = 0; $i < sizeof($Belegungen['belegungen']); $i++) {
 //

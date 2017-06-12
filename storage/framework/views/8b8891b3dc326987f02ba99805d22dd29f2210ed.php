@@ -13,7 +13,7 @@
             <div class="row">
 
                 <div class="">
-                    <h3 class="col-md-5" id="test"> Professorenmodus: BESY</h3>
+                    <h3 class="col-md-5" id="test"> Professorenmodus: <?php echo e(session()->get('global_variable')); ?></h3>
                 </div>
 
                 <span class="glyphicon glyphicon-plus col-md-offset-12" id="bigsize-right" id="plus" onclick="add(this)"></span>
@@ -45,12 +45,13 @@
                         <?php endif; ?>
 
                         <form class="form-horizontal" role="form" method="POST"
-                              action="<?php echo e(url('Professor')); ?>" >
-                            <?php echo e(csrf_field()); ?>
+                              
+                              action="<?php echo e(url('confirm')); ?>">
+
+                        <?php echo e(csrf_field()); ?>
 
 
                             <div class="form group">
-
                                 <label for="Aufgabenname" class="control-label">Aufgabenname</label>
                                 <input type="text" class="form-control" name="aufgabenname" id="Aufgabenname" onkeypress="buttonFaerben(this)"
                                        placeholder="Hier Aufgabenname eintragen">

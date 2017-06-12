@@ -66,6 +66,17 @@ class Abgabeseeder extends Seeder
             'upload_am'=> Carbon::now()->format('d-m-Y H:i:s'),
             'korrigiert_am'=>Carbon::now()->format('d-m-Y H:i:s')
         ]);
+        DB::table('abgabe')->insert([
+            'zustand' => '+',
+            'user' => 2,
+            'zugehoerig_zu' => 6,
+            'kommentar'=>'super gemacht',
+            'bearbeitet_von'=>'TestTutor',
+            'updated_at'=>'2017-06-01 18:22:28',
+            'pfad' => 'app/files/TestStudent_Aufgabe5_Neues Textdokument.txt',
+            'upload_am'=> Carbon::now()->format('d-m-Y H:i:s'),
+            'korrigiert_am'=>Carbon::now()->format('d-m-Y H:i:s')
+        ]);
 //
 //        DB::table('abgabe')->insert([
 //            'zustand' => '+',

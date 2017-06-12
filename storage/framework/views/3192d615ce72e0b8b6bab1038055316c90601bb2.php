@@ -2,7 +2,7 @@
         color: blue;
     }</style>
 <?php $__env->startSection('content'); ?>
-    <?php if(Auth::user()->rolle=="Professor" || Auth::user()->rolle=="Tutor" ): ?>
+    
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script type="text/javascript" src="<?php echo e(URL::asset('js/professorenmodus.js')); ?>"></script>
 
@@ -181,11 +181,18 @@
                                                 </tr>
                                                 <tr>
                                                     <td>Upload am:</td>
-                                                    <td><?php echo e($value->updated_at); ?></td>
+                                                    <td><?php echo e($value->upload_am); ?></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Datei:</td>
-                                                    <td><button class="btn btn-default btn-primary">Download</button></td>
+                                                    <td>
+                                                    <form action="/download" method="post">
+                                                        <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+                                                        <input type="hidden" name="kurs" value="<?php echo e($kurs); ?>">
+                                                        <input type="hidden" name="abgabeid" value="<?php echo e($value->abgabeid); ?>">
+                                                        <button type="submit" class="btn-primary btn">Download</button>
+                                                    </form>
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td>Student kontaktieren</td>
@@ -257,6 +264,6 @@
     <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
             </div>
         </div>
-<?php endif; ?>
+
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

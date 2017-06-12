@@ -5,7 +5,7 @@
             $("li[name='Abgaben']").css('background-color', '#f5f8fa');
         });</script>
     <script type="text/javascript" src="<?php echo e(URL::asset('js/Abgabe.js')); ?>"></script>
-    <?php if(Auth::user()->rolle=="Tutor" || Auth::user()->rolle=="Professor" ): ?>
+    
         <div class="container">
             <div class="row">
                 <h2>Tutorenmodus: <?php echo e($kurs); ?></h2>
@@ -14,9 +14,7 @@
                     <div class="input-group">
                         <form method="get" action="/search">
                             <input type="text" class="form-control" placeholder="Suche nach..." id="tfsearch">
-                            <span class="input-group-btn">
-             <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"
-                                                                 aria-hidden="true"></span></button></span>
+
                         </form>
                     </div>
                 </div>
@@ -65,6 +63,8 @@
                             <?php endif; ?>
                             <?php if($zeile->zustand == '.'): ?>
                                 <td class="text-center"><a href="<?php echo e(url('Aufgabenansicht/bestimmteAbgabe')); ?>/<?php echo e($zeile->user); ?>/<?php echo e($zeile->aufgabenname); ?>" class="glyphicon glyphicon-minus btn-info"></a></td>
+                                
+
                             <?php endif; ?>
                             <?php if($zeile->zustand == '/'): ?>
                                 <td class="text-center"><a href="<?php echo e(url('Aufgabenansicht/bestimmteAbgabe')); ?>/<?php echo e($zeile->user); ?>/<?php echo e($zeile->aufgabenname); ?>" class="glyphicon glyphicon-minus btn-warning"></a></td>
@@ -78,7 +78,10 @@
                                     <td class="text-center"><a href="<?php echo e(url('Aufgabenansicht/bestimmteAbgabe')); ?>/<?php echo e($zeile->user); ?>/<?php echo e($zeile->aufgabenname); ?>" class="glyphicon glyphicon-remove btn-danger"></a></td>
                                     <?php endif; ?>
                                 <?php if($zeile->zustand == '.'): ?>
+
+
                                     <td class="text-center"><a href="<?php echo e(url('Aufgabenansicht/bestimmteAbgabe')); ?>/<?php echo e($zeile->user); ?>/<?php echo e($zeile->aufgabenname); ?>" class="glyphicon glyphicon-minus btn-info"></a></td>
+                                    
                                 <?php endif; ?>
                                 <?php if($zeile->zustand == '/'): ?>
                                     <td class="text-center"><a href="<?php echo e(url('Aufgabenansicht/bestimmteAbgabe')); ?>/<?php echo e($zeile->user); ?>/<?php echo e($zeile->aufgabenname); ?>" class="glyphicon glyphicon-minus btn-warning"></a></td>
@@ -96,6 +99,6 @@
             </div>
         </div>
 
-    <?php endif; ?>
+    
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

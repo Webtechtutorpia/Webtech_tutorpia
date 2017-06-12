@@ -3,7 +3,7 @@
         color: blue;
     }</style>
 @section('content')
-    @if (Auth::user()->rolle=="Professor" || Auth::user()->rolle=="Tutor" )
+    {{--@if (Auth::user()->rolle=="Professor" || Auth::user()->rolle=="Tutor" )--}}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script type="text/javascript" src="{{ URL::asset('js/professorenmodus.js') }}"></script>
 
@@ -260,5 +260,5 @@
     @endforeach
             </div>
         </div>
-@endif
+{{--@endif--}}
 @endsection

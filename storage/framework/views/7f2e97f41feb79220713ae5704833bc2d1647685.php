@@ -14,13 +14,11 @@
                 <form class="form-inline" method="get">
                     <div class="form-group">
                         <input type="hidden" name="_token" value="<?php Session::token()?>">
-                        <input type="text" name="search_abgabe" value="<?php echo e(isset($cityName) ? $cityName : ''); ?>" id="search_abgabe"
+                        <input type="text" name="search_abgabe" id="search_abgabe"
                                onkeyup="ajaxSearch(this.value)" class="form-control" placeholder="Suche nach..."
                                autofocus onfocus="this.value=this.value;" autocomplete="off">
 
                     </div>
-                    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"
-                                                                        aria-hidden="true"></span></button>
                 </form>
 
             </div>
@@ -113,16 +111,14 @@
                                     <div class="col-md-9 col-xs-12 size"> <?php echo e($value->aufgabenname); ?></div>
                                 </div>
                                 <div class=" panel-group" style="padding-bottom: 1%;">
-                                    <div class="col-md-3 col-xs-6 size ">Upload am:</div>
-                                    <div class="col-md-3 col-xs-6 size "><?php echo e(Carbon\Carbon::parse($value->abgabecreated_at)->format('d-m-Y H:i:s')); ?></div>
+                                    <div class="col-md-3  col-xs-6 size">Abgabe bis:</div>
+                                    <div class="col-md-3  col-xs-6 size"><?php echo e($value->abgabedatum); ?> </div>
                                     <div class="col-md-3  col-xs-6 size">Abgabe abgelehnt:</div>
-                                    <div class="col-md-3 col-xs-6 size"><?php echo e(Carbon\Carbon::parse($value->abgabeupdated_at)->format('d-m-Y H:i:s')); ?></div>
-                                </div>
-                                <div class="panel-group" style="padding-bottom: 1%;">
-                                    <div class="col-md-3 col-xs-6 size">Abnahme durch:</div>
-                                    <div class="col-md-3 col-xs-6 size"> <?php echo e($value->bearbeitet_von); ?></div>
-
-
+                                    <div class="col-md-3 col-xs-6 size"><?php echo e($value->korrigiert_am); ?></div>
+                                    <div class="col-md-3 col-xs-6 size">Abgelehnt durch:</div>
+                                    <div class="col-md-3 col-xs-6 size"><?php echo e($value->bearbeitet_von); ?></div>
+                                    <div class="col-md-3 col-xs-6 size">Datei:</div>
+                                    <div class="col-md-3 col-xs-6 size"><button class="btn btn-primary" onclick="window.location.href='/download?kurs=<?php echo e($kurs); ?>&id=<?php echo e($value->abgabeid); ?>'">Download</button></div>
                                 </div>
                                 <div class="panel-group" style="padding-bottom: 1%;">
                                     <div class="col-md-3 col-xs-6 size"> Tutor kontaktieren:</div>
@@ -160,16 +156,22 @@
 
                                 <div class="panel group" style="padding-bottom: 1%">
                                     <div class="col-md-3 col-xs-6 size ">Upload am:</div>
-                                    <div class="col-md-3 col-xs-6 size "><?php echo e(Carbon\Carbon::parse($value->abgabecreated_at)->format('d-m-Y H:i:s')); ?></div>
+                                    <div class="col-md-3 col-xs-6 size "><?php echo e($value->upload_am); ?></div>
                                     <div class="col-md-3 col-xs-6 size"> korregiert am:</div>
-                                    <div class="col-md-3  col-xs-6 size"> <?php echo e(Carbon\Carbon::parse($value->abgabeupdated_at)->format('d-m-Y H:i:s')); ?></div>
+                                    <div class="col-md-3  col-xs-6 size"> <?php echo e($value->korrigiert_am); ?></div>
                                 </div>
 
                                 <div class="panel-group" style="padding-bottom: 1%;">
                                     <div class="col-md-3 col-xs-6 size">Abnahme durch:</div>
                                     <div class="col-md-3 col-xs-6 size"> <?php echo e($value->bearbeitet_von); ?></div>
 
-
+                                    <div class="col-md-3 col-xs-6 size"> Datei:</div>
+                                    <div class="col-md-3 col-xs-4 size">
+                                        
+                                        <button class="btn btn-primary " type="button" onclick="window.location.href='/download?kurs=<?php echo e($kurs); ?>&id=<?php echo e($value->abgabeid); ?>'">
+                                            Download
+                                        </button>
+                                    </div>
                                 </div>
                                 <div class="panel-group ">
                                     <div class="col-md-3 col-xs-6 size"> Tutor kontaktieren:</div>
@@ -205,31 +207,27 @@
                                     <div class="col-md-3 col-xs-6 size"> Aufgabenstellung:</div>
                                     <div class="col-md-9 col-xs-12 size"> <?php echo e($value->aufgabenname); ?></div>
                                 </div>
-                                <div class="panel-group" style="padding-bottom: 1%;">
-                                    <div class="col-md-3 col-xs-6 size">Abgabedatum:</div>
-                                    <div class="col-md-3 col-xs-6 size"> <?php echo e($value->abgabedatum); ?></div>
-
-
-                                </div>
                                 <div class=" panel-group" style="padding-bottom: 1%;">
                                     <div class="col-md-3  col-xs-6 size">Upload am :</div>
-                                    <div class="col-md-3  col-xs-6 size"> <?php echo e(Carbon\Carbon::parse($value->abgabecreated_at)->format('d-m-Y H:i:s')); ?></div>
+                                    <div class="col-md-3  col-xs-6 size"> <?php echo e($value->upload_am); ?></div>
                                     <div class="col-md-3  col-xs-6 size">Datei löschen:</div>
                                     <div class="col-md-3  col-xs-4 size">
-                                        <form action="<?php echo e(url('Aufgabenansicht')); ?>/<?php echo e($value->abgabeid); ?>"
-                                              onsubmit="return confirm('Sind Sie sicher, dass Sie die Datei von <?php echo e($value->abgabeid); ?> wirklich löschen wollen?')"
-                                              method="POST">
-                                            <?php echo e(csrf_field()); ?>
+                                        
+                                              
+                                              
+                                            
+                                            
+                                            
+                                            
 
-                                            <?php echo e(method_field('DELETE')); ?>
-
-                                            <button class="btn-primary btn" style="padding: 0px 12px;" type="submit">
-                                                Delete
-                                            </button>
+                                        <form action="/delete" method="post">
+                                            <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+                                            <input type="hidden" name="abgabeid" value="<?php echo e($value->abgabeid); ?>">
+                                            <button type="submit" class="btn-primary btn">Delete</button>
                                         </form>
+
                                     </div>
                                 </div>
-
                                 <div class="panel-group" style="padding-bottom: 1%;">
                                     <div class="col-md-3 col-xs-6 size"> Tutor kontaktieren:</div>
                                     <div class="col-md-3 col-xs-2 size"><span><a
