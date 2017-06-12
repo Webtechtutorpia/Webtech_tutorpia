@@ -43,6 +43,7 @@ class AufgabenansichtController extends Controller
                 ->orderBy('aufgabe.aufgabenname', 'asc')
                 ->get();
             // show the view and pass the myinput to it
+//              return response($abgabe);
             return View::make('Aufgabenansicht.Aufgabenansicht_example')->with('myinputs', $abgabe)->with('kurs',session()->get('global_variable'));
         }
         else{

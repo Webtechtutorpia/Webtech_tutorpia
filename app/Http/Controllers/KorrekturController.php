@@ -65,7 +65,7 @@ class KorrekturController extends Controller
         DB::table('abgabe')
             ->where('user','=',session()->get('userid'))
             ->where('zugehoerig_zu','=',session()->get('aufgabenid'))
-            ->update( array('zustand' => $zustand, 'kommentar'=>$request->kommentar,'bearbeitet_von'=>Auth::user()->name,'updated_at'=>date('Y-m-d H:i:s')));
+            ->update( array('zustand' => $zustand, 'kommentar'=>$request->kommentar,'bearbeitet_von'=>Auth::user()->name,'updated_at'=>date('Y-m-d H:i:s'), 'korrigiert_am'=> date('d-m-Y H:i:s')));
 
         Activity::create([
             'aufgabenname'=>session()->get('aufgabenname'),

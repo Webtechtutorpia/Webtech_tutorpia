@@ -35,7 +35,7 @@ class AufgabeSeeder extends Seeder
             'aufgabenbeschreibung'=>'Bitte rechnen sie diese 5 Zahlen zusammen',
             'erstellt_von'=>'TestProf',
             'kurs' => 'ALDA'
-        ]);
+            ]);
 
         DB::table('aufgabe')->insert([
             'aufgabenname' => 'Aufgabe4',
@@ -51,6 +51,7 @@ class AufgabeSeeder extends Seeder
             'aufgabenbeschreibung'=>'Bitte bearbeiten sie Aufgabe 1 nochmal',
             'erstellt_von'=>'TestProf',
             'kurs' => 'ALDA'
+
         ]);
         DB::table('aufgabe')->insert([
             'aufgabenname' => 'Aufgabe6',

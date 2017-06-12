@@ -16,9 +16,7 @@
                     <div class="input-group">
                         <form method="get" action="/search">
                             <input type="text" class="form-control" placeholder="Suche nach..." id="tfsearch">
-                            <span class="input-group-btn">
-             <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"
-                                                                 aria-hidden="true"></span></button></span>
+
                         </form>
                     </div>
                 </div>
@@ -66,7 +64,8 @@
                                 <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-remove btn-danger"></a></td>
                             @endif
                             @if($zeile->zustand == '.')
-                                <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-minus btn-info"></a></td>
+                                {{--<td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-minus btn-warning"></a></td>--}}
+                                <td class="text-center">-</td>
                             @endif
                             @if($zeile->zustand == '/')
                                 <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-minus btn-warning"></a></td>
@@ -80,7 +79,9 @@
                                     <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-remove btn-danger"></a></td>
                                     @endif
                                 @if($zeile->zustand == '.')
-                                    <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-minus btn-info"></a></td>
+
+                                    <td class="text-center">-</td>
+                                    {{--<td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-minus btn-info"></a></td>--}}
                                 @endif
                                 @if($zeile->zustand == '/')
                                     <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-minus btn-warning"></a></td>

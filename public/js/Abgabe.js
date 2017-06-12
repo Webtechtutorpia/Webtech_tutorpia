@@ -70,9 +70,12 @@ function search2(name) {
                                     var link = "/Aufgabenansicht/bestimmteAbgabe/" + abgabe.user + "/" + abgabe.aufgabenname;
                                     $(row).append($('<td>',{class: "text-center"}).append( $('<a>',{ href: link, class: "glyphicon glyphicon-remove btn-danger"})));
                                     break;
-                                default:
+                                case '/':
                                     var link = "/Aufgabenansicht/bestimmteAbgabe/" + abgabe.user + "/" + abgabe.aufgabenname;
                                     $(row).append($('<td>',{class: "text-center"}).append( $('<a>',{href: link, class: "glyphicon glyphicon-minus btn-warning"})));
+                                    break;
+                                default:
+                                    $(row).append($('<td>-</td>',{class: "text-center"}));
 
 
                             }

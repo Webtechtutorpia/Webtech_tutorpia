@@ -12,7 +12,7 @@ use Tutorpia\Http\Requests;
 use Auth;
 use Illuminate\Support\Facades\DB;
 use Tutorpia\user;
-
+use Carbon\Carbon;
 class ActivityController extends Controller
 {
     public function index()
@@ -33,6 +33,25 @@ class ActivityController extends Controller
         else {
             return View::make('home');
         }
+    }
+
+    public function ajax(){
+        $abgaben = DB::table('abgabe')
+            ->join('aufgabe', 'abgabe.zugehoerig_zu', '=', 'aufgabe.id')
+            ->select('abgabe.updated_at as abgabeupdated_at','abgabe.*','aufgabe.*')
+            ->where('abgabe.user','=',Auth::user()->id)
+            ->orderBy('abgabeupdated_at','desc')
+            ->get();
+        foreach ($abgaben as $abgabe){
+
+                $abgabe->abgabeupdated_at = Carbon::parse($abgabe->abgabeupdated_at)->format('d-m-Y H:i:s');
+
+
+
+
+        }
+
+        return response($abgaben);
     }
 
 }

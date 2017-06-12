@@ -69,19 +69,21 @@ class AdminController extends Controller
         }
 
         //Forein Key lösch Problem bitte lösen
-//        $users = DB::table('users')->select('id')->where('name','=',$request->delete, 'or', 'email', '=', $request->delete)->get();
-//
-//        foreach ($users as $u)
-//        {
-//            var_dump($u->id);
-//        User::find($u->id)->delete();
-//        }
+
+        $users = DB::table('users')->select('id')->where('name','=',$request->delete)->orwhere( 'email', $request->delete)->get();
+
+          foreach ($users as $u)
+           {
+           $test= User::find($u->id)->delete();
+
+       }
 
 
 
+       $request->Session()->flash('message', 'Adminbereich wurden erfolgreich geändert');
+        //Session::flash('success', 'Änderungen wurden übernommen');
+        return back();
 
-        Session::flash('success', 'Änderungen wurden übernommen');
-        return redirect('/');
 //         return View::make('Professor.test')->with('myinputs', $users);
     }
 
@@ -99,6 +101,9 @@ class AdminController extends Controller
             $test->save();
             $j++;
         }
+
+            $request->Session()->flash('message', 'Kursbereiche wurden erfolgreich geändert');
+//        return back();
         }
 //        for ($i = 0; $i < sizeof($Belegungen['belegungen']); $i++) {
 //
@@ -107,6 +112,23 @@ class AdminController extends Controller
 //            $Belegung->rolle = $request->kursrolle[$i];
 //            $Belegung->save();
 //        }
+    }
+
+    public function createKurs(Request $request){
+
+        DB::table('kurs')->insert([
+            'bezeichnung'=> $request->kursname,
+            'geleitet_von' =>$request->leiter
+        ]);
+
+        DB::table('belegung')->insert([
+            'user'=> $request->leiter,
+            'kurs' =>$request->kursname,
+            'rolle'=>'Professor'
+        ]);
+
+        $request->session()->flash('message' ,'Kurs erfolgreich angelegt');
+        return back();
     }
 }
 ?>

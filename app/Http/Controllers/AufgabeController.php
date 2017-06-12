@@ -171,8 +171,31 @@ class AufgabeController extends Controller
         return back();
     }
 
+    public function confirmsite(Request $request)
+    {
+//        $parameter=[
+//            'name'=>'Aufgabe5',
+//            'datum'=>'27.05.2022 21:59',
+//            'beschreibung'=>'Das ist eine Testaufgabe'
+//        ];
+        return view ('Professor.anlegen_bestaetigung', ['request'=>$request]);
+    }
+    public function reset(Request $request){
+        $pfad='/Professor/'.session()->get('global_variable');
+//      return response('hallo');
+         return redirect($pfad);
+
+    }
+
+    public function accept(Request $request){
 
 
+        // in db schreiben
+
+        $pfad='/Professor/'.session()->get('global_variable');
+     return  response('hallo');
+        return view ('Professor.Profmode', ['myinputs'=>$request]);
+    }
 
 
 }

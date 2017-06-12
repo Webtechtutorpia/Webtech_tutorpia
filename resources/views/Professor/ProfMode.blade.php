@@ -14,7 +14,7 @@
             <div class="row">
 
                 <div class="">
-                    <h3 class="col-md-5" id="test"> Professorenmodus: BESY</h3>
+                    <h3 class="col-md-5" id="test"> Professorenmodus: {{session()->get('global_variable')}}</h3>
                 </div>
 
                 <span class="glyphicon glyphicon-plus col-md-offset-12" id="bigsize-right" id="plus" onclick="add(this)"></span>
@@ -46,11 +46,12 @@
                         @endif
 
                         <form class="form-horizontal" role="form" method="POST"
-                              action="{{ url('Professor') }}" >
-                            {{ csrf_field() }}
+                              {{--action="{{ url('Professor') }}" >--}}
+                              action="{{ url('confirm')}}">
+
+                        {{ csrf_field() }}
 
                             <div class="form group">
-
                                 <label for="Aufgabenname" class="control-label">Aufgabenname</label>
                                 <input type="text" class="form-control" name="aufgabenname" id="Aufgabenname" onkeypress="buttonFaerben(this)"
                                        placeholder="Hier Aufgabenname eintragen">
