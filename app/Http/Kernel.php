@@ -52,5 +52,8 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \Tutorpia\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+
+        // Unsere eigene Middleware
+        'group' => \Tutorpia\Http\Middleware\BelegungMiddleware::class
     ];
 }

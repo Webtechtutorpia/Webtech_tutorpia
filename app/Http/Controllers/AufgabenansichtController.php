@@ -36,7 +36,7 @@ class AufgabenansichtController extends Controller
             $abgabe = DB::table('abgabe')
                 ->join('aufgabe', 'abgabe.zugehoerig_zu', '=', 'aufgabe.id')
                 ->join('users', 'abgabe.user', '=', 'users.id')
-                ->select('*')
+                ->select('abgabe.updated_at as abgabeupdated_at','abgabe.created_at as abgabecreated_at','abgabe.*','users.*','aufgabe.*')
                 ->where('aufgabe.kurs', session()->get('global_variable'))
                 ->where('users.id', Auth::user()->id)
                 //->where('users.name',"TestStudent")
@@ -94,16 +94,16 @@ private function queryName(Request $request){
         // redirect
         return back();
     }
-    public function UserAbgaben($id,$name){
-        $abgabe = DB::table('abgabe')
-            ->join('aufgabe', 'abgabe.zugehoerig_zu', '=', 'aufgabe.id')
-            ->join('users', 'abgabe.user', '=', 'users.id')
-            ->select('*')
-            ->where('aufgabe.kurs', session()->get('global_variable'))
-            ->where('users.id', $id)
-            ->where('Aufgabe.aufgabenname','like',$name)
-            ->orderBy('users.name', 'asc')
-            ->get();
-        return View::make('Aufgabenansicht.Aufgabenansicht_example')->with('myinputs', $abgabe)->with('kurs',session()->get('global_variable'));
-    }
+//    public function UserAbgaben($id,$name){
+//        $abgabe = DB::table('abgabe')
+//            ->join('aufgabe', 'abgabe.zugehoerig_zu', '=', 'aufgabe.id')
+//            ->join('users', 'abgabe.user', '=', 'users.id')
+//            ->select('*')
+//            ->where('aufgabe.kurs', session()->get('global_variable'))
+//            ->where('users.id', $id)
+//            ->where('Aufgabe.aufgabenname','like',$name)
+//            ->orderBy('users.name', 'asc')
+//            ->get();
+//        return View::make('Aufgabenansicht.Aufgabenansicht_example')->with('myinputs', $abgabe)->with('kurs',session()->get('global_variable'));
+//    }
 }

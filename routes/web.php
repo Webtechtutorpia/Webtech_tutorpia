@@ -32,9 +32,7 @@ Route::get('contact', function () {
 });
 //Route::get('overview','OverviewController@showfirstActifty');
    // return view('Tutor.overview'));
-Route::get('abgabe', function () {
-    return view('Tutor.abgabe');
-});
+
 //Route::get('kurse', function () {
 //    return view('Tutor.kurse');
 //});
@@ -90,15 +88,29 @@ Route::get('images/{filename}', function ($filename)
 });
 
 
-Route::get('Tutor/Aufgabenkorrektur','KorrekturController@UserAbgaben');
-Route::resource('Professor','AufgabeController');
+
+
 Route::resource('Activity','ActivityController');
 Route::resource('Kurse','BelegungController');
 Route::get('Aufgabenansicht/ajaxcityList','AufgabenansichtController@matchHTML');
 Route::get('Aufgabenansicht/bestimmteAbgabe/{id}/{name}','KorrekturController@UserAbgaben');
-Route::resource('Tutor/Aufgabenkorrektur','KorrekturController');
+
 Route::resource('Aufgabenansicht','AufgabenansichtController');
-Route::resource('Tutor','AbgabeController');
+
+Route::group(['middleware' => 'group:Tutor' || 'group:Professor'], function(){
+
+    Route::get('abgabe', function () {
+        return view('Tutor.abgabe');
+    });
+    Route::get('Tutor/Aufgabenkorrektur','KorrekturController@UserAbgaben');
+    Route::resource('Tutor/Aufgabenkorrektur','KorrekturController');
+    Route::resource('Tutor','AbgabeController');
+
+});
+Route::group(['middleware' => 'group:Professor'], function(){
+    Route::resource('Professor','AufgabeController');
+
+});
 
 Route::resource('FileUpload','FileUploadController');
 Route::resource('myinputs', 'MyinputController');
@@ -129,4 +141,7 @@ Route::post('delete', 'FileUploadController@delete');
 //
 //    });
 //});
+
+
+
 

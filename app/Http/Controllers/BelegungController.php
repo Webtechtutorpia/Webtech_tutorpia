@@ -18,7 +18,7 @@ class BelegungController extends Controller
 
             // get all the myinputs
             $kurse = Belegung::where('user', '=', Auth::user()->id)->get();
-            $alle=DB::table('belegung')->distinct()->select('kurs','rolle')
+            $alle=DB::table('belegung')->distinct()->select('kurs')
                 ->where('rolle', '!=', 'Professor')
                 ->whereNotIn('kurs', function($query)
                 {
@@ -45,7 +45,7 @@ class BelegungController extends Controller
         // validate
 
         DB::table('belegung')->insert(
-            ['user' => Auth::user()->id, 'kurs' => $request->kurs, 'rolle'=>$request->rolle]
+            ['user' => Auth::user()->id, 'kurs' => $request->kurs, 'rolle'=>'Student']
         );
         $aufgaben =DB::table('aufgabe')
             ->select('aufgabe.id')
