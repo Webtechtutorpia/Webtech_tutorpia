@@ -17,14 +17,14 @@ use Illuminate\Support\Facades\DB;
 class AbgabeController extends Controller
 {
 
-    public function readAufgaben(Request $request)
-    {
-
-        $fach = 1;
-        $tabelle = DB::table('aufgabe')->join('kurs', 'aufgabe.kurs', '=', 'kurs.id')->where('kurs.id', $fach)->get();
-        return response()->json($tabelle);
-
-    }
+//    public function readAufgaben(Request $request)
+//    {
+//
+//        $fach = 1;
+//        $tabelle = DB::table('aufgabe')->join('kurs', 'aufgabe.kurs', '=', 'kurs.id')->where('kurs.id', $fach)->get();
+//        return response()->json($tabelle);
+//
+//    }
 
     public function readUser(Request $request)
     {

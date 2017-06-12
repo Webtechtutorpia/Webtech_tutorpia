@@ -35,7 +35,7 @@ class KorrekturController extends Controller
             ->select('*')
             ->where('aufgabe.kurs', session()->get('global_variable'))
             ->where('users.id', $id)
-            ->where('Aufgabe.aufgabenname','like',$name)
+            ->where('aufgabe.aufgabenname','like',$name)
             ->orderBy('users.name', 'asc')
             ->get();
         if(Auth::check()) {
