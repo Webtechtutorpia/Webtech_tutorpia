@@ -117,7 +117,14 @@
                                     <div class="col-md-3 col-xs-6 size">Abgelehnt durch:</div>
                                     <div class="col-md-3 col-xs-6 size">{{$value->bearbeitet_von}}</div>
                                     <div class="col-md-3 col-xs-6 size">Datei:</div>
-                                    <div class="col-md-3 col-xs-6 size"><button class="btn btn-primary" onclick="window.location.href='/download?kurs={{$kurs}}&id={{$value->abgabeid}}'">Download</button></div>
+                                    <div class="col-md-3 col-xs-6 size">
+                                        <form action="/download" method="post">
+                                            <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+                                            <input type="hidden" name="kurs" value="{{$kurs}}">
+                                            <input type="hidden" name="abgabeid" value="{{$value->abgabeid}}">
+                                            <button type="submit" class="btn-primary btn">Download</button>
+                                        </form>
+                                    </div>
                                 </div>
                                 <div class="panel-group" style="padding-bottom: 1%;">
                                     <div class="col-md-3 col-xs-6 size"> Tutor kontaktieren:</div>
@@ -165,9 +172,12 @@
                                     <div class="col-md-3 col-xs-6 size"> Datei:</div>
                                     <div class="col-md-3 col-xs-4 size">
                                         {{--style="padding: 0px 12px;"--}}
-                                        <button class="btn btn-primary " type="button" onclick="window.location.href='/download?kurs={{$kurs}}&id={{$value->abgabeid}}'">
-                                            Download
-                                        </button>
+                                        <form action="/download" method="post">
+                                            <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+                                            <input type="hidden" name="kurs" value="{{$kurs}}">
+                                            <input type="hidden" name="abgabeid" value="{{$value->abgabeid}}">
+                                            <button type="submit" class="btn-primary btn">Download</button>
+                                        </form>
                                     </div>
                                 </div>
                                 <div class="panel-group ">
