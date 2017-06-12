@@ -95,20 +95,20 @@
                             <table>
                                 <thead>
                                 <tr>
-                                    <th>User</th>
-                                    <th>Email</th>
-                                    <th>aktuelle Rolle</th>
-                                    <th> Rolle ändern</th>
+                                    <th class="col-md-4">User</th>
+                                    <th class="col-md-4">Email</th>
+                                    <th class="col-md-2">aktuelle Rolle</th>
+                                    <th class="col-md-2"> Rolle ändern</th>
                                 </tr>
                                 </thead>
                                 <tbody>
 
                                 @foreach($kurs['belegungen'] as $belegung)
                                     <tr>
-                                        <td> {{$belegung->name}}</td>
-                                        <td> {{ $belegung->email }}</td>
-                                        <td> {{$belegung ->rolle}} </td>
-                                        <td>
+                                        <td class="col-md-4"> {{$belegung->name}}</td>
+                                        <td class="col-md-4"> {{ $belegung->email }}</td>
+                                        <td class="col-md-2"> {{$belegung ->rolle}} </td>
+                                        <td class="col-md-2">
                                             @if($belegung->rolle=='Professor')
                                                 <select name="kursrolle[]">
                                                     <option value="Professor" selected>Professor</option>

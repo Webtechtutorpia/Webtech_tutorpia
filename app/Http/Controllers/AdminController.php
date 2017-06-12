@@ -89,17 +89,19 @@ class AdminController extends Controller
 
     public function test2(Request $request)
     {
-        $Belegungen = $request->session()->pull('kurse');
+//        return response($request->kursrolle);
+        $Belegungen = $request->session()->get('kurse');
 //        var_dump(sizeof($Belegungen['belegungen']));
 //        return response($Belegungen['belegungen']);
 //return response($Belegungen);
    $j=0;
         foreach($Belegungen as $belegung){
             for ($i = 0; $i < sizeof($belegung['belegungen']); $i++) {
-            $test = Belegung::find($belegung['belegungen'][$i]->id);
-            $test->rolle = $request->kursrolle[$j];
-            $test->save();
-            $j++;
+                $test = Belegung::find($belegung['belegungen'][$i]->id);
+                $test->rolle = $request->kursrolle[$j];
+                $test->save();
+                $j++;
+            }
         }
 
             $request->Session()->flash('message', 'Kursbereiche wurden erfolgreich geändert');
@@ -112,7 +114,7 @@ class AdminController extends Controller
 //            $Belegung->rolle = $request->kursrolle[$i];
 //            $Belegung->save();
 //        }
-    }
+
 
     public function createKurs(Request $request){
 
