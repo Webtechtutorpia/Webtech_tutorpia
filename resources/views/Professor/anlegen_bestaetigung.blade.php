@@ -1,16 +1,20 @@
 @extends('layouts.app')
 @section('content')
+    <div class="container">
+    <div class="row">
 
-    <div class="bg-warning"> <p>Sie wollen die folgende Aufgabe anlegen: {{$request->aufgabenname}}</p>
-        <p>Beachten Sie das ie Aufgabe ist für alle Benutzer des Kurses sofort einsehbar ist. Bitte überprüfen Sie Ihre Angaben auf
-            Richtigkeit und korrigieren gegebenfalls diese.<p>
-    </div>
+
 
     <div class="panel panel-info">
-        <div class="panel-heading">Aufgabe</div>
+        <div class="panel-heading">{{$request->aufgabenname}}</div>
         <div class="panel-body">
-            <form class="form-horizontal" action="{{url ('accept')}}" method="post">
-                <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+            <div class="bg-warning"> <p>Sie wollen die folgende Aufgabe anlegen: {{$request->aufgabenname}}</p>
+                <p>Beachten Sie die Aufgabe ist für alle Benutzer des Kurses sofort einsehbar ist. Bitte überprüfen Sie Ihre Angaben auf
+                    Richtigkeit und korrigieren gegebenfalls diese.<p>
+            </div>
+            <form class="form-horizontal" action="{{url ('Professor')}}" method="post">
+                {{ csrf_field() }}
+
                 <div class="form group">
                     <label for="Aufgabenname" class="control-label">Aufgabenname</label>
                     <input type="text" class="form-control" name="aufgabenname" id="Aufgabenname" onkeypress="buttonFaerben(this)"
@@ -38,6 +42,7 @@
 
 
 
-
+</div>
+    </div>
 
 @endsection

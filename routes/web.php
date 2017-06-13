@@ -110,6 +110,8 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
     Route::group(['middleware' => 'group:Professor'], function(){
+        Route::get('reset','AufgabeController@reset');
+        Route::post('confirm','AufgabeController@confirmsite');
         Route::resource('Professor','AufgabeController');
 
     });
@@ -122,9 +124,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('test','AdminController@test');
     Route::Post('test2', 'AdminController@test2');
     Route::post('kursanlegen','AdminController@createKurs');
-    Route::post('confirm','AufgabeController@confirmsite');
-    Route::post('accept', 'AufgabeController@accept');
-    Route::get('reset','AufgabeController@reset');
+
+
+
     Route::get('aktualisieren', 'ActivityController@ajax');
     Route::post('download','FileUploadController@download');
     Route::post('delete', 'FileUploadController@delete');

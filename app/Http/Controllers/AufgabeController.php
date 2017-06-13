@@ -13,59 +13,52 @@ use Auth;
 use Illuminate\Support\Facades\DB;
 class AufgabeController extends Controller
 {
-//    public function read(Request $request){
-//
-//        $fach=1;
-//        $aufgaben= db::table('aufgabe')->join('kurs','aufgabe.kurs','=','kurs.id')->where('kurs.id',$fach)->get();
-//        return response()->json($aufgaben);
-//    }
-//
-//
+
 //    public function store(Request $request)
 //    {
+//        $aufgabe = new Aufgabe($request->aufgabenname, $request->abgabedatum, $request->aufgabenbeschreibung, session()->get('global_variable'), Auth::user()->name);
+//        // $aufgabe = new Aufgabe('h','b','c','d','e');
+//        // validate
 //
-//        Aufgabe::create([
-//            'aufgabenname'      =>  $request->aufgabenname,
-//          'abgabedatum'         => Carbon::now()->format('d-m-Y'),
-//            'aufgabenbeschreibung' =>  $request->aufgabenbeschreibung,
-//            'erstellt_von' => Auth::user()->id,
-//           'kurs'=> 1
-//           //'kurs'=> $request->input('kurs')
-//            //kurs schreibts nichtohne model
-//
-//        ]);
-//
-//    }
-//
-//    public function create(Request $request){
-//        //mit Eloquent
-//
-//                $this->validate($request, [
-//            'aufgabenname'       => 'required',
-//            'abgabedatum'      => 'required',
+//        $this->validate($request, [
+//            'aufgabenname' => 'required',
+//            'abgabedatum' => 'required',
 //            'aufgabenbeschreibung' => 'required']);
 //
+//        $this->save($aufgabe);
+//    }
+//    private function save(Aufgabe $aufgabe){
+//        // store
+//        $id=Aufgabe::create([
+//            'aufgabenname'      =>  $aufgabe->getAufgabenname(),
+//            'abgabedatum'         => $aufgabe->getAbgabedatum(),
+//            'aufgabenbeschreibung' =>  $aufgabe->getAufgabenbeschreibung(),
+//            'kurs'=> $aufgabe->getKurs(),
+//            'erstellt_von' =>  $aufgabe->getErstellt_von(),
+//        ]);
 //
-//        $aufgabe = new AufgabeModel();
-//        $aufgabe->aufgabenname = $request->aufgabenname;
-//        $aufgabe->abgabedatum = Carbon::now()->format('d-m-Y');
-//        $aufgabe->aufgabenbeschreibung = $request->input('aufgabenbeschreibung','');
-//        $aufgabe-> erstellt_von = Auth::user()->id;
-//        $aufgabe->kurs = $request->input('kurs','1');
-//        $aufgabe->save();
+//        Activity::create([
+//            'abgabedatum'         => $aufgabe->getAbgabedatum(),
+//            'aufgabenname'      =>  $aufgabe->getAufgabenname(),
+//            'zuordnung_aufgabe' => $id->id,
+//            'bearbeitet_von' => $aufgabe->getErstellt_von(),
+//        ]);
+//        $users =DB::table('belegung')
+//            ->join('users', 'belegung.user', '=', 'users.id')
+//            ->select('users.id')
+//            ->where('belegung.kurs',session()->get('global_variable'))
+//            ->get();
+//
+//        foreach($users as $user) {
+//            Abgabe::create([
+//                'zustand' => '.',
+//                'user' => $user->id,
+//                'zugehoerig_zu' => $id->id,
+//            ]);
+//        }
+//        return back();
 //
 //    }
-//    public function update(Request $request)
-//    {
-//
-//        $aufgabe = AufgabeModel::find($request->id);
-//        $aufgabe->aufgabenname = $request->aufgabe;
-//        $aufgabe->save();
-//
-//        return response()->json($aufgabe);
-//
-//    }
-//
 
 
     public function store(Request $request)
@@ -106,7 +99,10 @@ class AufgabeController extends Controller
                 'zugehoerig_zu' => $id->id,
             ]);
         }
-        return back();
+        $pfad='/Professor/'.session()->get('global_variable');
+
+        return redirect($pfad);
+
 
     }
 
@@ -180,15 +176,7 @@ class AufgabeController extends Controller
 
     }
 
-    public function accept(Request $request){
 
-
-        // in db schreiben
-
-        $pfad='/Professor/'.session()->get('global_variable');
-     return  response('hallo');
-        return view ('Professor.Profmode', ['myinputs'=>$request]);
-    }
 
 
 }
