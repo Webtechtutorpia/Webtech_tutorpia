@@ -29,7 +29,7 @@ class AufgabenansichtController extends Controller
     }
     public function show($kurs)
     {
-        if (Auth::check()) {
+
             session()->put('global_variable', $kurs);
 
             // SELECT * FROM `abgabe`,`aufgabe`,`users` WHERE abgabe.zugehoerig_zu=aufgabe.id and aufgabe.kurs=2 and abgabe.user=users.id order by users.id
@@ -45,10 +45,7 @@ class AufgabenansichtController extends Controller
             // show the view and pass the myinput to it
 //              return response($abgabe);
             return View::make('Aufgabenansicht.Aufgabenansicht_example')->with('myinputs', $abgabe)->with('kurs',session()->get('global_variable'));
-        }
-        else{
-            return View::make('home');
-        }
+
     }
 
     public function matchHTML(Request $request)

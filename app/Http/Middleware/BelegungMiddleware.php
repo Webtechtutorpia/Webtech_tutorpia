@@ -4,7 +4,9 @@ namespace Tutorpia\Http\Middleware;
 
 use Closure;
 use Tutorpia\Belegung;
+use Auth;
 use View;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 
 class BelegungMiddleware
@@ -31,6 +33,9 @@ class BelegungMiddleware
                 // Alles ok, Nutzer darf passieren
                 return $next($request);
             }
+        }
+        if (!Auth::check()) {
+            return new Response(view('home'));
         }
         return back();
 

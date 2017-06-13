@@ -80,7 +80,7 @@ class AbgabeController extends Controller
 
     public function index()
     {
-        if (Auth::check()) {
+
             // get all the myinputs
             $aufgabe = Aufgabe::all();
 
@@ -98,14 +98,12 @@ class AbgabeController extends Controller
 
             // load the view and pass the myinputs
             return View::make('Tutor.abgabe')->with('myinputs', $aufgabe)->with('ergebnismenge', $abgabe);
-        } else {
-            return View::make('home');
-        }
+
     }
 
     public function show($kurs)
     {
-        if (Auth::check()) {
+
             session()->put('global_variable', $kurs);
             // get the myinput
             $aufgabe = Aufgabe::where('kurs', '=', $kurs)->get();
@@ -124,9 +122,7 @@ class AbgabeController extends Controller
                 ->get();
             // show the view and pass the myinput to it
             return View::make('Tutor.abgabe')->with('myinputs', $aufgabe)->with('ergebnismenge', $abgabe)->with('kurs', session()->get('global_variable'));
-        } else {
-            return View::make('home');
-        }
+
     }
 
 

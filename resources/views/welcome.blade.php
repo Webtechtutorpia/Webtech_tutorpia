@@ -14,7 +14,7 @@
                 <br>
                 <br>
                 <p>Liebe Tutoren, liebe Studenten, liebe Professoren,</p><p>viel zu häufig gibt es verschiedene Probleme in Tutorien. Probleme, die durch eine richtige Organisation und Transparenz vermeidbar wären. Aus diesem Grund haben wir uns zum Ziel gesetzt eine Plattform zu erschaffen, die Problemen in den Tutorien vorbeugt und minimiert.</p> <p>Es ist Zeit auch Tutorien zu professionalisieren! Wir hoffen, dass wir ihrem Anspruch gerecht werden können und wünschen Ihnen viel Spaß mit unserer Anwendung.</p> <p><strong>Willkommen bei uns. Willkommen in Tutorpia.</strong></p> </p>
-                    <p>dasf {{ Session::get('success') }}</p>
+
 
             </div>
         </div>

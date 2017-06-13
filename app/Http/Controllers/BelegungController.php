@@ -13,7 +13,7 @@ class BelegungController extends Controller
 {
     public function index()
     {
-        if (Auth::check()) {
+
 
 
             // get all the myinputs
@@ -35,10 +35,8 @@ class BelegungController extends Controller
 //            }
             // load the view and pass the myinputs
             return View::make('Kurse.kurse')->with('myinputs', $kurse)->with('alle', $alle);
-        }
-        else {
-            return View::make('home');
-        }
+        //}
+
     }
     public function store(Request $request)
     {

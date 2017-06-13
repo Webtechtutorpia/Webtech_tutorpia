@@ -17,7 +17,7 @@ class ActivityController extends Controller
 {
     public function index()
     {
-        if(Auth::check()) {
+
 
             $abgabe = DB::table('abgabe')
                 ->join('aufgabe', 'abgabe.zugehoerig_zu', '=', 'aufgabe.id')
@@ -29,10 +29,7 @@ class ActivityController extends Controller
 
             // load the view and pass the myinputs
             return View::make('Activity.overview')->with('myinputs', $abgabe);
-        }
-        else {
-            return View::make('home');
-        }
+
     }
 
     public function ajax(){

@@ -38,11 +38,10 @@ class KorrekturController extends Controller
             ->where('aufgabe.aufgabenname','like',$name)
             ->orderBy('users.name', 'asc')
             ->get();
-        if(Auth::check()) {
+      
 
             return View::make('Tutor.Aufgabenkorrektur')->with('myinputs', $abgabe)->with('kurs',session()->get('global_variable'));
-        }
-        else return view('home');
+
     }
 
 
