@@ -2,23 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d1848274-45ba-449d-af87-98606e7b2b64" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/js/jquery-3.2.1.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/js/jquery.cookie.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/sessions/4KBT0IMT3bB8FqCCRvseveuEAjjxaNd9t8MQ4WJv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/sessions/9rqavKwhINs2akpfTCHPK6qyC3mWWvDbpwPMl9We" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/sessions/dKB7tOFku79L0PwX9fqa39EQOG9TrAKlUz27XKzw" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/sessions/kUxTmZXY3hyQwXJThXglxRPdGfWLoErzrRF5GxXU" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/sessions/q5uSE5rS5pmPXypWxpf48hkGGkaf5fV5hmLMSgJe" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/sessions/udIQC2pdrohU0mN09qqVI6lgXON9hgHIeXaXa0vx" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/sessions/xZLyHxuOW4eXff6OZqj0FtjfbY9QJ3DL8cNIYeK8" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/AbgabeController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/AbgabeController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/Abgabe.js" afterPath="$PROJECT_DIR$/public/js/Abgabe.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/Tutor/abgabe.blade.php" afterPath="$PROJECT_DIR$/resources/views/Tutor/abgabe.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/datenschutz.blade.php" afterPath="$PROJECT_DIR$/resources/views/datenschutz.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/impressum.blade.php" afterPath="$PROJECT_DIR$/resources/views/impressum.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/storage/logs/laravel.log" afterPath="$PROJECT_DIR$/storage/logs/laravel.log" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/storage/framework/sessions/qeXzRuZihPIHqtwn6tF7PQDpB2dRb87JOy4VEmxa" afterPath="$PROJECT_DIR$/storage/framework/sessions/qeXzRuZihPIHqtwn6tF7PQDpB2dRb87JOy4VEmxa" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/storage/framework/views/d0a02d66699c4c0d528e4044d529ccf35c759901.php" afterPath="$PROJECT_DIR$/storage/framework/views/d0a02d66699c4c0d528e4044d529ccf35c759901.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -30,13 +17,13 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
-      <file leaf-file-name="abgabe.blade.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="abgabe.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/Tutor/abgabe.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="52" column="43" lean-forward="false" selection-start-line="52" selection-start-column="43" selection-end-line="52" selection-end-column="54" />
+            <state relative-caret-position="2871">
+              <caret line="87" column="20" lean-forward="false" selection-start-line="87" selection-start-column="20" selection-end-line="87" selection-end-column="20" />
               <folding>
-                <element signature="e#789#816#0#HTML" expanded="true" />
+                <element signature="e#444#471#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -48,38 +35,6 @@
             <state relative-caret-position="798">
               <caret line="77" column="102" lean-forward="false" selection-start-line="77" selection-start-column="102" selection-end-line="77" selection-end-column="102" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="impressum.blade.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/impressum.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="datenschutz.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/datenschutz.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="7" column="30" lean-forward="false" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AbgabeController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AbgabeController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="363">
-              <caret line="53" column="47" lean-forward="false" selection-start-line="53" selection-start-column="47" selection-end-line="53" selection-end-column="47" />
-              <folding>
-                <element signature="e#45#63#0#PHP" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -122,11 +77,12 @@
         <option value="$PROJECT_DIR$/resources/views/Admin/admin.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/Tutor/abgabe.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/AbgabeController.php" />
         <option value="$PROJECT_DIR$/public/js/Abgabe.js" />
         <option value="$PROJECT_DIR$/resources/views/datenschutz.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/impressum.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/contact.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/Tutor/abgabe.blade.php" />
       </list>
     </option>
   </component>
@@ -626,16 +582,15 @@
       <workItem from="1493918152435" duration="3239000" />
       <workItem from="1494081217289" duration="1782000" />
       <workItem from="1497293342033" duration="4408000" />
-      <workItem from="1497454473678" duration="5920000" />
+      <workItem from="1497454473678" duration="6520000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24732000" />
+    <option name="totallyTimeSpent" value="25332000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-13" y="-13" width="2762" height="1850" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32841566" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -646,7 +601,7 @@
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26586103" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32956687" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32956687" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -691,13 +646,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="12" column="31" lean-forward="true" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2871">
@@ -994,16 +942,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/Tutor/abgabe.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="52" column="43" lean-forward="false" selection-start-line="52" selection-start-column="43" selection-end-line="52" selection-end-column="54" />
-          <folding>
-            <element signature="e#789#816#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AbgabeController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="363">
@@ -1011,6 +949,30 @@
           <folding>
             <element signature="e#45#63#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/impressum.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/datenschutz.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-799">
+          <caret line="7" column="30" lean-forward="false" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/contact.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="681">
+          <caret line="48" column="13" lean-forward="false" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="44" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1022,19 +984,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/datenschutz.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/Tutor/abgabe.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="7" column="30" lean-forward="false" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/impressum.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="2871">
+          <caret line="87" column="20" lean-forward="false" selection-start-line="87" selection-start-column="20" selection-end-line="87" selection-end-column="20" />
+          <folding>
+            <element signature="e#444#471#0#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

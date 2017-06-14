@@ -1,34 +1,28 @@
 @extends('layouts.app')
 
 @section('content')
-    {{--Problem jquery aus layouts lädt nicht schnell genug--}}
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="{{ URL::asset('js/Abgabe.js') }}"></script>
-    {{--@if (Auth::user()->rolle=="Tutor" || Auth::user()->rolle=="Professor" )--}}
-        <div class="container">
-            <div class="row">
-                <h2>Tutorenmodus: {{$kurs}}</h2>
-
-                <div class="col-md-6 col-md-offset-10" id="anhang">
-                    <div class="input-group">
-                        <form method="get" action="/search">
-                            <input type="text" class="form-control" placeholder="Suche nach..." id="tfsearch" style="margin-bottom: 2em;">
-                        </form>
-                    </div>
+    <div class="container">
+        <div class="row">
+            <h2>Tutorenmodus: {{$kurs}}</h2>
+            <div class="col-md-6 col-md-offset-10" id="anhang">
+                <div class="input-group">
+                    <form method="get" action="/search">
+                        <input type="text" class="form-control" placeholder="Suche nach..." id="tfsearch"
+                               style="margin-bottom: 2em;">
+                    </form>
                 </div>
-
-                <table class="table table-responsive table-striped table-bordered" id="tabelle">
+            </div>
+            <table class="table table-responsive table-striped table-bordered" id="tabelle">
                 <thead>
                 <tr>
-                <th class="col-md-3 col-xs-3">Name</th>
+                    <th class="col-md-3 col-xs-3">Name</th>
                     @if (Session::has('message'))
                         <div class="alert alert-info">{{ Session::get('message') }}</div>
                     @endif
                     {{--je nach Datenbankeintrag Element anzeigen--}}
                     @foreach($myinputs as $key => $value)
-                <th class="col-md-1 col-xs-1">{{$value->aufgabenname}}</th>
-                        @endforeach
-
+                        <th class="col-md-1 col-xs-1">{{$value->aufgabenname}}</th>
+                    @endforeach
                 </tr>
                 </thead>
                 <tbody>
@@ -44,50 +38,55 @@
 
                             @endif
 
-                    @if($zeile->id!=$id && $id!="")
+                            @if($zeile->id!=$id && $id!="")
                         </tr>
                         <tr>
-                                <td>{{$zeile->name}}</td>
-
+                            <td>{{$zeile->name}}</td>
                             @if($zeile->zustand == '+')
-                                <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-ok btn-success"></a>
+                                <td class="text-center"><a
+                                            href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}"
+                                            class="glyphicon glyphicon-ok btn-success"></a>
                             @endif
                             @if($zeile->zustand == '-')
-                                <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-remove btn-danger"></a></td>
+                                <td class="text-center"><a
+                                            href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}"
+                                            class="glyphicon glyphicon-remove btn-danger"></a></td>
                             @endif
                             @if($zeile->zustand == '.')
                                 <td class="text-center"> unbearbeitet</td>
-
                             @endif
                             @if($zeile->zustand == '/')
-                                <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-minus btn-warning"></a></td>
+                                <td class="text-center"><a
+                                            href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}"
+                                            class="glyphicon glyphicon-minus btn-warning"></a></td>
                             @endif
 
-                        @else
-                            @if($zeile->zustand == '+')
-                                    <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-ok btn-success"></a>
+                            @else
+                                @if($zeile->zustand == '+')
+                                    <td class="text-center"><a
+                                                href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}"
+                                                class="glyphicon glyphicon-ok btn-success"></a>
                                 @endif
                                 @if($zeile->zustand == '-')
-                                    <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-remove btn-danger"></a></td>
-                                    @endif
+                                    <td class="text-center"><a
+                                                href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}"
+                                                class="glyphicon glyphicon-remove btn-danger"></a></td>
+                                @endif
                                 @if($zeile->zustand == '.')
                                     <td class="text-center">unbearbeitet</td>
                                 @endif
                                 @if($zeile->zustand == '/')
-                                    <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-minus btn-warning"></a></td>
+                                    <td class="text-center"><a
+                                                href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}"
+                                                class="glyphicon glyphicon-minus btn-warning"></a></td>
                                 @endif
-                            {{--<td>{{$zeile->zustand}}</td>--}}
-                    @endif
-                @php($id=$zeile->id)
-                @endforeach
+                            @endif
+                            @php($id=$zeile->id)
+                            @endforeach
                         </tr>
-
                 </tbody>
-                </table>
-
-
-            </div>
+            </table>
         </div>
-
-    {{--@endif--}}
+    </div>
+    <script type="text/javascript" src="{{ URL::asset('js/Abgabe.js') }}"></script>
 @endsection
