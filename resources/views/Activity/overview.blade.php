@@ -47,7 +47,7 @@
                                         @elseif($value->zustand == '+' || $value->zustand == '-')
                                             <td class="col-md-4 col-xs-8"><p>{{$value->bearbeitet_von}} hat
                                                     deine {{$value->aufgabenname}} im Kurs {{$value->kurs}}
-                                                    geändert.</p>
+                                                    bewertet.</p>
                                             </td>
                                         @endif
                                     </tr>

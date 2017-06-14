@@ -64,7 +64,7 @@
                                 <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-remove btn-danger"></a></td>
                             @endif
                             @if($zeile->zustand == '.')
-                                <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-minus btn-info"></a></td>
+                                <td class="text-center"><i class="glyphicon glyphicon-minus btn-info"></i></td>
                                 {{--<td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-minus btn-warning"></a></td>--}}
 
                             @endif
@@ -82,7 +82,7 @@
                                 @if($zeile->zustand == '.')
 
 
-                                    <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-minus btn-info"></a></td>
+                                    <td class="text-center"><i class="glyphicon glyphicon-minus btn-info"></i></td>
                                     {{--<td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-minus btn-info"></a></td>--}}
                                 @endif
                                 @if($zeile->zustand == '/')

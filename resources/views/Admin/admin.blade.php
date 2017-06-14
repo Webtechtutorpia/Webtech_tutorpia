@@ -5,6 +5,8 @@
     <script> $(document).ready(function () {
             $("li[name='Admin']").css('background-color', '#f5f8fa');
         });</script>
+    <div class="container">
+        <div class="row">
     @if( Session::has('message'))
         <p class="bg-success"> {{session()->pull('message')}}</p>
     @endif
@@ -141,4 +143,6 @@
             </form>
         @endif
     @endif
+        </div>
+    </div>
 @endsection

@@ -64,8 +64,8 @@ class AdminController extends Controller
         for ($i = 0; $i < sizeof($Users); $i++) {
 
             $user = User::find($Users[$i]->id);
-            $user->rolle = $request->rolle[$i];
-            $user->save();
+                $user->rolle = $request->rolle[$i];
+                    $user->save();
         }
 
         //Forein Key lösch Problem bitte lösen

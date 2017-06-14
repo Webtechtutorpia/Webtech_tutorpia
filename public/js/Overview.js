@@ -23,7 +23,7 @@ function ajax(){
                 case '-':
                 case '+':
                     durchlauf+= '<tr><td>' + actifity.abgabeupdated_at+'</td>';
-                    var text= "<p>"+ actifity.bearbeitet_von + " hat deine "+ actifity.aufgabenname + " im Kurs " + actifity.kurs + " geändert. </p>";
+                    var text= "<p>"+ actifity.bearbeitet_von + " hat deine "+ actifity.aufgabenname + " im Kurs " + actifity.kurs + " bewertet. </p>";
                     durchlauf +='<td>' +text +'</td></tr>';
                     break;
             }

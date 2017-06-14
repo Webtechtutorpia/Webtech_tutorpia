@@ -48,7 +48,7 @@
                                             <td class="col-md-4 col-xs-8"><p><?php echo e($value->bearbeitet_von); ?> hat
                                                     deine <?php echo e($value->aufgabenname); ?> im Kurs <?php echo e($value->kurs); ?>
 
-                                                    geändert.</p>
+                                                    bewertet.</p>
                                             </td>
                                         <?php endif; ?>
                                     </tr>

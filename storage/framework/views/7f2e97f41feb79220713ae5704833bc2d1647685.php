@@ -55,7 +55,7 @@
                                         </div>
 
 
-                                        <div class="form-group" style="margin-top: 2em;">
+                                        <div class="form-group" style="margin-top: 2em">
                                             <button type="submit" class="btn btn-primary speichern" value="Abschicken"
                                                     style="float: right">
                                                 Datei hochladen
@@ -70,11 +70,11 @@
                                     <?php if(Session::has('message')): ?>
                                         <div class="alert alert-danger"><?php echo e(Session::get('message')); ?></div>
                                     <?php endif; ?>
-                                    <div class=" panel-group" style="padding-bottom: 1%;">
+                                    <div class=" panel-group" style="padding-bottom: 1%">
                                         <div class="col-md-3 col-xs-6 size"> Aufgabenstellung:</div>
                                         <div class="col-md-9 col-xs-12 size"> <?php echo e($value->aufgabenname); ?></div>
                                     </div>
-                                    <div class=" panel-group" style="padding-bottom: 1%;">
+                                    <div class=" panel-group" style="padding-bottom: 1%">
                                         <div class="col-md-3  col-xs-6 size">Abgabe bis :</div>
                                         <div class="col-md-3  col-xs-6 size"> <?php echo e($value->abgabedatum); ?></div>
                                         <div class="col-md-3  col-xs-6 size">Aufgabe hochladen:</div>
@@ -83,7 +83,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="panel-group" style="padding-bottom: 1%;">
+                                    <div class="panel-group" style="padding-bottom: 1%">
                                         <div class="col-md-3 col-xs-6 size"> Tutoren kontaktieren:</div>
                                         <div class="col-md-3 col-xs-2 size"><span><a
                                                         href="mailto:<?php echo e($value->email); ?>?subject=Frage zur Abnahme von <?php echo e($value->aufgabenname); ?> bei <?php echo e($value->name); ?>"
@@ -106,11 +106,11 @@
                                 <div style="display: inline; float: right" class="glyphicon glyphicon-remove"></div>
                             </div>
                             <div class="panel-body notVisible">
-                                <div class=" panel-group" style="padding-bottom: 1%;">
+                                <div class=" panel-group" style="padding-bottom: 1%">
                                     <div class="col-md-3 col-xs-6 size"> Aufgabenstellung:</div>
                                     <div class="col-md-9 col-xs-12 size"> <?php echo e($value->aufgabenname); ?></div>
                                 </div>
-                                <div class=" panel-group" style="padding-bottom: 1%;">
+                                <div class=" panel-group" style="padding-bottom: 1%">
                                     <div class="col-md-3  col-xs-6 size">Abgabe bis:</div>
                                     <div class="col-md-3  col-xs-6 size"><?php echo e($value->abgabedatum); ?> </div>
                                     <div class="col-md-3  col-xs-6 size">Abgabe abgelehnt:</div>

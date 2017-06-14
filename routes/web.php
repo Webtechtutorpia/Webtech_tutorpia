@@ -47,7 +47,7 @@ Route::get('images/{filename}', function ($filename)
     return $response;
 });
 
-
+Route::resource('contactconfirmation','ContactController');
 
 
 Route::group(['middleware' => ['auth']], function () {
@@ -105,7 +105,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('Aufgabenansicht','AufgabenansichtController');
 
-    Route::group(['middleware' => ['group:Professor,Tutor'] ], function(){
+    //Route::group(['middleware' => ['group:Professor,Tutor'] ], function(){
 
 
         Route::get('Tutor/Aufgabenkorrektur','KorrekturController@UserAbgaben');
@@ -113,7 +113,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('Tutor','AbgabeController');
         Route::resource('korrektur', 'KorrekturController');
 
-    });
+    //});
 
     Route::group(['middleware' => 'group:Professor'], function(){
         Route::get('reset','AufgabeController@reset');
@@ -125,7 +125,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('FileUpload','FileUploadController');
     Route::resource('myinputs', 'MyinputController');
 
-    Route::resource('contactconfirmation','ContactController');
+
     Route::resource('admin', 'AdminController');
     Route::post('test','AdminController@test');
     Route::Post('test2', 'AdminController@test2');

@@ -26,7 +26,7 @@
 
 </script>
     <title>{{ config('app.name', 'Tutorpia') }}</title>
-   / <link rel="icon" type="image/jpg" href="images/euleicon.jpg">
+    <link rel="icon" type="image/jpg" href="images/euleicon.jpg">
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
 
