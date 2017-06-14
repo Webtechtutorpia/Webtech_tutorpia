@@ -3,28 +3,20 @@
 @section('content')
     {{--Problem jquery aus layouts lädt nicht schnell genug--}}
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-    <script> $( document ).ready(function() {
-            $("li[name='Abgaben']").css('background-color', '#f5f8fa');
-        });</script>
     <script type="text/javascript" src="{{ URL::asset('js/Abgabe.js') }}"></script>
     {{--@if (Auth::user()->rolle=="Tutor" || Auth::user()->rolle=="Professor" )--}}
         <div class="container">
             <div class="row">
                 <h2>Tutorenmodus: {{$kurs}}</h2>
 
-                <div class="col-md-4 col-md-offset-8" id="anhang">
+                <div class="col-md-6 col-md-offset-10" id="anhang">
                     <div class="input-group">
                         <form method="get" action="/search">
-                            <input type="text" class="form-control" placeholder="Suche nach..." id="tfsearch">
-
+                            <input type="text" class="form-control" placeholder="Suche nach..." id="tfsearch" style="margin-bottom: 2em;">
                         </form>
                     </div>
                 </div>
-                {{--<button onclick="add()"> add</button>--}}
-                {{--<button onclick="remove()">remove</button>--}}
-                {{--<div id="ausgabe">hallo</div>--}}
-                {{--<div class="table-responsive">--}}
-                <button onclick="einfügen()">Test</button>
+
                 <table class="table table-responsive table-striped table-bordered" id="tabelle">
                 <thead>
                 <tr>
@@ -64,8 +56,7 @@
                                 <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-remove btn-danger"></a></td>
                             @endif
                             @if($zeile->zustand == '.')
-                                <td class="text-center"><i class="glyphicon glyphicon-minus btn-info"></i></td>
-                                {{--<td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-minus btn-warning"></a></td>--}}
+                                <td class="text-center"> unbearbeitet</td>
 
                             @endif
                             @if($zeile->zustand == '/')
@@ -80,10 +71,7 @@
                                     <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-remove btn-danger"></a></td>
                                     @endif
                                 @if($zeile->zustand == '.')
-
-
-                                    <td class="text-center"><i class="glyphicon glyphicon-minus btn-info"></i></td>
-                                    {{--<td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-minus btn-info"></a></td>--}}
+                                    <td class="text-center">unbearbeitet</td>
                                 @endif
                                 @if($zeile->zustand == '/')
                                     <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-minus btn-warning"></a></td>

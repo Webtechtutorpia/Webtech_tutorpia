@@ -32,13 +32,13 @@ class AbgabeController extends Controller
 
 
         $kurs=session()->get('global_variable');
-
+        $belegung= Belegung::select('user')->where('belegung.rolle','Student')->where('belegung.kurs', $kurs)->get()->toArray();
         $abgabe = DB::table('abgabe')
             ->join('aufgabe', 'abgabe.zugehoerig_zu', '=', 'aufgabe.id')
             ->join('users', 'abgabe.user', '=', 'users.id')
            // ->join('belegung','users.id', '=', 'belegung.user')
             ->select('*')->where('aufgabe.kurs',$kurs)
-           // ->where('belegung.rolle','Student')
+           ->whereIn('users.id', $belegung)
             ->orderBy('users.name', 'asc')
             ->orderBy('users.id', 'asc')
             //->orderBy('aufgabe.aufgabenname')
@@ -47,13 +47,16 @@ class AbgabeController extends Controller
 
         $user = $request->input('tfsearch', '');
 
-        $alle = Abgabe::select('user')->get();
+        $alle=  Abgabe::select('user')->whereIn('user', $belegung)->get();
+        $belegung= Belegung::all();
         $users = [
             'id' => $request->input('id'),
-            'users' => User::where('name', 'like', $user . '%')->whereIn('id', $alle)->get(),
+            'users' => User::select('name','id')->where('name', 'like', $user . '%')->whereIn('id', $alle)->get(),
 //                'users' => User::whereIn('id', Users::all())->get(),
-            'aufgaben' => DB::table('aufgabe')->where('kurs', $kurs)->get(),
+            'aufgaben' => Aufgabe::select('aufgabenname')->where('kurs', $kurs)->get(),
             'abgaben' => $abgabe
+
+
         ];
 
 

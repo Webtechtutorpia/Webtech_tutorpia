@@ -59,7 +59,7 @@ function search2(name) {
                 $(row).append($('<td>' + user.name + '</td>'));
 
                 $.each(result.abgaben, function (index, abgabe) {
-                        if (abgabe.user == user.id) {
+                        if (abgabe.user == user.id && abgabe.user) {
                             // console.log(abgabe.zustand);
                             switch (abgabe.zustand) {
                                 case '+':
@@ -75,7 +75,7 @@ function search2(name) {
                                     $(row).append($('<td>',{class: "text-center"}).append( $('<a>',{href: link, class: "glyphicon glyphicon-minus btn-warning"})));
                                     break;
                                 default:
-                                    $(row).append($('<td>-</td>',{class: "text-center"}));
+                                    $(row).append($('<td/>',{class: "text-center"}).text('unbearbeitet'));
 
 
                             }
@@ -132,14 +132,3 @@ function search2(name) {
 //     $('')
 // }
 
-function remove() {
-    var x = $('#tabelle').find('tbody').remove();
-    console.log('gelöscht');
-
-}
-
-function einfügen() {
-    var test = $('<i>hallo</i>', {class: 'text-center'});
-    var test = $('<i/>', {class: "glyphicon glyphicon-ok btn-success", style: "display: inline"});
-    $('#anhang').append(test);
-}
