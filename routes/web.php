@@ -14,35 +14,57 @@ use Illuminate\Support\Facades\Mail;
 */
 use Tutorpia\User;
 Auth::routes();
+Route::get('datenschutz', function () {
+    return view('datenschutz');
+});
+Route::get('impressum', function () {
+    return view('impressum');
+});
+Route::get('hilfe', function () {
+    return view('hilfe');
+});
+Route::get('contact', function () {
+    return view('contact');
+});
+Route::get('/home', 'HomeController@index');
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('images/{filename}', function ($filename)
+{
+    $path = storage_path() . '/Images/' . $filename;
+
+    if(!File::exists($path)) abort(404);
+
+    $file = File::get($path);
+    $type = File::mimeType($path);
+
+    $response = Response::make($file, 200);
+    $response->header("Content-Type", $type);
+
+    return $response;
+});
+
+
+
 
 Route::group(['middleware' => ['auth']], function () {
 
-    Route::get('/', function () {
-        return view('welcome');
-    });
 
 
 
-    Route::get('/home', 'HomeController@index');
 
-    Route::get('hilfe', function () {
-        return view('hilfe');
-    });
-    Route::get('contact', function () {
-        return view('contact');
-    });
+
+
 //Route::get('overview','OverviewController@showfirstActifty');
     // return view('Tutor.overview'));
 
 //Route::get('kurse', function () {
 //    return view('Tutor.kurse');
 //});
-    Route::get('datenschutz', function () {
-        return view('datenschutz');
-    });
-    Route::get('impressum', function () {
-        return view('impressum');
-    });
+
 
 
 
@@ -71,22 +93,6 @@ Route::group(['middleware' => ['auth']], function () {
 
 
 
-
-
-    Route::get('images/{filename}', function ($filename)
-    {
-        $path = storage_path() . '/Images/' . $filename;
-
-        if(!File::exists($path)) abort(404);
-
-        $file = File::get($path);
-        $type = File::mimeType($path);
-
-        $response = Response::make($file, 200);
-        $response->header("Content-Type", $type);
-
-        return $response;
-    });
 
 
 

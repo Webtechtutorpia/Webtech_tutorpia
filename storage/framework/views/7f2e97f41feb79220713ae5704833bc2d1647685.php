@@ -127,21 +127,21 @@
                                         </form>
                                     </div>
                                 </div>
-                                <div class="panel-group" style="padding-bottom: 1%;">
+                                <div class="panel-group" style="padding-bottom: 1%">
                                     <div class="col-md-3 col-xs-6 size"> Tutor kontaktieren:</div>
                                     <div class="col-md-3 col-xs-2 size"><span><a
                                                     href="mailto:<?php echo e($value->email); ?>?subject=Fehler bei Abnahme von <?php echo e($value->aufgabenname); ?> bei <?php echo e($value->name); ?>"
                                                     class="glyphicon glyphicon-envelope"></a></span>
                                     </div>
-                                    <div class="col-md-3 col-xs-12"> Status:</div>
-                                    <div class="col-md-3 col-xs-12 size"> Abgabe nicht erfolgreich</div>
                                 </div>
-                                <div class="panel-group" style="padding-bottom: 1%;">
-                                    <div class="col-md-3  col-xs-6 size">Kommentar:</div>
+                                <div class="panel-group" style="padding-bottom: 1%">
+                                    <div class="col-md-3 col-xs-12"> Status:</div>
+                                    <div class="col-md-3 col-xs-12 size">erfolgreich abgegeben</div>
 
-                                    <div class="col-md-3 col-xs-2 size"><?php echo e($value->kommentar); ?>
-
-                                    </div>
+                                </div>
+                                <div class="panel-group ">
+                                    <div class="col-md-3 col-xs-6 size"> Kommentar:</div>
+                                    <div class="col-md-3 col-xs-2 size"><?php echo e($value->kommentar); ?></div>
                                 </div>
                             </div>
                         </div>

@@ -55,7 +55,7 @@
                                         </div>
 
 
-                                        <div class="form-group" style="margin-top: 2em;">
+                                        <div class="form-group" style="margin-top: 2em">
                                             <button type="submit" class="btn btn-primary speichern" value="Abschicken"
                                                     style="float: right">
                                                 Datei hochladen
@@ -70,11 +70,11 @@
                                     @if (Session::has('message'))
                                         <div class="alert alert-danger">{{ Session::get('message') }}</div>
                                     @endif
-                                    <div class=" panel-group" style="padding-bottom: 1%;">
+                                    <div class=" panel-group" style="padding-bottom: 1%">
                                         <div class="col-md-3 col-xs-6 size"> Aufgabenstellung:</div>
                                         <div class="col-md-9 col-xs-12 size"> {{$value->aufgabenname}}</div>
                                     </div>
-                                    <div class=" panel-group" style="padding-bottom: 1%;">
+                                    <div class=" panel-group" style="padding-bottom: 1%">
                                         <div class="col-md-3  col-xs-6 size">Abgabe bis :</div>
                                         <div class="col-md-3  col-xs-6 size"> {{$value->abgabedatum}}</div>
                                         <div class="col-md-3  col-xs-6 size">Aufgabe hochladen:</div>
@@ -83,7 +83,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="panel-group" style="padding-bottom: 1%;">
+                                    <div class="panel-group" style="padding-bottom: 1%">
                                         <div class="col-md-3 col-xs-6 size"> Tutoren kontaktieren:</div>
                                         <div class="col-md-3 col-xs-2 size"><span><a
                                                         href="mailto:{{$value->email}}?subject=Frage zur Abnahme von {{$value->aufgabenname}} bei {{$value->name}}"
@@ -105,11 +105,11 @@
                                 <div style="display: inline; float: right" class="glyphicon glyphicon-remove"></div>
                             </div>
                             <div class="panel-body notVisible">
-                                <div class=" panel-group" style="padding-bottom: 1%;">
+                                <div class=" panel-group" style="padding-bottom: 1%">
                                     <div class="col-md-3 col-xs-6 size"> Aufgabenstellung:</div>
                                     <div class="col-md-9 col-xs-12 size"> {{$value->aufgabenname}}</div>
                                 </div>
-                                <div class=" panel-group" style="padding-bottom: 1%;">
+                                <div class=" panel-group" style="padding-bottom: 1%">
                                     <div class="col-md-3  col-xs-6 size">Abgabe bis:</div>
                                     <div class="col-md-3  col-xs-6 size">{{$value->abgabedatum}} </div>
                                     <div class="col-md-3  col-xs-6 size">Abgabe abgelehnt:</div>
@@ -126,20 +126,21 @@
                                         </form>
                                     </div>
                                 </div>
-                                <div class="panel-group" style="padding-bottom: 1%;">
+                                <div class="panel-group" style="padding-bottom: 1%">
                                     <div class="col-md-3 col-xs-6 size"> Tutor kontaktieren:</div>
                                     <div class="col-md-3 col-xs-2 size"><span><a
                                                     href="mailto:{{$value->email}}?subject=Fehler bei Abnahme von {{$value->aufgabenname}} bei {{$value->name}}"
                                                     class="glyphicon glyphicon-envelope"></a></span>
                                     </div>
-                                    <div class="col-md-3 col-xs-12"> Status:</div>
-                                    <div class="col-md-3 col-xs-12 size"> Abgabe nicht erfolgreich</div>
                                 </div>
-                                <div class="panel-group" style="padding-bottom: 1%;">
-                                    <div class="col-md-3  col-xs-6 size">Kommentar:</div>
+                                <div class="panel-group" style="padding-bottom: 1%">
+                                    <div class="col-md-3 col-xs-12"> Status:</div>
+                                    <div class="col-md-3 col-xs-12 size">erfolgreich abgegeben</div>
 
-                                    <div class="col-md-3 col-xs-2 size">{{$value->kommentar}}
-                                    </div>
+                                </div>
+                                <div class="panel-group ">
+                                    <div class="col-md-3 col-xs-6 size"> Kommentar:</div>
+                                    <div class="col-md-3 col-xs-2 size">{{$value->kommentar}}</div>
                                 </div>
                             </div>
                         </div>

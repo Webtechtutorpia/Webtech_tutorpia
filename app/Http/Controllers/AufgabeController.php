@@ -14,35 +14,71 @@ use Illuminate\Support\Facades\DB;
 class AufgabeController extends Controller
 {
 
+    public function store(Request $request)
+    {
+        $aufgabe = new Aufgabe($request->aufgabenname, $request->abgabedatum, $request->aufgabenbeschreibung, Auth::user()->name,session()->get('global_variable'));
+        // $aufgabe = new Aufgabe('h','b','c','d','e');
+        // validate
+
+        $this->validate($request, [
+            'aufgabenname' => 'required',
+            'abgabedatum' => 'required',
+            'aufgabenbeschreibung' => 'required']);
+
+        $this->save($aufgabe);
+        $pfad='/Professor/'.session()->get('global_variable');
+
+        return redirect($pfad);
+    }
+    private function save(Aufgabe $aufgabe){
+//         //store
+//
+        DB::table("aufgabe")->insert(['aufgabenname'      =>  $aufgabe->getAufgabenname(),
+            'abgabedatum'         => $aufgabe->getAbgabedatum(),
+            'aufgabenbeschreibung' =>  $aufgabe->getAufgabenbeschreibung(),
+            'erstellt_von' =>  $aufgabe->getErstellt_von(),
+            'kurs'=> $aufgabe->getKurs()]);
+
+        $id = Aufgabe::orderBy('id', 'desc')->first();
+
+        $users =DB::table('belegung')
+            ->join('users', 'belegung.user', '=', 'users.id')
+            ->select('users.id')
+            ->where('belegung.kurs',session()->get('global_variable'))
+            ->where('belegung.rolle','=','Student')
+            ->get();
+
+        foreach($users as $user) {
+            Abgabe::create([
+                'zustand' => '.',
+                'user' => $user->id,
+                'zugehoerig_zu' => $id->id,
+            ]);
+        }
+
+    }
+
+
 //    public function store(Request $request)
 //    {
-//        $aufgabe = new Aufgabe($request->aufgabenname, $request->abgabedatum, $request->aufgabenbeschreibung, session()->get('global_variable'), Auth::user()->name);
-//        // $aufgabe = new Aufgabe('h','b','c','d','e');
 //        // validate
 //
 //        $this->validate($request, [
-//            'aufgabenname' => 'required',
-//            'abgabedatum' => 'required',
+//            'aufgabenname'       => 'required',
+//            'abgabedatum'      => 'required',
 //            'aufgabenbeschreibung' => 'required']);
 //
-//        $this->save($aufgabe);
-//    }
-//    private function save(Aufgabe $aufgabe){
+//
 //        // store
 //        $id=Aufgabe::create([
-//            'aufgabenname'      =>  $aufgabe->getAufgabenname(),
-//            'abgabedatum'         => $aufgabe->getAbgabedatum(),
-//            'aufgabenbeschreibung' =>  $aufgabe->getAufgabenbeschreibung(),
-//            'kurs'=> $aufgabe->getKurs(),
-//            'erstellt_von' =>  $aufgabe->getErstellt_von(),
+//            'aufgabenname'      =>  $request->aufgabenname,
+//            'abgabedatum'         => $request->abgabedatum,
+//            'aufgabenbeschreibung' =>  $request->aufgabenbeschreibung,
+//            'kurs'=> session()->get('global_variable'),
+//            'erstellt_von' => Auth::user()->name,
 //        ]);
 //
-//        Activity::create([
-//            'abgabedatum'         => $aufgabe->getAbgabedatum(),
-//            'aufgabenname'      =>  $aufgabe->getAufgabenname(),
-//            'zuordnung_aufgabe' => $id->id,
-//            'bearbeitet_von' => $aufgabe->getErstellt_von(),
-//        ]);
+
 //        $users =DB::table('belegung')
 //            ->join('users', 'belegung.user', '=', 'users.id')
 //            ->select('users.id')
@@ -56,55 +92,12 @@ class AufgabeController extends Controller
 //                'zugehoerig_zu' => $id->id,
 //            ]);
 //        }
-//        return back();
+//        $pfad='/Professor/'.session()->get('global_variable');
+//
+//        return redirect($pfad);
+//
 //
 //    }
-
-
-    public function store(Request $request)
-    {
-        // validate
-
-        $this->validate($request, [
-            'aufgabenname'       => 'required',
-            'abgabedatum'      => 'required',
-            'aufgabenbeschreibung' => 'required']);
-
-
-        // store
-        $id=Aufgabe::create([
-            'aufgabenname'      =>  $request->aufgabenname,
-            'abgabedatum'         => $request->abgabedatum,
-            'aufgabenbeschreibung' =>  $request->aufgabenbeschreibung,
-            'kurs'=> session()->get('global_variable'),
-            'erstellt_von' => Auth::user()->name,
-        ]);
-
-        Activity::create([
-            'abgabedatum'         => $request->abgabedatum,
-            'aufgabenname'      =>  $request->aufgabenname,
-            'zuordnung_aufgabe' => $id->id,
-            'bearbeitet_von' => Auth::user()->name,
-        ]);
-        $users =DB::table('belegung')
-            ->join('users', 'belegung.user', '=', 'users.id')
-            ->select('users.id')
-            ->where('belegung.kurs',session()->get('global_variable'))
-            ->get();
-
-        foreach($users as $user) {
-            Abgabe::create([
-                'zustand' => '.',
-                'user' => $user->id,
-                'zugehoerig_zu' => $id->id,
-            ]);
-        }
-        $pfad='/Professor/'.session()->get('global_variable');
-
-        return redirect($pfad);
-
-
-    }
 
 
     public function update(Request $request, $id)
