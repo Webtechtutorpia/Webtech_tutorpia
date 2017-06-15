@@ -89,13 +89,13 @@
                                         @foreach($alle as $key2 => $value2 )
 
                                         <tr>
-                                            <td>{{$value2->kurs}}</td>
+                                            <td>{{$value2->bezeichnung}}</td>
                                             {{--<td>{{$value2->rolle}}</td>--}}
                                             <td class="text-center">
                                                 <form class="form-horizontal" role="form" method="POST"
                                                       action="{{ url('Kurse') }}" >
                                                     {{ csrf_field() }}
-                                                    <input type="hidden" name="kurs" value="{{$value2->kurs}}">
+                                                    <input type="hidden" name="kurs" value="{{$value2->bezeichnung}}">
                                                     {{--<input type="hidden" name="rolle" value="{{$value2->rolle}}">--}}
                                                     <button type="submit" class="btn btn-primary btn-md col-md-offset-3">eintragen
                                                     </button>

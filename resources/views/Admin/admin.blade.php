@@ -16,7 +16,8 @@
         <div class="panel panel-success">
             <div class="panel-heading panel" onclick="Bodyhandler(this)"> Adminbereich</div>
             <div class="panel-body notVisible">
-                <form method="post" action="{{Url ('test')}}">
+              <label>Rolle ändern</label>
+                <form method="post" action="{{Url ('test')}}" >
                     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                     <table>
                         <thead>
@@ -51,9 +52,13 @@
                         @endforeach
                         </tbody>
                     </table>
-
+                    <input class="btn btn-primary" type="submit" value="bestätigen">
+                </form>
+                <br>
+                    <form method="post" action="{{Url ('test')}}" onsubmit="return confirm('Sind Sie sicher, dass Sie den Account wirklich löschen wollen? Dadurch könnten wichtige Daten verloren gehen.')">
+                        <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                     <label for=delete">Account löschen</label>
-                    <input type="text" id=delete" name="delete" placeholder="Accountname oder Email eingeben">
+                    <input type="text" id="delete" name="delete" placeholder="Accountname oder Email eingeben">
 
 
                     <input class="btn btn-primary" type="submit" value="bestätigen">
