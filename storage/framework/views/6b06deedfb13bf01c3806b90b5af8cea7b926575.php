@@ -1,28 +1,20 @@
 <?php $__env->startSection('content'); ?>
     
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-    <script> $( document ).ready(function() {
-            $("li[name='Abgaben']").css('background-color', '#f5f8fa');
-        });</script>
     <script type="text/javascript" src="<?php echo e(URL::asset('js/Abgabe.js')); ?>"></script>
     
         <div class="container">
             <div class="row">
                 <h2>Tutorenmodus: <?php echo e($kurs); ?></h2>
 
-                <div class="col-md-4 col-md-offset-8" id="anhang">
+                <div class="col-md-6 col-md-offset-10" id="anhang">
                     <div class="input-group">
                         <form method="get" action="/search">
-                            <input type="text" class="form-control" placeholder="Suche nach..." id="tfsearch">
-
+                            <input type="text" class="form-control" placeholder="Suche nach..." id="tfsearch" style="margin-bottom: 2em;">
                         </form>
                     </div>
                 </div>
-                
-                
-                
-                
-                <button onclick="einfügen()">Test</button>
+
                 <table class="table table-responsive table-striped table-bordered" id="tabelle">
                 <thead>
                 <tr>
@@ -62,8 +54,7 @@
                                 <td class="text-center"><a href="<?php echo e(url('Aufgabenansicht/bestimmteAbgabe')); ?>/<?php echo e($zeile->user); ?>/<?php echo e($zeile->aufgabenname); ?>" class="glyphicon glyphicon-remove btn-danger"></a></td>
                             <?php endif; ?>
                             <?php if($zeile->zustand == '.'): ?>
-                                <td class="text-center"><i class="glyphicon glyphicon-minus btn-info"></i></td>
-                                
+                                <td class="text-center"> unbearbeitet</td>
 
                             <?php endif; ?>
                             <?php if($zeile->zustand == '/'): ?>
@@ -78,10 +69,7 @@
                                     <td class="text-center"><a href="<?php echo e(url('Aufgabenansicht/bestimmteAbgabe')); ?>/<?php echo e($zeile->user); ?>/<?php echo e($zeile->aufgabenname); ?>" class="glyphicon glyphicon-remove btn-danger"></a></td>
                                     <?php endif; ?>
                                 <?php if($zeile->zustand == '.'): ?>
-
-
-                                    <td class="text-center"><i class="glyphicon glyphicon-minus btn-info"></i></td>
-                                    
+                                    <td class="text-center">unbearbeitet</td>
                                 <?php endif; ?>
                                 <?php if($zeile->zustand == '/'): ?>
                                     <td class="text-center"><a href="<?php echo e(url('Aufgabenansicht/bestimmteAbgabe')); ?>/<?php echo e($zeile->user); ?>/<?php echo e($zeile->aufgabenname); ?>" class="glyphicon glyphicon-minus btn-warning"></a></td>

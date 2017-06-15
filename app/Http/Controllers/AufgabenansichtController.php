@@ -35,10 +35,11 @@ class AufgabenansichtController extends Controller
             // SELECT * FROM `abgabe`,`aufgabe`,`users` WHERE abgabe.zugehoerig_zu=aufgabe.id and aufgabe.kurs=2 and abgabe.user=users.id order by users.id
             $abgabe = DB::table('abgabe')
                 ->join('aufgabe', 'abgabe.zugehoerig_zu', '=', 'aufgabe.id')
-                ->join('users', 'abgabe.user', '=', 'users.id')
-                ->select('abgabe.updated_at as abgabeupdated_at','abgabe.created_at as abgabecreated_at','abgabe.*','users.*','aufgabe.*')
+                ->join('users as student', 'abgabe.user', '=', 'student.id')
+                ->leftjoin('users as tutor', 'abgabe.bearbeitet_von', '=', 'tutor.name')
+                ->select('abgabe.*','student.*','tutor.email as tutoremail','aufgabe.*')
                 ->where('aufgabe.kurs', session()->get('global_variable'))
-                ->where('users.id', Auth::user()->id)
+                ->where('student.id', Auth::user()->id)
                 //->where('users.name',"TestStudent")
                 ->orderBy('aufgabe.aufgabenname', 'asc')
                 ->get();
@@ -51,7 +52,7 @@ class AufgabenansichtController extends Controller
     public function matchHTML(Request $request)
     {
         $cities=$this->queryName($request);
-        return view('gesuchteAufgabe',['cities'=>$cities]);
+        return view('Aufgabenansicht.gesuchteAufgabe',['cities'=>$cities,'kurs'=>session()->get('global_variable')]);
 
 
     }
@@ -64,16 +65,18 @@ private function queryName(Request $request){
             $prefix = '';
         }
         if ($prefix !== '') {
-            //$name = Aufgabe::where('aufgabenname','like',$prefix. '%')->get();
+            //Abgaben aus Tabelle lesen, wo Aufgabenname gleich ist wie gesuchte Eingabe
             $name = DB::table('abgabe')
                 ->join('aufgabe', 'abgabe.zugehoerig_zu', '=', 'aufgabe.id')
-                ->join('users', 'abgabe.user', '=', 'users.id')
-                ->select('*')
+                ->join('users as student', 'abgabe.user', '=', 'student.id')
+                ->leftjoin('users as tutor', 'abgabe.bearbeitet_von', '=', 'tutor.name')
+                ->select('abgabe.*','student.*','tutor.email as tutoremail','aufgabe.*')
                 ->where('aufgabe.kurs', session()->get('global_variable'))
-                ->where('users.id', Auth::user()->id)
-                ->where('Aufgabe.aufgabenname','like',$prefix.'%')
-                ->orderBy('users.name', 'asc')
+                ->where('student.id', Auth::user()->id)
+                ->where('aufgabe.aufgabenname','like',$prefix.'%')
+                ->orderBy('aufgabe.aufgabenname', 'asc')
                 ->get();
+
         }
         return $name;
 
@@ -91,16 +94,5 @@ private function queryName(Request $request){
         // redirect
         return back();
     }
-//    public function UserAbgaben($id,$name){
-//        $abgabe = DB::table('abgabe')
-//            ->join('aufgabe', 'abgabe.zugehoerig_zu', '=', 'aufgabe.id')
-//            ->join('users', 'abgabe.user', '=', 'users.id')
-//            ->select('*')
-//            ->where('aufgabe.kurs', session()->get('global_variable'))
-//            ->where('users.id', $id)
-//            ->where('Aufgabe.aufgabenname','like',$name)
-//            ->orderBy('users.name', 'asc')
-//            ->get();
-//        return View::make('Aufgabenansicht.Aufgabenansicht_example')->with('myinputs', $abgabe)->with('kurs',session()->get('global_variable'));
-//    }
+
 }
