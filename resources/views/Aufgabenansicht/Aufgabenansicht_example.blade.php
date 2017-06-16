@@ -29,7 +29,7 @@
 
             {{--je nach Datenbankeintrag Element anzeigen--}}
             <h3>Alle Aufgaben:</h3>
-            @foreach($myinputs as $key => $value)
+            @foreach($myinputs as $value)
 
                 @if( $value->zustand == '.')
                     <div class="col-md-12 col-xs-12">
@@ -84,11 +84,6 @@
                                         </div>
                                     </div>
                                     <div class="panel-group" style="padding-bottom: 1%">
-                                        <div class="col-md-3 col-xs-6 size"> Tutoren kontaktieren:</div>
-                                        <div class="col-md-3 col-xs-2 size"><span><a
-                                                        href="mailto:{{$value->email}}?subject=Frage zur Abnahme von {{$value->aufgabenname}} bei {{$value->name}}"
-                                                        class="glyphicon glyphicon-envelope"></a></span>
-                                        </div>
                                         <div class="col-md-3 col-xs-12"> Status:</div>
                                         <div class="col-md-3 col-xs-12 size">Warten auf Upload</div>
                                     </div>
@@ -129,7 +124,7 @@
                                 <div class="panel-group" style="padding-bottom: 1%">
                                     <div class="col-md-3 col-xs-6 size"> Tutor kontaktieren:</div>
                                     <div class="col-md-3 col-xs-2 size"><span><a
-                                                    href="mailto:{{$value->email}}?subject=Fehler bei Abnahme von {{$value->aufgabenname}} bei {{$value->name}}"
+                                                    href="mailto:{{$value->tutoremail}}?subject=Fehler bei Abnahme von {{$value->aufgabenname}} bei {{$value->name}}"
                                                     class="glyphicon glyphicon-envelope"></a></span>
                                     </div>
                                 </div>
@@ -184,7 +179,7 @@
                                 <div class="panel-group ">
                                     <div class="col-md-3 col-xs-6 size"> Tutor kontaktieren:</div>
                                     <div class="col-md-3 col-xs-2 size"><span><a
-                                                    href="mailto:{{$value->email}}?subject=Frage zur Abnahme von {{$value->aufgabenname}} bei {{$value->name}}"
+                                                    href="mailto:{{$value->tutoremail}}?subject=Frage zur Abnahme von {{$value->aufgabenname}} bei {{$value->name}}"
                                                     class="glyphicon glyphicon-envelope"></a></span>
                                     </div>
                                 </div>
@@ -238,7 +233,7 @@
                                 <div class="panel-group" style="padding-bottom: 1%;">
                                     <div class="col-md-3 col-xs-6 size"> Tutor kontaktieren:</div>
                                     <div class="col-md-3 col-xs-2 size"><span><a
-                                                    href="mailto:{{$value->email}}?subject=Frage zur {{$value->aufgabenname}} von {{$value->name}}"
+                                                    href="mailto:{{$value->tutoremail}}?subject=Frage zur {{$value->aufgabenname}} von {{$value->name}}"
                                                     class="glyphicon glyphicon-envelope"></a></span>
                                     </div>
                                     <div class="col-md-3 col-xs-12"> Status:</div>

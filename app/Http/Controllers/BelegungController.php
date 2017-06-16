@@ -18,22 +18,15 @@ class BelegungController extends Controller
 
             // get all the myinputs
             $kurse = Belegung::where('user', '=', Auth::user()->id)->get();
-            $alle=DB::table('belegung')->distinct()->select('kurs')
-                ->where('rolle', '!=', 'Professor')
-                ->whereNotIn('kurs', function($query)
+            $alle=DB::table('kurs')->select('*')
+                ->whereNotIn('bezeichnung',function($query)
                 {
                     $query->select('kurs')
                         ->from('belegung')
                         ->where('user', '=', Auth::user()->id);
-                })
-               ->get();
-//            global $alle;
-//            foreach($kurse as $kurs) {
+                })->get();
+
 //
-//                $alle =DB::table('belegung')->where('kurs', '!=', $kurs->id)
-//                    ->where('rolle', '!=', 'Professor')->get();
-//            }
-            // load the view and pass the myinputs
             return View::make('Kurse.kurse')->with('myinputs', $kurse)->with('alle', $alle);
         //}
 

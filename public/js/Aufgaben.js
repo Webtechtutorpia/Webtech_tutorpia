@@ -12,6 +12,8 @@ function Bodyhandler(element){
     var Bodyelement = $(element).parent().children('.panel-body');
     if($(Bodyelement).is(':visible')){
         $(Bodyelement).hide('slow','linear');
+        $(".austauschen").show();
+        $(".fileUpload").hide();
         //$(".panel-body").hide('slow','linear');
     }
     else {

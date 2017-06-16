@@ -87,14 +87,14 @@
                                         <?php $__currentLoopData = $alle; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key2 => $value2): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
 
                                         <tr>
-                                            <td><?php echo e($value2->kurs); ?></td>
+                                            <td><?php echo e($value2->bezeichnung); ?></td>
                                             
                                             <td class="text-center">
                                                 <form class="form-horizontal" role="form" method="POST"
                                                       action="<?php echo e(url('Kurse')); ?>" >
                                                     <?php echo e(csrf_field()); ?>
 
-                                                    <input type="hidden" name="kurs" value="<?php echo e($value2->kurs); ?>">
+                                                    <input type="hidden" name="kurs" value="<?php echo e($value2->bezeichnung); ?>">
                                                     
                                                     <button type="submit" class="btn btn-primary btn-md col-md-offset-3">eintragen
                                                     </button>

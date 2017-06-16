@@ -90,15 +90,14 @@ class CreateDatabase extends Migration
 //        //Erzeuge Aktivität
         Schema::create('activity', function (Blueprint $table){
             $table->increments('id');
-            $table->String('abgabedatum')->nullable();
-            $table->string('aufgabenname');
-            $table->string('bearbeitet_von');
+            $table->dateTime('zeit')->nullable();
             $table->Integer('zuordnung_aufgabe')->unsigned()-> nullable();
             $table->Integer('zuordnung_abgabe')->unsigned()-> nullable();
-            $table->Integer('user')->unsigned()->nullable();
+            $table->string('was')->nullable();
+            $table->Integer('user')->unsigned();
             $table->timestamps();
             //Constraints
-            $table->foreign('user')->references('id')->on('users');
+            $table->foreign('user')->references('id')->on('users')->onDelete('Cascade');
             $table->foreign('zuordnung_aufgabe')->references('id')->on('aufgabe')->onDelete('Cascade')->nullable();
             $table->foreign('zuordnung_abgabe') ->references('abgabeid')->on('abgabe')->onDelete('Cascade')->nullable();
         });

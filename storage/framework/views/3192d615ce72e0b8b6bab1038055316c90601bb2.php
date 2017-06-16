@@ -10,91 +10,6 @@
             <div class="row">
                 <h2>Korrekturmodus: <?php echo e($kurs); ?></h2>
 
-                
-                    
-
-
-                    
-                        
-                            
-                        
-                        
-                            
-                                
-                                    
-                                
-                                
-                                    
-                                        
-                                        
-                                            
-                                            
-                                                
-                                                
-                                            
-                                            
-                                                
-                                                    
-                                                    
-                                                
-                                                
-                                                    
-                                                    
-                                                    
-                                                    
-                                                        
-                                                    
-                                                    
-                                                    
-                                                    
-                                                    
-                                                    
-
-                                                    
-                                                    
-                                                        
-                                                        
-                                                    
-
-                                                    
-                                                    
-                                                        
-                                                               
-                                                               
-                                                        
-                                                        
-                                                               
-                                                               
-                                                            
-                                                                
-                                                            
-                                                        
-                                                            
-                                                        
-
-                                                            
-                                                                
-                                                                    
-                                                                    
-                                                                
-                                                                
-                                                                    
-                                                                    
-                                                                    
-                                                                
-                                                                
-                                                            
-                                                    
-                                                    
-                                                    
-                                                    
-
-
-
-                                                
-                                            
-                                        
-    
                     <?php $__currentLoopData = $myinputs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
                                 <?php if( $value->zustand == '.'): ?>
                                     <div class="col-md-12 col-xs-12">
@@ -131,29 +46,6 @@
 
                                             <div class="panel-body">
 
-                                                
-                                                    
-                                                          
-                                                        
-
-
-                                                        
-                                                            
-                                                            
-                                                            
-                                                            
-                                                        
-
-
-                                                        
-                                                            
-                                                                    
-                                                                
-                                                            
-
-                                                        
-                                                    
-                                                
 
 
                                                 <div class="austauschen">
@@ -228,18 +120,8 @@
                                                 <tr>
                                                     <td>Status:</td>
                                                     <td>
-                                                        
-                                                        
-                                                        
-                                                        
-                                                        
-                                                        
-                                                        
-                                                        
-                                                        
-                                                        
-                                                        
-                                                        <select required name="bewertung">
+
+                                                        <select required name="bewertung" onchange="buttonFaerben(this)">
                                                             <option value="">Bitte auswählen:</option>
                                                             <option value="abnehmen">abnehmen</option>
                                                             <option value="ablehnen">ablehnen</option>
@@ -249,7 +131,7 @@
                                                 </tr>
                                                     <tr>
                                                         <td>Bewertung abschicken:</td>
-                                                        <td><button class="btn btn-primary">bewerten</button></td>
+                                                        <td><button class="btn btn-primary speichern" disabled>bewerten</button></td>
                                                     </tr>
                                             </form>
                                             </table>

@@ -17,20 +17,8 @@ use Illuminate\Support\Facades\DB;
 class AbgabeController extends Controller
 {
 
-//    public function readAufgaben(Request $request)
-//    {
-//
-//        $fach = 1;
-//        $tabelle = DB::table('aufgabe')->join('kurs', 'aufgabe.kurs', '=', 'kurs.id')->where('kurs.id', $fach)->get();
-//        return response()->json($tabelle);
-//
-//    }
-
     public function readUser(Request $request)
     {
-
-
-
         $kurs=session()->get('global_variable');
         $belegung= Belegung::select('user')->where('belegung.rolle','Student')->where('belegung.kurs', $kurs)->get()->toArray();
         $abgabe = DB::table('abgabe')
@@ -58,14 +46,6 @@ class AbgabeController extends Controller
 
 
         ];
-
-
-
-
-
-
-
-
         return response($users);
 
     }
@@ -87,7 +67,6 @@ class AbgabeController extends Controller
             // get all the myinputs
             $aufgabe = Aufgabe::all();
 
-
             $alle = User::all();
 
             $abgabe = DB::table('abgabe')
@@ -106,22 +85,20 @@ class AbgabeController extends Controller
 
     public function show($kurs)
     {
-
             session()->put('global_variable', $kurs);
             // get the myinput
             $aufgabe = Aufgabe::where('kurs', '=', $kurs)->get();
-
+            $belegung= Belegung::select('user')->where('belegung.rolle','Student')->where('belegung.kurs', $kurs)->get()->toArray();
             // SELECT * FROM `abgabe`,`aufgabe`,`users` WHERE abgabe.zugehoerig_zu=aufgabe.id and aufgabe.kurs=2 and abgabe.user=users.id order by users.id
             $abgabe = DB::table('abgabe')
                 ->join('aufgabe', 'abgabe.zugehoerig_zu', '=', 'aufgabe.id')
                 ->join('users', 'abgabe.user', '=', 'users.id')
-                //->join('belegung','users.id', '=', 'belegung.user')
                 ->select('*')
                 ->where('aufgabe.kurs', session()->get('global_variable'))
-               // ->where('belegung.rolle','Student')
+              ->whereIn('users.id',$belegung )
                 ->orderBy('users.name', 'asc')
                 ->orderBy('users.id', 'asc')
-                //->orderBy('aufgabe.aufgabenname')
+
                 ->get();
             // show the view and pass the myinput to it
             return View::make('Tutor.abgabe')->with('myinputs', $aufgabe)->with('ergebnismenge', $abgabe)->with('kurs', session()->get('global_variable'));
