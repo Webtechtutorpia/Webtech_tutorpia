@@ -1,5 +1,4 @@
-@extends('layouts.app')
-@section('content')
+<?php $__env->startSection('content'); ?>
     <div class="container">
         <h1 class="text-center"><strong>Impressum</strong></h1>
         <br><p><span style="text-decoration: underline;">Angaben gem. § 5 TMG:</span></p>
@@ -21,4 +20,6 @@
     <script> $( document ).ready(function() {
             $("li[name='Impressum']").css('background-color', '#f5f8fa');
         });</script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

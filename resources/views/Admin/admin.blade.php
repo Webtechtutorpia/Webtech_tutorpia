@@ -12,7 +12,6 @@
     @endif
     @if(Auth::user()->rolle =='admin')
         <h1>Adminbereich</h1>
-
         <div class="panel panel-success">
             <div class="panel-heading panel" onclick="Bodyhandler(this)"> Adminbereich</div>
             <div class="panel-body notVisible">
@@ -28,6 +27,7 @@
                         </tr>
                         </thead>
                         <tbody>
+                        {{--Zeile für jeden User anlegen--}}
                         @foreach($Users as $user)
                             <tr>
                                 <td class="col-md-4">{{$user->name}}</td>
@@ -35,6 +35,7 @@
                                 <td class="col-md-2">{{ $user->rolle }}</td>
 
                                 <td class="col-md-2">
+                                    {{--Nach Rolle des Benutzers vordefinierte Value auswählen--}}
                                     @if($user->rolle=='admin')
                                         <select name=rolle[]>
                                             <option value="admin" selected>Admin</option>
@@ -54,8 +55,6 @@
 
                     <label for=delete">Account löschen</label>
                     <input type="text" id=delete" name="delete" placeholder="Accountname oder Email eingeben">
-
-
                     <input class="btn btn-primary" type="submit" value="bestätigen">
                 </form>
             </div>
@@ -74,9 +73,7 @@
 
                         <select name="leiter"  class="form-control">
                                 @foreach($Users as $user)
-
                                         <option value="{{$user->id}}">{{$user->name}}</option>
-                             
                                 @endforeach
                             </select>
                         <input type="submit" class="btn btn-primary form-control">
@@ -104,7 +101,6 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-
                                 @foreach($kurs['belegungen'] as $belegung)
                                     <tr>
                                         <td class="col-md-4"> {{$belegung->name}}</td>
