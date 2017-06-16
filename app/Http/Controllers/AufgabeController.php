@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Tutorpia\Http\Requests;
 use Auth;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 class AufgabeController extends Controller
 {
 
@@ -41,6 +42,9 @@ class AufgabeController extends Controller
 
         $id = Aufgabe::orderBy('id', 'desc')->first();
 
+
+
+
         $users =DB::table('belegung')
             ->join('users', 'belegung.user', '=', 'users.id')
             ->select('users.id')
@@ -54,6 +58,11 @@ class AufgabeController extends Controller
                 'user' => $user->id,
                 'zugehoerig_zu' => $id->id,
             ]);
+            DB::table("activity")->insert([
+                'zeit'=>Carbon::now(),
+                'zuordnung_aufgabe'=>$id->id,
+                'was'=>'aufgabe',
+                'user'=>$user->id]);
         }
 
     }

@@ -54,7 +54,7 @@
                     <input class="btn btn-primary" type="submit" value="bestätigen">
                 </form>
                 <br>
-                    <form method="post" action="<?php echo e(Url ('test')); ?>" onsubmit="return confirm('Sind Sie sicher, dass Sie den Account wirklich löschen wollen? Dadurch könnten wichtige Daten verloren gehen')">
+                    <form method="post" action="<?php echo e(Url ('test')); ?>" onsubmit="return confirm('Sind Sie sicher, dass Sie den Account wirklich löschen wollen? Dadurch könnten wichtige Daten verloren gehen.')">
                         <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                     <label for=delete">Account löschen</label>
                     <input type="text" id="delete" name="delete" placeholder="Accountname oder Email eingeben">

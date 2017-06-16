@@ -31,20 +31,37 @@
                                 
                                 <tbody id="tbody">
                                 <?php $__currentLoopData = $myinputs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+                                    
+                                        
+                                            
+                                                
+                                            
+                                        
+                                        
+                                            
+                                                    
+                                                    
+                                            
+                                        
+                                            
+                                                    
+                                                    
+                                            
+                                        
+                                    
                                     <tr>
-                                        <?php if($value->zustand == '.'|| $value->zustand == '+' || $value->zustand == '-'): ?>
+
                                             <td class="col-md-4 col-xs-8">
-                                                <p><?php echo e(Carbon\Carbon::parse($value->abgabeupdated_at)->format('d-m-Y H:i:s')); ?></p>
+                                                <p><?php echo e(Carbon\Carbon::parse($value->zeit)->format('d-m-Y H:i:s')); ?></p>
                                             </td>
-                                        <?php endif; ?>
-                                        <?php if($value->zustand == '.'): ?>
+                                        <?php if($value->was == 'aufgabe'): ?>
                                             <td class="col-md-4 col-xs-8"><p><?php echo e($value->erstellt_von); ?>
 
                                                     hat <?php echo e($value->aufgabenname); ?> mit Abgabe am <?php echo e($value->abgabedatum); ?>
 
                                                     im Kurs <?php echo e($value->kurs); ?> erstellt.</p>
                                             </td>
-                                        <?php elseif($value->zustand == '+' || $value->zustand == '-'): ?>
+                                        <?php elseif($value->was == 'abgabe'): ?>
                                             <td class="col-md-4 col-xs-8"><p><?php echo e($value->bearbeitet_von); ?> hat
                                                     deine <?php echo e($value->aufgabenname); ?> im Kurs <?php echo e($value->kurs); ?>
 

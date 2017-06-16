@@ -115,12 +115,15 @@ Route::group(['middleware' => ['auth']], function () {
 
     });
 
-    Route::group(['middleware' => 'group:Professor'], function(){
+    //) Route::group(['middleware' => 'group:Professor,""'], function(){
+
+        Route::resource('Professor','AufgabeController');
         Route::get('reset','AufgabeController@reset');
         Route::post('confirm','AufgabeController@confirmsite');
-        Route::resource('Professor','AufgabeController');
 
-    });
+    //});
+
+
 
     Route::resource('FileUpload','FileUploadController');
     Route::resource('myinputs', 'MyinputController');

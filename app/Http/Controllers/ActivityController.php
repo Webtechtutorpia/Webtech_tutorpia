@@ -19,12 +19,19 @@ class ActivityController extends Controller
     {
 
 
-            $abgabe = DB::table('abgabe')
-                ->join('aufgabe', 'abgabe.zugehoerig_zu', '=', 'aufgabe.id')
-                ->select('abgabe.updated_at as abgabeupdated_at','abgabe.*','aufgabe.*')
-                ->where('abgabe.user','=',Auth::user()->id)
-                ->orderBy('abgabeupdated_at','desc')
-                ->get();
+//            $abgabe = DB::table('abgabe')
+//                ->join('aufgabe', 'abgabe.zugehoerig_zu', '=', 'aufgabe.id')
+//                ->select('abgabe.updated_at as abgabeupdated_at','abgabe.*','aufgabe.*')
+//                ->where('abgabe.user','=',Auth::user()->id)
+//                ->orderBy('abgabeupdated_at','desc')
+//                ->get();
+
+        $abgabe=DB::table('activity')
+            ->leftjoin('aufgabe','activity.zuordnung_aufgabe','aufgabe.id')
+            ->leftjoin('abgabe','activity.zuordnung_abgabe','abgabe.abgabeid')
+            ->select('*')
+            ->orderBy('activity.zeit','desc')
+            ->get();
 
 
             // load the view and pass the myinputs
