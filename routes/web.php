@@ -133,6 +133,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('userchanges','AdminController@aendereUser');
     Route::Post('belegungchanges', 'AdminController@aenderebelegung');
     Route::post('kursanlegen','AdminController@createKurs');
+    Route::post('deleteUser','AdminController@deleteUser');
 
 
 

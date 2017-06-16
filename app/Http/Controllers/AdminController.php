@@ -2,6 +2,7 @@
 
 namespace Tutorpia\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Tutorpia\Http\Controllers\Controller;
@@ -68,18 +69,10 @@ class AdminController extends Controller
                     $user->save();
         }
 
-        if($request->delete != "") {
-            $users = DB::table('users')->select('id')->where('name', '=', $request->delete)->orwhere('email', $request->delete)->get();
-
-            foreach ($users as $u) {
-                $test = User::find($u->id)->delete();
-
-            }
-        }
 
 
 
-       $request->Session()->flash('message', 'Adminbereich wurden erfolgreich geändert');
+       $request->Session()->flash('message', 'Userrollen wurden erfolgreich geändert');
         //Session::flash('success', 'Änderungen wurden übernommen');
         return back();
 
@@ -99,7 +92,7 @@ class AdminController extends Controller
             }
         }
 
-            $request->Session()->flash('message', 'Kursbereiche wurden erfolgreich geändert');
+            $request->Session()->flash('message', 'Kursrollen wurden erfolgreich geändert');
         return back();
         }
 //        for ($i = 0; $i < sizeof($Belegungen['belegungen']); $i++) {
@@ -110,6 +103,29 @@ class AdminController extends Controller
 //            $Belegung->save();
 //        }
 
+
+    public function deleteUser(Request $request){
+
+        if($request->delete != "") {
+            $users = DB::table('users')->select('id')->where('name', '=', $request->delete)->orwhere('email', $request->delete)->get();
+            if($users -> isEmpty()){
+                $request->Session()->flash('negativ', 'Der zu löschende User existiert nicht');
+            }
+            else {
+                $request->Session()->flash('message', 'Users wurden erfolgreich gelöscht');
+            }
+
+            foreach ($users as $u) {
+                $test = User::find($u->id)->delete();
+
+            }
+        }
+        else {
+            $request->Session()->flash('negativ', 'Der zu löschende User existiert nicht');
+        }
+
+    return back();
+    }
 
     public function createKurs(Request $request){
 
