@@ -2,17 +2,12 @@
 
 @section('content')
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="{{ URL::asset('js/Aufgaben.js') }}"></script>
-
     <div class="container" id="container">
         <div class="row">
 
             <h2>Studentenmodus: {{$kurs}}</h2>
 
             <div class="col-md-4 col-md-offset-8">
-
-
                 <form class="form-inline" method="get">
                     <div class="form-group">
                         <input type="hidden" name="_token" value="<?php Session::token()?>">
@@ -29,12 +24,12 @@
 
             {{--je nach Datenbankeintrag Element anzeigen--}}
             <h3>Alle Aufgaben:</h3>
-            @foreach($myinputs as $key => $value)
+            @foreach($myinputs as $value)
 
                 @if( $value->zustand == '.')
                     <div class="col-md-12 col-xs-12">
                         <div class="panel panel-info aufgabe ">
-                            <div class="panel-heading" onclick="Bodyhandler(this)"> {{$value->aufgabenname}}
+                            <div class="panel-heading" onclick="panel_behavior(this)"> {{$value->aufgabenname}}
                                 <div style="display: inline; float: right" class="glyphicon glyphicon-minus"></div>
                             </div>
 
@@ -84,11 +79,6 @@
                                         </div>
                                     </div>
                                     <div class="panel-group" style="padding-bottom: 1%">
-                                        <div class="col-md-3 col-xs-6 size"> Tutoren kontaktieren:</div>
-                                        <div class="col-md-3 col-xs-2 size"><span><a
-                                                        href="mailto:{{$value->email}}?subject=Frage zur Abnahme von {{$value->aufgabenname}} bei {{$value->name}}"
-                                                        class="glyphicon glyphicon-envelope"></a></span>
-                                        </div>
                                         <div class="col-md-3 col-xs-12"> Status:</div>
                                         <div class="col-md-3 col-xs-12 size">Warten auf Upload</div>
                                     </div>
@@ -101,7 +91,7 @@
                 @if($value->zustand == '-')
                     <div class="col-md-12 col-xs-12">
                         <div class="panel panel-danger aufgabe ">
-                            <div class="panel-heading" onclick="Bodyhandler(this)"> {{$value->aufgabenname}}
+                            <div class="panel-heading" onclick="panel_behavior(this)"> {{$value->aufgabenname}}
                                 <div style="display: inline; float: right" class="glyphicon glyphicon-remove"></div>
                             </div>
                             <div class="panel-body notVisible">
@@ -129,7 +119,7 @@
                                 <div class="panel-group" style="padding-bottom: 1%">
                                     <div class="col-md-3 col-xs-6 size"> Tutor kontaktieren:</div>
                                     <div class="col-md-3 col-xs-2 size"><span><a
-                                                    href="mailto:{{$value->email}}?subject=Fehler bei Abnahme von {{$value->aufgabenname}} bei {{$value->name}}"
+                                                    href="mailto:{{$value->tutoremail}}?subject=Fehler bei Abnahme von {{$value->aufgabenname}} bei {{$value->name}}"
                                                     class="glyphicon glyphicon-envelope"></a></span>
                                     </div>
                                 </div>
@@ -150,7 +140,7 @@
                     <div class="col-md-12 col-xs-12 ">
 
                         <div class="panel panel-success aufgabe ">
-                            <div class="panel-heading" onclick="Bodyhandler(this)"> {{$value->aufgabenname}}
+                            <div class="panel-heading" onclick="panel_behavior(this)"> {{$value->aufgabenname}}
                                 <div style="display: inline; float: right" class="glyphicon glyphicon-ok"></div>
                             </div>
                             <div class="panel-body notVisible">
@@ -184,7 +174,7 @@
                                 <div class="panel-group ">
                                     <div class="col-md-3 col-xs-6 size"> Tutor kontaktieren:</div>
                                     <div class="col-md-3 col-xs-2 size"><span><a
-                                                    href="mailto:{{$value->email}}?subject=Frage zur Abnahme von {{$value->aufgabenname}} bei {{$value->name}}"
+                                                    href="mailto:{{$value->tutoremail}}?subject=Frage zur Abnahme von {{$value->aufgabenname}} bei {{$value->name}}"
                                                     class="glyphicon glyphicon-envelope"></a></span>
                                     </div>
                                 </div>
@@ -206,7 +196,7 @@
                     <div class="col-md-12 col-xs-12 ">
 
                         <div class="panel panel-warning aufgabe ">
-                            <div class="panel-heading" onclick="Bodyhandler(this)"> {{$value->aufgabenname}}
+                            <div class="panel-heading" onclick="panel_behavior(this)"> {{$value->aufgabenname}}
                                 <div style="display: inline; float: right" class="glyphicon glyphicon-minus"></div>
                             </div>
                             <div class="panel-body notVisible">
@@ -238,7 +228,7 @@
                                 <div class="panel-group" style="padding-bottom: 1%;">
                                     <div class="col-md-3 col-xs-6 size"> Tutor kontaktieren:</div>
                                     <div class="col-md-3 col-xs-2 size"><span><a
-                                                    href="mailto:{{$value->email}}?subject=Frage zur {{$value->aufgabenname}} von {{$value->name}}"
+                                                    href="mailto:{{$value->tutoremail}}?subject=Frage zur {{$value->aufgabenname}} von {{$value->name}}"
                                                     class="glyphicon glyphicon-envelope"></a></span>
                                     </div>
                                     <div class="col-md-3 col-xs-12"> Status:</div>
@@ -248,15 +238,8 @@
                         </div>
                     </div>
                 @endif
-
-
-
             @endforeach
-
-
         </div>
     </div>
-
-
-
+    <script type="text/javascript" src="{{ URL::asset('js/minjs/aufgaben.min.js') }}"></script>
 @endsection

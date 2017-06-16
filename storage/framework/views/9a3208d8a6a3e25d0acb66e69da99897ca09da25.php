@@ -1,5 +1,4 @@
 <?php $__env->startSection('content'); ?>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <div class="container">
         <h1 class="text-center"><strong>Datenschutzerklärung</strong></h1>
@@ -46,6 +45,7 @@
 
 
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script> $( document ).ready(function() {
             $("li[name='Datenschutz']").css('background-color', '#f5f8fa');
         });</script>

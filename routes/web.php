@@ -100,12 +100,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('Activity','ActivityController');
     Route::resource('Kurse', 'BelegungController');
 
-    Route::get('Aufgabenansicht/ajaxcityList','AufgabenansichtController@matchHTML');
+    Route::get('Aufgabenansicht/ajaxAufgabenansicht','AufgabenansichtController@matchHTML');
     Route::get('Aufgabenansicht/bestimmteAbgabe/{id}/{name}','KorrekturController@UserAbgaben');
 
     Route::resource('Aufgabenansicht','AufgabenansichtController');
 
-    //Route::group(['middleware' => ['group:Professor,Tutor'] ], function(){
+    Route::group(['middleware' => ['group:Tutor,Professor'] ], function(){
 
 
         Route::get('Tutor/Aufgabenkorrektur','KorrekturController@UserAbgaben');
@@ -113,7 +113,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('Tutor','AbgabeController');
         Route::resource('korrektur', 'KorrekturController');
 
-    //});
+    });
 
     Route::group(['middleware' => 'group:Professor'], function(){
         Route::get('reset','AufgabeController@reset');
@@ -127,8 +127,8 @@ Route::group(['middleware' => ['auth']], function () {
 
 
     Route::resource('admin', 'AdminController');
-    Route::post('test','AdminController@test');
-    Route::Post('test2', 'AdminController@test2');
+    Route::post('userchanges','AdminController@aendereUser');
+    Route::Post('belegungchanges', 'AdminController@aenderebelegung');
     Route::post('kursanlegen','AdminController@createKurs');
 
 

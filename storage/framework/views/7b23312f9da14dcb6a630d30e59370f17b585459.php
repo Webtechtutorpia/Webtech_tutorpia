@@ -8,21 +8,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
     <link href="<?php echo e(asset('css/bootstrap.min.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('css/bootstrap-theme.min.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('css/main.css')); ?>" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-    <script type="text/javascript" src="<?php echo e(URL::asset('js/layout.js')); ?>"></script>
-    
-    <script>
-
-
-
-
-</script>
     <title><?php echo e(config('app.name', 'Tutorpia')); ?></title>
     <link rel="icon" type="image/jpg" href="images/euleicon.jpg">
     <!-- Styles -->
@@ -64,9 +54,8 @@
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse" onmouseover="hoverselectednavbar()">
                     <!-- Left Side Of Navbar -->
-
+                    
                    <?php if(Auth::check()): ?>
-
                         <ul class="nav navbar-nav">
                             <li role="presentation" name="Übersicht"><a href="/Activity">Übersicht</a></li>
                             <li role="presentation" name="Kurse"><a href="/Kurse">Kurse</a></li>
@@ -87,7 +76,6 @@
                 <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
-
                         <?php if(Auth::guest()): ?>
                             <li><a  href="<?php echo e(url('/login')); ?>">Login</a></li>
                             <li><a href="<?php echo e(url('/register')); ?>">Registrierung</a></li>
@@ -118,9 +106,6 @@
             </div>
         </nav>
     </div>
-
-
-
 </header>
 <main>
 
@@ -173,7 +158,8 @@
         </nav>
     </div>
 </footer>
-<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+
+
 <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
 <script>
     window.addEventListener("load", function(){
@@ -196,5 +182,7 @@
             }
         })});
 </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script type="text/javascript" src="<?php echo e(URL::asset('js/minjs/layout.min.js')); ?>"></script>
 </body>
 </html>

@@ -56,7 +56,7 @@ class AdminController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function test(Request $request)
+    public function aendereUser(Request $request)
     {
 
         $Users = $request->session()->pull('Users');
@@ -68,15 +68,14 @@ class AdminController extends Controller
                     $user->save();
         }
 
-        //Forein Key lösch Problem bitte lösen
+        if($request->delete != "") {
+            $users = DB::table('users')->select('id')->where('name', '=', $request->delete)->orwhere('email', $request->delete)->get();
 
-        $users = DB::table('users')->select('id')->where('name','=',$request->delete)->orwhere( 'email', $request->delete)->get();
+            foreach ($users as $u) {
+                $test = User::find($u->id)->delete();
 
-          foreach ($users as $u)
-           {
-           $test= User::find($u->id)->delete();
-
-       }
+            }
+        }
 
 
 
@@ -87,19 +86,15 @@ class AdminController extends Controller
 //         return View::make('Professor.test')->with('myinputs', $users);
     }
 
-    public function test2(Request $request)
+    public function aenderebelegung(Request $request)
     {
-//        return response($request->kursrolle);
         $Belegungen = $request->session()->get('kurse');
-//        var_dump(sizeof($Belegungen['belegungen']));
-//        return response($Belegungen['belegungen']);
-//return response($Belegungen);
    $j=0;
         foreach($Belegungen as $belegung){
             for ($i = 0; $i < sizeof($belegung['belegungen']); $i++) {
-                $test = Belegung::find($belegung['belegungen'][$i]->id);
-                $test->rolle = $request->kursrolle[$j];
-                $test->save();
+                $bel = Belegung::find($belegung['belegungen'][$i]->id);
+                $bel->rolle = $request->kursrolle[$j];
+                $bel->save();
                 $j++;
             }
         }
@@ -131,6 +126,10 @@ class AdminController extends Controller
 
         $request->session()->flash('message' ,'Kurs erfolgreich angelegt');
         return back();
+    }
+
+    public function deleteKurs(Request $request){
+
     }
 }
 ?>

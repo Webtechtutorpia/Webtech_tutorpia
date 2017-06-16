@@ -1,10 +1,5 @@
 @extends('layouts.app')
 @section('content')
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="{{ URL::asset('js/admin.js') }}"></script>
-    <script> $(document).ready(function () {
-            $("li[name='Admin']").css('background-color', '#f5f8fa');
-        });</script>
     <div class="container">
         <div class="row">
     @if( Session::has('message'))
@@ -12,10 +7,12 @@
     @endif
     @if(Auth::user()->rolle =='admin')
         <h1>Adminbereich</h1>
+
         <div class="panel panel-success">
-            <div class="panel-heading panel" onclick="Bodyhandler(this)"> Adminbereich</div>
+            <div class="panel-heading panel" onclick="panel_behavior(this)"> Adminbereich</div>
             <div class="panel-body notVisible">
-                <form method="post" action="{{Url ('test')}}">
+              <label>Rolle ändern</label>
+                <form method="post" action="{{Url ('userchanges')}}"  onsubmit="if( document.getElementsByName('delete')[0].value != ''){return confirm('Sind Sie sicher, dass Sie den Account wirklich löschen wollen? An den Account gebundete Daten wie beispielweise geleitetete Kurse werden ebenfalls verloren gehen.')}">
                     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                     <table>
                         <thead>
@@ -52,9 +49,11 @@
                         @endforeach
                         </tbody>
                     </table>
+                <br>
 
+                        <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                     <label for=delete">Account löschen</label>
-                    <input type="text" id=delete" name="delete" placeholder="Accountname oder Email eingeben">
+                    <input type="text" id="delete" name="delete" placeholder="Accountname oder Email eingeben">
                     <input class="btn btn-primary" type="submit" value="bestätigen">
                 </form>
             </div>
@@ -73,7 +72,9 @@
 
                         <select name="leiter"  class="form-control">
                                 @foreach($Users as $user)
+
                                         <option value="{{$user->id}}">{{$user->name}}</option>
+                             
                                 @endforeach
                             </select>
                         <input type="submit" class="btn btn-primary form-control">
@@ -84,12 +85,13 @@
         @if($kurse ==null)
             <h3>Keine Kurse angelegt</h3>
         @else
-            <form method="post" action="test2">
+            <form method="post" action="{{ URL ('belegungchanges') }}">
                 <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 
                 @foreach($kurse as $kurs)
                     <div class="panel panel-success">
-                        <div class="panel-heading panel" onclick="Bodyhandler(this)">{{$kurs['kurs']}}</div>
+                        <div class="panel-heading panel" onclick="panel_behavior(this)">{{$kurs['kurs']}}
+                        </div>
                         <div class="panel-body notVisible">
                             <table>
                                 <thead>
@@ -141,4 +143,9 @@
     @endif
         </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script> $(document).ready(function () {
+            $("li[name='Admin']").css('background-color', '#f5f8fa');
+        });</script>
+
 @endsection

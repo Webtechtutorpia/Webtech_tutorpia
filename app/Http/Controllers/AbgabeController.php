@@ -110,18 +110,17 @@ class AbgabeController extends Controller
             session()->put('global_variable', $kurs);
             // get the myinput
             $aufgabe = Aufgabe::where('kurs', '=', $kurs)->get();
-
+            $belegung= Belegung::select('user')->where('belegung.rolle','Student')->where('belegung.kurs', $kurs)->get()->toArray();
             // SELECT * FROM `abgabe`,`aufgabe`,`users` WHERE abgabe.zugehoerig_zu=aufgabe.id and aufgabe.kurs=2 and abgabe.user=users.id order by users.id
             $abgabe = DB::table('abgabe')
                 ->join('aufgabe', 'abgabe.zugehoerig_zu', '=', 'aufgabe.id')
                 ->join('users', 'abgabe.user', '=', 'users.id')
-                //->join('belegung','users.id', '=', 'belegung.user')
                 ->select('*')
                 ->where('aufgabe.kurs', session()->get('global_variable'))
-               // ->where('belegung.rolle','Student')
+              ->whereIn('users.id',$belegung )
                 ->orderBy('users.name', 'asc')
                 ->orderBy('users.id', 'asc')
-                //->orderBy('aufgabe.aufgabenname')
+
                 ->get();
             // show the view and pass the myinput to it
             return View::make('Tutor.abgabe')->with('myinputs', $aufgabe)->with('ergebnismenge', $abgabe)->with('kurs', session()->get('global_variable'));

@@ -14,8 +14,6 @@
     <link href="<?php echo e(asset('css/bootstrap-theme.min.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('css/main.css')); ?>" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
-    <script type="text/javascript" src="<?php echo e(URL::asset('js/jquery.cookie.js')); ?>"></script>
-    <script type="text/javascript" src="<?php echo e(URL::asset('js/jquery-3.2.1.js')); ?>"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script type="text/javascript" src="<?php echo e(URL::asset('js/layout.js')); ?>"></script>
     

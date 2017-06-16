@@ -2,8 +2,6 @@
 
 @section('content')
     {{--Problem jquery aus layouts lädt nicht schnell genug--}}
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="{{ URL::asset('js/Abgabe.js') }}"></script>
     {{--@if (Auth::user()->rolle=="Tutor" || Auth::user()->rolle=="Professor" )--}}
         <div class="container">
             <div class="row">
@@ -88,6 +86,7 @@
 
             </div>
         </div>
-
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="{{ URL::asset('js/minjs/abgabe.min.js') }}"></script>
     {{--@endif--}}
 @endsection
