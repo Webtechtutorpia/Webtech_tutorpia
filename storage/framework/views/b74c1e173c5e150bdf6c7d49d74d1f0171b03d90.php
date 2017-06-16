@@ -1,10 +1,14 @@
 <?php $__env->startSection('content'); ?>
     <div class="container">
         <div class="row">
+
             <div class="col-md-12">
                 <h3>Wilkommen zurück <?php echo e(Auth::user()->name); ?>!</h3>
             </div>
-            <div class="col-md-12">
+            <div class="col-xs-12 col-md-4 hidden-sm">
+                <img class="img-responsive" src="/images/eule_hintergrund.jpg" alt="eule" width="332" height="524">
+            </div>
+            <div class=" col-md-offset-1 col-md-7 col-xs-12">
                 <div class="panel panel-success">
                     <div class="panel-heading" onclick="panel_behavior(this)"><b>Neueste Aktivitäten</b></div>
                     <div class="panel-body">
@@ -21,21 +25,21 @@
                                 <?php endif; ?>
                                 
                                 <tbody id="tbody">
-                                <?php $__currentLoopData = $myinputs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+
+                                <?php $__currentLoopData = $myinputs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
                                     <tr>
-                                        <?php if($value->zustand == '.'|| $value->zustand == '+' || $value->zustand == '-'): ?>
+
                                             <td class="col-md-4 col-xs-8">
-                                                <p><?php echo e(Carbon\Carbon::parse($value->abgabeupdated_at)->format('d-m-Y H:i:s')); ?></p>
+                                                <p><?php echo e(Carbon\Carbon::parse($value->zeit)->format('d-m-Y H:i:s')); ?></p>
                                             </td>
-                                        <?php endif; ?>
-                                        <?php if($value->zustand == '.'): ?>
+                                        <?php if($value->was == 'aufgabe'): ?>
                                             <td class="col-md-4 col-xs-8"><p><?php echo e($value->erstellt_von); ?>
 
                                                     hat <?php echo e($value->aufgabenname); ?> mit Abgabe am <?php echo e($value->abgabedatum); ?>
 
                                                     im Kurs <?php echo e($value->kurs); ?> erstellt.</p>
                                             </td>
-                                        <?php elseif($value->zustand == '+' || $value->zustand == '-'): ?>
+                                        <?php elseif($value->was == 'abgabe'): ?>
                                             <td class="col-md-4 col-xs-8"><p><?php echo e($value->bearbeitet_von); ?> hat
                                                     deine <?php echo e($value->aufgabenname); ?> im Kurs <?php echo e($value->kurs); ?>
 
@@ -43,6 +47,7 @@
                                             </td>
                                         <?php endif; ?>
                                     </tr>
+
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
                             </tbody>
                             </table>
@@ -50,6 +55,9 @@
                     </div>
                 </div>
             </div>
+
+
+
         </div>
     </div>
 
