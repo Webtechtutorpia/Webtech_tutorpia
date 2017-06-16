@@ -58,14 +58,6 @@ class AbgabeController extends Controller
 
 
         ];
-
-
-
-
-
-
-
-
         return response($users);
 
     }
@@ -87,7 +79,6 @@ class AbgabeController extends Controller
             // get all the myinputs
             $aufgabe = Aufgabe::all();
 
-
             $alle = User::all();
 
             $abgabe = DB::table('abgabe')
@@ -106,7 +97,6 @@ class AbgabeController extends Controller
 
     public function show($kurs)
     {
-
             session()->put('global_variable', $kurs);
             // get the myinput
             $aufgabe = Aufgabe::where('kurs', '=', $kurs)->get();

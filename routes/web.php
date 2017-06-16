@@ -105,7 +105,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('Aufgabenansicht','AufgabenansichtController');
 
-    Route::group(['middleware' => ['group:Tutor,Professor'] ], function(){
+   // Route::group(['middleware' => ['group:Tutor,Professor'] ], function(){
 
 
         Route::get('Tutor/Aufgabenkorrektur','KorrekturController@UserAbgaben');
@@ -113,7 +113,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('Tutor','AbgabeController');
         Route::resource('korrektur', 'KorrekturController');
 
-    });
+    //});
 
     //) Route::group(['middleware' => 'group:Professor,""'], function(){
 
