@@ -32,7 +32,10 @@ class ActivityController extends Controller
             ->select('*')
             ->where('activity.user','=',Auth::user()->id)
             ->orderBy('activity.zeit','desc')
-            ->get();
+            ->paginate(8);
+//        if(count($abgabe)>=10){
+//
+//        }
 
 
             // load the view and pass the myinputs

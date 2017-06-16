@@ -32,7 +32,9 @@
                                 @endif
                                 {{--je nach Datenbankeintrag Element anzeigen--}}
                                 <tbody id="tbody">
-                                @foreach($myinputs as $key => $value )
+
+                                @foreach($myinputs as $value )
+
                                     {{--<tr>--}}
                                         {{--@if($value->zustand == '.'|| $value->zustand == '+' || $value->zustand == '-')--}}
                                             {{--<td class="col-md-4 col-xs-8">--}}
@@ -68,6 +70,7 @@
                                             </td>
                                         @endif
                                     </tr>
+
                                 @endforeach
                             </tbody>
                             </table>

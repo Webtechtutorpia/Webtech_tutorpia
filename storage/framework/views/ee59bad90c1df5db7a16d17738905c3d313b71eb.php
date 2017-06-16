@@ -30,7 +30,9 @@
                                 <?php endif; ?>
                                 
                                 <tbody id="tbody">
-                                <?php $__currentLoopData = $myinputs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+
+                                <?php $__currentLoopData = $myinputs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+
                                     
                                         
                                             
@@ -69,6 +71,7 @@
                                             </td>
                                         <?php endif; ?>
                                     </tr>
+
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
                             </tbody>
                             </table>
