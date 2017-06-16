@@ -5,7 +5,7 @@
 
 
 
-    <div class="panel panel-info">
+    <div class="panel panel-success">
         <div class="panel-heading">{{$request->aufgabenname}}</div>
         <div class="panel-body">
             <div class="bg-warning"> <p>Sie wollen die folgende Aufgabe anlegen: {{$request->aufgabenname}}</p>

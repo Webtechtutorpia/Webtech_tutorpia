@@ -25,10 +25,14 @@ class BelegungMiddleware
             // Auslesen der Benutzergruppen-ID aus der Benutzer-Instanz
             $userGroupId = $request->user()->id;
             $kurs=$request->route()->parameters();
+            if($kurs == null){
+                $userGroup = DB::table('belegung')->select('*')->where('user', $userGroupId)->first();
+            }
 
             // Anhand dieser ID wird die Benutzergruppe ausgelelesen
-            $userGroup = DB::table('belegung')->select('*')->where('user', $userGroupId)->where('kurs',$kurs)->first();
-
+            else {
+                $userGroup = DB::table('belegung')->select('*')->where('user', $userGroupId)->where('kurs', $kurs)->first();
+            }
             // Abschließend wird geprüft, ob der slug der Benutzergruppe mit dem übergebenen Parameter übereinstimmt
             //foreach ($group as $rolle) {
 

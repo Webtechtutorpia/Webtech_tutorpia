@@ -3,10 +3,11 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+
+            <div class="col-md-5">
                 <h3>Wilkommen zurück {{ Auth::user()->name }}!</h3>
             </div>
-            <div class="col-md-12">
+            <div class="col-md-7">
                 <div class="panel panel-success">
                     <div class="panel-heading" onclick="panel_behavior(this)"><b>Neueste Aktivitäten</b></div>
                     <div class="panel-body">
@@ -23,25 +24,45 @@
                                 @endif
                                 {{--je nach Datenbankeintrag Element anzeigen--}}
                                 <tbody id="tbody">
-                                @foreach($myinputs as $key => $value )
+
+                                @foreach($myinputs as $value )
+
+                                    {{--<tr>--}}
+                                        {{--@if($value->zustand == '.'|| $value->zustand == '+' || $value->zustand == '-')--}}
+                                            {{--<td class="col-md-4 col-xs-8">--}}
+                                                {{--<p>{{Carbon\Carbon::parse($value->abgabeupdated_at)->format('d-m-Y H:i:s')}}</p>--}}
+                                            {{--</td>--}}
+                                        {{--@endif--}}
+                                        {{--@if($value->zustand == '.')--}}
+                                            {{--<td class="col-md-4 col-xs-8"><p>{{$value->erstellt_von}}--}}
+                                                    {{--hat {{$value->aufgabenname}} mit Abgabe am {{$value->abgabedatum}}--}}
+                                                    {{--im Kurs {{$value->kurs}} erstellt.</p>--}}
+                                            {{--</td>--}}
+                                        {{--@elseif($value->zustand == '+' || $value->zustand == '-')--}}
+                                            {{--<td class="col-md-4 col-xs-8"><p>{{$value->bearbeitet_von}} hat--}}
+                                                    {{--deine {{$value->aufgabenname}} im Kurs {{$value->kurs}}--}}
+                                                    {{--bewertet.</p>--}}
+                                            {{--</td>--}}
+                                        {{--@endif--}}
+                                    {{--</tr>--}}
                                     <tr>
-                                        @if($value->zustand == '.'|| $value->zustand == '+' || $value->zustand == '-')
+
                                             <td class="col-md-4 col-xs-8">
-                                                <p>{{Carbon\Carbon::parse($value->abgabeupdated_at)->format('d-m-Y H:i:s')}}</p>
+                                                <p>{{Carbon\Carbon::parse($value->zeit)->format('d-m-Y H:i:s')}}</p>
                                             </td>
-                                        @endif
-                                        @if($value->zustand == '.')
+                                        @if($value->was == 'aufgabe')
                                             <td class="col-md-4 col-xs-8"><p>{{$value->erstellt_von}}
                                                     hat {{$value->aufgabenname}} mit Abgabe am {{$value->abgabedatum}}
                                                     im Kurs {{$value->kurs}} erstellt.</p>
                                             </td>
-                                        @elseif($value->zustand == '+' || $value->zustand == '-')
+                                        @elseif($value->was == 'abgabe')
                                             <td class="col-md-4 col-xs-8"><p>{{$value->bearbeitet_von}} hat
                                                     deine {{$value->aufgabenname}} im Kurs {{$value->kurs}}
                                                     bewertet.</p>
                                             </td>
                                         @endif
                                     </tr>
+
                                 @endforeach
                             </tbody>
                             </table>

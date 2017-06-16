@@ -19,12 +19,23 @@ class ActivityController extends Controller
     {
 
 
-            $abgabe = DB::table('abgabe')
-                ->join('aufgabe', 'abgabe.zugehoerig_zu', '=', 'aufgabe.id')
-                ->select('abgabe.updated_at as abgabeupdated_at','abgabe.*','aufgabe.*')
-                ->where('abgabe.user','=',Auth::user()->id)
-                ->orderBy('abgabeupdated_at','desc')
-                ->get();
+//            $abgabe = DB::table('abgabe')
+//                ->join('aufgabe', 'abgabe.zugehoerig_zu', '=', 'aufgabe.id')
+//                ->select('abgabe.updated_at as abgabeupdated_at','abgabe.*','aufgabe.*')
+//                ->where('abgabe.user','=',Auth::user()->id)
+//                ->orderBy('abgabeupdated_at','desc')
+//                ->get();
+
+        $abgabe=DB::table('activity')
+            ->leftjoin('aufgabe','activity.zuordnung_aufgabe','aufgabe.id')
+            ->leftjoin('abgabe','activity.zuordnung_abgabe','abgabe.abgabeid')
+            ->select('*')
+            ->where('activity.user','=',Auth::user()->id)
+            ->orderBy('activity.zeit','desc')
+            ->paginate(8);
+//        if(count($abgabe)>=10){
+//
+//        }
 
 
             // load the view and pass the myinputs
@@ -33,20 +44,28 @@ class ActivityController extends Controller
     }
 
     public function ajax(){
-        $abgaben = DB::table('abgabe')
-            ->join('aufgabe', 'abgabe.zugehoerig_zu', '=', 'aufgabe.id')
-            ->select('abgabe.updated_at as abgabeupdated_at','abgabe.*','aufgabe.*')
-            ->where('abgabe.user','=',Auth::user()->id)
-            ->orderBy('abgabeupdated_at','desc')
+//        $abgaben = DB::table('abgabe')
+//            ->join('aufgabe', 'abgabe.zugehoerig_zu', '=', 'aufgabe.id')
+//            ->select('abgabe.updated_at as abgabeupdated_at','abgabe.*','aufgabe.*')
+//            ->where('abgabe.user','=',Auth::user()->id)
+//            ->orderBy('abgabeupdated_at','desc')
+//            ->get();
+//        foreach ($abgaben as $abgabe){
+//
+//                $abgabe->abgabeupdated_at = Carbon::parse($abgabe->abgabeupdated_at)->format('d-m-Y H:i:s');
+//
+//        }
+        $abgabe=DB::table('activity')
+            ->leftjoin('aufgabe','activity.zuordnung_aufgabe','aufgabe.id')
+            ->leftjoin('abgabe','activity.zuordnung_abgabe','abgabe.abgabeid')
+            ->select('*')
+            ->where('activity.user','=',Auth::user()->id)
+            ->orderBy('activity.zeit','desc')
             ->get();
-        foreach ($abgaben as $abgabe){
-
-                $abgabe->abgabeupdated_at = Carbon::parse($abgabe->abgabeupdated_at)->format('d-m-Y H:i:s');
 
 
-
-
-        }
+        // load the view and pass the myinputs
+        return View::make('Activity.overview')->with('myinputs', $abgabe);
 
         return response($abgaben);
     }

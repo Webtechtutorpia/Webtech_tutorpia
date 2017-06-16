@@ -4,13 +4,13 @@ namespace Tutorpia\Http\Controllers;
 
 
 use View;
-
 use Illuminate\Http\Request;
 use Tutorpia\Http\Requests;
 use Tutorpia\Activity;
 use Auth;
 use Tutorpia\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 class KorrekturController extends Controller
 {
 
@@ -25,10 +25,6 @@ class KorrekturController extends Controller
             session()->put('aufgabenid', $wert->id);
 
         }
-
-
-
-
         $abgabe = DB::table('abgabe')
             ->join('aufgabe', 'abgabe.zugehoerig_zu', '=', 'aufgabe.id')
             ->join('users', 'abgabe.user', '=', 'users.id')
@@ -61,17 +57,24 @@ class KorrekturController extends Controller
         }
 
         $update = [['zustand' => $zustand],['kommentar'=>$request->kommentar]];
+
         DB::table('abgabe')
             ->where('user','=',session()->get('userid'))
             ->where('zugehoerig_zu','=',session()->get('aufgabenid'))
             ->update( array('zustand' => $zustand, 'kommentar'=>$request->kommentar,'bearbeitet_von'=>Auth::user()->name,'updated_at'=>date('Y-m-d H:i:s'), 'korrigiert_am'=> date('d-m-Y H:i:s')));
 
-        Activity::create([
-            'aufgabenname'=>session()->get('aufgabenname'),
-            'zuordnung_abgabe' => session()->get('aufgabenid'),
-            'bearbeitet_von' => Auth::user()->name,
-            'user'=>session()->get('userid')
-        ]);
+        $id=DB::table('abgabe')
+            ->select('abgabeid')
+            ->where('user','=',session()->get('userid'))
+            ->where('zugehoerig_zu','=',session()->get('aufgabenid'))
+            ->orderBy('abgabeid', 'desc')->first();
+
+        DB::table("activity")->insert([
+            'zeit'=>Carbon::now(),
+            'zuordnung_aufgabe'=>session()->get('aufgabenid'),
+            'zuordnung_abgabe'=> $id->abgabeid,
+            'was'=>'abgabe',
+            'user'=>session()->get('userid')]);
 
         return redirect()->action('AbgabeController@show', ['kurs' => session()->get('global_variable')]
     );

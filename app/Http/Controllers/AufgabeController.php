@@ -11,13 +11,13 @@ use Illuminate\Http\Request;
 use Tutorpia\Http\Requests;
 use Auth;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 class AufgabeController extends Controller
 {
 
     public function store(Request $request)
     {
         $aufgabe = new Aufgabe($request->aufgabenname, $request->abgabedatum, $request->aufgabenbeschreibung, Auth::user()->name,session()->get('global_variable'));
-        // $aufgabe = new Aufgabe('h','b','c','d','e');
         // validate
 
         $this->validate($request, [
@@ -30,30 +30,40 @@ class AufgabeController extends Controller
 
         return redirect($pfad);
     }
+    //Speicherung alle relevanten Daten bei Aufgabenerstellung
     private function save(Aufgabe $aufgabe){
-//         //store
-//
+//speichern AUfgabe
         DB::table("aufgabe")->insert(['aufgabenname'      =>  $aufgabe->getAufgabenname(),
             'abgabedatum'         => $aufgabe->getAbgabedatum(),
             'aufgabenbeschreibung' =>  $aufgabe->getAufgabenbeschreibung(),
             'erstellt_von' =>  $aufgabe->getErstellt_von(),
             'kurs'=> $aufgabe->getKurs()]);
-
+    //ID gespeicherte Aufgabe rausfinden
         $id = Aufgabe::orderBy('id', 'desc')->first();
 
+
+
+    //User die Aufgabe lösen müssen rausfinden
         $users =DB::table('belegung')
             ->join('users', 'belegung.user', '=', 'users.id')
-            ->select('users.id')
+            ->select('belegung.rolle as belegungrolle','belegung.*','users.*')
             ->where('belegung.kurs',session()->get('global_variable'))
-            ->where('belegung.rolle','=','Student')
+            //->where('belegung.rolle','=','Student')
             ->get();
-
+    //in Belegung und Activity einfügen
         foreach($users as $user) {
-            Abgabe::create([
-                'zustand' => '.',
-                'user' => $user->id,
-                'zugehoerig_zu' => $id->id,
-            ]);
+            if($user->belegungrolle == 'Student') {
+                Abgabe::create([
+                    'zustand' => '.',
+                    'user' => $user->id,
+                    'zugehoerig_zu' => $id->id,
+                ]);
+            }
+            DB::table("activity")->insert([
+                'zeit'=>Carbon::now(),
+                'zuordnung_aufgabe'=>$id->id,
+                'was'=>'aufgabe',
+                'user'=>$user->id]);
         }
 
     }
@@ -99,7 +109,7 @@ class AufgabeController extends Controller
 //
 //    }
 
-
+//Aufgabe ändern
     public function update(Request $request, $id)
     {
         $this->validate($request, [
@@ -113,21 +123,21 @@ class AufgabeController extends Controller
     }
 
 
-    public function index()
-    {
-
-
-
-
-            // get all the myinputs
-            $aufgabe = Aufgabe::all();
-            // load the view and pass the myinputs
-            return View::make('Professor.ProfMode')->with('myinputs', $aufgabe);
-
-    }
+//    public function index()
+//    {
+//
+//
+//
+//
+//            // get all the myinputs
+//            $aufgabe = Aufgabe::all();
+//            // load the view and pass the myinputs
+//            return View::make('Professor.ProfMode')->with('myinputs', $aufgabe);
+//
+//    }
+    //Alle AUfgaben aus Kurs darstellen
     public function show($kurs)
     {
-
             session()->put('global_variable', $kurs);
             // get the myinput
             $aufgabe = Aufgabe::where('kurs', '=', $kurs)->get();
@@ -136,6 +146,7 @@ class AufgabeController extends Controller
             return View::make('Professor.ProfMode')->with('myinputs', $aufgabe);
 
     }
+    //Aufgabe löschen
     public function destroy($id)
     {
         // delete
@@ -153,18 +164,13 @@ class AufgabeController extends Controller
         return back();
     }
 
+    //Bestätigungsseite
     public function confirmsite(Request $request)
     {
-//        $parameter=[
-//            'name'=>'Aufgabe5',
-//            'datum'=>'27.05.2022 21:59',
-//            'beschreibung'=>'Das ist eine Testaufgabe'
-//        ];
         return view ('Professor.anlegen_bestaetigung', ['request'=>$request]);
     }
     public function reset(Request $request){
         $pfad='/Professor/'.session()->get('global_variable');
-//      return response('hallo');
          return redirect($pfad);
 
     }
