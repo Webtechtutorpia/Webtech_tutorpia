@@ -34,7 +34,7 @@ Route::get('/', function () {
 
 Route::get('images/{filename}', function ($filename)
 {
-    $path = storage_path() . '/Images/' . $filename;
+    $path = storage_path() . '/images/' . $filename;
 
     if(!File::exists($path)) abort(404);
 
