@@ -1,10 +1,11 @@
 // Sobald die Seite aufgerufen wurde wird der Reiter eingefärbt und in einem Intervall die function ajax aufgerufen
-$(function(){
+$( document ).ready(function() {
     $("li[name='Übersicht']").css('background-color', '#f5f8fa');
         window.setInterval(function(){
             ajax();
         }, 10000);
 });
+
 // Die Funktion ajax lädt die Daten aus der Datenbank und stellt alle Aktivitäten in einer Tabelle dar
 function ajax(){
     $.ajax({ url: "/aktualisieren", success: function(result){

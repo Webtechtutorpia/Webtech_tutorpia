@@ -1,22 +1,17 @@
 <?php $__env->startSection('content'); ?>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script> $(document).ready(function () {
-            $("li[name='Übersicht']").css('background-color', '#f5f8fa');
-        });</script>
     <div class="container">
         <div class="row">
 
-            <div class="col-md-5">
+            <div class="col-md-12">
                 <h3>Wilkommen zurück <?php echo e(Auth::user()->name); ?>!</h3>
-
             </div>
-
-
-            <div class="col-md-7">
+            <div class="col-xs-12 col-md-4 hidden-sm hidden-xs">
+                <img class="img-responsive" src="/images/eule_hintergrund.jpg" alt="eule" width="332" height="524">
+            </div>
+            <div class=" col-md-offset-1 col-md-7 col-xs-12">
                 <div class="panel panel-success">
-                    <div class="panel-heading"><b>Neueste Aktivitäten</b></div>
+                    <div class="panel-heading" onclick="panel_behavior(this)"><b>Neueste Aktivitäten</b></div>
                     <div class="panel-body">
-
                         <div class="col-xs-12 col-md-12">
                             <table class="table-responsive">
                                 <thead>
@@ -32,25 +27,6 @@
                                 <tbody id="tbody">
 
                                 <?php $__currentLoopData = $myinputs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
-
-                                    
-                                        
-                                            
-                                                
-                                            
-                                        
-                                        
-                                            
-                                                    
-                                                    
-                                            
-                                        
-                                            
-                                                    
-                                                    
-                                            
-                                        
-                                    
                                     <tr>
 
                                             <td class="col-md-4 col-xs-8">
@@ -79,11 +55,14 @@
                     </div>
                 </div>
             </div>
+
+
+
         </div>
     </div>
 
     
-    <script type="text/javascript" src="<?php echo e(URL::asset('js/Overview.js')); ?>"></script>
+    <script type="text/javascript" src="<?php echo e(URL::asset('js/minjs/overview.min.js')); ?>"></script>
 <?php $__env->stopSection(); ?>
 
 
