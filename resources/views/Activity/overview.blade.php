@@ -7,7 +7,7 @@
             <div class="col-md-12">
                 <h3>Wilkommen zurück {{ Auth::user()->name }}!</h3>
             </div>
-            <div class="col-xs-12 col-md-4 hidden-sm">
+            <div class="col-xs-12 col-md-4 hidden-sm hidden-xs">
                 <img class="img-responsive" src="/images/eule_hintergrund.jpg" alt="eule" width="332" height="524">
             </div>
             <div class=" col-md-offset-1 col-md-7 col-xs-12">

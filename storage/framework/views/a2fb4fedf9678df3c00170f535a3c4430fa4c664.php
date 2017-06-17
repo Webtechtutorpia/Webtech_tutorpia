@@ -5,7 +5,7 @@
             <div class="col-xs-12 col-md-4 col-md-offset-1">
 
 
-                <img class="img-responsive" src="/images/eule_hintergrund.jpg" alt="eule" width="332" height="524">
+                <img class="img-responsive" src=" <?php echo e(url ('images/eule_hintergrund.jpg')); ?>" alt="eule" width="332" height="524">
             </div>
 
             <div class="col-xs-12 col-md-4  col-md-offset-1 willkommen" id="test" name="test" onmouseover="">
