@@ -84,7 +84,7 @@ class CreateDatabase extends Migration
             $table->string('korrigiert_am')->nullable();
             $table->timestamps();
             //Constraints
-            $table->foreign('user')->references('id')->on('users');
+            $table->foreign('user')->references('id')->on('users')->onDelete('Cascade');
             $table->foreign('zugehoerig_zu')->references('id')->on('aufgabe')->onDelete('Cascade');
         });
 //        //Erzeuge Aktivität

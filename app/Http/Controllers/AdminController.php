@@ -2,6 +2,7 @@
 
 namespace Tutorpia\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Tutorpia\Http\Controllers\Controller;
@@ -56,7 +57,7 @@ class AdminController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function test(Request $request)
+    public function aendereUser(Request $request)
     {
 
         $Users = $request->session()->pull('Users');
@@ -68,43 +69,30 @@ class AdminController extends Controller
                     $user->save();
         }
 
-        //Forein Key lösch Problem bitte lösen
-
-        $users = DB::table('users')->select('id')->where('name','=',$request->delete)->orwhere( 'email', $request->delete)->get();
-
-          foreach ($users as $u)
-           {
-           $test= User::find($u->id)->delete();
-
-       }
 
 
 
-       $request->Session()->flash('message', 'Adminbereich wurden erfolgreich geändert');
+       $request->Session()->flash('message', 'Userrollen wurden erfolgreich geändert');
         //Session::flash('success', 'Änderungen wurden übernommen');
         return back();
 
 //         return View::make('Professor.test')->with('myinputs', $users);
     }
 
-    public function test2(Request $request)
+    public function aenderebelegung(Request $request)
     {
-//        return response($request->kursrolle);
         $Belegungen = $request->session()->get('kurse');
-//        var_dump(sizeof($Belegungen['belegungen']));
-//        return response($Belegungen['belegungen']);
-//return response($Belegungen);
    $j=0;
         foreach($Belegungen as $belegung){
             for ($i = 0; $i < sizeof($belegung['belegungen']); $i++) {
-                $test = Belegung::find($belegung['belegungen'][$i]->id);
-                $test->rolle = $request->kursrolle[$j];
-                $test->save();
+                $bel = Belegung::find($belegung['belegungen'][$i]->id);
+                $bel->rolle = $request->kursrolle[$j];
+                $bel->save();
                 $j++;
             }
         }
 
-            $request->Session()->flash('message', 'Kursbereiche wurden erfolgreich geändert');
+            $request->Session()->flash('message', 'Kursrollen wurden erfolgreich geändert');
         return back();
         }
 //        for ($i = 0; $i < sizeof($Belegungen['belegungen']); $i++) {
@@ -115,6 +103,29 @@ class AdminController extends Controller
 //            $Belegung->save();
 //        }
 
+
+    public function deleteUser(Request $request){
+
+        if($request->delete != "") {
+            $users = DB::table('users')->select('id')->where('name', '=', $request->delete)->orwhere('email', $request->delete)->get();
+            if($users -> isEmpty()){
+                $request->Session()->flash('negativ', 'Der zu löschende User existiert nicht');
+            }
+            else {
+                $request->Session()->flash('message', 'Users wurden erfolgreich gelöscht');
+            }
+
+            foreach ($users as $u) {
+                $test = User::find($u->id)->delete();
+
+            }
+        }
+        else {
+            $request->Session()->flash('negativ', 'Der zu löschende User existiert nicht');
+        }
+
+    return back();
+    }
 
     public function createKurs(Request $request){
 
@@ -131,6 +142,10 @@ class AdminController extends Controller
 
         $request->session()->flash('message' ,'Kurs erfolgreich angelegt');
         return back();
+    }
+
+    public function deleteKurs(Request $request){
+
     }
 }
 ?>

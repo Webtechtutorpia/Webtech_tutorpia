@@ -34,7 +34,7 @@ Route::get('/', function () {
 
 Route::get('images/{filename}', function ($filename)
 {
-    $path = storage_path() . '/Images/' . $filename;
+    $path = storage_path() . '/images/' . $filename;
 
     if(!File::exists($path)) abort(404);
 
@@ -100,7 +100,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('Activity','ActivityController');
     Route::resource('Kurse', 'BelegungController');
 
-    Route::get('Aufgabenansicht/ajaxcityList','AufgabenansichtController@matchHTML');
+    Route::get('Aufgabenansicht/ajaxAufgabenansicht','AufgabenansichtController@matchHTML');
     Route::get('Aufgabenansicht/bestimmteAbgabe/{id}/{name}','KorrekturController@UserAbgaben');
 
     Route::resource('Aufgabenansicht','AufgabenansichtController');
@@ -130,9 +130,10 @@ Route::group(['middleware' => ['auth']], function () {
 
 
     Route::resource('admin', 'AdminController');
-    Route::post('test','AdminController@test');
-    Route::Post('test2', 'AdminController@test2');
+    Route::post('userchanges','AdminController@aendereUser');
+    Route::Post('belegungchanges', 'AdminController@aenderebelegung');
     Route::post('kursanlegen','AdminController@createKurs');
+    Route::post('deleteUser','AdminController@deleteUser');
 
 
 

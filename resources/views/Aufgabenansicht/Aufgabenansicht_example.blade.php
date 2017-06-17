@@ -2,17 +2,12 @@
 
 @section('content')
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="{{ URL::asset('js/Aufgaben.js') }}"></script>
-
     <div class="container" id="container">
         <div class="row">
 
             <h2>Studentenmodus: {{$kurs}}</h2>
 
             <div class="col-md-4 col-md-offset-8">
-
-
                 <form class="form-inline" method="get">
                     <div class="form-group">
                         <input type="hidden" name="_token" value="<?php Session::token()?>">
@@ -34,7 +29,7 @@
                 @if( $value->zustand == '.')
                     <div class="col-md-12 col-xs-12">
                         <div class="panel panel-info aufgabe ">
-                            <div class="panel-heading" onclick="Bodyhandler(this)"> {{$value->aufgabenname}}
+                            <div class="panel-heading" onclick="panel_behavior(this)"> {{$value->aufgabenname}}
                                 <div style="display: inline; float: right" class="glyphicon glyphicon-minus"></div>
                             </div>
 
@@ -96,7 +91,7 @@
                 @if($value->zustand == '-')
                     <div class="col-md-12 col-xs-12">
                         <div class="panel panel-danger aufgabe ">
-                            <div class="panel-heading" onclick="Bodyhandler(this)"> {{$value->aufgabenname}}
+                            <div class="panel-heading" onclick="panel_behavior(this)"> {{$value->aufgabenname}}
                                 <div style="display: inline; float: right" class="glyphicon glyphicon-remove"></div>
                             </div>
                             <div class="panel-body notVisible">
@@ -145,7 +140,7 @@
                     <div class="col-md-12 col-xs-12 ">
 
                         <div class="panel panel-success aufgabe ">
-                            <div class="panel-heading" onclick="Bodyhandler(this)"> {{$value->aufgabenname}}
+                            <div class="panel-heading" onclick="panel_behavior(this)"> {{$value->aufgabenname}}
                                 <div style="display: inline; float: right" class="glyphicon glyphicon-ok"></div>
                             </div>
                             <div class="panel-body notVisible">
@@ -201,7 +196,7 @@
                     <div class="col-md-12 col-xs-12 ">
 
                         <div class="panel panel-warning aufgabe ">
-                            <div class="panel-heading" onclick="Bodyhandler(this)"> {{$value->aufgabenname}}
+                            <div class="panel-heading" onclick="panel_behavior(this)"> {{$value->aufgabenname}}
                                 <div style="display: inline; float: right" class="glyphicon glyphicon-minus"></div>
                             </div>
                             <div class="panel-body notVisible">
@@ -243,15 +238,8 @@
                         </div>
                     </div>
                 @endif
-
-
-
             @endforeach
-
-
         </div>
     </div>
-
-
-
+    <script type="text/javascript" src="{{ URL::asset('js/minjs/aufgaben.min.js') }}"></script>
 @endsection

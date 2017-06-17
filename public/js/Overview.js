@@ -1,17 +1,15 @@
-
-$(function(){
-
+// Sobald die Seite aufgerufen wurde wird der Reiter eingefärbt und in einem Intervall die function ajax aufgerufen
+$( document ).ready(function() {
+    $("li[name='Übersicht']").css('background-color', '#f5f8fa');
         window.setInterval(function(){
             ajax();
         }, 10000);
-
 });
 
+// Die Funktion ajax lädt die Daten aus der Datenbank und stellt alle Aktivitäten in einer Tabelle dar
 function ajax(){
-
     $.ajax({ url: "/aktualisieren", success: function(result){
         var durchlauf;
-
         $.each(result ,function(index,actifity){
             switch(actifity.zustand){
                 case '.':
@@ -27,8 +25,6 @@ function ajax(){
                     durchlauf +='<td>' +text +'</td></tr>';
                     break;
             }
-
-
         });
         $('tbody').html(durchlauf);
 $('td').addClass("col-md-4 col-xs-8");

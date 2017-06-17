@@ -9,13 +9,16 @@
          Kontakt: contact.tutorpia@gmail.com</p>
         <br>
         <p><strong>Vertreten Durch:</strong></p>
-        <p>Jannis Grebenstein. <br>
+        <p>Jannis Grebenstein <br>
         Rheingutstraße 34 <br>
             78462 Konstanz </p>
 
-        <p> Isabell Bayer</p>
+        <p> Isabell Bayer <br>
+        Werner-Sombart-Straße 37<br>
+        78464 Konstanz</p>
 
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script> $( document ).ready(function() {
             $("li[name='Impressum']").css('background-color', '#f5f8fa');
         });</script>

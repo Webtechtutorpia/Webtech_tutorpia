@@ -1,4 +1,4 @@
-
+// Funktion zum abfragne von Cookies
 function getCookie(cname) {
     var name = cname + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
@@ -14,16 +14,15 @@ function getCookie(cname) {
     }
     return "";
 }
-
+// Funktion zum setzten von Cookies
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays*24*60*60*1000));
     var expires = "expires="+ d.toUTCString();
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
+// Nach Seitenaufruf wird ein Clickevent an die Footer und Reiter angehängt und das akzeptieren von Cookies überprüft
 $(function() {
-
-
     $('li').bind('click', function(){
         if(getCookie('cookieconsent_status')=="") {
            var akz = confirm("Bitte akzeptieren Sie erst unsere Cookies. Cookies erlauben?");
@@ -40,9 +39,8 @@ $(function() {
 
 });
 
-
+// Verändert die Navbar Reiter falls man mit der Maus drüber fährt
 function hoverselectednavbar(){
-
     $(function() {
         $("li").hover(function() {
             // remove classes from all
@@ -56,12 +54,14 @@ function hoverselectednavbar(){
     });
 }
 
-
-function clicknavbar(){
-    $(function () {
-        $("ul li").hover(function () {
-            $(this).addClass('active');
-            $(this).parent().children('li').not(this).removeClass('active');
-        });
-    });
+//Öffnet und Schließt den Panel beim klicken
+function panel_behavior(element){
+    var Bodyelement = $(element).parent().children('.panel-body');
+    if($(Bodyelement).is(':visible')){
+        $(Bodyelement).hide('slow','linear');
+    }
+    else {
+        console.log('öffnen');
+        $(Bodyelement).show('slow','linear');
+    }
 }

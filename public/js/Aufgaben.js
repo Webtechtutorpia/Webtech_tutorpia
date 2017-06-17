@@ -8,22 +8,8 @@ $( document ).ready(function() {
     });
 });
 
-function Bodyhandler(element){
-    var Bodyelement = $(element).parent().children('.panel-body');
-    if($(Bodyelement).is(':visible')){
-        $(Bodyelement).hide('slow','linear');
-        $(".austauschen").show();
-        $(".fileUpload").hide();
-        //$(".panel-body").hide('slow','linear');
-    }
-    else {
-        //$(".panel-body").show('slow','linear');
-        console.log('öffnen');
-        $(Bodyelement).show('slow','linear');
-    }
-}
 function ajaxSearch(name){
-    $("#liste").load("/Aufgabenansicht/ajaxcityList?name="+name)
+    $("#liste").load("/Aufgabenansicht/ajaxAufgabenansicht?name="+name)
 };
 
 function add(element){
