@@ -5,38 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d1848274-45ba-449d-af87-98606e7b2b64" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/Myinput.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/views/Professor/test.blade.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/views/test.blade.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/sessions/5PmscEGKJLH5iuKSTqQwaQ8EuZxuYZ9DII0bSuVk" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/sessions/LjFbVvXmAZnzAMHHNUqyMKEzikk5pVkWAlCNWHfH" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/sessions/RHbZjjwjQ8us2AFICqxHNhTkN2tw0jBErVyAUiKE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/sessions/U8r9y8mxnCHatMMnx5e9ybGsZ9aqIq31KFo7gQqZ" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/sessions/ZFKOHi1LhTZPBzkbGN11AYcCggD6RtpgBQHwqroe" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/sessions/mcp76TbUFwk1sqjQP9O7D4lDBL0Zum93a2SnmjDS" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/sessions/9Nv1RMGBvV98VVHCQJ2wX7PvU3dkHwaG79L8vjkX" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/sessions/ACuj0TAOb6Q4Bpicx4fdQ15onbkX4P0IHLHIb4aD" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/sessions/Lkq3oYv9g8bFXoonxxdMNOptpXFhaRWgI4eZEsaS" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/sessions/UGnXQ3q0Web8RfkPpESRnBT9ktC1pTigmkSCb8XU" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/sessions/b4PPrld4p5tBAICIIl6VnXaqmica9GRyWqI2KIdj" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/sessions/maq57ZRklho1t7P2FR1d0YxPi5NKMfqiaBJpK27F" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/sessions/ti9kKUeGJrQeEJMQUDOF7vvax1WPf6rinKECf801" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/sessions/vN2NHLJexi1XFAH9sjWqLkDNHFNEFgP6k56EpPxv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/sessions/wezed1VNNL3QU5vnUqcZ23FZz8vvcVmXOXTmsDgU" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/sessions/zVhUeP0123kgjfxsR4Ug09SvQwOUa68j9VYYrWwd" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/storage/framework/sessions/R7GFpws1HLImiARr2q9Bc9wTO2rHfK2kCJndkY6q" afterPath="$PROJECT_DIR$/storage/framework/sessions/R7GFpws1HLImiARr2q9Bc9wTO2rHfK2kCJndkY6q" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ActivityController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ActivityController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/main.css" afterPath="$PROJECT_DIR$/public/css/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/Abgabe.js" afterPath="$PROJECT_DIR$/public/js/Abgabe.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/Overview.js" afterPath="$PROJECT_DIR$/public/js/Overview.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/layout.js" afterPath="$PROJECT_DIR$/public/js/layout.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/minjs/abgabe.min.js" afterPath="$PROJECT_DIR$/public/js/minjs/abgabe.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/minjs/overview.min.js" afterPath="$PROJECT_DIR$/public/js/minjs/overview.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/Activity/overview.blade.php" afterPath="$PROJECT_DIR$/resources/views/Activity/overview.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/Aufgabenansicht/Aufgabenansicht_example.blade.php" afterPath="$PROJECT_DIR$/resources/views/Aufgabenansicht/Aufgabenansicht_example.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/Aufgabenansicht/gesuchteAufgabe.blade.php" afterPath="$PROJECT_DIR$/resources/views/Aufgabenansicht/gesuchteAufgabe.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/Professor/ProfMode.blade.php" afterPath="$PROJECT_DIR$/resources/views/Professor/ProfMode.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/Professor/anlegen_bestaetigung.blade.php" afterPath="$PROJECT_DIR$/resources/views/Professor/anlegen_bestaetigung.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/Tutor/Aufgabenkorrektur.blade.php" afterPath="$PROJECT_DIR$/resources/views/Tutor/Aufgabenkorrektur.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/Tutor/abgabe.blade.php" afterPath="$PROJECT_DIR$/resources/views/Tutor/abgabe.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/home.blade.php" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/storage/framework/views/3c1c175e28f35aa42c0a121a00761a4a5b82b8c5.php" afterPath="$PROJECT_DIR$/storage/framework/views/3c1c175e28f35aa42c0a121a00761a4a5b82b8c5.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/storage/framework/views/7b23312f9da14dcb6a630d30e59370f17b585459.php" afterPath="$PROJECT_DIR$/storage/framework/views/7b23312f9da14dcb6a630d30e59370f17b585459.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/storage/framework/views/aa6131b64b7ea83ace6dbb03ead9e01f75d9ea43.php" afterPath="$PROJECT_DIR$/storage/framework/views/aa6131b64b7ea83ace6dbb03ead9e01f75d9ea43.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/storage/framework/views/b74c1e173c5e150bdf6c7d49d74d1f0171b03d90.php" afterPath="$PROJECT_DIR$/storage/framework/views/b74c1e173c5e150bdf6c7d49d74d1f0171b03d90.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/storage/framework/views/d12472b7c269c452bde3c089223757d50f03a9aa.php" afterPath="$PROJECT_DIR$/storage/framework/views/d12472b7c269c452bde3c089223757d50f03a9aa.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/storage/logs/laravel.log" afterPath="$PROJECT_DIR$/storage/logs/laravel.log" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -48,16 +29,6 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="main.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/css/main.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="313">
-              <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="abgabe.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/Tutor/abgabe.blade.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -80,11 +51,41 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Aufgabenkorrektur.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Aufgabenkorrektur.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/Tutor/Aufgabenkorrektur.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="441">
-              <caret line="21" column="22" lean-forward="false" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
+            <state relative-caret-position="420">
+              <caret line="20" column="26" lean-forward="true" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="overview.min.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/js/minjs/overview.min.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="627" lean-forward="false" selection-start-line="0" selection-start-column="627" selection-end-line="0" selection-end-column="627" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Overview.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/js/Overview.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="10" column="24" lean-forward="false" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="overview.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/Activity/overview.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="382">
+              <caret line="63" column="76" lean-forward="false" selection-start-line="63" selection-start-column="76" selection-end-line="63" selection-end-column="76" />
               <folding />
             </state>
           </provider>
@@ -209,9 +210,6 @@
         <option value="$PROJECT_DIR$/resources/views/welcome.blade.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ActivityController.php" />
-        <option value="$PROJECT_DIR$/public/js/Overview.js" />
-        <option value="$PROJECT_DIR$/public/js/minjs/overview.min.js" />
-        <option value="$PROJECT_DIR$/resources/views/Activity/overview.blade.php" />
         <option value="$PROJECT_DIR$/public/js/Aufgaben.js" />
         <option value="$PROJECT_DIR$/public/css/bootstrap.css" />
         <option value="$PROJECT_DIR$/public/js/layout.js" />
@@ -228,6 +226,9 @@
         <option value="$PROJECT_DIR$/resources/views/Tutor/Aufgabenkorrektur.blade.php" />
         <option value="$PROJECT_DIR$/public/css/main.css" />
         <option value="$PROJECT_DIR$/resources/views/home.blade.php" />
+        <option value="$PROJECT_DIR$/public/js/Overview.js" />
+        <option value="$PROJECT_DIR$/public/js/minjs/overview.min.js" />
+        <option value="$PROJECT_DIR$/resources/views/Activity/overview.blade.php" />
       </list>
     </option>
   </component>
@@ -527,6 +528,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Kurse" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Webtech_tutorpia" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Webtech_tutorpia" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Activity" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -949,12 +972,12 @@
       <workItem from="1494081217289" duration="1782000" />
       <workItem from="1497293342033" duration="4408000" />
       <workItem from="1497454473678" duration="5920000" />
-      <workItem from="1497599610338" duration="31327000" />
+      <workItem from="1497599610338" duration="31825000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="57312000" />
+    <option name="totallyTimeSpent" value="57810000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1098" extended-state="6" />
@@ -1168,22 +1191,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/Overview.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/minjs/overview.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="627" lean-forward="false" selection-start-line="0" selection-start-column="627" selection-end-line="0" selection-end-column="627" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ActivityController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="504">
@@ -1281,14 +1288,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="177">
           <caret line="85" column="8" lean-forward="false" selection-start-line="85" selection-start-column="2" selection-end-line="85" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/Activity/overview.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="37" column="91" lean-forward="false" selection-start-line="37" selection-start-column="91" selection-end-line="37" selection-end-column="91" />
           <folding />
         </state>
       </provider>
@@ -1409,10 +1408,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/Overview.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="10" column="24" lean-forward="false" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/Tutor/Aufgabenkorrektur.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="21" column="22" lean-forward="false" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
+        <state relative-caret-position="420">
+          <caret line="20" column="26" lean-forward="true" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/minjs/overview.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="627" lean-forward="false" selection-start-line="0" selection-start-column="627" selection-end-line="0" selection-end-column="627" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/Activity/overview.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="63" column="76" lean-forward="false" selection-start-line="63" selection-start-column="76" selection-end-line="63" selection-end-column="76" />
           <folding />
         </state>
       </provider>

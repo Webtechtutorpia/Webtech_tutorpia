@@ -8,6 +8,7 @@ $(document ).ready(function() {
 
 // Die Funktion ajax lädt die Daten aus der Datenbank und stellt alle Aktivitäten in einer Tabelle dar
 function ajax(){
+    console.log('ajax');
     $.ajax({ url: "/aktualisieren", success: function(result){
         var durchlauf;
 
