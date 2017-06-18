@@ -1,7 +1,4 @@
 @extends('layouts.app')
-<style> .blue {
-        color: blue;
-    }</style>
 @section('content')
     {{--@if (Auth::user()->rolle=="Professor" || Auth::user()->rolle=="Tutor" )--}}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -12,32 +9,32 @@
                 <h2>Korrekturmodus: {{$kurs}}</h2>
 
                     @foreach($myinputs as $key => $value)
-                                @if( $value->zustand == '.')
-                                    <div class="col-md-12 col-xs-12">
-                                        <div class="panel panel-info aufgabe ">
-                                            <div class="panel-heading" onclick="Bodyhandler(this)"> {{$value->aufgabenname}}
-                                                <div style="display: inline; float: right" class="glyphicon glyphicon-minus"></div>
-                                            </div>
-                                            @endif
+                                {{--@if( $value->zustand == '.')--}}
+                                    {{--<div class="col-md-12 col-xs-12">--}}
+                                        {{--<div class="panel panel-info aufgabe ">--}}
+                                            {{--<div class="panel-heading" onclick="panel_behavior(this)"> {{$value->aufgabenname}}--}}
+                                                {{--<div  class="glyphicon glyphicon-minus right inlinedisplay"></div>--}}
+                                            {{--</div>--}}
+                                            {{--@endif--}}
                                             @if( $value->zustand == '/')
                                                 <div class="col-md-12 col-xs-12">
                                                     <div class="panel panel-warning aufgabe ">
-                                                        <div class="panel-heading" onclick="Bodyhandler(this)"> {{$value->aufgabenname}}
-                                                            <div style="display: inline; float: right" class="glyphicon glyphicon-minus"></div>
+                                                        <div class="panel-heading" onclick="panel_behavior(this)"> {{$value->aufgabenname}}
+                                                            <div class="glyphicon glyphicon-minus icon-right"></div>
                                                         </div>
                                                         @endif
                                                         @if( $value->zustand == '+')
                                                             <div class="col-md-12 col-xs-12">
                                                                 <div class="panel panel-success aufgabe ">
-                                                                    <div class="panel-heading" onclick="Bodyhandler(this)"> {{$value->aufgabenname}}
-                                                                        <div style="display: inline; float: right" class="glyphicon glyphicon-ok"></div>
+                                                                    <div class="panel-heading" onclick="panel_behavior(this)"> {{$value->aufgabenname}}
+                                                                        <div  class="glyphicon glyphicon-ok icon-right"></div>
                                                                     </div>
                                                                     @endif
                                                                     @if( $value->zustand == '-')
                                                                         <div class="col-md-12 col-xs-12">
                                                                             <div class="panel panel-danger aufgabe ">
-                                                                                <div class="panel-heading" onclick="Bodyhandler(this)"> {{$value->aufgabenname}}
-                                                                                    <div style="display: inline; float: right" class="glyphicon glyphicon-remove"></div>
+                                                                                <div class="panel-heading" onclick="panel_behavior(this)"> {{$value->aufgabenname}}
+                                                                                    <div class="glyphicon glyphicon-remove icon-right"></div>
                                                                                 </div>
                                                                                 @endif
 
@@ -62,7 +59,7 @@
 
                                                 <tr>
                                                     <td>Aufgabenstellung:</td>
-                                                    <td>{{$value->aufgabenname}}</td>
+                                                    <td>{{$value->aufgabenbeschreibung}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Abgabedatum:</td>

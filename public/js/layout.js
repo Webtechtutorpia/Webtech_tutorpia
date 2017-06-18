@@ -36,7 +36,7 @@ $(function() {
             return true;
         }
     });
-
+    $('hoverselect').on('mouseover',hoverselectednavbar());
 });
 
 // Verändert die Navbar Reiter falls man mit der Maus drüber fährt

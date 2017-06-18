@@ -29,7 +29,7 @@ class ActivityController extends Controller
         $abgabe=DB::table('activity')
             ->leftjoin('aufgabe','activity.zuordnung_aufgabe','aufgabe.id')
             ->leftjoin('abgabe','activity.zuordnung_abgabe','abgabe.abgabeid')
-            ->select('*')
+            ->select('aufgabe.erstellt_von', 'aufgabe.aufgabenname', 'aufgabe.abgabedatum','aufgabe.kurs','zeit','was','bearbeitet_von')
             ->where('activity.user','=',Auth::user()->id)
             ->orderBy('activity.zeit','desc')
             ->paginate(8);
@@ -54,20 +54,20 @@ class ActivityController extends Controller
 //
 //                $abgabe->abgabeupdated_at = Carbon::parse($abgabe->abgabeupdated_at)->format('d-m-Y H:i:s');
 //
-//        }
+//        } m
         $abgabe=DB::table('activity')
             ->leftjoin('aufgabe','activity.zuordnung_aufgabe','aufgabe.id')
             ->leftjoin('abgabe','activity.zuordnung_abgabe','abgabe.abgabeid')
-            ->select('*')
+            ->select('aufgabe.erstellt_von', 'aufgabe.aufgabenname', 'aufgabe.abgabedatum','aufgabe.kurs','zeit','was','bearbeitet_von')
             ->where('activity.user','=',Auth::user()->id)
             ->orderBy('activity.zeit','desc')
             ->get();
 
 
         // load the view and pass the myinputs
-        return View::make('Activity.overview')->with('myinputs', $abgabe);
+//        return View::make('Activity.overview')->with('myinputs', $abgabe);
 
-        return response($abgaben);
+        return response($abgabe);
     }
 
 }

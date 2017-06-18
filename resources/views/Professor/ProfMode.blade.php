@@ -1,7 +1,4 @@
 @extends('layouts.app')
-<style> .blue {
-        color: blue;
-    }</style>
 @section('content')
     {{--@if (Auth::user()->rolle=="Professor")--}}
 
@@ -17,7 +14,7 @@
                   onclick="add(this)"></span>
 
 
-            <div class="col-md-11 neueAufgabe" style="display:none">
+            <div class="col-md-11 neueAufgabe nonedisplay">
                 <div class="panel panel-success ">
                     <div class="panel-heading" onclick="panel_behavior(this)">
 
@@ -67,9 +64,9 @@
                                           placeholder="Hier Aufgabenstellung eintragen"></textarea>
                             </div>
 
-                            <div class="form-group" style="margin-top: 2em;">
-                                <button type="submit" class="btn btn-primary speichern" disabled value="Abschicken"
-                                        style="float: right">
+                            <div class="form-group formgroup">
+                                <button type="submit" class="btn btn-primary speichern right" disabled value="Abschicken"
+                                        >
                                     Hinzufügen
 
                                 </button>
@@ -143,9 +140,9 @@
                                               onkeypress="buttonFaerben(this)">{{$value->aufgabenbeschreibung}}</textarea>
                                 </div>
 
-                                <div class="form-group" style="margin-top: 2em;">
-                                    <button type="submit" class="btn btn-primary speichern" value="Abschicken" disabled
-                                            style="float: right">
+                                <div class="form-group formgroup">
+                                    <button type="submit" class="btn btn-primary speichern right" value="Abschicken" disabled
+                                          >
                                         Speichern
 
                                     </button>

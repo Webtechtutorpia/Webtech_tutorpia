@@ -31,7 +31,7 @@
                     <textarea name="aufgabenbeschreibung" id="Aufgabenbeschreibung"  rows="5" onkeypress="buttonFaerben(this)">{{$request->aufgabenbeschreibung}}</textarea>
                 </div>
 
-                <div class="form-group" style="margin-top: 2em; float:right" >
+                <div class="form-group formgroup right">
                     <button type="button" class="btn btn-danger speichern" onclick="window.location='{{ url("reset") }}'">abbrechen</button>
                     <input type="submit" class="btn btn-success speichern"  style=" margin-right: 10em" value="anlegen"></div>
 
