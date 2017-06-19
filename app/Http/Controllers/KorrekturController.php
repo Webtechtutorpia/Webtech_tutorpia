@@ -4,6 +4,7 @@ namespace Tutorpia\Http\Controllers;
 
 
 use View;
+use Tutorpia\Abgabe;
 use Illuminate\Http\Request;
 use Tutorpia\Http\Requests;
 use Tutorpia\Activity;
@@ -35,7 +36,6 @@ class KorrekturController extends Controller
             ->orderBy('users.name', 'asc')
             ->get();
 
-
             return View::make('Tutor.Aufgabenkorrektur')->with('myinputs', $abgabe)->with('kurs',session()->get('global_variable'));
 
     }
@@ -47,26 +47,30 @@ class KorrekturController extends Controller
         // validate
         global $zustand;
         $this->validate($request, [
-            'kommentar'       => 'required',
-            'bewertung'       => 'required']);
+            'kommentar' => 'required',
+            'bewertung' => 'required']);
         if($request->bewertung=='abnehmen'){
             $zustand='+';
         }
         if($request->bewertung=='ablehnen'){
             $zustand='-';
         }
+        $abgabe = new Abgabe($zustand,session()->get('userid'),session()->get('aufgabenid'),$request->kommentar,Auth::user()->name,"","",date('d-m-Y H:i:s'));
+        $this->save($abgabe);
+        return redirect()->action('AbgabeController@show', ['kurs' => session()->get('global_variable')]);
 
-        $update = [['zustand' => $zustand],['kommentar'=>$request->kommentar]];
+    }
+    private function save(Abgabe $abgabe){
 
         DB::table('abgabe')
-            ->where('user','=',session()->get('userid'))
-            ->where('zugehoerig_zu','=',session()->get('aufgabenid'))
-            ->update( array('zustand' => $zustand, 'kommentar'=>$request->kommentar,'bearbeitet_von'=>Auth::user()->name,'updated_at'=>date('Y-m-d H:i:s'), 'korrigiert_am'=> date('d-m-Y H:i:s')));
+            ->where('user','=',$abgabe->getUser())
+            ->where('zugehoerig_zu','=',$abgabe->getZugehoerig_zu())
+            ->update( array('zustand' => $abgabe->getZustand(), 'kommentar'=>$abgabe->getKommentar(),'bearbeitet_von'=>$abgabe->getBearbeitet_von(),'updated_at'=>Carbon::now(), 'korrigiert_am'=> $abgabe->getKorrigiert_am()));
 
         $id=DB::table('abgabe')
             ->select('abgabeid')
-            ->where('user','=',session()->get('userid'))
-            ->where('zugehoerig_zu','=',session()->get('aufgabenid'))
+            ->where('user','=',$abgabe->getUser())
+            ->where('zugehoerig_zu','=',$abgabe->getZugehoerig_zu())
             ->orderBy('abgabeid', 'desc')->first();
 
         DB::table("activity")->insert([
@@ -76,8 +80,7 @@ class KorrekturController extends Controller
             'was'=>'abgabe',
             'user'=>session()->get('userid')]);
 
-        return redirect()->action('AbgabeController@show', ['kurs' => session()->get('global_variable')]
-    );
+
 
     }
 

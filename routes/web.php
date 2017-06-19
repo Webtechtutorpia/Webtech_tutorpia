@@ -87,7 +87,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('search','AbgabeController@readUser');
     Route::get('json', 'AbgabeController@readUser');
     Route::get('testen', 'AbgabeController@test');
-//Route::get('tabelle', 'AbgabeController@readAufgaben');
+
     Route::get('readuser','AbgabeController@readAll');
 
 
@@ -101,13 +101,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('Kurse', 'BelegungController');
 
     Route::get('Aufgabenansicht/ajaxAufgabenansicht','AufgabenansichtController@matchHTML');
-    Route::get('Aufgabenansicht/bestimmteAbgabe/{id}/{name}','KorrekturController@UserAbgaben');
+    Route::get('Korrektur/bestimmteAbgabe/{id}/{name}','KorrekturController@UserAbgaben');
 
     Route::resource('Aufgabenansicht','AufgabenansichtController');
 
     Route::group(['middleware' => ['group:Tutor,Professor'] ], function(){
 
-
+        //Route::get('Aufgabenansicht/bestimmteAbgabe/{id}/{name}','KorrekturController@UserAbgaben');
         Route::get('Tutor/Aufgabenkorrektur','KorrekturController@UserAbgaben');
         Route::resource('Tutor/Aufgabenkorrektur','KorrekturController');
         Route::resource('Tutor','AbgabeController');

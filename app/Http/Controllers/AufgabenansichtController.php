@@ -88,9 +88,6 @@ private function queryName(Request $request){
         // delete
         DB::table('abgabe')->where('abgabeid',$id)->update(['zustand'=>'.']);
 
-
-
-
         // redirect
         return back();
     }

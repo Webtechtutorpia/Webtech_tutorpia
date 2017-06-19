@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    {{--@if (Auth::user()->rolle=="Professor")--}}
+
 
 
     <div class="container">
@@ -38,9 +38,7 @@
                             </div>
                         @endif
 
-                        <form class="form-horizontal" role="form" method="POST"
-                              {{--action="{{ url('Professor') }}" >--}}
-                              action="{{ url('confirm')}}">
+                        <form class="form-horizontal" role="form" method="POST" action="{{ url('confirm')}}">
 
                             {{ csrf_field() }}
 

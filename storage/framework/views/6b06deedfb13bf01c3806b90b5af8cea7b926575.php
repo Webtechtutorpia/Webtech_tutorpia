@@ -1,8 +1,6 @@
 <?php $__env->startSection('content'); ?>
     
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="<?php echo e(URL::asset('js/Abgabe.js')); ?>"></script>
-    
+
         <div class="container">
             <div class="row">
                 <h2>Tutorenmodus: <?php echo e($kurs); ?></h2>
@@ -10,7 +8,7 @@
                 <div class="col-md-6 col-md-offset-10" id="anhang">
                     <div class="input-group">
                         <form method="get" action="/search">
-                            <input type="text" class="form-control" placeholder="Suche nach..." id="tfsearch" style="margin-bottom: 2em;">
+                            <input type="text" class="form-control" placeholder="Suche nach..." id="tfsearch">
                         </form>
                     </div>
                 </div>
@@ -48,31 +46,31 @@
                                 <td><?php echo e($zeile->name); ?></td>
 
                             <?php if($zeile->zustand == '+'): ?>
-                                <td class="text-center"><a href="<?php echo e(url('Aufgabenansicht/bestimmteAbgabe')); ?>/<?php echo e($zeile->user); ?>/<?php echo e($zeile->aufgabenname); ?>" class="glyphicon glyphicon-ok btn-success"></a>
+                                <td class="text-center"><a href="<?php echo e(url('Korrektur/bestimmteAbgabe')); ?>/<?php echo e($zeile->user); ?>/<?php echo e($zeile->aufgabenname); ?>" class="glyphicon glyphicon-ok btn-success"></a>
                             <?php endif; ?>
                             <?php if($zeile->zustand == '-'): ?>
-                                <td class="text-center"><a href="<?php echo e(url('Aufgabenansicht/bestimmteAbgabe')); ?>/<?php echo e($zeile->user); ?>/<?php echo e($zeile->aufgabenname); ?>" class="glyphicon glyphicon-remove btn-danger"></a></td>
+                                <td class="text-center"><a href="<?php echo e(url('Korrektur/bestimmteAbgabe')); ?>/<?php echo e($zeile->user); ?>/<?php echo e($zeile->aufgabenname); ?>" class="glyphicon glyphicon-remove btn-danger"></a></td>
                             <?php endif; ?>
                             <?php if($zeile->zustand == '.'): ?>
                                 <td class="text-center"> unbearbeitet</td>
 
                             <?php endif; ?>
                             <?php if($zeile->zustand == '/'): ?>
-                                <td class="text-center"><a href="<?php echo e(url('Aufgabenansicht/bestimmteAbgabe')); ?>/<?php echo e($zeile->user); ?>/<?php echo e($zeile->aufgabenname); ?>" class="glyphicon glyphicon-minus btn-warning"></a></td>
+                                <td class="text-center"><a href="<?php echo e(url('Korrektur/bestimmteAbgabe')); ?>/<?php echo e($zeile->user); ?>/<?php echo e($zeile->aufgabenname); ?>" class="glyphicon glyphicon-minus btn-warning"></a></td>
                             <?php endif; ?>
 
                         <?php else: ?>
                             <?php if($zeile->zustand == '+'): ?>
-                                    <td class="text-center"><a href="<?php echo e(url('Aufgabenansicht/bestimmteAbgabe')); ?>/<?php echo e($zeile->user); ?>/<?php echo e($zeile->aufgabenname); ?>" class="glyphicon glyphicon-ok btn-success"></a>
+                                    <td class="text-center"><a href="<?php echo e(url('Korrektur/bestimmteAbgabe')); ?>/<?php echo e($zeile->user); ?>/<?php echo e($zeile->aufgabenname); ?>" class="glyphicon glyphicon-ok btn-success"></a>
                                 <?php endif; ?>
                                 <?php if($zeile->zustand == '-'): ?>
-                                    <td class="text-center"><a href="<?php echo e(url('Aufgabenansicht/bestimmteAbgabe')); ?>/<?php echo e($zeile->user); ?>/<?php echo e($zeile->aufgabenname); ?>" class="glyphicon glyphicon-remove btn-danger"></a></td>
+                                    <td class="text-center"><a href="<?php echo e(url('Korrektur/bestimmteAbgabe')); ?>/<?php echo e($zeile->user); ?>/<?php echo e($zeile->aufgabenname); ?>" class="glyphicon glyphicon-remove btn-danger"></a></td>
                                     <?php endif; ?>
                                 <?php if($zeile->zustand == '.'): ?>
                                     <td class="text-center">unbearbeitet</td>
                                 <?php endif; ?>
                                 <?php if($zeile->zustand == '/'): ?>
-                                    <td class="text-center"><a href="<?php echo e(url('Aufgabenansicht/bestimmteAbgabe')); ?>/<?php echo e($zeile->user); ?>/<?php echo e($zeile->aufgabenname); ?>" class="glyphicon glyphicon-minus btn-warning"></a></td>
+                                    <td class="text-center"><a href="<?php echo e(url('Korrektur/bestimmteAbgabe')); ?>/<?php echo e($zeile->user); ?>/<?php echo e($zeile->aufgabenname); ?>" class="glyphicon glyphicon-minus btn-warning"></a></td>
                                 <?php endif; ?>
                             
                     <?php endif; ?>
@@ -86,7 +84,8 @@
 
             </div>
         </div>
-
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="<?php echo e(URL::asset('js/minjs/abgabe.min.js')); ?>"></script>
     
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

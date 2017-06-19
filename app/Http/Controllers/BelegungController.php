@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Tutorpia\Http\Requests;
 use Auth;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 class BelegungController extends Controller
 {
     public function index()
@@ -31,23 +32,30 @@ class BelegungController extends Controller
         //}
 
     }
+
     public function store(Request $request)
     {
-        // validate
+        $belegung=new Belegung(Auth::user()->id,$request->kurs,"Student");
+        $this->save($belegung);
+        return back();
+    }
 
+    private function save(Belegung $belegung){
         DB::table('belegung')->insert(
-            ['user' => Auth::user()->id, 'kurs' => $request->kurs, 'rolle'=>'Student']
+            ['user' => $belegung->getUser(), 'kurs' => $belegung->getKurs(),'rolle'=>$belegung->getRolle(),'created_at'=>Carbon::now()]
         );
         $aufgaben =DB::table('aufgabe')
             ->select('aufgabe.id')
-            ->where('aufgabe.kurs',$request->kurs)
+            ->where('aufgabe.kurs',$belegung->getKurs())
             ->get();
 
         foreach($aufgaben as $aufgabe) {
-            Abgabe::create([
+            DB::table('abgabe')
+                ->insert([
                 'zustand' => '.',
-                'user' => Auth::user()->id,
+                'user' => $belegung->getUser(),
                 'zugehoerig_zu' => $aufgabe->id,
+                    'created_at'=>Carbon::now()
             ]);
         }
 

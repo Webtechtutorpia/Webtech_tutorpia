@@ -17,15 +17,7 @@ class ActivityController extends Controller
 {
     public function index()
     {
-
-
-//            $abgabe = DB::table('abgabe')
-//                ->join('aufgabe', 'abgabe.zugehoerig_zu', '=', 'aufgabe.id')
-//                ->select('abgabe.updated_at as abgabeupdated_at','abgabe.*','aufgabe.*')
-//                ->where('abgabe.user','=',Auth::user()->id)
-//                ->orderBy('abgabeupdated_at','desc')
-//                ->get();
-
+        //erste 15 Activity werden aus Tabelle gelesen und nach neueste Datum zuerst sortiert
         $abgabe=DB::table('activity')
             ->leftjoin('aufgabe','activity.zuordnung_aufgabe','aufgabe.id')
             ->leftjoin('abgabe','activity.zuordnung_abgabe','abgabe.abgabeid')
@@ -33,10 +25,6 @@ class ActivityController extends Controller
             ->where('activity.user','=',Auth::user()->id)
             ->orderBy('activity.zeit','desc')
             ->paginate(8);
-//        if(count($abgabe)>=10){
-//
-//        }
-
 
             // load the view and pass the myinputs
             return View::make('Activity.overview')->with('myinputs', $abgabe);
