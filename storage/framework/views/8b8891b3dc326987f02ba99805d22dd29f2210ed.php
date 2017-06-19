@@ -80,7 +80,7 @@
                 <div class="alert alert-info"><?php echo e(Session::get('message')); ?></div>
             <?php endif; ?>
             
-            <?php $__currentLoopData = $myinputs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+            <?php $__currentLoopData = $aufgaben; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
                 <div class="col-md-11">
                     <div class="panel panel-default ">
                         <div class="panel-heading" onclick="panel_behavior(this)">

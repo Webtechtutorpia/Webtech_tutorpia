@@ -11,28 +11,12 @@ use Illuminate\Support\Facades\DB;
 
 class AufgabenansichtController extends Controller
 {
-    public function index()
-    {
 
-        if (Auth::check()) {
-
-
-            // get all the myinputs
-            $abgabe = Aufgabe::all();
-
-            // load the view and pass the myinputs
-            return View::make('Aufgabenansicht.Aufgabenansicht_example')->with('myinputs', $abgabe);
-        }
-        else {
-            return View::make('home');
-        }
-    }
     public function show($kurs)
     {
 
             session()->put('global_variable', $kurs);
-
-            // SELECT * FROM `abgabe`,`aufgabe`,`users` WHERE abgabe.zugehoerig_zu=aufgabe.id and aufgabe.kurs=2 and abgabe.user=users.id order by users.id
+        //Alle Abgaben von bestimmten User und Kurs auslesen und mit Aufgabenname sortieren
             $abgabe = DB::table('abgabe')
                 ->join('aufgabe', 'abgabe.zugehoerig_zu', '=', 'aufgabe.id')
                 ->join('users as student', 'abgabe.user', '=', 'student.id')
@@ -40,19 +24,17 @@ class AufgabenansichtController extends Controller
                 ->select('abgabe.*','student.*','tutor.email as tutoremail','aufgabe.*')
                 ->where('aufgabe.kurs', session()->get('global_variable'))
                 ->where('student.id', Auth::user()->id)
-                //->where('users.name',"TestStudent")
                 ->orderBy('aufgabe.aufgabenname', 'asc')
                 ->get();
-            // show the view and pass the myinput to it
-//              return response($abgabe);
-            return View::make('Aufgabenansicht.Aufgabenansicht_example')->with('myinputs', $abgabe)->with('kurs',session()->get('global_variable'));
+
+            return View::make('Aufgabenansicht.Aufgabenansicht')->with('abgaben', $abgabe)->with('kurs',session()->get('global_variable'));
 
     }
 
     public function matchHTML(Request $request)
     {
-        $cities=$this->queryName($request);
-        return view('Aufgabenansicht.gesuchteAufgabe',['cities'=>$cities,'kurs'=>session()->get('global_variable')]);
+        $abgaben=$this->queryName($request);
+        return view('Aufgabenansicht.gesuchteAufgabe',['abgaben'=>$abgaben,'kurs'=>session()->get('global_variable')]);
 
 
     }

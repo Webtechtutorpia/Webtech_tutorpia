@@ -8,14 +8,8 @@
             <div class="row">
                 <h2>Korrekturmodus: {{$kurs}}</h2>
 
-                    @foreach($myinputs as $key => $value)
-                                {{--@if( $value->zustand == '.')--}}
-                                    {{--<div class="col-md-12 col-xs-12">--}}
-                                        {{--<div class="panel panel-info aufgabe ">--}}
-                                            {{--<div class="panel-heading" onclick="panel_behavior(this)"> {{$value->aufgabenname}}--}}
-                                                {{--<div  class="glyphicon glyphicon-minus right inlinedisplay"></div>--}}
-                                            {{--</div>--}}
-                                            {{--@endif--}}
+                    @foreach($abgaben as $key => $value)
+
                                             @if( $value->zustand == '/')
                                                 <div class="col-md-12 col-xs-12">
                                                     <div class="panel panel-warning aufgabe ">
@@ -134,10 +128,10 @@
                                         </div>
 
 
-                    {{--@endif--}}
+
 
     @endforeach
             </div>
         </div>
-{{--@endif--}}
+
 @endsection

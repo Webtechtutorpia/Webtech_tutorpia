@@ -2,7 +2,7 @@
 
 @section('content')
     <h3> gesuchte Aufgaben: </h3>
-    @foreach ($cities as $value)
+    @foreach ($abgaben as $value)
         @if( $value->zustand == '.')
             <div class="col-md-12 col-xs-12">
                 <div class="panel panel-info aufgabe ">
@@ -218,7 +218,7 @@
 
 
     @endforeach
-                                    @if (count($cities)==0)
+                                    @if (count($abgaben)==0)
                                         <p> Es wurden keine mit deiner Suchanfrage übereinstimmenden Aufgaben gefunden.</p>
     @endif
 

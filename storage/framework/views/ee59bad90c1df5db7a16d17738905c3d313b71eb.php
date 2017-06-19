@@ -26,7 +26,7 @@
                                 
                                 <tbody id="tbody">
 
-                                <?php $__currentLoopData = $myinputs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+                                <?php $__currentLoopData = $neuigkeiten; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
                                     <tr>
 
                                             <td class="col-md-4 col-xs-8">

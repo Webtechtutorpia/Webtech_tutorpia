@@ -18,7 +18,7 @@ class ActivityController extends Controller
     public function index()
     {
         //erste 15 Activity werden aus Tabelle gelesen und nach neueste Datum zuerst sortiert
-        $abgabe=DB::table('activity')
+        $neuigkeiten=DB::table('activity')
             ->leftjoin('aufgabe','activity.zuordnung_aufgabe','aufgabe.id')
             ->leftjoin('abgabe','activity.zuordnung_abgabe','abgabe.abgabeid')
             ->select('aufgabe.erstellt_von', 'aufgabe.aufgabenname', 'aufgabe.abgabedatum','aufgabe.kurs','zeit','was','bearbeitet_von')
@@ -27,7 +27,7 @@ class ActivityController extends Controller
             ->paginate(8);
 
             // load the view and pass the myinputs
-            return View::make('Activity.overview')->with('myinputs', $abgabe);
+            return View::make('Activity.overview')->with('neuigkeiten', $neuigkeiten);
 
     }
 
@@ -42,8 +42,8 @@ class ActivityController extends Controller
 //
 //                $abgabe->abgabeupdated_at = Carbon::parse($abgabe->abgabeupdated_at)->format('d-m-Y H:i:s');
 //
-//        } m
-        $abgabe=DB::table('activity')
+//        }
+        $neuigkeiten=DB::table('activity')
             ->leftjoin('aufgabe','activity.zuordnung_aufgabe','aufgabe.id')
             ->leftjoin('abgabe','activity.zuordnung_abgabe','abgabe.abgabeid')
             ->select('aufgabe.erstellt_von', 'aufgabe.aufgabenname', 'aufgabe.abgabedatum','aufgabe.kurs','zeit','was','bearbeitet_von')
@@ -55,7 +55,7 @@ class ActivityController extends Controller
         // load the view and pass the myinputs
 //        return View::make('Activity.overview')->with('myinputs', $abgabe);
 
-        return response($abgabe);
+        return response($neuigkeiten);
     }
 
 }

@@ -23,7 +23,7 @@
                         <div class="alert alert-info">{{ Session::get('message') }}</div>
                     @endif
                     {{--je nach Datenbankeintrag Element anzeigen--}}
-                    @foreach($myinputs as $key => $value)
+                    @foreach($aufgabe as $value)
                 <th class="col-md-1 col-xs-1">{{$value->aufgabenname}}</th>
                         @endforeach
 
@@ -74,7 +74,7 @@
                                 @if($zeile->zustand == '/')
                                     <td class="text-center"><a href="{{ url('Korrektur/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-minus btn-warning"></a></td>
                                 @endif
-                            {{--<td>{{$zeile->zustand}}</td>--}}
+
                     @endif
                 @php($id=$zeile->id)
                 @endforeach

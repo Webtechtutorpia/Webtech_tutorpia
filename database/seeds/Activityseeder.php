@@ -46,5 +46,29 @@ class Activityseeder extends Seeder
             'user'=>'1'
 
         ]);
+        DB::table('activity')->insert([
+
+            'zeit'=>'2017-04-01 16:22:28',
+            'zuordnung_aufgabe'=>2,
+            'was'=>'aufgabe',
+            'user'=>'3'
+
+        ]);
+        DB::table('activity')->insert([
+
+            'zeit'=>'2017-04-01 16:22:28',
+            'zuordnung_aufgabe'=>2,
+            'was'=>'aufgabe',
+            'user'=>'4'
+
+        ]);
+        DB::table('activity')->insert([
+
+            'zeit'=>'2017-04-01 16:22:28',
+            'zuordnung_aufgabe'=>2,
+            'was'=>'aufgabe',
+            'user'=>'5'
+
+        ]);
     }
 }

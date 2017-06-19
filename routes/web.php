@@ -68,9 +68,6 @@ Route::group(['middleware' => ['auth']], function () {
 
 
 
-//Route::get('aufgabe_example', function () {
-//    return view('Aufgabenansicht.Aufgabenansicht_example');
-//});
 
     Route::get('Jannis', function(){
 
@@ -140,9 +137,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('aktualisieren', 'ActivityController@ajax');
     Route::post('download','FileUploadController@download');
     Route::post('delete', 'FileUploadController@delete');
-//Route::get('Aufgabenansicht/destroy/{id}','AufgabenansichtController@destroy');
 
-//Route::get('Aufgabenansicht/{kurs}','AufgabenansichtController@show');
 
 //Route::get('/email', function(Request $request){
 //

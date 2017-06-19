@@ -7,14 +7,8 @@
             <div class="row">
                 <h2>Korrekturmodus: <?php echo e($kurs); ?></h2>
 
-                    <?php $__currentLoopData = $myinputs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
-                                
-                                    
-                                        
-                                            
-                                                
-                                            
-                                            
+                    <?php $__currentLoopData = $abgaben; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+
                                             <?php if( $value->zustand == '/'): ?>
                                                 <div class="col-md-12 col-xs-12">
                                                     <div class="panel panel-warning aufgabe ">
@@ -137,7 +131,7 @@
                                         </div>
 
 
-                    
+
 
     <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
             </div>

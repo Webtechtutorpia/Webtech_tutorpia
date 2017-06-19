@@ -21,7 +21,7 @@
                         <div class="alert alert-info"><?php echo e(Session::get('message')); ?></div>
                     <?php endif; ?>
                     
-                    <?php $__currentLoopData = $myinputs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+                    <?php $__currentLoopData = $aufgabe; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
                 <th class="col-md-1 col-xs-1"><?php echo e($value->aufgabenname); ?></th>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
 
@@ -72,7 +72,7 @@
                                 <?php if($zeile->zustand == '/'): ?>
                                     <td class="text-center"><a href="<?php echo e(url('Korrektur/bestimmteAbgabe')); ?>/<?php echo e($zeile->user); ?>/<?php echo e($zeile->aufgabenname); ?>" class="glyphicon glyphicon-minus btn-warning"></a></td>
                                 <?php endif; ?>
-                            
+
                     <?php endif; ?>
                 <?php ($id=$zeile->id); ?>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>

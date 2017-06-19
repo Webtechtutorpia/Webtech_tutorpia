@@ -17,8 +17,9 @@ class BelegungController extends Controller
 
 
 
-            // get all the myinputs
+            // Kurse rausfinden aus Belegung für den User
             $kurse = Belegung::where('user', '=', Auth::user()->id)->get();
+            //alle Kurse, die nicht in eigene Kurse für Eintragung herausfinden
             $alle=DB::table('kurs')->select('*')
                 ->whereNotIn('bezeichnung',function($query)
                 {
@@ -27,9 +28,9 @@ class BelegungController extends Controller
                         ->where('user', '=', Auth::user()->id);
                 })->get();
 
-//
-            return View::make('Kurse.kurse')->with('myinputs', $kurse)->with('alle', $alle);
-        //}
+
+            return View::make('Kurse.kurse')->with('kurse', $kurse)->with('alle', $alle);
+
 
     }
 

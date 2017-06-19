@@ -18,14 +18,15 @@ class KorrekturController extends Controller
     public function UserAbgaben($id,$name){
         session()->put('userid', $id);
         session()->put('aufgabenname', $name);
+       //Aufagbenid aus Tabelle herausfinden
         $aufgabenid=DB::table('aufgabe')
             ->select('id')
             ->where('aufgabenname','like',$name)
             ->get();
         foreach($aufgabenid as $wert){
             session()->put('aufgabenid', $wert->id);
-
         }
+        //Abgabe von bestimmten User und jeweiligen Kurs und jeweilige AUfgabe herausfinden
         $abgabe = DB::table('abgabe')
             ->join('aufgabe', 'abgabe.zugehoerig_zu', '=', 'aufgabe.id')
             ->join('users', 'abgabe.user', '=', 'users.id')
@@ -36,8 +37,7 @@ class KorrekturController extends Controller
             ->orderBy('users.name', 'asc')
             ->get();
 
-            return View::make('Tutor.Aufgabenkorrektur')->with('myinputs', $abgabe)->with('kurs',session()->get('global_variable'));
-
+            return View::make('Tutor.Aufgabenkorrektur')->with('abgaben', $abgabe)->with('kurs',session()->get('global_variable'));
     }
 
 
@@ -61,7 +61,7 @@ class KorrekturController extends Controller
 
     }
     private function save(Abgabe $abgabe){
-
+        //bewertete Abgabe abspeichern
         DB::table('abgabe')
             ->where('user','=',$abgabe->getUser())
             ->where('zugehoerig_zu','=',$abgabe->getZugehoerig_zu())
@@ -73,6 +73,7 @@ class KorrekturController extends Controller
             ->where('zugehoerig_zu','=',$abgabe->getZugehoerig_zu())
             ->orderBy('abgabeid', 'desc')->first();
 
+        //Neuigkeit dazu abspeichern
         DB::table("activity")->insert([
             'zeit'=>Carbon::now(),
             'zuordnung_aufgabe'=>session()->get('aufgabenid'),

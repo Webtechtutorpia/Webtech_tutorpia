@@ -18,7 +18,8 @@ class AufgabeController extends Controller
     public function store(Request $request)
     {
         $aufgabe = new Aufgabe($request->aufgabenname, $request->abgabedatum, $request->aufgabenbeschreibung, Auth::user()->name,session()->get('global_variable'));
-        // validate
+
+        // Validierung
 
         $this->validate($request, [
             'aufgabenname' => 'required',
@@ -27,17 +28,17 @@ class AufgabeController extends Controller
 
         $this->save($aufgabe);
         $pfad='/Professor/'.session()->get('global_variable');
-
         return redirect($pfad);
     }
     //Speicherung alle relevanten Daten bei Aufgabenerstellung
     private function save(Aufgabe $aufgabe){
-    //speichern AUfgabe
+    //speichern Aufgabe
         DB::table("aufgabe")->insert(['aufgabenname'      =>  $aufgabe->getAufgabenname(),
             'abgabedatum'         => $aufgabe->getAbgabedatum(),
             'aufgabenbeschreibung' =>  $aufgabe->getAufgabenbeschreibung(),
             'erstellt_von' =>  $aufgabe->getErstellt_von(),
-            'kurs'=> $aufgabe->getKurs()]);
+            'kurs'=> $aufgabe->getKurs(),
+            'created_at'=>Carbon::now()]);
     //ID gespeicherte Aufgabe rausfinden
         $id = Aufgabe::orderBy('id', 'desc')->first();
 
@@ -46,9 +47,10 @@ class AufgabeController extends Controller
     //User die Aufgabe lösen müssen rausfinden
         $users =DB::table('belegung')
             ->join('users', 'belegung.user', '=', 'users.id')
-            ->select('belegung.rolle as belegungrolle','belegung.*','users.*')
+            ->select('belegung.rolle as belegungrolle','users.id')
             ->where('belegung.kurs',session()->get('global_variable'))
             ->get();
+
     //in Belegung und Activity einfügen
         foreach($users as $user) {
             if($user->belegungrolle == 'Student') {
@@ -56,7 +58,8 @@ class AufgabeController extends Controller
                 DB::table("abgabe")->insert([
                     'zustand'=>$abgabe->getZustand(),
                     'user'=>$abgabe->getUser(),
-                        'zugehoerig_zu'=>$abgabe->getZugehoerig_zu()
+                        'zugehoerig_zu'=>$abgabe->getZugehoerig_zu(),
+                        'created_at'=>Carbon::now()
                   ]
                 );
             }
@@ -64,7 +67,8 @@ class AufgabeController extends Controller
                 'zeit'=>Carbon::now(),
                 'zuordnung_aufgabe'=>$id->id,
                 'was'=>'aufgabe',
-                'user'=>$user->id]);
+                'user'=>$user->id,
+                'created_at'=>Carbon::now()]);
         }
 
     }
@@ -92,7 +96,7 @@ class AufgabeController extends Controller
             $aufgabe = Aufgabe::where('kurs', '=', $kurs)->get();
 
             // show the view and pass the myinput to it
-            return View::make('Professor.ProfMode')->with('myinputs', $aufgabe);
+            return View::make('Professor.ProfMode')->with('aufgaben', $aufgabe);
 
     }
     //Aufgabe löschen

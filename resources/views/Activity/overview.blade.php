@@ -28,7 +28,7 @@
                                 {{--je nach Datenbankeintrag Element anzeigen--}}
                                 <tbody id="tbody">
 
-                                @foreach($myinputs as $value )
+                                @foreach($neuigkeiten as $value )
                                     <tr>
 
                                             <td class="col-md-4 col-xs-8">

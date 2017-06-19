@@ -80,7 +80,7 @@
                 <div class="alert alert-info">{{ Session::get('message') }}</div>
             @endif
             {{--je nach Datenbankeintrag Element anzeigen--}}
-            @foreach($myinputs as $key => $value)
+            @foreach($aufgaben as $key => $value)
                 <div class="col-md-11">
                     <div class="panel panel-default ">
                         <div class="panel-heading" onclick="panel_behavior(this)">

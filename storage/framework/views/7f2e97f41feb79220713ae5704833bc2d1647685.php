@@ -22,7 +22,7 @@
 
             
             <h3>Alle Aufgaben:</h3>
-            <?php $__currentLoopData = $myinputs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+            <?php $__currentLoopData = $abgaben; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
 
                 <?php if( $value->zustand == '.'): ?>
                     <div class="col-md-12 col-xs-12">
@@ -211,13 +211,7 @@
                                     <div class="col-md-3  col-xs-6 size"> <?php echo e($value->upload_am); ?></div>
                                     <div class="col-md-3  col-xs-6 size">Datei löschen:</div>
                                     <div class="col-md-3  col-xs-4 size">
-                                        
-                                              
-                                              
-                                            
-                                            
-                                            
-                                            
+
 
                                         <form action="/delete" method="post">
                                             <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
