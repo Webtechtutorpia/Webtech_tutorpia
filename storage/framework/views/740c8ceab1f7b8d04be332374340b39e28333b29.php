@@ -26,7 +26,7 @@
                                     <div class="alert alert-info"><?php echo e(Session::get('message')); ?></div>
                                 <?php endif; ?>
                                 
-                                <?php $__currentLoopData = $myinputs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+                                <?php $__currentLoopData = $kurse; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
                                     <tr>
                                         <td><?php echo e($value->kurs); ?></td>
                                         <td><?php echo e($value->rolle); ?></td>
@@ -41,10 +41,7 @@
                                             </td>
                                         <?php endif; ?>
                                         <?php if($value->rolle=="Tutor"): ?>
-                                            
-                                            
-                                            
-                                            
+
                                             <td class="text-center"><a
                                                         class="btn btn-primary btn-md col-md-11 col-md-offset-2 col-xs-11 col-xs-offset-1"
                                                         href="<?php echo e(url('/Tutor')); ?>/<?php echo e($value->kurs); ?>" role="button">Abgabenübersicht</a>
@@ -88,14 +85,13 @@
 
                                     <tr>
                                         <td><?php echo e($value2->bezeichnung); ?></td>
-                                        
+
                                         <td class="text-center">
                                             <form class="form-horizontal" role="form" method="POST"
                                                   action="<?php echo e(url('Kurse')); ?>">
                                                 <?php echo e(csrf_field()); ?>
 
                                                 <input type="hidden" name="kurs" value="<?php echo e($value2->bezeichnung); ?>">
-                                                
                                                 <button type="submit" class="btn btn-primary btn-md col-md-offset-3">
                                                     eintragen
                                                 </button>

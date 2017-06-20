@@ -121,7 +121,7 @@
                                                 </tr>
                                                     <tr>
                                                         <td>Bewertung abschicken:</td>
-                                                        <td><button class="btn btn-primary speichern" disabled>bewerten</button></td>
+                                                        <td><button class="btn btn-success speichern" disabled>bewerten</button></td>
                                                     </tr>
                                             </form>
                                             </table>

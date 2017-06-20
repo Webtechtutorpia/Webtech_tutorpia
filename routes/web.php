@@ -56,23 +56,8 @@ Route::group(['middleware' => ['auth']], function () {
 
 
 
-
-
-//Route::get('overview','OverviewController@showfirstActifty');
-    // return view('Tutor.overview'));
-
-//Route::get('kurse', function () {
-//    return view('Tutor.kurse');
-//});
-
-
-
-
-
     Route::get('Jannis', function(){
 
-        //   return response()->json(['key' => User::find(1)]);
-        // return User::find(1)
         $parameter  = User::find(1);
         return view('home')->with(['user' => User::find(2),
             'userb' => $parameter
@@ -80,31 +65,23 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
 
-//Abgabe
-    Route::get('search','AbgabeController@readUser');
-    Route::get('json', 'AbgabeController@readUser');
-    Route::get('testen', 'AbgabeController@test');
-
-    Route::get('readuser','AbgabeController@readAll');
-
-
-
-
-
-
-
-
     Route::resource('Activity','ActivityController');
     Route::resource('Kurse', 'BelegungController');
 
     Route::get('Aufgabenansicht/ajaxAufgabenansicht','AufgabenansichtController@matchHTML');
-    Route::get('Korrektur/bestimmteAbgabe/{id}/{name}','KorrekturController@UserAbgaben');
+
 
     Route::resource('Aufgabenansicht','AufgabenansichtController');
 
     Route::group(['middleware' => ['group:Tutor,Professor'] ], function(){
+        Route::get('Korrektur/bestimmteAbgabe/{id}/{name}','KorrekturController@UserAbgaben');
+        Route::get('search','AbgabeController@readUser');
+        Route::get('json', 'AbgabeController@readUser');
+        Route::get('testen', 'AbgabeController@test');
 
-        //Route::get('Aufgabenansicht/bestimmteAbgabe/{id}/{name}','KorrekturController@UserAbgaben');
+        Route::get('readuser','AbgabeController@readAll');
+
+       
         Route::get('Tutor/Aufgabenkorrektur','KorrekturController@UserAbgaben');
         Route::resource('Tutor/Aufgabenkorrektur','KorrekturController');
         Route::resource('Tutor','AbgabeController');
@@ -123,7 +100,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 
     Route::resource('FileUpload','FileUploadController');
-    Route::resource('myinputs', 'MyinputController');
+
 
 
     Route::resource('admin', 'AdminController');

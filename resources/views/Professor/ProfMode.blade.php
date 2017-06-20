@@ -63,7 +63,7 @@
                             </div>
 
                             <div class="form-group formgroup">
-                                <button type="submit" class="btn btn-primary speichern right" disabled value="Abschicken"
+                                <button type="submit" class="btn btn-success speichern right" disabled value="Abschicken"
                                         >
                                     Hinzufügen
 
@@ -139,7 +139,7 @@
                                 </div>
 
                                 <div class="form-group formgroup">
-                                    <button type="submit" class="btn btn-primary speichern right" value="Abschicken" disabled
+                                    <button type="submit" class="btn btn-success speichern right" value="Abschicken" disabled
                                           >
                                         Speichern
 

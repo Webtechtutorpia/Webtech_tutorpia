@@ -104,8 +104,9 @@ class AufgabeController extends Controller
     {
         // delete
         $activity=Activity::where('zuordnung_aufgabe',$id)->first();
-        $activity->delete();
-
+        if($activity !=null) {
+            $activity->delete();
+        }
         Abgabe::where('zugehoerig_zu',$id)->delete();
 
 
