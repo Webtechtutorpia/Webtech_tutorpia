@@ -1,9 +1,6 @@
 @extends('layouts.app')
-<style> .blue {
-        color: blue;
-    }</style>
 @section('content')
-    {{--@if (Auth::user()->rolle=="Professor")--}}
+
 
 
     <div class="container">
@@ -17,7 +14,7 @@
                   onclick="add(this)"></span>
 
 
-            <div class="col-md-11 neueAufgabe" style="display:none">
+            <div class="col-md-11 neueAufgabe nonedisplay">
                 <div class="panel panel-success ">
                     <div class="panel-heading" onclick="panel_behavior(this)">
 
@@ -41,9 +38,7 @@
                             </div>
                         @endif
 
-                        <form class="form-horizontal" role="form" method="POST"
-                              {{--action="{{ url('Professor') }}" >--}}
-                              action="{{ url('confirm')}}">
+                        <form class="form-horizontal" role="form" method="POST" action="{{ url('confirm')}}">
 
                             {{ csrf_field() }}
 
@@ -67,9 +62,9 @@
                                           placeholder="Hier Aufgabenstellung eintragen"></textarea>
                             </div>
 
-                            <div class="form-group" style="margin-top: 2em;">
-                                <button type="submit" class="btn btn-primary speichern" disabled value="Abschicken"
-                                        style="float: right">
+                            <div class="form-group formgroup">
+                                <button type="submit" class="btn btn-success speichern right" disabled value="Abschicken"
+                                        >
                                     Hinzufügen
 
                                 </button>
@@ -85,7 +80,7 @@
                 <div class="alert alert-info">{{ Session::get('message') }}</div>
             @endif
             {{--je nach Datenbankeintrag Element anzeigen--}}
-            @foreach($myinputs as $key => $value)
+            @foreach($aufgaben as $key => $value)
                 <div class="col-md-11">
                     <div class="panel panel-default ">
                         <div class="panel-heading" onclick="panel_behavior(this)">
@@ -143,9 +138,9 @@
                                               onkeypress="buttonFaerben(this)">{{$value->aufgabenbeschreibung}}</textarea>
                                 </div>
 
-                                <div class="form-group" style="margin-top: 2em;">
-                                    <button type="submit" class="btn btn-primary speichern" value="Abschicken" disabled
-                                            style="float: right">
+                                <div class="form-group formgroup">
+                                    <button type="submit" class="btn btn-success speichern right" value="Abschicken" disabled
+                                          >
                                         Speichern
 
                                     </button>

@@ -1,6 +1,3 @@
-<style> .blue {
-        color: blue;
-    }</style>
 <?php $__env->startSection('content'); ?>
     
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -10,37 +7,30 @@
             <div class="row">
                 <h2>Korrekturmodus: <?php echo e($kurs); ?></h2>
 
-                    <?php $__currentLoopData = $myinputs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
-                                <?php if( $value->zustand == '.'): ?>
-                                    <div class="col-md-12 col-xs-12">
-                                        <div class="panel panel-info aufgabe ">
-                                            <div class="panel-heading" onclick="Bodyhandler(this)"> <?php echo e($value->aufgabenname); ?>
+                    <?php $__currentLoopData = $abgaben; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
 
-                                                <div style="display: inline; float: right" class="glyphicon glyphicon-minus"></div>
-                                            </div>
-                                            <?php endif; ?>
                                             <?php if( $value->zustand == '/'): ?>
                                                 <div class="col-md-12 col-xs-12">
                                                     <div class="panel panel-warning aufgabe ">
-                                                        <div class="panel-heading" onclick="Bodyhandler(this)"> <?php echo e($value->aufgabenname); ?>
+                                                        <div class="panel-heading" onclick="panel_behavior(this)"> <?php echo e($value->aufgabenname); ?>
 
-                                                            <div style="display: inline; float: right" class="glyphicon glyphicon-minus"></div>
+                                                            <div class="glyphicon glyphicon-minus icon-right"></div>
                                                         </div>
                                                         <?php endif; ?>
                                                         <?php if( $value->zustand == '+'): ?>
                                                             <div class="col-md-12 col-xs-12">
                                                                 <div class="panel panel-success aufgabe ">
-                                                                    <div class="panel-heading" onclick="Bodyhandler(this)"> <?php echo e($value->aufgabenname); ?>
+                                                                    <div class="panel-heading" onclick="panel_behavior(this)"> <?php echo e($value->aufgabenname); ?>
 
-                                                                        <div style="display: inline; float: right" class="glyphicon glyphicon-ok"></div>
+                                                                        <div  class="glyphicon glyphicon-ok icon-right"></div>
                                                                     </div>
                                                                     <?php endif; ?>
                                                                     <?php if( $value->zustand == '-'): ?>
                                                                         <div class="col-md-12 col-xs-12">
                                                                             <div class="panel panel-danger aufgabe ">
-                                                                                <div class="panel-heading" onclick="Bodyhandler(this)"> <?php echo e($value->aufgabenname); ?>
+                                                                                <div class="panel-heading" onclick="panel_behavior(this)"> <?php echo e($value->aufgabenname); ?>
 
-                                                                                    <div style="display: inline; float: right" class="glyphicon glyphicon-remove"></div>
+                                                                                    <div class="glyphicon glyphicon-remove icon-right"></div>
                                                                                 </div>
                                                                                 <?php endif; ?>
 
@@ -65,7 +55,7 @@
 
                                                 <tr>
                                                     <td>Aufgabenstellung:</td>
-                                                    <td><?php echo e($value->aufgabenname); ?></td>
+                                                    <td><?php echo e($value->aufgabenbeschreibung); ?></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Abgabedatum:</td>
@@ -131,7 +121,7 @@
                                                 </tr>
                                                     <tr>
                                                         <td>Bewertung abschicken:</td>
-                                                        <td><button class="btn btn-primary speichern" disabled>bewerten</button></td>
+                                                        <td><button class="btn btn-success speichern" disabled>bewerten</button></td>
                                                     </tr>
                                             </form>
                                             </table>
@@ -141,7 +131,7 @@
                                         </div>
 
 
-                    
+
 
     <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
             </div>

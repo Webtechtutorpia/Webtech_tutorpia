@@ -26,7 +26,7 @@
                                 
                                 <tbody id="tbody">
 
-                                <?php $__currentLoopData = $myinputs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+                                <?php $__currentLoopData = $neuigkeiten; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
                                     <tr>
 
                                             <td class="col-md-4 col-xs-8">
@@ -61,7 +61,7 @@
         </div>
     </div>
 
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="<?php echo e(URL::asset('js/minjs/overview.min.js')); ?>"></script>
 <?php $__env->stopSection(); ?>
 

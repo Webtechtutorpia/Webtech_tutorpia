@@ -20,21 +20,19 @@ class BelegungMiddleware
      */
     public function handle($request, Closure $next,$group1,$group2)
     {
-//
+
         if($request->user() !== NULL) {
             // Auslesen der Benutzergruppen-ID aus der Benutzer-Instanz
             $userGroupId = $request->user()->id;
-            $kurs=$request->route()->parameters();
-            if($kurs == null){
-                $userGroup = DB::table('belegung')->select('*')->where('user', $userGroupId)->first();
-            }
+            //$kurs=$request->route()->parameters();
+          $kurs=session()->get('global_variable');
 
             // Anhand dieser ID wird die Benutzergruppe ausgelelesen
-            else {
+
                 $userGroup = DB::table('belegung')->select('*')->where('user', $userGroupId)->where('kurs', $kurs)->first();
-            }
+
             // Abschließend wird geprüft, ob der slug der Benutzergruppe mit dem übergebenen Parameter übereinstimmt
-            //foreach ($group as $rolle) {
+
 
             if ($userGroup->rolle === $group1) {
 

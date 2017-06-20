@@ -2,12 +2,12 @@
 
 @section('content')
     <h3> gesuchte Aufgaben: </h3>
-    @foreach ($cities as $value)
+    @foreach ($abgaben as $value)
         @if( $value->zustand == '.')
             <div class="col-md-12 col-xs-12">
                 <div class="panel panel-info aufgabe ">
-                    <div class="panel-heading" onclick="Bodyhandler(this)"> {{$value->aufgabenname}}
-                        <div style="display: inline; float: right" class="glyphicon glyphicon-minus"></div>
+                    <div class="panel-heading" onclick="panel_behavior(this)"> {{$value->aufgabenname}}
+                        <div class="glyphicon glyphicon-minus icon-right"></div>
                     </div>
 
                     <div class="panel-body notVisible">
@@ -27,9 +27,8 @@
                                 </div>
 
 
-                                <div class="form-group" style="margin-top: 2em">
-                                    <button type="submit" class="btn btn-primary speichern" value="Abschicken"
-                                            style="float: right">
+                                <div class="form-group uploadbutton">
+                                    <button type="submit" class="btn btn-primary speichern right" value="Abschicken">
                                         Datei hochladen
                                     </button>
 
@@ -42,11 +41,11 @@
                             @if (Session::has('message'))
                                 <div class="alert alert-danger">{{ Session::get('message') }}</div>
                             @endif
-                            <div class=" panel-group" style="padding-bottom: 1%">
+                            <div class=" panel-group panelabstand">
                                 <div class="col-md-3 col-xs-6 size"> Aufgabenstellung:</div>
                                 <div class="col-md-9 col-xs-12 size"> {{$value->aufgabenname}}</div>
                             </div>
-                            <div class=" panel-group" style="padding-bottom: 1%">
+                            <div class=" panel-group panelabstand" >
                                 <div class="col-md-3  col-xs-6 size">Abgabe bis :</div>
                                 <div class="col-md-3  col-xs-6 size"> {{$value->abgabedatum}}</div>
                                 <div class="col-md-3  col-xs-6 size">Aufgabe hochladen:</div>
@@ -55,7 +54,7 @@
 
                                 </div>
                             </div>
-                            <div class="panel-group" style="padding-bottom: 1%">
+                            <div class="panel-group panelabstand">
                                 <div class="col-md-3 col-xs-12"> Status:</div>
                                 <div class="col-md-3 col-xs-12 size">Warten auf Upload</div>
                             </div>
@@ -68,15 +67,15 @@
         @if($value->zustand == '-')
             <div class="col-md-12 col-xs-12">
                 <div class="panel panel-danger aufgabe ">
-                    <div class="panel-heading" onclick="Bodyhandler(this)"> {{$value->aufgabenname}}
-                        <div style="display: inline; float: right" class="glyphicon glyphicon-remove"></div>
+                    <div class="panel-heading" onclick="panel_behavior(this)"> {{$value->aufgabenname}}
+                        <div class="glyphicon glyphicon-remove icon-right"></div>
                     </div>
                     <div class="panel-body notVisible">
-                        <div class=" panel-group" style="padding-bottom: 1%">
+                        <div class=" panel-group panelabstand" >
                             <div class="col-md-3 col-xs-6 size"> Aufgabenstellung:</div>
                             <div class="col-md-9 col-xs-12 size"> {{$value->aufgabenname}}</div>
                         </div>
-                        <div class=" panel-group" style="padding-bottom: 1%">
+                        <div class=" panel-group panelabstand" >
                             <div class="col-md-3  col-xs-6 size">Abgabe bis:</div>
                             <div class="col-md-3  col-xs-6 size">{{$value->abgabedatum}} </div>
                             <div class="col-md-3  col-xs-6 size">Abgabe abgelehnt:</div>
@@ -93,16 +92,16 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="panel-group" style="padding-bottom: 1%">
+                        <div class="panel-group panelabstand" >
                             <div class="col-md-3 col-xs-6 size"> Tutor kontaktieren:</div>
                             <div class="col-md-3 col-xs-2 size"><span><a
                                             href="mailto:{{$value->tutoremail}}?subject=Fehler bei Abnahme von {{$value->aufgabenname}} bei {{$value->name}}"
                                             class="glyphicon glyphicon-envelope"></a></span>
                             </div>
                         </div>
-                        <div class="panel-group" style="padding-bottom: 1%">
+                        <div class="panel-group panelabstand" >
                             <div class="col-md-3 col-xs-12"> Status:</div>
-                            <div class="col-md-3 col-xs-12 size">erfolgreich abgegeben</div>
+                            <div class="col-md-3 col-xs-12 size">abgelehnt</div>
 
                         </div>
                         <div class="panel-group ">
@@ -117,29 +116,28 @@
             <div class="col-md-12 col-xs-12 ">
 
                 <div class="panel panel-success aufgabe ">
-                    <div class="panel-heading" onclick="Bodyhandler(this)"> {{$value->aufgabenname}}
-                        <div style="display: inline; float: right" class="glyphicon glyphicon-ok"></div>
+                    <div class="panel-heading" onclick="panel_behavior(this)"> {{$value->aufgabenname}}
+                        <div  class="glyphicon glyphicon-ok icon-right"></div>
                     </div>
                     <div class="panel-body notVisible">
-                        <div class=" panel-group" style="padding-bottom: 1%">
+                        <div class=" panel-group panelabstand">
                             <div class="col-md-3 col-xs-6 size"> Aufgabenstellung:</div>
                             <div class="col-md-9 col-xs-12 size">{{$value->aufgabenname}}</div>
                         </div>
 
-                        <div class="panel group" style="padding-bottom: 1%">
+                        <div class="panel group panelabstand">
                             <div class="col-md-3 col-xs-6 size ">Upload am:</div>
                             <div class="col-md-3 col-xs-6 size ">{{ $value->upload_am}}</div>
                             <div class="col-md-3 col-xs-6 size"> korregiert am:</div>
                             <div class="col-md-3  col-xs-6 size"> {{$value->korrigiert_am}}</div>
                         </div>
 
-                        <div class="panel-group" style="padding-bottom: 1%;">
+                        <div class="panel-group panelabstand">
                             <div class="col-md-3 col-xs-6 size">Abnahme durch:</div>
                             <div class="col-md-3 col-xs-6 size"> {{$value->bearbeitet_von}}</div>
 
                             <div class="col-md-3 col-xs-6 size"> Datei:</div>
                             <div class="col-md-3 col-xs-4 size">
-                                {{--style="padding: 0px 12px;"--}}
                                 <form action="/download" method="post">
                                     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                                     <input type="hidden" name="kurs" value="{{$kurs}}">
@@ -155,7 +153,7 @@
                                             class="glyphicon glyphicon-envelope"></a></span>
                             </div>
                         </div>
-                        <div class="panel-group" style="padding-bottom: 1%;">
+                        <div class="panel-group panelabstand">
                             <div class="col-md-3 col-xs-12"> Status:</div>
                             <div class="col-md-3 col-xs-12 size">erfolgreich abgegeben</div>
 
@@ -173,15 +171,15 @@
             <div class="col-md-12 col-xs-12 ">
 
                 <div class="panel panel-warning aufgabe ">
-                    <div class="panel-heading" onclick="Bodyhandler(this)"> {{$value->aufgabenname}}
-                        <div style="display: inline; float: right" class="glyphicon glyphicon-minus"></div>
+                    <div class="panel-heading" onclick="panel_behavior(this)"> {{$value->aufgabenname}}
+                        <div  class="glyphicon glyphicon-minus icon-right"></div>
                     </div>
                     <div class="panel-body notVisible">
-                        <div class=" panel-group" style="padding-bottom: 1%;">
+                        <div class=" panel-group panelabstand" >
                             <div class="col-md-3 col-xs-6 size"> Aufgabenstellung:</div>
                             <div class="col-md-9 col-xs-12 size"> {{$value->aufgabenname}}</div>
                         </div>
-                        <div class=" panel-group" style="padding-bottom: 1%;">
+                        <div class=" panel-group panelabstand" >
                             <div class="col-md-3  col-xs-6 size">Upload am :</div>
                             <div class="col-md-3  col-xs-6 size"> {{$value->upload_am}}</div>
                             <div class="col-md-3  col-xs-6 size">Datei löschen:</div>
@@ -202,7 +200,7 @@
 
                             </div>
                         </div>
-                        <div class="panel-group" style="padding-bottom: 1%;">
+                        <div class="panel-group panelabstand">
                             <div class="col-md-3 col-xs-6 size"> Tutor kontaktieren:</div>
                             <div class="col-md-3 col-xs-2 size"><span><a
                                             href="mailto:{{$value->tutoremail}}?subject=Frage zur {{$value->aufgabenname}} von {{$value->name}}"
@@ -220,7 +218,7 @@
 
 
     @endforeach
-                                    @if (count($cities)==0)
+                                    @if (count($abgaben)==0)
                                         <p> Es wurden keine mit deiner Suchanfrage übereinstimmenden Aufgaben gefunden.</p>
     @endif
 

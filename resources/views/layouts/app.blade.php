@@ -9,8 +9,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-    <link href="{{ asset('css/bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{ asset('css/bootstrap-theme.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.css')}}" rel="stylesheet">
+    {{--<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">--}}
+    <link href="{{ asset('css/bootstrap-theme.css')}}" rel="stylesheet">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
     <title>{{ config('app.name', 'Tutorpia') }}</title>
@@ -51,7 +52,7 @@
                     </a>
                 </div>
 
-                <div class="collapse navbar-collapse" id="app-navbar-collapse" onmouseover="hoverselectednavbar()">
+                <div class="collapse navbar-collapse" id="app-navbar-collapse hoverselect">
                     <!-- Left Side Of Navbar -->
                     {{--Unterschiedliche Navbar für registrierte und gäste--}}
                    @if (Auth::check())
@@ -83,7 +84,6 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
-
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
                                         <a href="{{ url('/logout') }}"
@@ -91,7 +91,6 @@
                                                      document.getElementById('logout-form').submit();">
                                             Logout
                                         </a>
-
                                         <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
@@ -116,7 +115,7 @@
 
 </main>
 <!-- Scripts -->
-<script src="/js/app.js"></script>
+
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
@@ -128,7 +127,7 @@
 {{--Footer Navbar--}}
 <footer>
     <div class="footer">
-        <nav class="navbar navbar-default" style="margin-bottom: 0;">
+        <nav class="navbar navbar-default" id="footer">
             <div class="container-fluid bg-success">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-collapse">
@@ -140,15 +139,15 @@
                     </button>
                 </div>
 
-                <div class="collapse navbar-collapse" id="app-collapse" onmouseover="hoverselectednavbar()">
+                <div class="collapse navbar-collapse" id="app-collapse hoverselect">
                         <ul class="nav navbar-nav">
-                            <li class="first foot" name="Datenschutz"><a style= "text-decoration: none" href="{{ url('/datenschutz') }}">Datenschutz</a></li>
-                            <li name="Impressum"><a style= "text-decoration: none" href="{{ url('/impressum') }}">Impressum</a></li>
-                            <li name="Kontakt"><a style= "text-decoration: none" href="{{ url('/contact') }}">Kontakt</a></li>
+                            <li class="first foot" name="Datenschutz"><a  href="{{ url('/datenschutz') }}">Datenschutz</a></li>
+                            <li name="Impressum"><a href="{{ url('/impressum') }}">Impressum</a></li>
+                            <li name="Kontakt"><a   href="{{ url('/contact') }}">Kontakt</a></li>
                         </ul>
                     <ul class="nav navbar-nav navbar-right">
-                    <li role="presentation" name="Facebook" style="list-style: none">
-                    <div class="fb-like" data-href="https://www.facebook.com/Tutorpia" data-layout="button" data-action="like" data-size="large" data-show-faces="false" data-share="false" style="padding-right: 10em; padding-top: 1em; padding-left:1em"></div>
+                    <li role="presentation" name="Facebook">
+                    <div class="fb-like" data-href="https://www.facebook.com/Tutorpia" data-layout="button" data-action="like" data-size="large" data-show-faces="false" data-share="false" id="fbbutton"></div>
                     </li>
                     </ul>
                 </div>
@@ -180,7 +179,9 @@
             }
         })});
 </script>
+<script src="/js/app.js"></script>
+{{--<script type="text/javascript" src="{{ URL::asset('js/jquery-3.2.1.js') }}"></script>--}}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-<script type="text/javascript" src="{{ URL::asset('js/minjs/layout.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('js/layout.js') }}"></script>
 </body>
 </html>

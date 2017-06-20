@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class BelegungSeeder extends Seeder
 {
@@ -14,42 +15,42 @@ class BelegungSeeder extends Seeder
         DB::table('belegung')->insert([
             'user'=>4,
             'kurs' =>'BESY',
-            'rolle'=>'Professor'
+            'rolle'=>'Professor',
+            'created_at'=>Carbon::now()
         ]);
 
         DB::table('belegung')->insert([
             'user'=>3,
             'kurs' =>'ALDA',
-            'rolle'=>'Tutor'
+            'rolle'=>'Tutor',
+            'created_at'=>Carbon::now()
         ]);
         DB::table('belegung')->insert([
             'user'=>1,
             'kurs' =>'ALDA',
-            'rolle'=>'Student'
+            'rolle'=>'Student',
+            'created_at'=>Carbon::now()
         ]);
         DB::table('belegung')->insert([
             'user'=>2,
             'kurs' =>'BESY',
-            'rolle'=>'Student'
+            'rolle'=>'Student',
+            'created_at'=>Carbon::now()
         ]);
 
         DB::table('belegung')->insert([
             'user'=>4,
             'kurs' =>'Webtech',
-            'rolle'=>'Professor'
+            'rolle'=>'Professor',
+            'created_at'=>Carbon::now()
         ]);
         DB::table('belegung')->insert([
             'user'=>4,
             'kurs'=>'ALDA',
-            'rolle'=>'Professor'
+            'rolle'=>'Professor',
+            'created_at'=>Carbon::now()
         ]);
 
 
-
-//        DB::table('belegung')->insert([
-//            'user'=>2,
-//            'kurs' =>'WebTech',
-//            'rolle'=>'Student'
-//        ]);
     }
 }

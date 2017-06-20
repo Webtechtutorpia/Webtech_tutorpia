@@ -1,13 +1,12 @@
 $(document).ready(function () {
     //Ausführung bei Eingabe in das Textfeld
     $('#tfsearch').on('input change', function () {
-
-        search2($('#tfsearch').val());
+        ajax($('#tfsearch').val());
     })
 
 });
 
-function search2(name) {
+function ajax(name) {
     //nachfragen delay und Buchstabe zuwenig Problem
     $.ajax({
         url: "/json?tfsearch=" + name, success: function (result) {

@@ -24,12 +24,10 @@ class AbgabeController extends Controller
         $abgabe = DB::table('abgabe')
             ->join('aufgabe', 'abgabe.zugehoerig_zu', '=', 'aufgabe.id')
             ->join('users', 'abgabe.user', '=', 'users.id')
-           // ->join('belegung','users.id', '=', 'belegung.user')
             ->select('*')->where('aufgabe.kurs',$kurs)
            ->whereIn('users.id', $belegung)
             ->orderBy('users.name', 'asc')
             ->orderBy('users.id', 'asc')
-            //->orderBy('aufgabe.aufgabenname')
             ->get();
 
 
@@ -40,7 +38,6 @@ class AbgabeController extends Controller
         $users = [
             'id' => $request->input('id'),
             'users' => User::select('name','id')->where('name', 'like', $user . '%')->whereIn('id', $alle)->get(),
-//                'users' => User::whereIn('id', Users::all())->get(),
             'aufgaben' => Aufgabe::select('aufgabenname')->where('kurs', $kurs)->get(),
             'abgaben' => $abgabe
 
@@ -61,35 +58,15 @@ class AbgabeController extends Controller
 
     }
 
-    public function index()
-    {
-
-            // get all the myinputs
-            $aufgabe = Aufgabe::all();
-
-            $alle = User::all();
-
-            $abgabe = DB::table('abgabe')
-                ->join('aufgabe', 'abgabe.zugehoerig_zu', '=', 'aufgabe.id')
-                ->join('users', 'abgabe.user', '=', 'users.id')
-                ->select('*')
-                ->orderBy('users.name', 'asc')
-                ->orderBy('users.id', 'asc')
-                ->get();
-
-
-            // load the view and pass the myinputs
-            return View::make('Tutor.abgabe')->with('myinputs', $aufgabe)->with('ergebnismenge', $abgabe);
-
-    }
 
     public function show($kurs)
     {
             session()->put('global_variable', $kurs);
-            // get the myinput
+            // alle Aufgaben mit übergebenen Kurs rausfinden
             $aufgabe = Aufgabe::where('kurs', '=', $kurs)->get();
+            //für Zwischenabfrage alle Belegungen von Studenten mit richtigem Kurs rausfinden
             $belegung= Belegung::select('user')->where('belegung.rolle','Student')->where('belegung.kurs', $kurs)->get()->toArray();
-            // SELECT * FROM `abgabe`,`aufgabe`,`users` WHERE abgabe.zugehoerig_zu=aufgabe.id and aufgabe.kurs=2 and abgabe.user=users.id order by users.id
+            //alle Abgaben auslesen
             $abgabe = DB::table('abgabe')
                 ->join('aufgabe', 'abgabe.zugehoerig_zu', '=', 'aufgabe.id')
                 ->join('users', 'abgabe.user', '=', 'users.id')
@@ -100,8 +77,7 @@ class AbgabeController extends Controller
                 ->orderBy('users.id', 'asc')
 
                 ->get();
-            // show the view and pass the myinput to it
-            return View::make('Tutor.abgabe')->with('myinputs', $aufgabe)->with('ergebnismenge', $abgabe)->with('kurs', session()->get('global_variable'));
+            return View::make('Tutor.abgabe')->with('aufgabe', $aufgabe)->with('ergebnismenge', $abgabe)->with('kurs', session()->get('global_variable'));
 
     }
 

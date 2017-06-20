@@ -1,12 +1,12 @@
 <?php $__env->startSection('content'); ?>
     <h3> gesuchte Aufgaben: </h3>
-    <?php $__currentLoopData = $cities; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+    <?php $__currentLoopData = $abgaben; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
         <?php if( $value->zustand == '.'): ?>
             <div class="col-md-12 col-xs-12">
                 <div class="panel panel-info aufgabe ">
-                    <div class="panel-heading" onclick="Bodyhandler(this)"> <?php echo e($value->aufgabenname); ?>
+                    <div class="panel-heading" onclick="panel_behavior(this)"> <?php echo e($value->aufgabenname); ?>
 
-                        <div style="display: inline; float: right" class="glyphicon glyphicon-minus"></div>
+                        <div class="glyphicon glyphicon-minus icon-right"></div>
                     </div>
 
                     <div class="panel-body notVisible">
@@ -27,9 +27,8 @@
                                 </div>
 
 
-                                <div class="form-group" style="margin-top: 2em">
-                                    <button type="submit" class="btn btn-primary speichern" value="Abschicken"
-                                            style="float: right">
+                                <div class="form-group uploadbutton">
+                                    <button type="submit" class="btn btn-primary speichern right" value="Abschicken">
                                         Datei hochladen
                                     </button>
 
@@ -42,11 +41,11 @@
                             <?php if(Session::has('message')): ?>
                                 <div class="alert alert-danger"><?php echo e(Session::get('message')); ?></div>
                             <?php endif; ?>
-                            <div class=" panel-group" style="padding-bottom: 1%">
+                            <div class=" panel-group panelabstand">
                                 <div class="col-md-3 col-xs-6 size"> Aufgabenstellung:</div>
                                 <div class="col-md-9 col-xs-12 size"> <?php echo e($value->aufgabenname); ?></div>
                             </div>
-                            <div class=" panel-group" style="padding-bottom: 1%">
+                            <div class=" panel-group panelabstand" >
                                 <div class="col-md-3  col-xs-6 size">Abgabe bis :</div>
                                 <div class="col-md-3  col-xs-6 size"> <?php echo e($value->abgabedatum); ?></div>
                                 <div class="col-md-3  col-xs-6 size">Aufgabe hochladen:</div>
@@ -55,7 +54,7 @@
 
                                 </div>
                             </div>
-                            <div class="panel-group" style="padding-bottom: 1%">
+                            <div class="panel-group panelabstand">
                                 <div class="col-md-3 col-xs-12"> Status:</div>
                                 <div class="col-md-3 col-xs-12 size">Warten auf Upload</div>
                             </div>
@@ -68,16 +67,16 @@
         <?php if($value->zustand == '-'): ?>
             <div class="col-md-12 col-xs-12">
                 <div class="panel panel-danger aufgabe ">
-                    <div class="panel-heading" onclick="Bodyhandler(this)"> <?php echo e($value->aufgabenname); ?>
+                    <div class="panel-heading" onclick="panel_behavior(this)"> <?php echo e($value->aufgabenname); ?>
 
-                        <div style="display: inline; float: right" class="glyphicon glyphicon-remove"></div>
+                        <div class="glyphicon glyphicon-remove icon-right"></div>
                     </div>
                     <div class="panel-body notVisible">
-                        <div class=" panel-group" style="padding-bottom: 1%">
+                        <div class=" panel-group panelabstand" >
                             <div class="col-md-3 col-xs-6 size"> Aufgabenstellung:</div>
                             <div class="col-md-9 col-xs-12 size"> <?php echo e($value->aufgabenname); ?></div>
                         </div>
-                        <div class=" panel-group" style="padding-bottom: 1%">
+                        <div class=" panel-group panelabstand" >
                             <div class="col-md-3  col-xs-6 size">Abgabe bis:</div>
                             <div class="col-md-3  col-xs-6 size"><?php echo e($value->abgabedatum); ?> </div>
                             <div class="col-md-3  col-xs-6 size">Abgabe abgelehnt:</div>
@@ -94,16 +93,16 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="panel-group" style="padding-bottom: 1%">
+                        <div class="panel-group panelabstand" >
                             <div class="col-md-3 col-xs-6 size"> Tutor kontaktieren:</div>
                             <div class="col-md-3 col-xs-2 size"><span><a
                                             href="mailto:<?php echo e($value->tutoremail); ?>?subject=Fehler bei Abnahme von <?php echo e($value->aufgabenname); ?> bei <?php echo e($value->name); ?>"
                                             class="glyphicon glyphicon-envelope"></a></span>
                             </div>
                         </div>
-                        <div class="panel-group" style="padding-bottom: 1%">
+                        <div class="panel-group panelabstand" >
                             <div class="col-md-3 col-xs-12"> Status:</div>
-                            <div class="col-md-3 col-xs-12 size">erfolgreich abgegeben</div>
+                            <div class="col-md-3 col-xs-12 size">abgelehnt</div>
 
                         </div>
                         <div class="panel-group ">
@@ -118,30 +117,29 @@
             <div class="col-md-12 col-xs-12 ">
 
                 <div class="panel panel-success aufgabe ">
-                    <div class="panel-heading" onclick="Bodyhandler(this)"> <?php echo e($value->aufgabenname); ?>
+                    <div class="panel-heading" onclick="panel_behavior(this)"> <?php echo e($value->aufgabenname); ?>
 
-                        <div style="display: inline; float: right" class="glyphicon glyphicon-ok"></div>
+                        <div  class="glyphicon glyphicon-ok icon-right"></div>
                     </div>
                     <div class="panel-body notVisible">
-                        <div class=" panel-group" style="padding-bottom: 1%">
+                        <div class=" panel-group panelabstand">
                             <div class="col-md-3 col-xs-6 size"> Aufgabenstellung:</div>
                             <div class="col-md-9 col-xs-12 size"><?php echo e($value->aufgabenname); ?></div>
                         </div>
 
-                        <div class="panel group" style="padding-bottom: 1%">
+                        <div class="panel group panelabstand">
                             <div class="col-md-3 col-xs-6 size ">Upload am:</div>
                             <div class="col-md-3 col-xs-6 size "><?php echo e($value->upload_am); ?></div>
                             <div class="col-md-3 col-xs-6 size"> korregiert am:</div>
                             <div class="col-md-3  col-xs-6 size"> <?php echo e($value->korrigiert_am); ?></div>
                         </div>
 
-                        <div class="panel-group" style="padding-bottom: 1%;">
+                        <div class="panel-group panelabstand">
                             <div class="col-md-3 col-xs-6 size">Abnahme durch:</div>
                             <div class="col-md-3 col-xs-6 size"> <?php echo e($value->bearbeitet_von); ?></div>
 
                             <div class="col-md-3 col-xs-6 size"> Datei:</div>
                             <div class="col-md-3 col-xs-4 size">
-                                
                                 <form action="/download" method="post">
                                     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                                     <input type="hidden" name="kurs" value="<?php echo e($kurs); ?>">
@@ -157,7 +155,7 @@
                                             class="glyphicon glyphicon-envelope"></a></span>
                             </div>
                         </div>
-                        <div class="panel-group" style="padding-bottom: 1%;">
+                        <div class="panel-group panelabstand">
                             <div class="col-md-3 col-xs-12"> Status:</div>
                             <div class="col-md-3 col-xs-12 size">erfolgreich abgegeben</div>
 
@@ -175,16 +173,16 @@
             <div class="col-md-12 col-xs-12 ">
 
                 <div class="panel panel-warning aufgabe ">
-                    <div class="panel-heading" onclick="Bodyhandler(this)"> <?php echo e($value->aufgabenname); ?>
+                    <div class="panel-heading" onclick="panel_behavior(this)"> <?php echo e($value->aufgabenname); ?>
 
-                        <div style="display: inline; float: right" class="glyphicon glyphicon-minus"></div>
+                        <div  class="glyphicon glyphicon-minus icon-right"></div>
                     </div>
                     <div class="panel-body notVisible">
-                        <div class=" panel-group" style="padding-bottom: 1%;">
+                        <div class=" panel-group panelabstand" >
                             <div class="col-md-3 col-xs-6 size"> Aufgabenstellung:</div>
                             <div class="col-md-9 col-xs-12 size"> <?php echo e($value->aufgabenname); ?></div>
                         </div>
-                        <div class=" panel-group" style="padding-bottom: 1%;">
+                        <div class=" panel-group panelabstand" >
                             <div class="col-md-3  col-xs-6 size">Upload am :</div>
                             <div class="col-md-3  col-xs-6 size"> <?php echo e($value->upload_am); ?></div>
                             <div class="col-md-3  col-xs-6 size">Datei löschen:</div>
@@ -205,7 +203,7 @@
 
                             </div>
                         </div>
-                        <div class="panel-group" style="padding-bottom: 1%;">
+                        <div class="panel-group panelabstand">
                             <div class="col-md-3 col-xs-6 size"> Tutor kontaktieren:</div>
                             <div class="col-md-3 col-xs-2 size"><span><a
                                             href="mailto:<?php echo e($value->tutoremail); ?>?subject=Frage zur <?php echo e($value->aufgabenname); ?> von <?php echo e($value->name); ?>"
@@ -223,7 +221,7 @@
 
 
     <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
-                                    <?php if(count($cities)==0): ?>
+                                    <?php if(count($abgaben)==0): ?>
                                         <p> Es wurden keine mit deiner Suchanfrage übereinstimmenden Aufgaben gefunden.</p>
     <?php endif; ?>
 

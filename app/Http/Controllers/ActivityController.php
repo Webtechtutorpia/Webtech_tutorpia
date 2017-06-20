@@ -17,29 +17,17 @@ class ActivityController extends Controller
 {
     public function index()
     {
-
-
-//            $abgabe = DB::table('abgabe')
-//                ->join('aufgabe', 'abgabe.zugehoerig_zu', '=', 'aufgabe.id')
-//                ->select('abgabe.updated_at as abgabeupdated_at','abgabe.*','aufgabe.*')
-//                ->where('abgabe.user','=',Auth::user()->id)
-//                ->orderBy('abgabeupdated_at','desc')
-//                ->get();
-
-        $abgabe=DB::table('activity')
+        //erste 15 Activity werden aus Tabelle gelesen und nach neueste Datum zuerst sortiert
+        $neuigkeiten=DB::table('activity')
             ->leftjoin('aufgabe','activity.zuordnung_aufgabe','aufgabe.id')
             ->leftjoin('abgabe','activity.zuordnung_abgabe','abgabe.abgabeid')
-            ->select('*')
+            ->select('aufgabe.erstellt_von', 'aufgabe.aufgabenname', 'aufgabe.abgabedatum','aufgabe.kurs','zeit','was','bearbeitet_von')
             ->where('activity.user','=',Auth::user()->id)
             ->orderBy('activity.zeit','desc')
             ->paginate(8);
-//        if(count($abgabe)>=10){
-//
-//        }
-
 
             // load the view and pass the myinputs
-            return View::make('Activity.overview')->with('myinputs', $abgabe);
+            return View::make('Activity.overview')->with('neuigkeiten', $neuigkeiten);
 
     }
 
@@ -55,19 +43,19 @@ class ActivityController extends Controller
 //                $abgabe->abgabeupdated_at = Carbon::parse($abgabe->abgabeupdated_at)->format('d-m-Y H:i:s');
 //
 //        }
-        $abgabe=DB::table('activity')
+        $neuigkeiten=DB::table('activity')
             ->leftjoin('aufgabe','activity.zuordnung_aufgabe','aufgabe.id')
             ->leftjoin('abgabe','activity.zuordnung_abgabe','abgabe.abgabeid')
-            ->select('*')
+            ->select('aufgabe.erstellt_von', 'aufgabe.aufgabenname', 'aufgabe.abgabedatum','aufgabe.kurs','zeit','was','bearbeitet_von')
             ->where('activity.user','=',Auth::user()->id)
             ->orderBy('activity.zeit','desc')
             ->get();
 
 
         // load the view and pass the myinputs
-        return View::make('Activity.overview')->with('myinputs', $abgabe);
+//        return View::make('Activity.overview')->with('myinputs', $abgabe);
 
-        return response($abgaben);
+        return response($neuigkeiten);
     }
 
 }

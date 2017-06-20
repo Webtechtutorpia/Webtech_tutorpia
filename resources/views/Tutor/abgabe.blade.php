@@ -2,7 +2,7 @@
 
 @section('content')
     {{--Problem jquery aus layouts lädt nicht schnell genug--}}
-    {{--@if (Auth::user()->rolle=="Tutor" || Auth::user()->rolle=="Professor" )--}}
+
         <div class="container">
             <div class="row">
                 <h2>Tutorenmodus: {{$kurs}}</h2>
@@ -10,7 +10,7 @@
                 <div class="col-md-6 col-md-offset-10" id="anhang">
                     <div class="input-group">
                         <form method="get" action="/search">
-                            <input type="text" class="form-control" placeholder="Suche nach..." id="tfsearch" style="margin-bottom: 2em;">
+                            <input type="text" class="form-control" placeholder="Suche nach..." id="tfsearch">
                         </form>
                     </div>
                 </div>
@@ -23,7 +23,7 @@
                         <div class="alert alert-info">{{ Session::get('message') }}</div>
                     @endif
                     {{--je nach Datenbankeintrag Element anzeigen--}}
-                    @foreach($myinputs as $key => $value)
+                    @foreach($aufgabe as $value)
                 <th class="col-md-1 col-xs-1">{{$value->aufgabenname}}</th>
                         @endforeach
 
@@ -48,33 +48,33 @@
                                 <td>{{$zeile->name}}</td>
 
                             @if($zeile->zustand == '+')
-                                <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-ok btn-success"></a>
+                                <td class="text-center"><a href="{{ url('Korrektur/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-ok btn-success"></a>
                             @endif
                             @if($zeile->zustand == '-')
-                                <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-remove btn-danger"></a></td>
+                                <td class="text-center"><a href="{{ url('Korrektur/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-remove btn-danger"></a></td>
                             @endif
                             @if($zeile->zustand == '.')
                                 <td class="text-center"> unbearbeitet</td>
 
                             @endif
                             @if($zeile->zustand == '/')
-                                <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-minus btn-warning"></a></td>
+                                <td class="text-center"><a href="{{ url('Korrektur/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-minus btn-warning"></a></td>
                             @endif
 
                         @else
                             @if($zeile->zustand == '+')
-                                    <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-ok btn-success"></a>
+                                    <td class="text-center"><a href="{{ url('Korrektur/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-ok btn-success"></a>
                                 @endif
                                 @if($zeile->zustand == '-')
-                                    <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-remove btn-danger"></a></td>
+                                    <td class="text-center"><a href="{{ url('Korrektur/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-remove btn-danger"></a></td>
                                     @endif
                                 @if($zeile->zustand == '.')
                                     <td class="text-center">unbearbeitet</td>
                                 @endif
                                 @if($zeile->zustand == '/')
-                                    <td class="text-center"><a href="{{ url('Aufgabenansicht/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-minus btn-warning"></a></td>
+                                    <td class="text-center"><a href="{{ url('Korrektur/bestimmteAbgabe') }}/{{$zeile->user}}/{{$zeile->aufgabenname}}" class="glyphicon glyphicon-minus btn-warning"></a></td>
                                 @endif
-                            {{--<td>{{$zeile->zustand}}</td>--}}
+
                     @endif
                 @php($id=$zeile->id)
                 @endforeach

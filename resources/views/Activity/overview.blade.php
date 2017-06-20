@@ -28,7 +28,7 @@
                                 {{--je nach Datenbankeintrag Element anzeigen--}}
                                 <tbody id="tbody">
 
-                                @foreach($myinputs as $value )
+                                @foreach($neuigkeiten as $value )
                                     <tr>
 
                                             <td class="col-md-4 col-xs-8">
@@ -60,7 +60,7 @@
         </div>
     </div>
 
-    {{--    <script type="text/javascript" src="{{ URL::asset('s/jquery-3.2.1.js') }}"></script>--}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="{{URL::asset('js/minjs/overview.min.js')}}"></script>
 @endsection
 

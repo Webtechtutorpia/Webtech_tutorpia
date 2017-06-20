@@ -28,7 +28,7 @@
                                     <div class="alert alert-info">{{ Session::get('message') }}</div>
                                 @endif
                                 {{--je nach Datenbankeintrag Element anzeigen--}}
-                                @foreach($myinputs as $key => $value)
+                                @foreach($kurse as $key => $value)
                                     <tr>
                                         <td>{{$value->kurs}}</td>
                                         <td>{{$value->rolle}}</td>
@@ -43,10 +43,7 @@
                                             </td>
                                         @endif
                                         @if($value->rolle=="Tutor")
-                                            {{--<td class="text-center"><a--}}
-                                            {{--class="btn btn-primary btn-md col-md-11 col-md-offset-1 col-xs-11 col-xs-offset-3"--}}
-                                            {{--href="{{ url('/Tutor') }}/{{$value->kurs}}" role="button">Abgabenübersicht</a></td>--}}
-                                            {{--<td></td>--}}
+
                                             <td class="text-center"><a
                                                         class="btn btn-primary btn-md col-md-11 col-md-offset-2 col-xs-11 col-xs-offset-1"
                                                         href="{{ url('/Tutor') }}/{{$value->kurs}}" role="button">Abgabenübersicht</a>
@@ -90,13 +87,12 @@
 
                                     <tr>
                                         <td>{{$value2->bezeichnung}}</td>
-                                        {{--<td>{{$value2->rolle}}</td>--}}
+
                                         <td class="text-center">
                                             <form class="form-horizontal" role="form" method="POST"
                                                   action="{{ url('Kurse') }}">
                                                 {{ csrf_field() }}
                                                 <input type="hidden" name="kurs" value="{{$value2->bezeichnung}}">
-                                                {{--<input type="hidden" name="rolle" value="{{$value2->rolle}}">--}}
                                                 <button type="submit" class="btn btn-primary btn-md col-md-offset-3">
                                                     eintragen
                                                 </button>
