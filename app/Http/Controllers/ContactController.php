@@ -9,7 +9,7 @@ use Tutorpia\Contact;
 
 class ContactController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
 
 

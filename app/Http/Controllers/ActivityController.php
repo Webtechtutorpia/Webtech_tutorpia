@@ -32,17 +32,8 @@ class ActivityController extends Controller
     }
 
     public function ajax(){
-//        $abgaben = DB::table('abgabe')
-//            ->join('aufgabe', 'abgabe.zugehoerig_zu', '=', 'aufgabe.id')
-//            ->select('abgabe.updated_at as abgabeupdated_at','abgabe.*','aufgabe.*')
-//            ->where('abgabe.user','=',Auth::user()->id)
-//            ->orderBy('abgabeupdated_at','desc')
-//            ->get();
-//        foreach ($abgaben as $abgabe){
-//
-//                $abgabe->abgabeupdated_at = Carbon::parse($abgabe->abgabeupdated_at)->format('d-m-Y H:i:s');
-//
-//        }
+
+
         $neuigkeiten=DB::table('activity')
             ->leftjoin('aufgabe','activity.zuordnung_aufgabe','aufgabe.id')
             ->leftjoin('abgabe','activity.zuordnung_abgabe','abgabe.abgabeid')

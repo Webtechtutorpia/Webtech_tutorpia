@@ -75,7 +75,7 @@
                                    placeholder="Kursname eingeben">
                         </div>
                         <div class="form-group">
-                            <label for=" id=leiter">Leitender Prof.</label>
+                            <label for="leiter">Leitender Prof.</label>
 
                             <select name="leiter" class="form-control">
                                 @foreach($Users as $user)

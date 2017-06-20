@@ -60,6 +60,8 @@ class AdminController extends Controller
     public function aendereUser(Request $request)
     {
 
+        $this->validate($request, [ 'rolle'=> 'required']);
+
         $Users = $request->session()->pull('Users');
 //        $Users = Session::flash('Users', 'Änderung war erfolgreich');
         for ($i = 0; $i < sizeof($Users); $i++) {
@@ -81,6 +83,8 @@ class AdminController extends Controller
 
     public function aenderebelegung(Request $request)
     {
+
+        $this->validate($request, [ 'kursrolle'=> 'required']);
         $Belegungen = $request->session()->get('kurse');
    $j=0;
         foreach($Belegungen as $belegung){
@@ -106,6 +110,9 @@ class AdminController extends Controller
 
     public function deleteUser(Request $request){
 
+
+        $this->validate($request, [ 'delete'=> 'required| max:255']);
+
         if($request->delete != "") {
             $users = DB::table('users')->select('id')->where('name', '=', $request->delete)->orwhere('email', $request->delete)->get();
             if($users -> isEmpty()){
@@ -128,6 +135,9 @@ class AdminController extends Controller
     }
 
     public function createKurs(Request $request){
+
+
+        $this->validate($request, [ 'kursname'=> 'required| max:255', 'leiter'=> 'required']);
 
         DB::table('kurs')->insert([
             'bezeichnung'=> $request->kursname,

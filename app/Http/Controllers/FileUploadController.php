@@ -17,6 +17,7 @@ class FileUploadController extends Controller
 
     public function store(Request $request)
     {
+
         // Überprüfe, ob der Request die Datei "upload" enthält
         // und dieser Upload fehlerfrei abgelaufen ist
         if (request()->hasFile('upload')) {

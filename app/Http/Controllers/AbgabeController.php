@@ -61,6 +61,7 @@ class AbgabeController extends Controller
 
     public function show($kurs)
     {
+
             session()->put('global_variable', $kurs);
             // alle Aufgaben mit übergebenen Kurs rausfinden
             $aufgabe = Aufgabe::where('kurs', '=', $kurs)->get();

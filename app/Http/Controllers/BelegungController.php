@@ -36,6 +36,8 @@ class BelegungController extends Controller
 
     public function store(Request $request)
     {
+
+        $this->validate($request, [ 'kurs'=> 'required']);
         $belegung=new Belegung(Auth::user()->id,$request->kurs,"Student");
         $this->save($belegung);
         return back();
