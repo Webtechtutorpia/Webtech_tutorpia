@@ -24,8 +24,11 @@ class BelegungMiddleware
         if($request->user() !== NULL) {
             // Auslesen der Benutzergruppen-ID aus der Benutzer-Instanz
             $userGroupId = $request->user()->id;
-            //$kurs=$request->route()->parameters();
+
           $kurs=session()->get('global_variable');
+          if($kurs ==null){
+              $kurs=$request->route()->parameters();
+          }
 
             // Anhand dieser ID wird die Benutzergruppe ausgelelesen
 

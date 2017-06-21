@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
         //Teststudent
         DB::table('users')->insert([
             'name' => 'TestStudent',
-            'email' => 'student@student',
+            'email' => 'student@student.de',
             'password' => bcrypt('Tutorpia'),
             'Rolle' => 'member',
             'created_at'=>Carbon::now()
@@ -24,7 +24,7 @@ class UserSeeder extends Seeder
 
         DB::table('users')->insert([
             'name' => 'TestStudent2',
-            'email' => 'student@student2',
+            'email' => 'student@student2.de',
             'password' => bcrypt('Tutorpia'),
             'Rolle' => 'member',
             'created_at'=>Carbon::now()
@@ -32,7 +32,7 @@ class UserSeeder extends Seeder
         //TestTutor
         DB::table('users')->insert([
             'name' => 'TestTutor',
-            'email' => 'Tutor@Tutor',
+            'email' => 'Tutor@Tutor.de',
             'password' => bcrypt('Tutorpia'),
             'Rolle' => 'member',
             'created_at'=>Carbon::now()
@@ -41,7 +41,7 @@ class UserSeeder extends Seeder
         //TestProf
         DB::table('users')->insert([
             'name' => 'TestProf',
-            'email' => 'Prof@Prof',
+            'email' => 'Prof@Prof.de',
             'password' => bcrypt('Tutorpia'),
             'Rolle' => 'member',
             'created_at'=>Carbon::now()
@@ -49,7 +49,7 @@ class UserSeeder extends Seeder
         // Admin
         DB::table('users')->insert([
             'name' => 'Admin',
-            'email' => 'Admin@Admin',
+            'email' => 'Admin@Admin.de',
             'password' => bcrypt('Tutorpia'),
             'Rolle' => 'admin',
             'created_at'=>Carbon::now()

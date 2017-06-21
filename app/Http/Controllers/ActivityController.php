@@ -42,10 +42,6 @@ class ActivityController extends Controller
             ->orderBy('activity.zeit','desc')
             ->get();
 
-
-        // load the view and pass the myinputs
-//        return View::make('Activity.overview')->with('myinputs', $abgabe);
-
         return response($neuigkeiten);
     }
 

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class AufgabeSeeder extends Seeder
 {
@@ -17,7 +18,8 @@ class AufgabeSeeder extends Seeder
             'abgabedatum' => '31.07.2017',
             'aufgabenbeschreibung'=>'Bitte rechnen sie diese 5 Zahlen zusammen',
             'erstellt_von'=>'TestProf',
-            'kurs' => 'ALDA'
+            'kurs' => 'ALDA',
+            'created_at'=>Carbon::now()
 
         ]);
 
@@ -26,7 +28,8 @@ class AufgabeSeeder extends Seeder
             'abgabedatum' => '05.02.2017',
             'aufgabenbeschreibung'=>'Bitte addieren sie es zusammen',
             'erstellt_von'=>'TestProf',
-            'kurs' =>'ALDA'
+            'kurs' =>'ALDA',
+            'created_at'=>Carbon::now()
         ]);
 
         DB::table('aufgabe')->insert([
@@ -34,7 +37,8 @@ class AufgabeSeeder extends Seeder
             'abgabedatum' => '15.05.2017',
             'aufgabenbeschreibung'=>'Bitte rechnen sie diese 5 Zahlen zusammen',
             'erstellt_von'=>'TestProf',
-            'kurs' => 'ALDA'
+            'kurs' => 'ALDA',
+            'created_at'=>Carbon::now()
             ]);
 
         DB::table('aufgabe')->insert([
@@ -42,7 +46,8 @@ class AufgabeSeeder extends Seeder
             'abgabedatum' => '31.06.2017',
             'aufgabenbeschreibung'=>'Bitte rechnen sie diese 5 Zahlen zusammen',
             'erstellt_von'=>'TestProf',
-            'kurs' => 'ALDA'
+            'kurs' => 'ALDA',
+            'created_at'=>Carbon::now()
         ]);
 
         DB::table('aufgabe')->insert([
@@ -50,7 +55,8 @@ class AufgabeSeeder extends Seeder
             'abgabedatum' => '17.06.2017',
             'aufgabenbeschreibung'=>'Bitte bearbeiten sie Aufgabe 1 nochmal',
             'erstellt_von'=>'TestProf',
-            'kurs' => 'ALDA'
+            'kurs' => 'ALDA',
+            'created_at'=>Carbon::now()
 
         ]);
         DB::table('aufgabe')->insert([
@@ -58,7 +64,8 @@ class AufgabeSeeder extends Seeder
             'abgabedatum' => '17.06.2017',
             'aufgabenbeschreibung'=>'Bitte bearbeiten sie Aufgabe 1 nochmal',
             'erstellt_von'=>'TestProf',
-            'kurs' => 'BESY'
+            'kurs' => 'BESY',
+            'created_at'=>Carbon::now()
         ]);
 
     }

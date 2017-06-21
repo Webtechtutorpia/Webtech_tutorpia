@@ -99,13 +99,7 @@ class AdminController extends Controller
             $request->Session()->flash('message', 'Kursrollen wurden erfolgreich geändert');
         return back();
         }
-//        for ($i = 0; $i < sizeof($Belegungen['belegungen']); $i++) {
-//
-//            $Belegung = Belegung::find($Belegungen->id);
-//
-//            $Belegung->rolle = $request->kursrolle[$i];
-//            $Belegung->save();
-//        }
+
 
 
     public function deleteUser(Request $request){

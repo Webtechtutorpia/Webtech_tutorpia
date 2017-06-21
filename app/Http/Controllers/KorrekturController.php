@@ -74,12 +74,15 @@ class KorrekturController extends Controller
             ->orderBy('abgabeid', 'desc')->first();
 
         //Neuigkeit dazu abspeichern
+        $activity = new Activity(Carbon::now(),session()->get('aufgabenid'),$id->abgabeid,'abgabe', session()->get('userid'));
         DB::table("activity")->insert([
-            'zeit'=>Carbon::now(),
-            'zuordnung_aufgabe'=>session()->get('aufgabenid'),
-            'zuordnung_abgabe'=> $id->abgabeid,
-            'was'=>'abgabe',
-            'user'=>session()->get('userid')]);
+            'zeit'=>$activity->getZeit(),
+            'zuordnung_aufgabe'=>$activity->getZuordnung_aufgabe(),
+            'zuordnung_abgabe'=>$activity->getZuordnung_abgabe(),
+            'was'=>$activity->getWas(),
+            'user'=>$activity->getUser(),
+            'created_at'=>Carbon::now()]);
+
 
 
 

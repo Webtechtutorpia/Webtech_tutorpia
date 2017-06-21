@@ -42,8 +42,6 @@ class AufgabeController extends Controller
     //ID gespeicherte Aufgabe rausfinden
         $id = Aufgabe::orderBy('id', 'desc')->first();
 
-
-
     //User die Aufgabe lösen müssen rausfinden
         $users =DB::table('belegung')
             ->join('users', 'belegung.user', '=', 'users.id')
@@ -63,11 +61,12 @@ class AufgabeController extends Controller
                   ]
                 );
             }
+            $activity = new Activity(Carbon::now(),$id->id,null,'aufgabe',$user->id);
             DB::table("activity")->insert([
-                'zeit'=>Carbon::now(),
-                'zuordnung_aufgabe'=>$id->id,
-                'was'=>'aufgabe',
-                'user'=>$user->id,
+                'zeit'=>$activity->getZeit(),
+                'zuordnung_aufgabe'=>$activity->getZuordnung_aufgabe(),
+                'was'=>$activity->getWas(),
+                'user'=>$activity->getUser(),
                 'created_at'=>Carbon::now()]);
         }
 

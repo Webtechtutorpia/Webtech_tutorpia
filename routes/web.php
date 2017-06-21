@@ -81,7 +81,7 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::get('readuser','AbgabeController@readAll');
 
-       
+
         Route::get('Tutor/Aufgabenkorrektur','KorrekturController@UserAbgaben');
         Route::resource('Tutor/Aufgabenkorrektur','KorrekturController');
         Route::resource('Tutor','AbgabeController');
