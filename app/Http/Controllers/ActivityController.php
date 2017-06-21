@@ -26,7 +26,6 @@ class ActivityController extends Controller
             ->orderBy('activity.zeit','desc')
             ->paginate(8);
 
-            // load the view and pass the myinputs
             return View::make('Activity.overview')->with('neuigkeiten', $neuigkeiten);
 
     }

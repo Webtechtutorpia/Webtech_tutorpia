@@ -14,7 +14,6 @@ class AufgabenansichtController extends Controller
 
     public function show($kurs)
     {
-
             session()->put('global_variable', $kurs);
         //Alle Abgaben von bestimmten User und Kurs auslesen und mit Aufgabenname sortieren
             $abgabe = DB::table('abgabe')
@@ -31,16 +30,14 @@ class AufgabenansichtController extends Controller
 
     }
 
-    public function matchHTML(Request $request)
+    public function gesuchteAufgabe(Request $request)
     {
         $abgaben=$this->queryName($request);
         return view('Aufgabenansicht.gesuchteAufgabe',['abgaben'=>$abgaben,'kurs'=>session()->get('global_variable')]);
 
-
     }
 
-
-private function queryName(Request $request){
+    private function queryName(Request $request){
         if (isset($request->name)) {
             $prefix = $request->name;
         } else {

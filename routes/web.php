@@ -68,7 +68,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('Activity','ActivityController');
     Route::resource('Kurse', 'BelegungController');
 
-    Route::get('Aufgabenansicht/ajaxAufgabenansicht','AufgabenansichtController@matchHTML');
+    Route::get('Aufgabenansicht/ajaxAufgabenansicht','AufgabenansichtController@gesuchteAufgabe');
 
 
     Route::resource('Aufgabenansicht','AufgabenansichtController');

@@ -12,14 +12,6 @@ class ContactController extends Controller
     public function index()
     {
 
-
-//    $data=[
-//            'name'=>$request->name,
-//            'subject'=>$request->subject,
-//            'email'=>$request->email,
-//            'message'=> $request->message
-//        ];
-
         return view('contact_confirmation');
     }
 
