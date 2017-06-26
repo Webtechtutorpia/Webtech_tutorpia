@@ -26,17 +26,17 @@
                         </div>
                     @endif<input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <label for="fname">Name</label>
-                    <input type="text" id="fname" name="name" placeholder="Bitte Vorname eintragen..">
+                    <input type="text" id="fname" name="name" placeholder="Bitte Vorname eintragen.." maxlength="100">
 
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" class="form-control" placeholder="Bitte Email eintragen...">
+                    <input type="email" id="email" name="email" class="form-control" maxlength="100" placeholder="Bitte Email eintragen...">
 
                     <label for="lname">Betreff</label>
-                    <input type="text" id="lname" name="subject" placeholder="Bitte Nachname eintragen..">
+                    <input type="text" id="lname" name="subject" placeholder="Bitte Nachname eintragen.." maxlength="255">
 
                     <label for="subject">Nachricht</label>
                     <textarea id="subject" name="message" placeholder="Bitte Nachricht eintragen"
-                              style="height:200px"></textarea>
+                              style="height:200px" maxlength="255"></textarea>
 
                     <input type="submit" class=" btn-primary btn" value="Bestätigen">
 
@@ -46,7 +46,5 @@
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script> $(document).ready(function () {
-            $("li[name='Kontakt']").css('background-color', '#f5f8fa');
-        });</script>
+    <script> $(document).ready(function(){$("li[name='Kontakt']").css("background-color","#f5f8fa")});</script>
 @endsection

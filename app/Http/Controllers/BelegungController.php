@@ -34,28 +34,35 @@ class BelegungController extends Controller
 
         $this->validate($request, [ 'kurs'=> 'required']);
         $belegung=new Belegung(Auth::user()->id,$request->kurs,"Student");
-        $this->save($belegung);
+        $check =Belegung::where('user', $belegung->getUser())->where('kurs', $belegung->getKurs())->get();
+        if($check->isEmpty()) {
+
+            $this->save($belegung);
+        }
         return back();
     }
 
     private function save(Belegung $belegung){
-        DB::table('belegung')->insert(
-            ['user' => $belegung->getUser(), 'kurs' => $belegung->getKurs(),'rolle'=>$belegung->getRolle(),'created_at'=>Carbon::now()]
-        );
-        $aufgaben =DB::table('aufgabe')
-            ->select('aufgabe.id')
-            ->where('aufgabe.kurs',$belegung->getKurs())
-            ->get();
 
-        foreach($aufgaben as $aufgabe) {
-            DB::table('abgabe')
-                ->insert([
-                'zustand' => '.',
-                'user' => $belegung->getUser(),
-                'zugehoerig_zu' => $aufgabe->id,
-                    'created_at'=>Carbon::now()
-            ]);
-        }
+
+
+            DB::table('belegung')->insert(
+                ['user' => $belegung->getUser(), 'kurs' => $belegung->getKurs(), 'rolle' => $belegung->getRolle(), 'created_at' => Carbon::now()]
+            );
+            $aufgaben = DB::table('aufgabe')
+                ->select('aufgabe.id')
+                ->where('aufgabe.kurs', $belegung->getKurs())
+                ->get();
+
+            foreach ($aufgaben as $aufgabe) {
+                DB::table('abgabe')
+                    ->insert([
+                        'zustand' => '.',
+                        'user' => $belegung->getUser(),
+                        'zugehoerig_zu' => $aufgabe->id,
+                        'created_at' => Carbon::now()
+                    ]);
+            }
 
         return back();
 

@@ -101,7 +101,7 @@
                                                     <td>
                                                     <input required type="text" class="form-control" name="kommentar"
                                                     id="kommentar" onkeypress="buttonFaerben(this)"
-                                                    placeholder="Hier Kommentar eintragen">
+                                                    placeholder="Hier Kommentar eintragen" maxlength="255">
                                                     </td>
                                                 </tr>
                                                 <tr>

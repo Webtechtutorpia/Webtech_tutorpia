@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Tutorpia\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use Tutorpia\Contact;
+use Session;
 
 class ContactController extends Controller
 {
@@ -20,11 +21,14 @@ class ContactController extends Controller
     {
 
         $this->validate($request, [
-            'name'       => 'required',
-            'subject'      => 'required',
+            'name' => 'required',
+            'subject' => 'required',
             'email' => 'required',
-            'message'=> 'required']);
+            'message' => 'required']);
 
+        $check = Contact::where('name', $request->name)->where('email', $request->email)->where('subject', $request->subject)->get();
+
+        if ($check->isEmpty()) {
 
 
             $data = [
@@ -32,18 +36,17 @@ class ContactController extends Controller
                 'subject' => $request->subject,
                 'email' => $request->email,
                 'message' => $request->message,
-                'beantwortet'=> false
+                'beantwortet' => false
             ];
 
 
             Contact::create([
-                'name'=>$data['name'],
-                'subject'=>$data['subject'],
-                'email'=> $data['email'],
-                'message'=>$data['message'],
-                'beantwortet'=> $data['beantwortet']
+                'name' => $data['name'],
+                'subject' => $data['subject'],
+                'email' => $data['email'],
+                'message' => $data['message'],
+                'beantwortet' => $data['beantwortet']
             ]);
-
 
 
             Mail::send('contact', $data, function ($message) use ($data) {
@@ -53,8 +56,11 @@ class ContactController extends Controller
 //  $message->to('582b290ad4-10df39@inbox.mailtrap.io', 'Tutorpia')->subject($data['subject'])->setBody('ich bin der Text');
 
             });
-            return view('contact_confirmation');
-        
+
+        }
+        return view('contact_confirmation');
+
+
     }
 
 

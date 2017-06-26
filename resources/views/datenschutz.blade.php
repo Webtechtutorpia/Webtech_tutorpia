@@ -49,7 +49,5 @@
 
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script> $( document ).ready(function() {
-            $("li[name='Datenschutz']").css('background-color', '#f5f8fa');
-        });</script>
+    <script> $(document).ready(function(){$("li[name='Datenschutz']").css("background-color","#f5f8fa")});</script>
     @endsection
