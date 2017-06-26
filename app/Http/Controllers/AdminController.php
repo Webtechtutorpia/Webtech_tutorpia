@@ -10,6 +10,7 @@ use Tutorpia\User;
 use Tutorpia\Belegung;
 use Tutorpia\Kurse;
 use View;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
@@ -30,28 +31,18 @@ class AdminController extends Controller
                 ->join('users', 'users.id', '=', 'belegung.user')->select('belegung.id','belegung.rolle', 'name', 'email')
                 ->where('kurs', '=', $kurs->bezeichnung)->get();
             $j = 0;
-//                foreach($belegungen as $belegung) {
-////                    $array=array('name'=>$belegung->name, 'email'=>$belegung->email, 'rolle'=> $belegung->rolle);
-//                    $array[$j]=$belegung;
-//                                      $j++;
-//
-//                }
+
             $kurse[$i] = array('kurs' => $kurs->bezeichnung, 'belegungen' => $belegungen);
 
 
             $i++;
         }
         Session::put('kurse', $kurse);
-//        return response()->json($kurse);
         return view('Admin.admin')->with('Users', $this->Users)->with('kurse', $kurse);
 
 
     }
 
-    public function store()
-    {
-
-    }
 
     /**
      * @param Request $request
@@ -63,7 +54,6 @@ class AdminController extends Controller
         $this->validate($request, [ 'rolle'=> 'required']);
 
         $Users = $request->session()->pull('Users');
-//        $Users = Session::flash('Users', 'Änderung war erfolgreich');
         for ($i = 0; $i < sizeof($Users); $i++) {
 
             $user = User::find($Users[$i]->id);
@@ -132,16 +122,17 @@ class AdminController extends Controller
 
 
         $this->validate($request, [ 'kursname'=> 'required| max:255', 'leiter'=> 'required']);
-
+        $kurs=new Kurse($request->kursname,$request->leiter);
         DB::table('kurs')->insert([
-            'bezeichnung'=> $request->kursname,
-            'geleitet_von' =>$request->leiter
+            'bezeichnung'=> $kurs->getBezeichnung(),
+            'geleitet_von' =>$kurs->getGeleitet_von()
         ]);
-
+        $belegung=new Belegung($request->leiter,$request->kursname,'Professor');
         DB::table('belegung')->insert([
-            'user'=> $request->leiter,
-            'kurs' =>$request->kursname,
-            'rolle'=>'Professor'
+            'user'=> $belegung->getUser(),
+            'kurs' =>$belegung->getKurs(),
+            'rolle'=>$belegung->getRolle(),
+            'created_at'=>Carbon::now()
         ]);
 
         $request->session()->flash('message' ,'Kurs erfolgreich angelegt');
