@@ -28,8 +28,8 @@
                     <input type="text" id="fname" name="name" placeholder="Bitte Vorname eintragen..">
 
                     <label for="email">Email</label>
-                    <input type="text" id="email" name="email" placeholder="Bitte Email eintragen...">
-
+                    <input type="email" id="email" name="email" class="form-control" placeholder="Bitte Email eintragen...">
+                   
                     <label for="lname">Betreff</label>
                     <input type="text" id="lname" name="subject" placeholder="Bitte Nachname eintragen..">
 
