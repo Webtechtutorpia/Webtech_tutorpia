@@ -18,17 +18,17 @@
                 <div class="form group">
                     <label for="Aufgabenname" class="control-label">Aufgabenname</label>
                     <input type="text" class="form-control" name="aufgabenname" id="Aufgabenname" onkeypress="buttonFaerben(this)"
-                          value="{{$request->aufgabenname}}">
+                          value="{{$request->aufgabenname}}" maxlength="50">
                 </div>
 
                 <div class="form group">
                     <label for="date" class="control-label">Abgabedatum</label>
-                    <input type="text" class="form-control" name="abgabedatum" id="Datum" value="{{$request->abgabedatum}}" onkeypress="buttonFaerben(this)">
+                    <input type="text" class="form-control" name="abgabedatum" id="Datum" value="{{$request->abgabedatum}}" maxlength="50" onkeypress="buttonFaerben(this)">
                 </div>
 
                 <div class="form group">
                     <label for="Aufgabenbeschreibung" class="control-label">Aufgabenbeschreibung</label>
-                    <textarea name="aufgabenbeschreibung" id="Aufgabenbeschreibung"  rows="5" onkeypress="buttonFaerben(this)">{{$request->aufgabenbeschreibung}}</textarea>
+                    <textarea name="aufgabenbeschreibung" id="Aufgabenbeschreibung"  rows="5" maxlength="255" onkeypress="buttonFaerben(this)">{{$request->aufgabenbeschreibung}}</textarea>
                 </div>
 
                 <div class="form-group formgroup right">

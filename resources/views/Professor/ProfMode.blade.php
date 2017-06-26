@@ -46,20 +46,20 @@
                                 <label for="Aufgabenname" class="control-label">Aufgabenname</label>
                                 <input type="text" class="form-control" name="aufgabenname" id="Aufgabenname"
                                        onkeypress="buttonFaerben(this)"
-                                       placeholder="Hier Aufgabenname eintragen">
+                                       placeholder="Hier Aufgabenname eintragen" maxlength="50">
                             </div>
 
                             <div class="form group">
                                 <label for="date" class="control-label">Abgabedatum</label>
                                 <input type="text" class="form-control" name="abgabedatum" id="Datum"
-                                       placeholder="01.01.2017 20:59" onkeypress="buttonFaerben(this)">
+                                       placeholder="01.01.2017 20:59" onkeypress="buttonFaerben(this)" maxlength="50">
                             </div>
 
                             <div class="form group">
                                 <label for="Aufgabenbeschreibung" class="control-label">Aufgabenbeschreibung</label>
                                 <textarea name="aufgabenbeschreibung" id="Aufgabenbeschreibung" class="" rows="5"
                                           onkeypress="buttonFaerben(this)"
-                                          placeholder="Hier Aufgabenstellung eintragen"></textarea>
+                                          placeholder="Hier Aufgabenstellung eintragen" maxlength="255"></textarea>
                             </div>
 
                             <div class="form-group formgroup">

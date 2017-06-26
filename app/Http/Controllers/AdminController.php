@@ -122,20 +122,23 @@ class AdminController extends Controller
 
 
         $this->validate($request, [ 'kursname'=> 'required| max:255', 'leiter'=> 'required']);
-        $kurs=new Kurse($request->kursname,$request->leiter);
-        DB::table('kurs')->insert([
-            'bezeichnung'=> $kurs->getBezeichnung(),
-            'geleitet_von' =>$kurs->getGeleitet_von()
-        ]);
-        $belegung=new Belegung($request->leiter,$request->kursname,'Professor');
-        DB::table('belegung')->insert([
-            'user'=> $belegung->getUser(),
-            'kurs' =>$belegung->getKurs(),
-            'rolle'=>$belegung->getRolle(),
-            'created_at'=>Carbon::now()
-        ]);
+        $check=Kurse::where('bezeichnung',$request->kursname)->get();
+        if($check->isEmpty()) {
+            $kurs = new Kurse($request->kursname, $request->leiter);
+            DB::table('kurs')->insert([
+                'bezeichnung' => $kurs->getBezeichnung(),
+                'geleitet_von' => $kurs->getGeleitet_von()
+            ]);
+            $belegung = new Belegung($request->leiter, $request->kursname, 'Professor');
+            DB::table('belegung')->insert([
+                'user' => $belegung->getUser(),
+                'kurs' => $belegung->getKurs(),
+                'rolle' => $belegung->getRolle(),
+                'created_at' => Carbon::now()
+            ]);
 
-        $request->session()->flash('message' ,'Kurs erfolgreich angelegt');
+            $request->session()->flash('message', 'Kurs erfolgreich angelegt');
+        }
         return back();
     }
 

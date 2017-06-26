@@ -72,7 +72,7 @@
                         <div class="form-group">
                             <label for="kursname">Kursname </label>
                             <input type="text" class="form-control" id="kursname" name="kursname"
-                                   placeholder="Kursname eingeben">
+                                   placeholder="Kursname eingeben" maxlength="50">
                         </div>
                         <div class="form-group">
                             <label for="leiter">Leitender Prof.</label>
