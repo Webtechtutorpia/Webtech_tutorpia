@@ -41,7 +41,7 @@ class Abgabeseeder extends Seeder
             'user' => 1,
             'zugehoerig_zu' => 3,
             'created_at'=>'2017-05-15 14:06:00',
-            'pfad' => 'app/files/TestStudent_Aufgabe3_Neues Textdokument.txt',
+            'pfad' => 'app/files/TestStudent_ALDA_Aufgabe3_Neues Textdokument.txt',
             'upload_am'=> Carbon::now()->format('d-m-Y H:i:s'),
 
         ]);

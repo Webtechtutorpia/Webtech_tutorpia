@@ -7,6 +7,8 @@ use Tutorpia\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use Tutorpia\Contact;
 use Session;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class ContactController extends Controller
 {
@@ -30,22 +32,23 @@ class ContactController extends Controller
 
         if ($check->isEmpty()) {
 
-
+            $contact=new Contact($request->name,$request->betreff,$request->email,$request->message,false);
             $data = [
-                'name' => $request->name,
-                'subject' => $request->betreff,
-                'email' => $request->email,
-                'message' => $request->message,
-                'beantwortet' => false
+                'name' => $contact->getName(),
+                'subject' => $contact->getSubject(),
+                'email' => $contact->getEmail(),
+                'message' => $contact->getMessage(),
+                'beantwortet' => $contact->getBeantwortet()
             ];
 
 
-            Contact::create([
-                'name' => $data['name'],
-                'subject' => $data['subject'],
-                'email' => $data['email'],
-                'message' => $data['message'],
-                'beantwortet' => $data['beantwortet']
+            DB::table('contact')->insert([
+                'name' => $contact->getName(),
+                'subject' => $contact->getSubject(),
+                'email' => $contact->getEmail(),
+                'message' => $contact->getMessage(),
+                'beantwortet' => $contact->getBeantwortet(),
+                'created_at'=>Carbon::now()
             ]);
 
 
