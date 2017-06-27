@@ -24,7 +24,7 @@ class BelegungController extends Controller
                         ->from('belegung')
                         ->where('user', '=', Auth::user()->id);
                 })->get();
-
+            session()->put('global_variable', null);
             return View::make('Kurse.kurse')->with('kurse', $kurse)->with('alle', $alle);
 
     }

@@ -22,18 +22,18 @@ class ContactController extends Controller
 
         $this->validate($request, [
             'name' => 'required',
-            'subject' => 'required',
+            'betreff' => 'required',
             'email' => 'required',
             'message' => 'required']);
 
-        $check = Contact::where('name', $request->name)->where('email', $request->email)->where('subject', $request->subject)->get();
+        $check = Contact::where('name', $request->name)->where('email', $request->email)->where('subject', $request->betreff)->get();
 
         if ($check->isEmpty()) {
 
 
             $data = [
                 'name' => $request->name,
-                'subject' => $request->subject,
+                'subject' => $request->betreff,
                 'email' => $request->email,
                 'message' => $request->message,
                 'beantwortet' => false
