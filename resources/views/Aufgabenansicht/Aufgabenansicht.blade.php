@@ -45,6 +45,7 @@
                                             <input type="hidden" name="aufgabenname" value="{{$value->aufgabenname}}">
                                             <input type="hidden" name="abgabeid" value="{{$value->abgabeid}}">
                                             <input type="hidden" name="username" value="{{$value->name}}">
+                                            <input type="hidden" name="kursname" value="{{$kurs}}">
                                             <input type="file" class="form-control" name="upload" id="upload"
                                                    onkeypress="buttonFaerben(this)">
                                         </div>
@@ -213,6 +214,7 @@
                                         <form action="/delete" method="post">
                                             <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                                             <input type="hidden" name="abgabeid" value="{{$value->abgabeid}}">
+                                            <input type="hidden" name="kursname" value="{{$kurs}}">
                                             <button type="submit" class="btn-primary btn">Delete</button>
                                         </form>
 

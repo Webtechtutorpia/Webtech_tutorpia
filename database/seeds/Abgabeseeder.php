@@ -19,7 +19,7 @@ class Abgabeseeder extends Seeder
             'kommentar'=>'super',
             'bearbeitet_von'=>'TestTutor',
             'updated_at'=>'2017-04-15 16:22:28',
-            'pfad' => 'app/files/TestStudent_Aufgabe1_Neues Textdokument.txt',
+            'pfad' => 'app/files/TestStudent_ALDA_Aufgabe1_Neues Textdokument.txt',
             'upload_am'=> Carbon::now()->format('d-m-Y H:i:s'),
             'korrigiert_am'=>Carbon::now()->format('d-m-Y H:i:s')
     ]);
@@ -31,7 +31,7 @@ class Abgabeseeder extends Seeder
             'kommentar'=>'leider zu viele Fehler',
             'bearbeitet_von'=>'TestTutor',
             'updated_at'=>'2017-05-03 12:00:28',
-            'pfad' => 'app/files/TestStudent_Aufgabe2_Neues Textdokument.txt',
+            'pfad' => 'app/files/TestStudent_ALDA_Aufgabe2_Neues Textdokument.txt',
             'upload_am'=> Carbon::now()->format('d-m-Y H:i:s'),
             'korrigiert_am'=>Carbon::now()->format('d-m-Y H:i:s')
         ]);
@@ -62,7 +62,7 @@ class Abgabeseeder extends Seeder
             'kommentar'=>'super gemacht',
             'bearbeitet_von'=>'TestTutor',
             'updated_at'=>'2017-06-01 18:22:28',
-            'pfad' => 'app/files/TestStudent_Aufgabe5_Neues Textdokument.txt',
+            'pfad' => 'app/files/TestStudent_ALDA_Aufgabe5_Neues Textdokument.txt',
             'upload_am'=> Carbon::now()->format('d-m-Y H:i:s'),
             'korrigiert_am'=>Carbon::now()->format('d-m-Y H:i:s')
         ]);
@@ -73,7 +73,7 @@ class Abgabeseeder extends Seeder
             'kommentar'=>'super gemacht',
             'bearbeitet_von'=>'TestTutor',
             'updated_at'=>'2017-06-01 18:22:28',
-            'pfad' => 'app/files/TestStudent_Aufgabe5_Neues Textdokument.txt',
+            'pfad' => 'app/files/TestStudent2_ALDA_Aufgabe5_Neues Textdokument.txt',
             'upload_am'=> Carbon::now()->format('d-m-Y H:i:s'),
             'korrigiert_am'=>Carbon::now()->format('d-m-Y H:i:s')
         ]);

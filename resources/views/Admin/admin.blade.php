@@ -5,9 +5,9 @@
             @if( Session::has('message'))
                 <p class="bg-success"> {{session()->pull('message')}}</p>
             @endif
-                @if( Session::has('negativ'))
-                    <p class="bg-danger"> {{session()->pull('negativ')}}</p>
-                @endif
+            @if( Session::has('negativ'))
+                <p class="bg-danger"> {{session()->pull('negativ')}}</p>
+            @endif
             @if(Auth::user()->rolle =='admin')
                 <h1>Adminbereich</h1>
 
@@ -51,12 +51,13 @@
                                         </td>
                                     </tr>
                                 @endforeach
-                        </tbody>
-                        </table>
+                                </tbody>
+                            </table>
                             <input class="btn btn-primary" type="submit" value="bestätigen">
                         </form>
                         <br>
-                        <form action=" {{Url ('deleteUser')}}" method="post" onsubmit="if( document.getElementsByName('delete')[0].value != ''){return confirm('Sind Sie sicher, dass Sie den Account wirklich löschen wollen? An den Account gebundete Daten wie beispielweise geleitetete Kurse werden ebenfalls verloren gehen.')}">
+                        <form action=" {{Url ('deleteUser')}}" method="post"
+                              onsubmit="if( document.getElementsByName('delete')[0].value != ''){return confirm('Sind Sie sicher, dass Sie den Account wirklich löschen wollen? An den Account gebundete Daten wie beispielweise geleitetete Kurse werden ebenfalls verloren gehen.')}">
                             <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                             <label for=delete">Account löschen</label>
                             <input type="text" id="delete" name="delete" placeholder="Accountname oder Email eingeben">

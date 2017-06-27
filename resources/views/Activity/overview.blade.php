@@ -31,9 +31,9 @@
                                 @foreach($neuigkeiten as $value )
                                     <tr>
 
-                                            <td class="col-md-4 col-xs-8">
-                                                <p>{{Carbon\Carbon::parse($value->zeit)->format('d-m-Y H:i:s')}}</p>
-                                            </td>
+                                        <td class="col-md-4 col-xs-8">
+                                            <p>{{Carbon\Carbon::parse($value->zeit)->format('d-m-Y H:i:s')}}</p>
+                                        </td>
                                         @if($value->was == 'aufgabe')
                                             <td class="col-md-4 col-xs-8"><p>{{$value->erstellt_von}}
                                                     hat {{$value->aufgabenname}} mit Abgabe am {{$value->abgabedatum}}
@@ -48,13 +48,12 @@
                                     </tr>
 
                                 @endforeach
-                            </tbody>
+                                </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
-
 
 
         </div>
