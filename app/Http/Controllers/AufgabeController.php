@@ -19,12 +19,6 @@ class AufgabeController extends Controller
     {
         $aufgabe = new Aufgabe($request->aufgabenname, $request->abgabedatum, $request->aufgabenbeschreibung, Auth::user()->name,session()->get('global_variable'));
 
-        // Validierung
-        $this->validate($request, [
-            'aufgabenname' => 'required',
-            'abgabedatum' => 'required',
-            'aufgabenbeschreibung' => 'required']);
-
         $this->save($aufgabe);
         $pfad='/Professor/'.session()->get('global_variable');
         return redirect($pfad);

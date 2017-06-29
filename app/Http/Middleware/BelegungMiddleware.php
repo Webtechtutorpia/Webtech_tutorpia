@@ -27,8 +27,11 @@ class BelegungMiddleware
 
             $kurs=$request->route()->parameters();
 
-            if($kurs == null || count($kurs)>=2 ){
+            if($kurs == null || count($kurs)>=2 || is_numeric(array_first($kurs)) ){
                 $kurs=session()->get('global_variable');
+                if($kurs == null){
+                    return redirect('Activity');
+                }
             }
 
 

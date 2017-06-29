@@ -8,7 +8,7 @@
             <h2>Studentenmodus: {{$kurs}}</h2>
 
             <div class="col-md-4 col-md-offset-8">
-                <form class="form-inline" method="get">
+                <form class="form-inline" method="get" onsubmit="return false">
                     <div class="form-group">
                         <input type="hidden" name="_token" value="<?php Session::token()?>">
                         <input type="text" name="search_abgabe" id="search_abgabe"

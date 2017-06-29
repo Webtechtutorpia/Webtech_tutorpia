@@ -1,1 +1,0 @@
- 5 Äpfel - 2 Äpfel + 1 Birne = 3 Äpfel  und  1 Birne - 1 Apfel = 2 Äpfel und 1  Birne = 3 Stücke Obst

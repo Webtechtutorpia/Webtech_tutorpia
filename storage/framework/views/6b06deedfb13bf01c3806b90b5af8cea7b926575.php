@@ -7,7 +7,7 @@
 
                 <div class="col-md-6 col-md-offset-10" id="anhang">
                     <div class="input-group">
-                        <form method="get" action="/search">
+                        <form method="get" action="/search" onsubmit="return false">
                             <input type="text" class="form-control" placeholder="Suche nach..." id="tfsearch">
                         </form>
                     </div>
