@@ -22,21 +22,21 @@ function ajax(name) {
                         // console.log(abgabe.zustand);
                         switch (abgabe.zustand) {
                             case '+':
-                                var link = "/Aufgabenansicht/bestimmteAbgabe/" + abgabe.user + "/" + abgabe.aufgabenname;
+                                var link = "/Korrektur/bestimmteAbgabe/" + abgabe.user + "/" + abgabe.aufgabenname;
                                 $(row).append($('<td>', {class: "text-center"}).append($('<a>', {
                                     href: link,
                                     class: "glyphicon glyphicon-ok btn-success"
                                 })));
                                 break;
                             case '-':
-                                var link = "/Aufgabenansicht/bestimmteAbgabe/" + abgabe.user + "/" + abgabe.aufgabenname;
+                                var link = "/Korrektur/bestimmteAbgabe/" + abgabe.user + "/" + abgabe.aufgabenname;
                                 $(row).append($('<td>', {class: "text-center"}).append($('<a>', {
                                     href: link,
                                     class: "glyphicon glyphicon-remove btn-danger"
                                 })));
                                 break;
                             case '/':
-                                var link = "/Aufgabenansicht/bestimmteAbgabe/" + abgabe.user + "/" + abgabe.aufgabenname;
+                                var link = "/Korrektur/bestimmteAbgabe/" + abgabe.user + "/" + abgabe.aufgabenname;
                                 $(row).append($('<td>', {class: "text-center"}).append($('<a>', {
                                     href: link,
                                     class: "glyphicon glyphicon-minus btn-warning"
