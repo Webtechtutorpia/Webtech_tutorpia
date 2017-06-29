@@ -47,12 +47,11 @@
                     <!-- Branding Image -->
 
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{--<img style="max-width: 20px; max-height: 20px;" src="images/eule.jpg">--}}
                         {{ config('app.name', 'Tutorpia') }}
                     </a>
                 </div>
 
-                <div class="collapse navbar-collapse" id="app-navbar-collapse hoverselect">
+                <div class="collapse navbar-collapse hoverselect" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     {{--Unterschiedliche Navbar für registrierte und gäste--}}
                    @if (Auth::check())
@@ -63,13 +62,7 @@
 
                             <li role="presentation" name="Admin"><a href="/admin">Admin</a></li>
                             @endif
-                            {{--@if(Auth::user()->rolle=='admin')--}}
-                            {{--<li role="presentation" name="Abgaben"><a href="/Tutor">Abgaben</a></li>--}}
-                            {{--@if (Auth::user()->rolle=="Professor")--}}
-                                {{--<li role="presentation"name="Profmodus"><a href="/Professor">Professorenmodus</a></li>--}}
-                            {{--@else--}}
-                                {{--<li role="presentation" name="Aufgaben"><a href="/Aufgabenansicht">Aufgaben</a></li>--}}
-                            {{--@endif--}}
+
                         </ul>
 
                 @endif
@@ -108,9 +101,6 @@
 
     @yield('content')
 
-    @section('test')
-        <h1>das ist ein test</h1>
-    @endsection
 
 
 </main>
@@ -139,7 +129,7 @@
                     </button>
                 </div>
 
-                <div class="collapse navbar-collapse" id="app-collapse hoverselect">
+                <div class="collapse navbar-collapse hoverselect" id="app-collapse">
                         <ul class="nav navbar-nav">
                             <li class="first foot" name="Datenschutz"><a  href="{{ url('/datenschutz') }}">Datenschutz</a></li>
                             <li name="Impressum"><a href="{{ url('/impressum') }}">Impressum</a></li>

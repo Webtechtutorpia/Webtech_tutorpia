@@ -47,13 +47,12 @@
                     <!-- Branding Image -->
 
                     <a class="navbar-brand" href="<?php echo e(url('/')); ?>">
-                        
                         <?php echo e(config('app.name', 'Tutorpia')); ?>
 
                     </a>
                 </div>
 
-                <div class="collapse navbar-collapse" id="app-navbar-collapse hoverselect">
+                <div class="collapse navbar-collapse hoverselect" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     
                    <?php if(Auth::check()): ?>
@@ -64,13 +63,7 @@
 
                             <li role="presentation" name="Admin"><a href="/admin">Admin</a></li>
                             <?php endif; ?>
-                            
-                            
-                            
-                                
-                            
-                                
-                            
+
                         </ul>
 
                 <?php endif; ?>
@@ -110,9 +103,6 @@
 
     <?php echo $__env->yieldContent('content'); ?>
 
-    <?php $__env->startSection('test'); ?>
-        <h1>das ist ein test</h1>
-    <?php $__env->stopSection(); ?>
 
 
 </main>
@@ -141,7 +131,7 @@
                     </button>
                 </div>
 
-                <div class="collapse navbar-collapse" id="app-collapse hoverselect">
+                <div class="collapse navbar-collapse hoverselect" id="app-collapse">
                         <ul class="nav navbar-nav">
                             <li class="first foot" name="Datenschutz"><a  href="<?php echo e(url('/datenschutz')); ?>">Datenschutz</a></li>
                             <li name="Impressum"><a href="<?php echo e(url('/impressum')); ?>">Impressum</a></li>
