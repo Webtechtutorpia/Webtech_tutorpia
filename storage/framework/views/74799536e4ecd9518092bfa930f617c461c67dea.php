@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-    <link href="{{ asset('css/bootstrap.css')}}" rel="stylesheet">
-    {{--<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">--}}
-    <link href="{{ asset('css/bootstrap-theme.css')}}" rel="stylesheet">
-    <link href="{{ asset('css/minimalmain.css') }}" rel="stylesheet" type="text/css">
+    <link href="<?php echo e(asset('css/bootstrap.css')); ?>" rel="stylesheet">
+    
+    <link href="<?php echo e(asset('css/bootstrap-theme.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('css/minimalmain.css')); ?>" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
-    <title>{{ config('app.name', 'Tutorpia') }}</title>
+    <title><?php echo e(config('app.name', 'Tutorpia')); ?></title>
     <link rel="icon" type="image/jpg" href="images/euleicon.jpg">
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
@@ -46,58 +46,60 @@
 
                     <!-- Branding Image -->
 
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{--<img style="max-width: 20px; max-height: 20px;" src="images/eule.jpg">--}}
-                        {{ config('app.name', 'Tutorpia') }}
+                    <a class="navbar-brand" href="<?php echo e(url('/')); ?>">
+                        
+                        <?php echo e(config('app.name', 'Tutorpia')); ?>
+
                     </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse hoverselect">
                     <!-- Left Side Of Navbar -->
-                    {{--Unterschiedliche Navbar für registrierte und gäste--}}
-                   @if (Auth::check())
+                    
+                   <?php if(Auth::check()): ?>
                         <ul class="nav navbar-nav">
                             <li role="presentation" name="Übersicht"><a href="/Activity">Übersicht</a></li>
                             <li role="presentation" name="Kurse"><a href="/Kurse">Kurse</a></li>
-                            @if(Auth::user()->rolle == 'admin' )
+                            <?php if(Auth::user()->rolle == 'admin' ): ?>
 
                             <li role="presentation" name="Admin"><a href="/admin">Admin</a></li>
-                            @endif
-                            {{--@if(Auth::user()->rolle=='admin')--}}
-                            {{--<li role="presentation" name="Abgaben"><a href="/Tutor">Abgaben</a></li>--}}
-                            {{--@if (Auth::user()->rolle=="Professor")--}}
-                                {{--<li role="presentation"name="Profmodus"><a href="/Professor">Professorenmodus</a></li>--}}
-                            {{--@else--}}
-                                {{--<li role="presentation" name="Aufgaben"><a href="/Aufgabenansicht">Aufgaben</a></li>--}}
-                            {{--@endif--}}
+                            <?php endif; ?>
+                            
+                            
+                            
+                                
+                            
+                                
+                            
                         </ul>
 
-                @endif
+                <?php endif; ?>
                 <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li><a  href="{{ url('/login') }}">Login</a></li>
-                            <li><a href="{{ url('/register') }}">Registrierung</a></li>
-                        @else
+                        <?php if(Auth::guest()): ?>
+                            <li><a  href="<?php echo e(url('/login')); ?>">Login</a></li>
+                            <li><a href="<?php echo e(url('/register')); ?>">Registrierung</a></li>
+                        <?php else: ?>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    <?php echo e(Auth::user()->name); ?> <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a href="{{ url('/logout') }}"
+                                        <a href="<?php echo e(url('/logout')); ?>"
                                            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Logout
                                         </a>
-                                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
+                                        <form id="logout-form" action="<?php echo e(url('/logout')); ?>" method="POST" style="display: none;">
+                                            <?php echo e(csrf_field()); ?>
+
                                         </form>
                                     </li>
                                 </ul>
                             </li>
-                        @endif
+                        <?php endif; ?>
                     </ul>
                 </div>
             </div>
@@ -106,11 +108,11 @@
 </header>
 <main>
 
-    @yield('content')
+    <?php echo $__env->yieldContent('content'); ?>
 
-    @section('test')
+    <?php $__env->startSection('test'); ?>
         <h1>das ist ein test</h1>
-    @endsection
+    <?php $__env->stopSection(); ?>
 
 
 </main>
@@ -124,7 +126,7 @@
         js.src = "//connect.facebook.net/de_DE/sdk.js#xfbml=1&version=v2.9";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
-{{--Footer Navbar--}}
+
 <footer>
     <div class="footer">
         <nav class="navbar navbar-default" id="footer">
@@ -141,9 +143,9 @@
 
                 <div class="collapse navbar-collapse" id="app-collapse hoverselect">
                         <ul class="nav navbar-nav">
-                            <li class="first foot" name="Datenschutz"><a  href="{{ url('/datenschutz') }}">Datenschutz</a></li>
-                            <li name="Impressum"><a href="{{ url('/impressum') }}">Impressum</a></li>
-                            <li name="Kontakt"><a   href="{{ url('/contact') }}">Kontakt</a></li>
+                            <li class="first foot" name="Datenschutz"><a  href="<?php echo e(url('/datenschutz')); ?>">Datenschutz</a></li>
+                            <li name="Impressum"><a href="<?php echo e(url('/impressum')); ?>">Impressum</a></li>
+                            <li name="Kontakt"><a   href="<?php echo e(url('/contact')); ?>">Kontakt</a></li>
                         </ul>
                     <ul class="nav navbar-nav navbar-right">
                     <li role="presentation" name="Facebook">
@@ -156,7 +158,7 @@
     </div>
 </footer>
 
-{{--Cookiehinweis --}}
+
 <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
 <script>
     window.addEventListener("load", function(){
@@ -180,8 +182,8 @@
         })});
 </script>
 <script src="/js/app.js"></script>
-{{--<script type="text/javascript" src="{{ URL::asset('js/jquery-3.2.1.js') }}"></script>--}}
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-<script type="text/javascript" src="{{ URL::asset('js/layout.js') }}"></script>
+<script type="text/javascript" src="<?php echo e(URL::asset('js/layout.js')); ?>"></script>
 </body>
 </html>
