@@ -1,11 +1,9 @@
-@extends('layouts.app')
-
-@section('content')
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+<?php $__env->startSection('content'); ?>
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
     <div class="container" id="container">
         <div class="row">
 
-            <h2>Studentenmodus: {{$kurs}}</h2>
+            <h2>Studentenmodus: <?php echo e($kurs); ?></h2>
 
             <div class="col-md-4 col-md-offset-8">
                 <form class="form-inline" method="get" onsubmit="return false">
@@ -22,14 +20,15 @@
             <div id="liste"></div>
 
 
-            {{--je nach Datenbankeintrag Element anzeigen--}}
+            
             <h3>Alle Aufgaben:</h3>
-            @foreach($abgaben as $value)
+            <?php $__currentLoopData = $abgaben; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
 
-                @if( $value->zustand == '.')
+                <?php if( $value->zustand == '.'): ?>
                     <div class="col-md-12 col-xs-12">
                         <div class="panel panel-info aufgabe ">
-                            <div class="panel-heading" onclick="panel_behavior(this)"> {{$value->aufgabenname}}
+                            <div class="panel-heading" onclick="panel_behavior(this)"> <?php echo e($value->aufgabenname); ?>
+
                                 <div  class="glyphicon glyphicon-minus icon-right"></div>
                             </div>
 
@@ -37,15 +36,16 @@
 
                                 <div class="fileUpload notVisible">
                                     <form class="form-horizontal" role="form" method="POST"
-                                          action="{{ url('FileUpload') }}" enctype="multipart/form-data">
-                                        {{ csrf_field() }}
+                                          action="<?php echo e(url('FileUpload')); ?>" enctype="multipart/form-data">
+                                        <?php echo e(csrf_field()); ?>
+
 
 
                                         <div class="form group">
-                                            <input type="hidden" name="aufgabenname" value="{{$value->aufgabenname}}">
-                                            <input type="hidden" name="abgabeid" value="{{$value->abgabeid}}">
-                                            <input type="hidden" name="username" value="{{$value->name}}">
-                                            <input type="hidden" name="kursname" value="{{$kurs}}">
+                                            <input type="hidden" name="aufgabenname" value="<?php echo e($value->aufgabenname); ?>">
+                                            <input type="hidden" name="abgabeid" value="<?php echo e($value->abgabeid); ?>">
+                                            <input type="hidden" name="username" value="<?php echo e($value->name); ?>">
+                                            <input type="hidden" name="kursname" value="<?php echo e($kurs); ?>">
                                             <input type="file" class="form-control" name="upload" id="upload"
                                                    onkeypress="buttonFaerben(this)">
                                         </div>
@@ -62,16 +62,16 @@
 
 
                                 <div class="austauschen">
-                                    @if (Session::has('message'))
-                                        <div class="alert alert-danger">{{ Session::get('message') }}</div>
-                                    @endif
+                                    <?php if(Session::has('message')): ?>
+                                        <div class="alert alert-danger"><?php echo e(Session::get('message')); ?></div>
+                                    <?php endif; ?>
                                     <div class=" panel-group panelabstand">
                                         <div class="col-md-3 col-xs-6 size"> Aufgabenstellung:</div>
-                                        <div class="col-md-9 col-xs-12 size"> {{$value->aufgabenbeschreibung}}</div>
+                                        <div class="col-md-9 col-xs-12 size"> <?php echo e($value->aufgabenbeschreibung); ?></div>
                                     </div>
                                     <div class=" panel-group panelabstand" >
                                         <div class="col-md-3  col-xs-6 size">Abgabe bis :</div>
-                                        <div class="col-md-3  col-xs-6 size"> {{$value->abgabedatum}}</div>
+                                        <div class="col-md-3  col-xs-6 size"> <?php echo e($value->abgabedatum); ?></div>
                                         <div class="col-md-3  col-xs-6 size">Aufgabe hochladen:</div>
                                         <div class="col-md-3  col-xs-4 size">
                                             <a class="btn btn-primary btn" onclick="add(this)" role="button">Upload</a>
@@ -87,31 +87,32 @@
                         </div>
                     </div>
 
-                @endif
-                @if($value->zustand == '-')
+                <?php endif; ?>
+                <?php if($value->zustand == '-'): ?>
                     <div class="col-md-12 col-xs-12">
                         <div class="panel panel-danger aufgabe ">
-                            <div class="panel-heading" onclick="panel_behavior(this)"> {{$value->aufgabenname}}
+                            <div class="panel-heading" onclick="panel_behavior(this)"> <?php echo e($value->aufgabenname); ?>
+
                                 <div  class="glyphicon glyphicon-remove icon-right"></div>
                             </div>
                             <div class="panel-body notVisible">
                                 <div class=" panel-group panelabstand">
                                     <div class="col-md-3 col-xs-6 size"> Aufgabenstellung:</div>
-                                    <div class="col-md-9 col-xs-12 size"> {{$value->aufgabenbeschreibung}}</div>
+                                    <div class="col-md-9 col-xs-12 size"> <?php echo e($value->aufgabenbeschreibung); ?></div>
                                 </div>
                                 <div class=" panel-group panelabstand" >
                                     <div class="col-md-3  col-xs-6 size">Abgabe bis:</div>
-                                    <div class="col-md-3  col-xs-6 size">{{$value->abgabedatum}} </div>
+                                    <div class="col-md-3  col-xs-6 size"><?php echo e($value->abgabedatum); ?> </div>
                                     <div class="col-md-3  col-xs-6 size">Abgabe abgelehnt:</div>
-                                    <div class="col-md-3 col-xs-6 size">{{$value->korrigiert_am}}</div>
+                                    <div class="col-md-3 col-xs-6 size"><?php echo e($value->korrigiert_am); ?></div>
                                     <div class="col-md-3 col-xs-6 size">Abgelehnt durch:</div>
-                                    <div class="col-md-3 col-xs-6 size">{{$value->bearbeitet_von}}</div>
+                                    <div class="col-md-3 col-xs-6 size"><?php echo e($value->bearbeitet_von); ?></div>
                                     <div class="col-md-3 col-xs-6 size">Datei:</div>
                                     <div class="col-md-3 col-xs-6 size">
                                         <form action="/download" method="post">
                                             <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-                                            <input type="hidden" name="kurs" value="{{$kurs}}">
-                                            <input type="hidden" name="abgabeid" value="{{$value->abgabeid}}">
+                                            <input type="hidden" name="kurs" value="<?php echo e($kurs); ?>">
+                                            <input type="hidden" name="abgabeid" value="<?php echo e($value->abgabeid); ?>">
                                             <button type="submit" class="btn-primary btn">Download</button>
                                         </form>
                                     </div>
@@ -119,7 +120,7 @@
                                 <div class="panel-group panelabstand" >
                                     <div class="col-md-3 col-xs-6 size"> Tutor kontaktieren:</div>
                                     <div class="col-md-3 col-xs-2 size"><span><a
-                                                    href="mailto:{{$value->tutoremail}}?subject=Fehler bei Abnahme von {{$value->aufgabenname}} bei {{$value->name}}"
+                                                    href="mailto:<?php echo e($value->tutoremail); ?>?subject=Fehler bei Abnahme von <?php echo e($value->aufgabenname); ?> bei <?php echo e($value->name); ?>"
                                                     class="glyphicon glyphicon-envelope"></a></span>
                                     </div>
                                 </div>
@@ -130,43 +131,44 @@
                                 </div>
                                 <div class="panel-group panelabstand">
                                     <div class="col-md-3 col-xs-6 size"> Kommentar:</div>
-                                    <div class="col-md-3 col-xs-2 size">{{$value->kommentar}}</div>
+                                    <div class="col-md-3 col-xs-2 size"><?php echo e($value->kommentar); ?></div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                @endif
-                @if($value->zustand == '+')
+                <?php endif; ?>
+                <?php if($value->zustand == '+'): ?>
                     <div class="col-md-12 col-xs-12 ">
 
                         <div class="panel panel-success aufgabe ">
-                            <div class="panel-heading" onclick="panel_behavior(this)"> {{$value->aufgabenname}}
+                            <div class="panel-heading" onclick="panel_behavior(this)"> <?php echo e($value->aufgabenname); ?>
+
                                 <div  class="glyphicon glyphicon-ok icon-right"></div>
                             </div>
                             <div class="panel-body notVisible">
                                 <div class=" panel-group panelabstand" >
                                     <div class="col-md-3 col-xs-6 size"> Aufgabenstellung:</div>
-                                    <div class="col-md-9 col-xs-12 size">{{$value->aufgabenbeschreibung}}</div>
+                                    <div class="col-md-9 col-xs-12 size"><?php echo e($value->aufgabenbeschreibung); ?></div>
                                 </div>
 
                                 <div class="panel group panelabstand">
                                     <div class="col-md-3 col-xs-6 size ">Upload am:</div>
-                                    <div class="col-md-3 col-xs-6 size ">{{ $value->upload_am}}</div>
+                                    <div class="col-md-3 col-xs-6 size "><?php echo e($value->upload_am); ?></div>
                                     <div class="col-md-3 col-xs-6 size"> korregiert am:</div>
-                                    <div class="col-md-3  col-xs-6 size"> {{$value->korrigiert_am}}</div>
+                                    <div class="col-md-3  col-xs-6 size"> <?php echo e($value->korrigiert_am); ?></div>
                                 </div>
 
                                 <div class="panel-group panelabstand" >
                                     <div class="col-md-3 col-xs-6 size">Abnahme durch:</div>
-                                    <div class="col-md-3 col-xs-6 size"> {{$value->bearbeitet_von}}</div>
+                                    <div class="col-md-3 col-xs-6 size"> <?php echo e($value->bearbeitet_von); ?></div>
 
                                     <div class="col-md-3 col-xs-6 size"> Datei:</div>
                                     <div class="col-md-3 col-xs-4 size">
-                                        {{--style="padding: 0px 12px;"--}}
+                                        
                                         <form action="/download" method="post">
                                             <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-                                            <input type="hidden" name="kurs" value="{{$kurs}}">
-                                            <input type="hidden" name="abgabeid" value="{{$value->abgabeid}}">
+                                            <input type="hidden" name="kurs" value="<?php echo e($kurs); ?>">
+                                            <input type="hidden" name="abgabeid" value="<?php echo e($value->abgabeid); ?>">
                                             <button type="submit" class="btn-primary btn">Download</button>
                                         </form>
                                     </div>
@@ -174,7 +176,7 @@
                                 <div class="panel-group ">
                                     <div class="col-md-3 col-xs-6 size"> Tutor kontaktieren:</div>
                                     <div class="col-md-3 col-xs-2 size"><span><a
-                                                    href="mailto:{{$value->tutoremail}}?subject=Frage zur Abnahme von {{$value->aufgabenname}} bei {{$value->name}}"
+                                                    href="mailto:<?php echo e($value->tutoremail); ?>?subject=Frage zur Abnahme von <?php echo e($value->aufgabenname); ?> bei <?php echo e($value->name); ?>"
                                                     class="glyphicon glyphicon-envelope"></a></span>
                                     </div>
                                 </div>
@@ -185,36 +187,37 @@
                                 </div>
                                 <div class="panel-group ">
                                     <div class="col-md-3 col-xs-6 size"> Kommentar:</div>
-                                    <div class="col-md-3 col-xs-2 size">{{$value->kommentar}}</div>
+                                    <div class="col-md-3 col-xs-2 size"><?php echo e($value->kommentar); ?></div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                @endif
+                <?php endif; ?>
 
-                @if($value->zustand == '/')
+                <?php if($value->zustand == '/'): ?>
                     <div class="col-md-12 col-xs-12 ">
 
                         <div class="panel panel-warning aufgabe ">
-                            <div class="panel-heading" onclick="panel_behavior(this)"> {{$value->aufgabenname}}
+                            <div class="panel-heading" onclick="panel_behavior(this)"> <?php echo e($value->aufgabenname); ?>
+
                                 <div  class="glyphicon glyphicon-minus icon-right"></div>
                             </div>
                             <div class="panel-body notVisible">
                                 <div class=" panel-group panelabstand" >
                                     <div class="col-md-3 col-xs-6 size"> Aufgabenstellung:</div>
-                                    <div class="col-md-9 col-xs-12 size"> {{$value->aufgabenbeschreibung}}</div>
+                                    <div class="col-md-9 col-xs-12 size"> <?php echo e($value->aufgabenbeschreibung); ?></div>
                                 </div>
                                 <div class=" panel-group panelabstand">
                                     <div class="col-md-3  col-xs-6 size">Upload am :</div>
-                                    <div class="col-md-3  col-xs-6 size"> {{$value->upload_am}}</div>
+                                    <div class="col-md-3  col-xs-6 size"> <?php echo e($value->upload_am); ?></div>
                                     <div class="col-md-3  col-xs-6 size">Datei löschen:</div>
                                     <div class="col-md-3  col-xs-4 size">
 
 
                                         <form action="/delete" method="post">
                                             <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-                                            <input type="hidden" name="abgabeid" value="{{$value->abgabeid}}">
-                                            <input type="hidden" name="kursname" value="{{$kurs}}">
+                                            <input type="hidden" name="abgabeid" value="<?php echo e($value->abgabeid); ?>">
+                                            <input type="hidden" name="kursname" value="<?php echo e($kurs); ?>">
                                             <button type="submit" class="btn-primary btn">Delete</button>
                                         </form>
 
@@ -227,11 +230,13 @@
                             </div>
                         </div>
                     </div>
-                @endif
-            @endforeach
+                <?php endif; ?>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <script type="text/javascript" src="{{ URL::asset('js/minjs/aufgaben.min.js') }}"></script>
-@endsection
+    <script type="text/javascript" src="<?php echo e(URL::asset('js/minjs/aufgaben.min.js')); ?>"></script>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
